@@ -31,12 +31,11 @@
     self.login_button.hidden = true; //Hide the login button after clicking
     
     //EXAMPLE: Login with custom id request, creates a new account if no existing one:
-    LoginWithCustomIDRequest* login_request = [LoginWithCustomIDRequest new];
-    login_request.CustomId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    LoginWithIOSDeviceIDRequest* login_request = [LoginWithIOSDeviceIDRequest new];
     login_request.CreateAccount = true;
     
     
-    [[PlayFabClientAPI GetInstance] LoginWithCustomID:login_request
+    [[PlayFabClientAPI GetInstance] LoginWithIOSDeviceID:login_request
                                               success:^(LoginResult* result, NSObject* userData) {
                                                   //Request succeeded, and passed us a result.
                                                   NSLog(@"success, PlayFabId: %@",result.PlayFabId);
@@ -52,7 +51,6 @@
     //EXAMPLE: Login with email and password
     /*
     LoginWithEmailAddressRequest* request = [LoginWithEmailAddressRequest new];
-    request.TitleId = PlayFabSettings.TitleId;
     
     request.Email = @"email";
     request.Password = @"password";

@@ -2,7 +2,7 @@
 //  PlayFabSDK.h
 //  PlayFabSDK
 //
-//  Created by William Burgers on 2/3/16.
+//  Created by Jackdaw on 2/3/16.
 //  Copyright © 2016 PlayFab, Inc. All rights reserved.
 //
 

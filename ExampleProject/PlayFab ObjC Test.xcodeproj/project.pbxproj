@@ -14,28 +14,28 @@
 		AD3EF4851C7D195E005ABB21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD3EF4841C7D195E005ABB21 /* Assets.xcassets */; };
 		AD3EF4881C7D195E005ABB21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD3EF4861C7D195E005ABB21 /* LaunchScreen.storyboard */; };
 		AD5115411C80F9FC005F690F /* PlayFabSDKTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5115401C80F9FC005F690F /* PlayFabSDKTest.m */; };
-		AD7265111C87C8BE000B192D /* JAGProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FA1C87C8BE000B192D /* JAGProperty.m */; };
-		AD7265121C87C8BE000B192D /* JAGProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FA1C87C8BE000B192D /* JAGProperty.m */; };
-		AD7265131C87C8BE000B192D /* JAGPropertyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FD1C87C8BE000B192D /* JAGPropertyConverter.m */; };
-		AD7265141C87C8BE000B192D /* JAGPropertyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FD1C87C8BE000B192D /* JAGPropertyConverter.m */; };
-		AD7265151C87C8BE000B192D /* JAGPropertyFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FF1C87C8BE000B192D /* JAGPropertyFinder.m */; };
-		AD7265161C87C8BE000B192D /* JAGPropertyFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7264FF1C87C8BE000B192D /* JAGPropertyFinder.m */; };
-		AD7265171C87C8BE000B192D /* PlayFabBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265011C87C8BE000B192D /* PlayFabBaseModel.m */; };
-		AD7265181C87C8BE000B192D /* PlayFabBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265011C87C8BE000B192D /* PlayFabBaseModel.m */; };
-		AD7265191C87C8BE000B192D /* PlayFabClientAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265031C87C8BE000B192D /* PlayFabClientAPI.m */; };
-		AD72651A1C87C8BE000B192D /* PlayFabClientAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265031C87C8BE000B192D /* PlayFabClientAPI.m */; };
-		AD72651B1C87C8BE000B192D /* PlayFabClientDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265051C87C8BE000B192D /* PlayFabClientDataModels.m */; };
-		AD72651C1C87C8BE000B192D /* PlayFabClientDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265051C87C8BE000B192D /* PlayFabClientDataModels.m */; };
-		AD72651D1C87C8BE000B192D /* PlayFabConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265071C87C8BE000B192D /* PlayFabConnection.m */; };
-		AD72651E1C87C8BE000B192D /* PlayFabConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265071C87C8BE000B192D /* PlayFabConnection.m */; };
-		AD72651F1C87C8BE000B192D /* PlayFabError.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265091C87C8BE000B192D /* PlayFabError.m */; };
-		AD7265201C87C8BE000B192D /* PlayFabError.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7265091C87C8BE000B192D /* PlayFabError.m */; };
-		AD7265211C87C8BE000B192D /* PlayFabSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650B1C87C8BE000B192D /* PlayFabSDK.m */; };
-		AD7265221C87C8BE000B192D /* PlayFabSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650B1C87C8BE000B192D /* PlayFabSDK.m */; };
-		AD7265231C87C8BE000B192D /* PlayFabSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650D1C87C8BE000B192D /* PlayFabSettings.m */; };
-		AD7265241C87C8BE000B192D /* PlayFabSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650D1C87C8BE000B192D /* PlayFabSettings.m */; };
-		AD7265251C87C8BE000B192D /* PlayFabVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650F1C87C8BE000B192D /* PlayFabVersion.m */; };
-		AD7265261C87C8BE000B192D /* PlayFabVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AD72650F1C87C8BE000B192D /* PlayFabVersion.m */; };
+		AD5E8F931C935E2D00AFB4B0 /* JAGProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F7C1C935E2D00AFB4B0 /* JAGProperty.m */; };
+		AD5E8F941C935E2D00AFB4B0 /* JAGProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F7C1C935E2D00AFB4B0 /* JAGProperty.m */; };
+		AD5E8F951C935E2D00AFB4B0 /* JAGPropertyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F7F1C935E2D00AFB4B0 /* JAGPropertyConverter.m */; };
+		AD5E8F961C935E2D00AFB4B0 /* JAGPropertyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F7F1C935E2D00AFB4B0 /* JAGPropertyConverter.m */; };
+		AD5E8F971C935E2D00AFB4B0 /* JAGPropertyFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F811C935E2D00AFB4B0 /* JAGPropertyFinder.m */; };
+		AD5E8F981C935E2D00AFB4B0 /* JAGPropertyFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F811C935E2D00AFB4B0 /* JAGPropertyFinder.m */; };
+		AD5E8F991C935E2D00AFB4B0 /* PlayFabBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F831C935E2D00AFB4B0 /* PlayFabBaseModel.m */; };
+		AD5E8F9A1C935E2D00AFB4B0 /* PlayFabBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F831C935E2D00AFB4B0 /* PlayFabBaseModel.m */; };
+		AD5E8F9B1C935E2D00AFB4B0 /* PlayFabClientAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F851C935E2D00AFB4B0 /* PlayFabClientAPI.m */; };
+		AD5E8F9C1C935E2D00AFB4B0 /* PlayFabClientAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F851C935E2D00AFB4B0 /* PlayFabClientAPI.m */; };
+		AD5E8F9D1C935E2D00AFB4B0 /* PlayFabClientDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F871C935E2D00AFB4B0 /* PlayFabClientDataModels.m */; };
+		AD5E8F9E1C935E2D00AFB4B0 /* PlayFabClientDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F871C935E2D00AFB4B0 /* PlayFabClientDataModels.m */; };
+		AD5E8F9F1C935E2D00AFB4B0 /* PlayFabConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F891C935E2D00AFB4B0 /* PlayFabConnection.m */; };
+		AD5E8FA01C935E2D00AFB4B0 /* PlayFabConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F891C935E2D00AFB4B0 /* PlayFabConnection.m */; };
+		AD5E8FA11C935E2D00AFB4B0 /* PlayFabError.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8B1C935E2D00AFB4B0 /* PlayFabError.m */; };
+		AD5E8FA21C935E2D00AFB4B0 /* PlayFabError.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8B1C935E2D00AFB4B0 /* PlayFabError.m */; };
+		AD5E8FA31C935E2D00AFB4B0 /* PlayFabSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8D1C935E2D00AFB4B0 /* PlayFabSDK.m */; };
+		AD5E8FA41C935E2D00AFB4B0 /* PlayFabSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8D1C935E2D00AFB4B0 /* PlayFabSDK.m */; };
+		AD5E8FA51C935E2D00AFB4B0 /* PlayFabSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8F1C935E2D00AFB4B0 /* PlayFabSettings.m */; };
+		AD5E8FA61C935E2D00AFB4B0 /* PlayFabSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F8F1C935E2D00AFB4B0 /* PlayFabSettings.m */; };
+		AD5E8FA71C935E2D00AFB4B0 /* PlayFabVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F911C935E2D00AFB4B0 /* PlayFabVersion.m */; };
+		AD5E8FA81C935E2D00AFB4B0 /* PlayFabVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5E8F911C935E2D00AFB4B0 /* PlayFabVersion.m */; };
 		AD7265281C87C99E000B192D /* testTitleData.json in Resources */ = {isa = PBXBuildFile; fileRef = AD7265271C87C99E000B192D /* testTitleData.json */; };
 /* End PBXBuildFile section */
 
@@ -63,29 +63,29 @@
 		AD5115321C80F571005F690F /* PlayFab ObjC Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlayFab ObjC Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5115361C80F571005F690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD5115401C80F9FC005F690F /* PlayFabSDKTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSDKTest.m; sourceTree = "<group>"; };
-		AD7264F91C87C8BE000B192D /* JAGProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGProperty.h; sourceTree = "<group>"; };
-		AD7264FA1C87C8BE000B192D /* JAGProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGProperty.m; sourceTree = "<group>"; };
-		AD7264FB1C87C8BE000B192D /* JAGPropertyConverter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JAGPropertyConverter-Prefix.pch"; sourceTree = "<group>"; };
-		AD7264FC1C87C8BE000B192D /* JAGPropertyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyConverter.h; sourceTree = "<group>"; };
-		AD7264FD1C87C8BE000B192D /* JAGPropertyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyConverter.m; sourceTree = "<group>"; };
-		AD7264FE1C87C8BE000B192D /* JAGPropertyFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyFinder.h; sourceTree = "<group>"; };
-		AD7264FF1C87C8BE000B192D /* JAGPropertyFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyFinder.m; sourceTree = "<group>"; };
-		AD7265001C87C8BE000B192D /* PlayFabBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabBaseModel.h; sourceTree = "<group>"; };
-		AD7265011C87C8BE000B192D /* PlayFabBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabBaseModel.m; sourceTree = "<group>"; };
-		AD7265021C87C8BE000B192D /* PlayFabClientAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientAPI.h; sourceTree = "<group>"; };
-		AD7265031C87C8BE000B192D /* PlayFabClientAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientAPI.m; sourceTree = "<group>"; };
-		AD7265041C87C8BE000B192D /* PlayFabClientDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientDataModels.h; sourceTree = "<group>"; };
-		AD7265051C87C8BE000B192D /* PlayFabClientDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientDataModels.m; sourceTree = "<group>"; };
-		AD7265061C87C8BE000B192D /* PlayFabConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabConnection.h; sourceTree = "<group>"; };
-		AD7265071C87C8BE000B192D /* PlayFabConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabConnection.m; sourceTree = "<group>"; };
-		AD7265081C87C8BE000B192D /* PlayFabError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabError.h; sourceTree = "<group>"; };
-		AD7265091C87C8BE000B192D /* PlayFabError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabError.m; sourceTree = "<group>"; };
-		AD72650A1C87C8BE000B192D /* PlayFabSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSDK.h; sourceTree = "<group>"; };
-		AD72650B1C87C8BE000B192D /* PlayFabSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSDK.m; sourceTree = "<group>"; };
-		AD72650C1C87C8BE000B192D /* PlayFabSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSettings.h; sourceTree = "<group>"; };
-		AD72650D1C87C8BE000B192D /* PlayFabSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSettings.m; sourceTree = "<group>"; };
-		AD72650E1C87C8BE000B192D /* PlayFabVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabVersion.h; sourceTree = "<group>"; };
-		AD72650F1C87C8BE000B192D /* PlayFabVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabVersion.m; sourceTree = "<group>"; };
+		AD5E8F7B1C935E2D00AFB4B0 /* JAGProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGProperty.h; sourceTree = "<group>"; };
+		AD5E8F7C1C935E2D00AFB4B0 /* JAGProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGProperty.m; sourceTree = "<group>"; };
+		AD5E8F7D1C935E2D00AFB4B0 /* JAGPropertyConverter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JAGPropertyConverter-Prefix.pch"; sourceTree = "<group>"; };
+		AD5E8F7E1C935E2D00AFB4B0 /* JAGPropertyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyConverter.h; sourceTree = "<group>"; };
+		AD5E8F7F1C935E2D00AFB4B0 /* JAGPropertyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyConverter.m; sourceTree = "<group>"; };
+		AD5E8F801C935E2D00AFB4B0 /* JAGPropertyFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyFinder.h; sourceTree = "<group>"; };
+		AD5E8F811C935E2D00AFB4B0 /* JAGPropertyFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyFinder.m; sourceTree = "<group>"; };
+		AD5E8F821C935E2D00AFB4B0 /* PlayFabBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabBaseModel.h; sourceTree = "<group>"; };
+		AD5E8F831C935E2D00AFB4B0 /* PlayFabBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabBaseModel.m; sourceTree = "<group>"; };
+		AD5E8F841C935E2D00AFB4B0 /* PlayFabClientAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientAPI.h; sourceTree = "<group>"; };
+		AD5E8F851C935E2D00AFB4B0 /* PlayFabClientAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientAPI.m; sourceTree = "<group>"; };
+		AD5E8F861C935E2D00AFB4B0 /* PlayFabClientDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientDataModels.h; sourceTree = "<group>"; };
+		AD5E8F871C935E2D00AFB4B0 /* PlayFabClientDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientDataModels.m; sourceTree = "<group>"; };
+		AD5E8F881C935E2D00AFB4B0 /* PlayFabConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabConnection.h; sourceTree = "<group>"; };
+		AD5E8F891C935E2D00AFB4B0 /* PlayFabConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabConnection.m; sourceTree = "<group>"; };
+		AD5E8F8A1C935E2D00AFB4B0 /* PlayFabError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabError.h; sourceTree = "<group>"; };
+		AD5E8F8B1C935E2D00AFB4B0 /* PlayFabError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabError.m; sourceTree = "<group>"; };
+		AD5E8F8C1C935E2D00AFB4B0 /* PlayFabSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSDK.h; sourceTree = "<group>"; };
+		AD5E8F8D1C935E2D00AFB4B0 /* PlayFabSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSDK.m; sourceTree = "<group>"; };
+		AD5E8F8E1C935E2D00AFB4B0 /* PlayFabSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSettings.h; sourceTree = "<group>"; };
+		AD5E8F8F1C935E2D00AFB4B0 /* PlayFabSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSettings.m; sourceTree = "<group>"; };
+		AD5E8F901C935E2D00AFB4B0 /* PlayFabVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabVersion.h; sourceTree = "<group>"; };
+		AD5E8F911C935E2D00AFB4B0 /* PlayFabVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabVersion.m; sourceTree = "<group>"; };
 		AD7265271C87C99E000B192D /* testTitleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testTitleData.json; path = "PlayFab ObjC Test/testTitleData.json"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 				AD3EF4771C7D195E005ABB21 /* PlayFab ObjC Test */,
 				AD5115331C80F571005F690F /* PlayFab ObjC Tests */,
 				AD3EF4761C7D195E005ABB21 /* Products */,
-				AD7264F71C87C8BE000B192D /* PlayFab ObjC SDK */,
+				AD5E8F791C935E2D00AFB4B0 /* PlayFab ObjC SDK */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,51 +160,43 @@
 			path = "PlayFab ObjC Tests";
 			sourceTree = "<group>";
 		};
-		AD7264F71C87C8BE000B192D /* PlayFab ObjC SDK */ = {
+		AD5E8F791C935E2D00AFB4B0 /* PlayFab ObjC SDK */ = {
 			isa = PBXGroup;
 			children = (
-				AD7264F81C87C8BE000B192D /* JAGPropertyConverter */,
-				AD7265001C87C8BE000B192D /* PlayFabBaseModel.h */,
-				AD7265011C87C8BE000B192D /* PlayFabBaseModel.m */,
-				AD7265021C87C8BE000B192D /* PlayFabClientAPI.h */,
-				AD7265031C87C8BE000B192D /* PlayFabClientAPI.m */,
-				AD7265041C87C8BE000B192D /* PlayFabClientDataModels.h */,
-				AD7265051C87C8BE000B192D /* PlayFabClientDataModels.m */,
-				AD7265061C87C8BE000B192D /* PlayFabConnection.h */,
-				AD7265071C87C8BE000B192D /* PlayFabConnection.m */,
-				AD7265081C87C8BE000B192D /* PlayFabError.h */,
-				AD7265091C87C8BE000B192D /* PlayFabError.m */,
-				AD72650A1C87C8BE000B192D /* PlayFabSDK.h */,
-				AD72650B1C87C8BE000B192D /* PlayFabSDK.m */,
-				AD72650C1C87C8BE000B192D /* PlayFabSettings.h */,
-				AD72650D1C87C8BE000B192D /* PlayFabSettings.m */,
-				AD72650E1C87C8BE000B192D /* PlayFabVersion.h */,
-				AD72650F1C87C8BE000B192D /* PlayFabVersion.m */,
-				AD7265101C87C8BE000B192D /* source */,
+				AD5E8F7A1C935E2D00AFB4B0 /* JAGPropertyConverter */,
+				AD5E8F821C935E2D00AFB4B0 /* PlayFabBaseModel.h */,
+				AD5E8F831C935E2D00AFB4B0 /* PlayFabBaseModel.m */,
+				AD5E8F841C935E2D00AFB4B0 /* PlayFabClientAPI.h */,
+				AD5E8F851C935E2D00AFB4B0 /* PlayFabClientAPI.m */,
+				AD5E8F861C935E2D00AFB4B0 /* PlayFabClientDataModels.h */,
+				AD5E8F871C935E2D00AFB4B0 /* PlayFabClientDataModels.m */,
+				AD5E8F881C935E2D00AFB4B0 /* PlayFabConnection.h */,
+				AD5E8F891C935E2D00AFB4B0 /* PlayFabConnection.m */,
+				AD5E8F8A1C935E2D00AFB4B0 /* PlayFabError.h */,
+				AD5E8F8B1C935E2D00AFB4B0 /* PlayFabError.m */,
+				AD5E8F8C1C935E2D00AFB4B0 /* PlayFabSDK.h */,
+				AD5E8F8D1C935E2D00AFB4B0 /* PlayFabSDK.m */,
+				AD5E8F8E1C935E2D00AFB4B0 /* PlayFabSettings.h */,
+				AD5E8F8F1C935E2D00AFB4B0 /* PlayFabSettings.m */,
+				AD5E8F901C935E2D00AFB4B0 /* PlayFabVersion.h */,
+				AD5E8F911C935E2D00AFB4B0 /* PlayFabVersion.m */,
 			);
 			name = "PlayFab ObjC SDK";
-			path = "../PlayFab ObjC SDK";
+			path = "../../PlayFAB/PlayFab ObjC SDK Beta/PlayFab ObjC SDK";
 			sourceTree = "<group>";
 		};
-		AD7264F81C87C8BE000B192D /* JAGPropertyConverter */ = {
+		AD5E8F7A1C935E2D00AFB4B0 /* JAGPropertyConverter */ = {
 			isa = PBXGroup;
 			children = (
-				AD7264F91C87C8BE000B192D /* JAGProperty.h */,
-				AD7264FA1C87C8BE000B192D /* JAGProperty.m */,
-				AD7264FB1C87C8BE000B192D /* JAGPropertyConverter-Prefix.pch */,
-				AD7264FC1C87C8BE000B192D /* JAGPropertyConverter.h */,
-				AD7264FD1C87C8BE000B192D /* JAGPropertyConverter.m */,
-				AD7264FE1C87C8BE000B192D /* JAGPropertyFinder.h */,
-				AD7264FF1C87C8BE000B192D /* JAGPropertyFinder.m */,
+				AD5E8F7B1C935E2D00AFB4B0 /* JAGProperty.h */,
+				AD5E8F7C1C935E2D00AFB4B0 /* JAGProperty.m */,
+				AD5E8F7D1C935E2D00AFB4B0 /* JAGPropertyConverter-Prefix.pch */,
+				AD5E8F7E1C935E2D00AFB4B0 /* JAGPropertyConverter.h */,
+				AD5E8F7F1C935E2D00AFB4B0 /* JAGPropertyConverter.m */,
+				AD5E8F801C935E2D00AFB4B0 /* JAGPropertyFinder.h */,
+				AD5E8F811C935E2D00AFB4B0 /* JAGPropertyFinder.m */,
 			);
 			path = JAGPropertyConverter;
-			sourceTree = "<group>";
-		};
-		AD7265101C87C8BE000B192D /* source */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,20 +300,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5E8F951C935E2D00AFB4B0 /* JAGPropertyConverter.m in Sources */,
 				AD3EF4801C7D195E005ABB21 /* ViewController.m in Sources */,
-				AD72651D1C87C8BE000B192D /* PlayFabConnection.m in Sources */,
+				AD5E8F9B1C935E2D00AFB4B0 /* PlayFabClientAPI.m in Sources */,
+				AD5E8F991C935E2D00AFB4B0 /* PlayFabBaseModel.m in Sources */,
 				AD3EF47D1C7D195E005ABB21 /* AppDelegate.m in Sources */,
+				AD5E8FA11C935E2D00AFB4B0 /* PlayFabError.m in Sources */,
+				AD5E8F971C935E2D00AFB4B0 /* JAGPropertyFinder.m in Sources */,
 				AD3EF47A1C7D195E005ABB21 /* main.m in Sources */,
-				AD7265151C87C8BE000B192D /* JAGPropertyFinder.m in Sources */,
-				AD7265111C87C8BE000B192D /* JAGProperty.m in Sources */,
-				AD72651F1C87C8BE000B192D /* PlayFabError.m in Sources */,
-				AD7265191C87C8BE000B192D /* PlayFabClientAPI.m in Sources */,
-				AD7265211C87C8BE000B192D /* PlayFabSDK.m in Sources */,
-				AD72651B1C87C8BE000B192D /* PlayFabClientDataModels.m in Sources */,
-				AD7265231C87C8BE000B192D /* PlayFabSettings.m in Sources */,
-				AD7265131C87C8BE000B192D /* JAGPropertyConverter.m in Sources */,
-				AD7265251C87C8BE000B192D /* PlayFabVersion.m in Sources */,
-				AD7265171C87C8BE000B192D /* PlayFabBaseModel.m in Sources */,
+				AD5E8F9D1C935E2D00AFB4B0 /* PlayFabClientDataModels.m in Sources */,
+				AD5E8FA31C935E2D00AFB4B0 /* PlayFabSDK.m in Sources */,
+				AD5E8F931C935E2D00AFB4B0 /* JAGProperty.m in Sources */,
+				AD5E8FA71C935E2D00AFB4B0 /* PlayFabVersion.m in Sources */,
+				AD5E8FA51C935E2D00AFB4B0 /* PlayFabSettings.m in Sources */,
+				AD5E8F9F1C935E2D00AFB4B0 /* PlayFabConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,18 +321,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD7265181C87C8BE000B192D /* PlayFabBaseModel.m in Sources */,
-				AD72651A1C87C8BE000B192D /* PlayFabClientAPI.m in Sources */,
-				AD7265221C87C8BE000B192D /* PlayFabSDK.m in Sources */,
-				AD7265201C87C8BE000B192D /* PlayFabError.m in Sources */,
-				AD7265141C87C8BE000B192D /* JAGPropertyConverter.m in Sources */,
-				AD7265161C87C8BE000B192D /* JAGPropertyFinder.m in Sources */,
-				AD72651C1C87C8BE000B192D /* PlayFabClientDataModels.m in Sources */,
-				AD72651E1C87C8BE000B192D /* PlayFabConnection.m in Sources */,
-				AD7265261C87C8BE000B192D /* PlayFabVersion.m in Sources */,
+				AD5E8F981C935E2D00AFB4B0 /* JAGPropertyFinder.m in Sources */,
+				AD5E8FA01C935E2D00AFB4B0 /* PlayFabConnection.m in Sources */,
+				AD5E8FA21C935E2D00AFB4B0 /* PlayFabError.m in Sources */,
+				AD5E8F961C935E2D00AFB4B0 /* JAGPropertyConverter.m in Sources */,
+				AD5E8F941C935E2D00AFB4B0 /* JAGProperty.m in Sources */,
+				AD5E8F9E1C935E2D00AFB4B0 /* PlayFabClientDataModels.m in Sources */,
+				AD5E8FA81C935E2D00AFB4B0 /* PlayFabVersion.m in Sources */,
+				AD5E8F9A1C935E2D00AFB4B0 /* PlayFabBaseModel.m in Sources */,
+				AD5E8FA41C935E2D00AFB4B0 /* PlayFabSDK.m in Sources */,
 				AD5115411C80F9FC005F690F /* PlayFabSDKTest.m in Sources */,
-				AD7265241C87C8BE000B192D /* PlayFabSettings.m in Sources */,
-				AD7265121C87C8BE000B192D /* JAGProperty.m in Sources */,
+				AD5E8F9C1C935E2D00AFB4B0 /* PlayFabClientAPI.m in Sources */,
+				AD5E8FA61C935E2D00AFB4B0 /* PlayFabSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +452,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"USE_IDFA=1",
+				);
 				INFOPLIST_FILE = "PlayFab ObjC Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.playfab.PlayFab-ObjC-Test";
@@ -471,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = "USE_IDFA=1";
 				INFOPLIST_FILE = "PlayFab ObjC Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.playfab.PlayFab-ObjC-Test";
@@ -485,6 +483,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"USE_IDFA=1",
 				);
 				INFOPLIST_FILE = "PlayFab ObjC Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -498,7 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "USE_IDFA=1";
 				INFOPLIST_FILE = "PlayFab ObjC Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.playfab.PlayFab-ObjC-Tests";

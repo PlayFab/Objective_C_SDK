@@ -2,7 +2,7 @@
 //  PlayFabVersion.m
 //  PlayFabSDK
 //
-//  Created by William Burgers on 11/12/15.
+//  Created by Jackdaw on 11/12/15.
 //  Copyright © 2015 PlayFab, Inc. All rights reserved.
 //
 

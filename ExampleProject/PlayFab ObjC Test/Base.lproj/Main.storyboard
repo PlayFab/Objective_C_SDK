@@ -52,8 +52,8 @@
                                 <color key="backgroundColor" red="0.58305010219999998" green="0.76058128260000002" blue="0.90929299029999999" alpha="0.26000000000000001" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fi-Ht-8lX">
-                                <rect key="frame" x="72" y="23" width="136" height="30"/>
-                                <state key="normal" title="LoginWithCustomID"/>
+                                <rect key="frame" x="63" y="23" width="154" height="30"/>
+                                <state key="normal" title="LoginWithIOSDeviceID"/>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hWS-t9-2no"/>
                                 </connections>

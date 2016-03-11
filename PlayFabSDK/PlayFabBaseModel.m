@@ -1,3 +1,10 @@
+//
+//  ModelBase.m
+//  CarLogger
+//
+//  Created by David Wheeler on 12/15/13.
+//  Copyright (c) 2013 Veridian Dynamics. All rights reserved.
+//
 
 #import<objc/runtime.h>
 #import "PlayFabBaseModel.h"
