@@ -27,18 +27,19 @@ static NSMutableArray *sharedConnectionList = nil;
     [myRequest setHTTPMethod:@"POST"];
     [myRequest setHTTPBody: [body dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:myRequest delegate:self];
-    
-    if( theConnection ) {
-        container = [NSMutableData data];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:myRequest delegate:self];
         
-        if(!sharedConnectionList)
-            sharedConnectionList = [[NSMutableArray alloc] init];
-        [sharedConnectionList addObject:self];
-    }else {
-        NSLog(@"Some error occurred in Connection");
-    }
-    
+        if( theConnection ) {
+            container = [NSMutableData data];
+            
+            if(!sharedConnectionList)
+                sharedConnectionList = [[NSMutableArray alloc] init];
+            [sharedConnectionList addObject:self];
+        }else {
+            NSLog(@"Some error occurred in Connection");
+        }
+    });
 }
 
 
