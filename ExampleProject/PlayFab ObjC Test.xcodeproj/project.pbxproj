@@ -183,7 +183,7 @@
 				AD7265101C87C8BE000B192D /* source */,
 			);
 			name = "PlayFab ObjC SDK";
-			path = "../PlayFab ObjC SDK";
+			path = ../PlayFabSDK;
 			sourceTree = "<group>";
 		};
 		AD7264F81C87C8BE000B192D /* JAGPropertyConverter */ = {
