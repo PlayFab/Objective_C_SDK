@@ -28,47 +28,28 @@ static NSMutableArray *sharedConnectionList = nil;
     [myRequest setHTTPBody: [body dataUsingEncoding:NSUTF8StringEncoding]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:myRequest delegate:self];
-        
-        if( theConnection ) {
-            container = [NSMutableData data];
-            
-            if(!sharedConnectionList)
-                sharedConnectionList = [[NSMutableArray alloc] init];
-            [sharedConnectionList addObject:self];
-        }else {
-            NSLog(@"Some error occurred in Connection");
-        }
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration]; // don't persist
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: sessionConfiguration delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+
+        NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:myRequest
+                                                           completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//                                                               NSLog(@"Response:%@ %@\n", response, error);
+                                                               if(error == nil)
+                                                               {
+//                                                                   NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+//                                                                   NSLog(@"Data = %@",text);
+                                                                   if([self completionBlock])
+                                                                       [self completionBlock](data,nil);
+                                                               }
+                                                               else
+                                                               {
+                                                                   if([self completionBlock])
+                                                                       [self completionBlock](nil,error);
+                                                               }
+                                                               
+                                                           }];
+        [dataTask resume];
     });
-}
-
-
-#pragma mark NSURLConnectionDelegate methods
-
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    
-    [container appendData:data];
-    
-}
-
-//If finish, return the data and the error nil
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    if([self completionBlock])
-        [self completionBlock](container,nil);
-    
-    [sharedConnectionList removeObject:self];
-    
-}
-
-//If fail, return nil and an error
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    
-    if([self completionBlock])
-        [self completionBlock](nil,error);
-    
-    [sharedConnectionList removeObject:self];
-    
 }
 
 @end
