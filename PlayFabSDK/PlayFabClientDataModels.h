@@ -231,7 +231,8 @@ typedef enum
     UserOriginationGameCenter,
     UserOriginationCustomId,
     UserOriginationXboxLive,
-    UserOriginationParse
+    UserOriginationParse,
+    UserOriginationTwitch
 } UserOrigination;
 
 typedef enum
