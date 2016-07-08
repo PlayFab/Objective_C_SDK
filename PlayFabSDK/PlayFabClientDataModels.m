@@ -2460,6 +2460,56 @@
     return self;
 }
 @end
+@implementation GetPlayFabIDsFromTwitchIDsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"TwitchIds"]){
+    NSArray* member_list = [properties objectForKey:@"TwitchIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.TwitchIds = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromTwitchIDsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[TwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation GetPublisherDataRequest
 
 
@@ -3518,6 +3568,38 @@
     return self;
 }
 @end
+@implementation LinkTwitchAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AccessToken = [properties valueForKey:@"AccessToken"];
+    
+
+    return self;
+}
+@end
+@implementation LinkTwitchAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation ListUsersCharactersRequest
 
 
@@ -3866,6 +3948,29 @@
     self.TitleId = [properties valueForKey:@"TitleId"];
     
     self.SteamTicket = [properties valueForKey:@"SteamTicket"];
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+
+    return self;
+}
+@end
+@implementation LoginWithTwitchRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+    self.AccessToken = [properties valueForKey:@"AccessToken"];
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
@@ -5081,6 +5186,25 @@
     return self;
 }
 @end
+@implementation TwitchPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.TwitchId = [properties valueForKey:@"TwitchId"];
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+
+    return self;
+}
+@end
 @implementation UnlinkAndroidDeviceIDRequest
 
 
@@ -5313,6 +5437,36 @@
 }
 @end
 @implementation UnlinkSteamAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation UnlinkTwitchAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation UnlinkTwitchAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5763,6 +5917,8 @@
     
     self.KongregateInfo = [[UserKongregateInfo new] initWithDictionary:[properties objectForKey:@"KongregateInfo"]];
     
+    self.TwitchInfo = [[UserTwitchInfo new] initWithDictionary:[properties objectForKey:@"TwitchInfo"]];
+    
     self.PsnInfo = [[UserPsnInfo new] initWithDictionary:[properties objectForKey:@"PsnInfo"]];
     
     self.GoogleInfo = [[UserGoogleInfo new] initWithDictionary:[properties objectForKey:@"GoogleInfo"]];
@@ -6023,6 +6179,25 @@
     self.FirstLogin = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"FirstLogin"]];
     
     self.isBanned = [[properties valueForKey:@"isBanned"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation UserTwitchInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.TwitchId = [properties valueForKey:@"TwitchId"];
+    
+    self.TwitchUserName = [properties valueForKey:@"TwitchUserName"];
     
 
     return self;

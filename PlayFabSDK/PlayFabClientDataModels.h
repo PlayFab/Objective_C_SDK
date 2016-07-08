@@ -466,6 +466,10 @@ typedef enum
 
 @class GetPlayFabIDsFromSteamIDsResult;
 
+@class GetPlayFabIDsFromTwitchIDsRequest;
+
+@class GetPlayFabIDsFromTwitchIDsResult;
+
 @class GetPublisherDataRequest;
 
 @class GetPublisherDataResult;
@@ -554,6 +558,10 @@ typedef enum
 
 @class LinkSteamAccountResult;
 
+@class LinkTwitchAccountRequest;
+
+@class LinkTwitchAccountResult;
+
 @class ListUsersCharactersRequest;
 
 @class ListUsersCharactersResult;
@@ -583,6 +591,8 @@ typedef enum
 @class LoginWithPlayFabRequest;
 
 @class LoginWithSteamRequest;
+
+@class LoginWithTwitchRequest;
 
 @class LogStatement;
 
@@ -680,6 +690,8 @@ typedef enum
 
 @class TradeInfo;
 
+@class TwitchPlayFabIdPair;
+
 @class UnlinkAndroidDeviceIDRequest;
 
 @class UnlinkAndroidDeviceIDResult;
@@ -711,6 +723,10 @@ typedef enum
 @class UnlinkSteamAccountRequest;
 
 @class UnlinkSteamAccountResult;
+
+@class UnlinkTwitchAccountRequest;
+
+@class UnlinkTwitchAccountResult;
 
 @class UnlockContainerInstanceRequest;
 
@@ -773,6 +789,8 @@ typedef enum
 @class UserSteamInfo;
 
 @class UserTitleInfo;
+
+@class UserTwitchInfo;
 
 @class UserXboxInfo;
 
@@ -2836,6 +2854,33 @@ typedef enum
 @end
 
 
+@interface GetPlayFabIDsFromTwitchIDsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of unique Twitch identifiers (Twitch's _id) for which the title needs to get PlayFab identifiers.
+/// </summary>
+@property NSArray* TwitchIds; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromTwitchIDsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of Twitch identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface GetPublisherDataRequest : PlayFabBaseModel
 
 
@@ -3682,6 +3727,28 @@ typedef enum
 @end
 
 
+@interface LinkTwitchAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Valid token issued by Twitch
+/// </summary>
+@property NSString* AccessToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LinkTwitchAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ListUsersCharactersRequest : PlayFabBaseModel
 
 
@@ -4074,6 +4141,33 @@ typedef enum
 
 /// <summary>
 /// Automatically create a PlayFab account if one is not currently linked to this Steam account.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LoginWithTwitchRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// </summary>
+@property NSString* TitleId; 
+
+/// <summary>
+/// Token issued by Twitch's API for the user.
+/// </summary>
+@property NSString* AccessToken; 
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this Twitch account.
 /// </summary>
 @property bool CreateAccount; 
 
@@ -5288,6 +5382,23 @@ typedef enum
 @end
 
 
+@interface TwitchPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique Twitch identifier for a user.
+/// </summary>
+@property NSString* TwitchId; 
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Twitch identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface UnlinkAndroidDeviceIDRequest : PlayFabBaseModel
 
 
@@ -5430,6 +5541,23 @@ typedef enum
 
 
 @interface UnlinkSteamAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UnlinkTwitchAccountRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UnlinkTwitchAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -5791,6 +5919,11 @@ typedef enum
 @property UserKongregateInfo* KongregateInfo; 
 
 /// <summary>
+/// User Twitch account information, if a Twitch account has been linked
+/// </summary>
+@property UserTwitchInfo* TwitchInfo; 
+
+/// <summary>
 /// User PSN account information, if a PSN account has been linked
 /// </summary>
 @property UserPsnInfo* PsnInfo; 
@@ -6045,6 +6178,23 @@ typedef enum
 /// boolean indicating whether or not the user is currently banned for a title
 /// </summary>
 @property bool isBanned; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UserTwitchInfo : PlayFabBaseModel
+
+
+/// <summary>
+/// Twitch ID
+/// </summary>
+@property NSString* TwitchId; 
+
+/// <summary>
+/// Twitch Username
+/// </summary>
+@property NSString* TwitchUserName; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

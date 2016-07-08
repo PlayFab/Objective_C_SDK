@@ -34,6 +34,8 @@ typedef void(^LoginWithPlayFabCallback)(LoginResult* result, NSObject* userData)
 		
 typedef void(^LoginWithSteamCallback)(LoginResult* result, NSObject* userData);
 		
+typedef void(^LoginWithTwitchCallback)(LoginResult* result, NSObject* userData);
+		
 typedef void(^RegisterPlayFabUserCallback)(RegisterPlayFabUserResult* result, NSObject* userData);
 		
 typedef void(^AddUsernamePasswordCallback)(AddUsernamePasswordResult* result, NSObject* userData);
@@ -52,6 +54,8 @@ typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(GetPlayFabIDsFromKongregat
 		
 typedef void(^GetPlayFabIDsFromSteamIDsCallback)(GetPlayFabIDsFromSteamIDsResult* result, NSObject* userData);
 		
+typedef void(^GetPlayFabIDsFromTwitchIDsCallback)(GetPlayFabIDsFromTwitchIDsResult* result, NSObject* userData);
+		
 typedef void(^GetUserCombinedInfoCallback)(GetUserCombinedInfoResult* result, NSObject* userData);
 		
 typedef void(^LinkAndroidDeviceIDCallback)(LinkAndroidDeviceIDResult* result, NSObject* userData);
@@ -69,6 +73,8 @@ typedef void(^LinkIOSDeviceIDCallback)(LinkIOSDeviceIDResult* result, NSObject* 
 typedef void(^LinkKongregateCallback)(LinkKongregateAccountResult* result, NSObject* userData);
 		
 typedef void(^LinkSteamAccountCallback)(LinkSteamAccountResult* result, NSObject* userData);
+		
+typedef void(^LinkTwitchCallback)(LinkTwitchAccountResult* result, NSObject* userData);
 		
 typedef void(^ReportPlayerCallback)(ReportPlayerClientResult* result, NSObject* userData);
 		
@@ -89,6 +95,8 @@ typedef void(^UnlinkIOSDeviceIDCallback)(UnlinkIOSDeviceIDResult* result, NSObje
 typedef void(^UnlinkKongregateCallback)(UnlinkKongregateAccountResult* result, NSObject* userData);
 		
 typedef void(^UnlinkSteamAccountCallback)(UnlinkSteamAccountResult* result, NSObject* userData);
+		
+typedef void(^UnlinkTwitchCallback)(UnlinkTwitchAccountResult* result, NSObject* userData);
 		
 typedef void(^UpdateUserTitleDisplayNameCallback)(UpdateUserTitleDisplayNameResult* result, NSObject* userData);
 		
@@ -278,6 +286,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 -(void) LoginWithSteam:(LoginWithSteamRequest*)request success:(LoginWithSteamCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LoginWithTwitch:(LoginWithTwitchRequest*)request success:(LoginWithTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) RegisterPlayFabUser:(RegisterPlayFabUserRequest*)request success:(RegisterPlayFabUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) AddUsernamePassword:(AddUsernamePasswordRequest*)request success:(AddUsernamePasswordCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -296,6 +306,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 -(void) GetPlayFabIDsFromSteamIDs:(GetPlayFabIDsFromSteamIDsRequest*)request success:(GetPlayFabIDsFromSteamIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetPlayFabIDsFromTwitchIDs:(GetPlayFabIDsFromTwitchIDsRequest*)request success:(GetPlayFabIDsFromTwitchIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) GetUserCombinedInfo:(GetUserCombinedInfoRequest*)request success:(GetUserCombinedInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkAndroidDeviceID:(LinkAndroidDeviceIDRequest*)request success:(LinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -313,6 +325,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 -(void) LinkKongregate:(LinkKongregateAccountRequest*)request success:(LinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkSteamAccount:(LinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LinkTwitch:(LinkTwitchAccountRequest*)request success:(LinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ReportPlayer:(ReportPlayerClientRequest*)request success:(ReportPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -333,6 +347,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 -(void) UnlinkKongregate:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkSteamAccount:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
+-(void) UnlinkTwitch:(UnlinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UpdateUserTitleDisplayName:(UpdateUserTitleDisplayNameRequest*)request success:(UpdateUserTitleDisplayNameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -519,6 +535,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 + (void) OnLoginWithSteamResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnLoginWithTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnRegisterPlayFabUserResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnAddUsernamePasswordResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -537,6 +555,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 + (void) OnGetPlayFabIDsFromSteamIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnGetPlayFabIDsFromTwitchIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnGetUserCombinedInfoResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLinkAndroidDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -554,6 +574,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 + (void) OnLinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnLinkTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnReportPlayerResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
@@ -574,6 +596,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 + (void) OnUnlinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUnlinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnUnlinkTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUpdateUserTitleDisplayNameResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
