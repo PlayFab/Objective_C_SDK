@@ -1755,7 +1755,7 @@ typedef enum
 @property NSString* BuildVersion; 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 /**/
@@ -3857,7 +3857,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -3894,7 +3894,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -3921,7 +3921,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -3948,7 +3948,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -3975,7 +3975,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4002,7 +4002,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4034,7 +4034,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4071,7 +4071,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4103,7 +4103,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4130,7 +4130,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4157,7 +4157,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4678,7 +4678,7 @@ typedef enum
 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
@@ -4952,7 +4952,7 @@ typedef enum
 @property NSString* Email; 
 
 /// <summary>
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
 /// </summary>
 @property NSString* TitleId; 
 
