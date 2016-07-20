@@ -238,7 +238,8 @@
 		PlayFabErrorVirtualCurrencyCodeExists = 1230,
 		PlayFabErrorTitleNewsItemCountLimitExceeded = 1231,
 		PlayFabErrorInvalidTwitchToken = 1232,
-		PlayFabErrorTwitchResponseError = 1233
+		PlayFabErrorTwitchResponseError = 1233,
+		PlayFabErrorProfaneDisplayName = 1234
     } PlayFabErrorCode;
 
     @interface PlayFabError : PlayFabBaseModel
