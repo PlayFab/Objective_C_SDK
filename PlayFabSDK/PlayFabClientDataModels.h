@@ -332,7 +332,7 @@ typedef enum
 
 @class ConsumeItemResult;
 
-@class Container`1;
+@class Container_Dictionary_String_String;
 
 @class CreateSharedGroupRequest;
 
@@ -1465,7 +1465,7 @@ typedef enum
 /// <summary>
 /// A data container
 /// </summary>
-@interface Container`1 : PlayFabBaseModel
+@interface Container_Dictionary_String_String : PlayFabBaseModel
 
 
 /// <summary>

@@ -621,7 +621,7 @@
     NSArray* member_list = [properties objectForKey:@"Includes"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[Container`1 new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[Container_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Includes = [mutable_storage copy];
 }
@@ -631,7 +631,7 @@
     NSArray* member_list = [properties objectForKey:@"Excludes"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[Container`1 new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[Container_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Excludes = [mutable_storage copy];
 }
@@ -727,7 +727,7 @@
     return self;
 }
 @end
-@implementation Container`1
+@implementation Container_Dictionary_String_String
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
