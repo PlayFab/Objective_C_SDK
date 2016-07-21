@@ -322,6 +322,8 @@ typedef enum
 
 @class CharacterResult;
 
+@class CollectionFilter;
+
 @class ConfirmPurchaseRequest;
 
 @class ConfirmPurchaseResult;
@@ -329,6 +331,8 @@ typedef enum
 @class ConsumeItemRequest;
 
 @class ConsumeItemResult;
+
+@class Container`1;
 
 @class CreateSharedGroupRequest;
 
@@ -1359,6 +1363,26 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Collection filter to include and/or exclude collections with certain key-value pairs. The filter generates a collection set defined by Includes rules and then remove collections that matches the Excludes rules. A collection is considered matching a rule if the rule describes a subset of the collection. 
+/// </summary>
+@interface CollectionFilter : PlayFabBaseModel
+
+
+/// <summary>
+/// List of Include rules, with any of which if a collection matches, it is included by the filter, unless it is excluded by one of the Exclude rule
+/// </summary>
+@property NSArray* Includes; 
+
+/// <summary>
+/// List of Exclude rules, with any of which if a collection matches, it is excluded by the filter.
+/// </summary>
+@property NSArray* Excludes; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ConfirmPurchaseRequest : PlayFabBaseModel
 
 
@@ -1438,6 +1462,21 @@ typedef enum
 @end
 
 
+/// <summary>
+/// A data container
+/// </summary>
+@interface Container`1 : PlayFabBaseModel
+
+
+/// <summary>
+/// Content of data
+/// </summary>
+@property NSDictionary* Data; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface CreateSharedGroupRequest : PlayFabBaseModel
 
 
@@ -1469,24 +1508,29 @@ typedef enum
 
 
 /// <summary>
-/// region to check for game instances
+/// Region to check for Game Server Instances.
 /// </summary>
 @property Region pfRegion; 
 
 /// <summary>
-/// version of build to match against
+/// Build to match against.
 /// </summary>
 @property NSString* BuildVersion; 
 
 /// <summary>
-/// game mode to look for (optional)
+/// Game mode to look for.
 /// </summary>
 @property NSString* GameMode; 
 
 /// <summary>
-/// statistic name to find statistic-based matches (optional)
+/// Statistic name to find statistic-based matches.
 /// </summary>
 @property NSString* StatisticName; 
+
+/// <summary>
+/// Filter to include and/or exclude Game Server Instances associated with certain tags.
+/// </summary>
+@property CollectionFilter* TagFilter; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1723,7 +1767,7 @@ typedef enum
 @property NSNumber* MaxPlayers; 
 
 /// <summary>
-/// array of strings of current player names on this server (note that these are PlayFab usernames, as opposed to title display names)
+/// array of current player IDs on this server
 /// </summary>
 @property NSArray* PlayerUserIds; 
 
@@ -1741,6 +1785,16 @@ typedef enum
 /// game session custom data
 /// </summary>
 @property NSString* GameServerData; 
+
+/// <summary>
+/// game session tags
+/// </summary>
+@property NSDictionary* Tags; 
+
+/// <summary>
+/// last heartbeat of the game server instance, used in external game server provider mode
+/// </summary>
+@property NSDate* LastHeartbeat; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4203,39 +4257,44 @@ typedef enum
 
 
 /// <summary>
-/// build version to match against [Note: Required if LobbyId is not specified]
+/// Build version to match against. [Note: Required if LobbyId is not specified]
 /// </summary>
 @property NSString* BuildVersion; 
 
 /// <summary>
-/// region to match make against [Note: Required if LobbyId is not specified]
+/// Region to match make against. [Note: Required if LobbyId is not specified]
 /// </summary>
 @property Region pfRegion; 
 
 /// <summary>
-/// game mode to match make against [Note: Required if LobbyId is not specified]
+/// Game mode to match make against. [Note: Required if LobbyId is not specified]
 /// </summary>
 @property NSString* GameMode; 
 
 /// <summary>
-/// lobby identifier to match make against (used to select a specific server)
+/// Lobby identifier to match make against. This is used to select a specific Game Server Instance.
 /// </summary>
 @property NSString* LobbyId; 
 
 /// <summary>
-/// player statistic to use in finding a match. May be null for no stat-based matching
+/// Player statistic to use in finding a match. May be null for no stat-based matching.
 /// </summary>
 @property NSString* StatisticName; 
 
 /// <summary>
-/// character to use for stats based matching. Leave null to use account stats
+/// Character to use for stats based matching. Leave null to use account stats.
 /// </summary>
 @property NSString* CharacterId; 
 
 /// <summary>
-/// start a game session if one with an open slot is not found. Defaults to true
+/// Start a game session if one with an open slot is not found. Defaults to true.
 /// </summary>
 @property bool StartNewIfNoneFound; 
+
+/// <summary>
+/// Filter to include and/or exclude Game Server Instances associated with certain Tags
+/// </summary>
+@property CollectionFilter* TagFilter; 
 
 /// <summary>
 /// [deprecated]

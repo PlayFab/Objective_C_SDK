@@ -606,6 +606,41 @@
     return self;
 }
 @end
+@implementation CollectionFilter
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Includes"]){
+    NSArray* member_list = [properties objectForKey:@"Includes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[Container`1 new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Includes = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"Excludes"]){
+    NSArray* member_list = [properties objectForKey:@"Excludes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[Container`1 new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Excludes = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ConfirmPurchaseRequest
 
 
@@ -692,6 +727,31 @@
     return self;
 }
 @end
+@implementation Container`1
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSDictionary* member_list = [properties objectForKey:@"Data"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation CreateSharedGroupRequest
 
 
@@ -744,6 +804,8 @@
     self.GameMode = [properties valueForKey:@"GameMode"];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
+    
+    self.TagFilter = [[CollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
     
 
     return self;
@@ -974,6 +1036,18 @@
     self.GameServerState = (GameInstanceState)[properties valueForKey:@"GameServerState"];
     
     self.GameServerData = [properties valueForKey:@"GameServerData"];
+    
+    if ([properties objectForKey:@"Tags"]){
+    NSDictionary* member_list = [properties objectForKey:@"Tags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.Tags = [mutable_storage copy];
+}
+
+    
+    self.LastHeartbeat = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastHeartbeat"]];
     
 
     return self;
@@ -4025,6 +4099,8 @@
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
     self.StartNewIfNoneFound = [[properties valueForKey:@"StartNewIfNoneFound"] boolValue];
+    
+    self.TagFilter = [[CollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
     
     self.EnableQueue = [[properties valueForKey:@"EnableQueue"] boolValue];
     
