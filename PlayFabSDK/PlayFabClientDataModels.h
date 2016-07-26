@@ -190,13 +190,13 @@ typedef enum
 
 typedef enum
 {
-    RegionUSCentral,
     RegionUSEast,
     RegionEUWest,
     RegionSingapore,
     RegionJapan,
+    RegionAustralia,
     RegionBrazil,
-    RegionAustralia
+    RegionUSCentral
 } Region;
 
 typedef enum
