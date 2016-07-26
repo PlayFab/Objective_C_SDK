@@ -87,6 +87,38 @@
     return self;
 }
 @end
+@implementation AddGenericIDRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    
+
+    return self;
+}
+@end
+@implementation AddGenericIDResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation AddSharedGroupMembersRequest
 
 
@@ -1092,6 +1124,44 @@
     self.Regions = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation GenericPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+
+    return self;
+}
+@end
+@implementation GenericServiceId
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ServiceName = [properties valueForKey:@"ServiceName"];
+    
+    self.UserId = [properties valueForKey:@"UserId"];
     
 
     return self;
@@ -2365,6 +2435,56 @@
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
         [mutable_storage addObject:[[GameCenterPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromGenericIDsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"GenericIDs"]){
+    NSArray* member_list = [properties objectForKey:@"GenericIDs"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[GenericServiceId new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.GenericIDs = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromGenericIDsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[GenericPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -4592,6 +4712,38 @@
 }
 @end
 @implementation RemoveFriendResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation RemoveGenericIDRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    
+
+    return self;
+}
+@end
+@implementation RemoveGenericIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

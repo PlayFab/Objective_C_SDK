@@ -284,6 +284,10 @@ typedef enum
 
 @class AddFriendResult;
 
+@class AddGenericIDRequest;
+
+@class AddGenericIDResult;
+
 @class AddSharedGroupMembersRequest;
 
 @class AddSharedGroupMembersResult;
@@ -359,6 +363,10 @@ typedef enum
 @class GameServerRegionsRequest;
 
 @class GameServerRegionsResult;
+
+@class GenericPlayFabIdPair;
+
+@class GenericServiceId;
 
 @class GetAccountInfoRequest;
 
@@ -457,6 +465,10 @@ typedef enum
 @class GetPlayFabIDsFromGameCenterIDsRequest;
 
 @class GetPlayFabIDsFromGameCenterIDsResult;
+
+@class GetPlayFabIDsFromGenericIDsRequest;
+
+@class GetPlayFabIDsFromGenericIDsResult;
 
 @class GetPlayFabIDsFromGoogleIDsRequest;
 
@@ -641,6 +653,10 @@ typedef enum
 @class RemoveFriendRequest;
 
 @class RemoveFriendResult;
+
+@class RemoveGenericIDRequest;
+
+@class RemoveGenericIDResult;
 
 @class RemoveSharedGroupMembersRequest;
 
@@ -893,6 +909,28 @@ typedef enum
 /// True if the friend request was processed successfully.
 /// </summary>
 @property bool Created; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface AddGenericIDRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Generic service identifier to add to the player account.
+/// </summary>
+@property GenericServiceId GenericId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface AddGenericIDResult : PlayFabBaseModel
+
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -1828,6 +1866,40 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GenericPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique generic service identifier for a user.
+/// </summary>
+@property GenericServiceId* GenericId; 
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the given generic identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GenericServiceId : PlayFabBaseModel
+
+
+/// <summary>
+/// Name of the service for which the player has a unique identifier.
+/// </summary>
+@property NSString* ServiceName; 
+
+/// <summary>
+/// Unique identifier of the player in that service.
+/// </summary>
+@property NSString* UserId; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -2812,6 +2884,33 @@ typedef enum
 
 /// <summary>
 /// Mapping of Game Center identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromGenericIDsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of unique generic service identifiers for which the title needs to get PlayFab identifiers. Currently limited to a maximum of 10 in a single request.
+/// </summary>
+@property NSArray* GenericIDs; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromGenericIDsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of generic service identifiers to PlayFab identifiers.
 /// </summary>
 @property NSArray* Data; 
 /*
@@ -4818,6 +4917,28 @@ typedef enum
 
 
 @interface RemoveFriendResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface RemoveGenericIDRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Generic service identifier to be removed from the player.
+/// </summary>
+@property GenericServiceId GenericId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface RemoveGenericIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
