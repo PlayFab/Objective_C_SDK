@@ -2190,6 +2190,46 @@
     return self;
 }
 @end
+@implementation GetPlayerSegmentsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayerSegmentsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Segments"]){
+    NSArray* member_list = [properties objectForKey:@"Segments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[GetSegmentResult new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Segments = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation GetPlayerStatisticsRequest
 
 
@@ -2801,6 +2841,27 @@
     self.Items = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation GetSegmentResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+    self.ABTestParent = [properties valueForKey:@"ABTestParent"];
     
 
     return self;

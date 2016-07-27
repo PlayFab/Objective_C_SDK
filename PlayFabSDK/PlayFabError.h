@@ -243,7 +243,10 @@
 		PlayFabErrorInvalidVirtualCurrencyCode = 1236,
 		PlayFabErrorVirtualCurrencyCannotBeDeleted = 1237,
 		PlayFabErrorIdentifierAlreadyClaimed = 1238,
-		PlayFabErrorIdentifierNotLinked = 1239
+		PlayFabErrorIdentifierNotLinked = 1239,
+		PlayFabErrorInvalidContinuationToken = 1240,
+		PlayFabErrorExpiredContinuationToken = 1241,
+		PlayFabErrorInvalidSegment = 1242
     } PlayFabErrorCode;
 
     @interface PlayFabError : PlayFabBaseModel

@@ -446,6 +446,10 @@ typedef enum
 
 @class GetPlayerCombinedInfoResultPayload;
 
+@class GetPlayerSegmentsRequest;
+
+@class GetPlayerSegmentsResult;
+
 @class GetPlayerStatisticsRequest;
 
 @class GetPlayerStatisticsResult;
@@ -493,6 +497,8 @@ typedef enum
 @class GetPurchaseRequest;
 
 @class GetPurchaseResult;
+
+@class GetSegmentResult;
 
 @class GetSharedGroupDataRequest;
 
@@ -2749,6 +2755,28 @@ typedef enum
 @end
 
 
+@interface GetPlayerSegmentsRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayerSegmentsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of segments the requested player currently belongs to.
+/// </summary>
+@property NSArray* Segments; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface GetPlayerStatisticsRequest : PlayFabBaseModel
 
 
@@ -3105,6 +3133,31 @@ typedef enum
 /// Array of items purchased.
 /// </summary>
 @property NSArray* Items; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetSegmentResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique identifier for this segment.
+/// </summary>
+@property NSString* Id; 
+
+/// <summary>
+/// Segment name.
+/// </summary>
+@property NSString* Name; 
+
+/// <summary>
+/// Identifier of the segments AB Test, if it is attached to one.
+/// </summary>
+@property NSString* ABTestParent; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

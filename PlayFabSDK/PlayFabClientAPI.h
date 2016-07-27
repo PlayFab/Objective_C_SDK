@@ -262,6 +262,8 @@ typedef void(^OpenTradeCallback)(OpenTradeResponse* result, NSObject* userData);
 		
 typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject* userData);
 		
+typedef void(^GetPlayerSegmentsCallback)(GetPlayerSegmentsResult* result, NSObject* userData);
+		
 
 + (PlayFabClientAPI*) GetInstance;
 
@@ -520,6 +522,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 -(void) AttributeInstall:(AttributeInstallRequest*)request success:(AttributeInstallCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetPlayerSegments:(GetPlayerSegmentsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
 
     //private:
 /*
@@ -774,6 +778,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 + (void) OnOpenTradeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnAttributeInstallResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnGetPlayerSegmentsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
  */
 
