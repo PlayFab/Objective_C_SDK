@@ -5581,7 +5581,7 @@ if(model.SettingsForUser.NeedsAttribution)
         }
     }];
 
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetPlayerSegments"] body:jsonString authType:@"X-SecretKey" authKey:PlayFabSettings.DeveloperSecretKey];
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetPlayerSegments"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 
 @end
