@@ -246,7 +246,9 @@
 		PlayFabErrorIdentifierNotLinked = 1239,
 		PlayFabErrorInvalidContinuationToken = 1240,
 		PlayFabErrorExpiredContinuationToken = 1241,
-		PlayFabErrorInvalidSegment = 1242
+		PlayFabErrorInvalidSegment = 1242,
+		PlayFabErrorInvalidSessionId = 1243,
+		PlayFabErrorSessionLogNotFound = 1244
     } PlayFabErrorCode;
 
     @interface PlayFabError : PlayFabBaseModel
