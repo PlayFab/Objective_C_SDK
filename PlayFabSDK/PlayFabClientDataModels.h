@@ -1956,7 +1956,7 @@ typedef enum
 
 
 /// <summary>
-/// Which catalog is being requested.
+/// Which catalog is being requested. If null, uses the default catalog.
 /// </summary>
 @property NSString* CatalogVersion; 
 /**/
