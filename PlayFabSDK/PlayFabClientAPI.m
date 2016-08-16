@@ -36,7 +36,7 @@ return deviceModel;
 
 
 +(bool)IsClientLoggedIn {
-	return !([[PlayFabClientAPI GetInstance].mUserSessionTicket length]==0);}
+    return !([[PlayFabClientAPI GetInstance].mUserSessionTicket length]==0);}
 
 #ifdef USE_IDFA
 -(void) MultiStepClientLogin:(bool) needsAttribution {
