@@ -4223,7 +4223,7 @@ typedef enum
 @property bool CreateAccount; 
 
 /// <summary>
-/// Deprecated - unused
+/// Deprecated - Do not use
 /// </summary>
 @property NSString* PublisherId; 
 
@@ -4449,7 +4449,7 @@ typedef enum
 @property CollectionFilter* TagFilter; 
 
 /// <summary>
-/// [deprecated]
+/// Deprecated - Do not use
 /// </summary>
 @property bool EnableQueue; 
 /**/
@@ -4476,7 +4476,7 @@ typedef enum
 @property NSNumber* ServerPort; 
 
 /// <summary>
-/// server authorization ticket (used by RedeemCoupon to validate user insertion into the game)
+/// server authorization ticket (used by RedeemMatchmakerTicket to validate user insertion into the game)
 /// </summary>
 @property NSString* Ticket; 
 
@@ -4803,7 +4803,7 @@ typedef enum
 @property NSString* CouponCode; 
 
 /// <summary>
-/// Catalog version of the coupon.
+/// Catalog version of the coupon. If null, uses the default catalog
 /// </summary>
 @property NSString* CatalogVersion; 
 /**/
@@ -4919,7 +4919,7 @@ typedef enum
 @property NSString* DisplayName; 
 
 /// <summary>
-/// [Deprecated - The Origination of a user is determined by the API call used to create the account. In the case of RegisterPlayFabUser, it will be Organic.
+/// The Origination of a user is determined by the API call used to create the account. In the case of RegisterPlayFabUser, it will be Organic.
 /// </summary>
 @property NSString* Origination; 
 /**/
@@ -5190,7 +5190,7 @@ typedef enum
 @property NSString* TitleId; 
 
 /// <summary>
-/// Deprecated - unused
+/// Deprecated - Do not use
 /// </summary>
 @property NSString* PublisherId; 
 /**/
@@ -5456,7 +5456,7 @@ typedef enum
 
 
 /// <summary>
-/// Deprecated: Please use SteamStringId
+/// Deprecated: Please use SteamStringIDs
 /// </summary>
 @property NSNumber* SteamId; 
 
