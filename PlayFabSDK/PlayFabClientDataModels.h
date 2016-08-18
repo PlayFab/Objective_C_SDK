@@ -5456,7 +5456,7 @@ typedef enum
 
 
 /// <summary>
-/// Deprecated: Please use SteamStringIDs
+/// Deprecated: Please use SteamStringId
 /// </summary>
 @property NSNumber* SteamId; 
 
