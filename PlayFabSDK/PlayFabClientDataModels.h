@@ -458,6 +458,10 @@ typedef enum
 
 @class GetPlayerStatisticVersionsResult;
 
+@class GetPlayerTagsRequest;
+
+@class GetPlayerTagsResult;
+
 @class GetPlayerTradesRequest;
 
 @class GetPlayerTradesResponse;
@@ -2828,6 +2832,43 @@ typedef enum
 /// version change history of the statistic
 /// </summary>
 @property NSArray* StatisticVersions; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayerTagsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+/// </summary>
+@property NSString* PlayFabId; 
+
+/// <summary>
+/// Optional namespace to filter results by
+/// </summary>
+@property NSString* Namespace; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayerTagsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique PlayFab assigned ID of the user on whom the operation will be performed.
+/// </summary>
+@property NSString* PlayFabId; 
+
+/// <summary>
+/// Canonical tags (including namespace and tag's name) for the requested user
+/// </summary>
+@property NSArray* Tags; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

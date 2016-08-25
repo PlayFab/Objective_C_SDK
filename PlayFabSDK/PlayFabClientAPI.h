@@ -264,6 +264,8 @@ typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject
 		
 typedef void(^GetPlayerSegmentsCallback)(GetPlayerSegmentsResult* result, NSObject* userData);
 		
+typedef void(^GetPlayerTagsCallback)(GetPlayerTagsResult* result, NSObject* userData);
+		
 
 + (PlayFabClientAPI*) GetInstance;
 
@@ -524,6 +526,8 @@ typedef void(^GetPlayerSegmentsCallback)(GetPlayerSegmentsResult* result, NSObje
 		
 -(void) GetPlayerSegments:(GetPlayerSegmentsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
+-(void) GetPlayerTags:(GetPlayerTagsRequest*)request success:(GetPlayerTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 
     //private:
 /*
@@ -780,6 +784,8 @@ typedef void(^GetPlayerSegmentsCallback)(GetPlayerSegmentsResult* result, NSObje
 + (void) OnAttributeInstallResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetPlayerSegmentsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnGetPlayerTagsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
  */
 

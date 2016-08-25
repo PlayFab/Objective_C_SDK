@@ -2332,6 +2332,52 @@
     return self;
 }
 @end
+@implementation GetPlayerTagsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+    self.Namespace = [properties valueForKey:@"Namespace"];
+    
+
+    return self;
+}
+@end
+@implementation GetPlayerTagsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+    if ([properties objectForKey:@"Tags"]){
+    NSArray* member_list = [properties objectForKey:@"Tags"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.Tags = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation GetPlayerTradesRequest
 
 
