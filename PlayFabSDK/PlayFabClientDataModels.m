@@ -3017,6 +3017,14 @@
 }
 
     
+    self.Source = (SourceType)[properties valueForKey:@"Source"];
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    self.StoreId = [properties valueForKey:@"StoreId"];
+    
+    self.MarketingData = [[StoreMarketingModel new] initWithDictionary:[properties objectForKey:@"MarketingData"]];
+    
 
     return self;
 }
@@ -5393,6 +5401,31 @@
     self.RealCurrencyPrices = [mutable_storage copy];
 }
 
+    
+    self.CustomData = [properties valueForKey:@"CustomData"];
+    
+    self.DisplayPosition = [properties valueForKey:@"DisplayPosition"];
+    
+
+    return self;
+}
+@end
+@implementation StoreMarketingModel
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.DisplayName = [properties valueForKey:@"DisplayName"];
+    
+    self.Description = [properties valueForKey:@"Description"];
+    
+    self.Metadata = [properties valueForKey:@"Metadata"];
     
 
     return self;
