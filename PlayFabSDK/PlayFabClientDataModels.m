@@ -444,6 +444,8 @@
     
     self.ItemImageUrl = [properties valueForKey:@"ItemImageUrl"];
     
+    self.IsLimitedEdition = [[properties valueForKey:@"IsLimitedEdition"] boolValue];
+    
 
     return self;
 }
