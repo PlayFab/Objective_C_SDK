@@ -943,6 +943,8 @@
     
     self.ExecutionTimeSeconds = [properties valueForKey:@"ExecutionTimeSeconds"];
     
+    self.ProcessorTimeSeconds = [properties valueForKey:@"ProcessorTimeSeconds"];
+    
     self.MemoryConsumedBytes = [properties valueForKey:@"MemoryConsumedBytes"];
     
     self.APIRequestsIssued = [properties valueForKey:@"APIRequestsIssued"];

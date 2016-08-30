@@ -1693,6 +1693,11 @@ typedef enum
 
 @property NSNumber* ExecutionTimeSeconds; 
 
+/// <summary>
+/// Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP requests.
+/// </summary>
+@property NSNumber* ProcessorTimeSeconds; 
+
 @property NSNumber* MemoryConsumedBytes; 
 
 /// <summary>
