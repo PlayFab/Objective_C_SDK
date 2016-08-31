@@ -446,6 +446,8 @@
     
     self.IsLimitedEdition = [[properties valueForKey:@"IsLimitedEdition"] boolValue];
     
+    self.InitialLimitedEditionCount = [properties valueForKey:@"InitialLimitedEditionCount"];
+    
 
     return self;
 }
