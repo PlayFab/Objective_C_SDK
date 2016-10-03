@@ -146,6 +146,8 @@ typedef void(^GetPublisherDataCallback)(GetPublisherDataResult* result, NSObject
 		
 typedef void(^GetStoreItemsCallback)(GetStoreItemsResult* result, NSObject* userData);
 		
+typedef void(^GetTimeCallback)(GetTimeResult* result, NSObject* userData);
+		
 typedef void(^GetTitleDataCallback)(GetTitleDataResult* result, NSObject* userData);
 		
 typedef void(^GetTitleNewsCallback)(GetTitleNewsResult* result, NSObject* userData);
@@ -408,6 +410,8 @@ typedef void(^GetPlayerTagsCallback)(GetPlayerTagsResult* result, NSObject* user
 		
 -(void) GetStoreItems:(GetStoreItemsRequest*)request success:(GetStoreItemsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetTime:(GetTimeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
 -(void) GetTitleData:(GetTitleDataRequest*)request success:(GetTitleDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetTitleNews:(GetTitleNewsRequest*)request success:(GetTitleNewsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -666,6 +670,8 @@ typedef void(^GetPlayerTagsCallback)(GetPlayerTagsResult* result, NSObject* user
 + (void) OnGetPublisherDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetStoreItemsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnGetTimeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetTitleDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		

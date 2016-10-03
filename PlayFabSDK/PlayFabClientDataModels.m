@@ -3035,6 +3035,38 @@
     return self;
 }
 @end
+@implementation GetTimeRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation GetTimeResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Time = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Time"]];
+    
+
+    return self;
+}
+@end
 @implementation GetTitleDataRequest
 
 
@@ -4548,6 +4580,8 @@
     self.VirtualCurrency = [mutable_storage copy];
 }
 
+    
+    self.ProviderToken = [properties valueForKey:@"ProviderToken"];
     
 
     return self;

@@ -3045,6 +3045,49 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetStoreItems"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
+-(void) GetTime:(GetTimeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+{
+    
+    
+    NSString *jsonString = @"{}";
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                GetTimeResult *model = [[GetTimeResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetTime"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
 -(void) GetTitleData:(GetTitleDataRequest*)request success:(GetTitleDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
