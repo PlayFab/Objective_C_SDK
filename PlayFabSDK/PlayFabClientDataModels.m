@@ -4636,25 +4636,6 @@
     return self;
 }
 @end
-@implementation NameIdentifier
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.Id = [properties valueForKey:@"Id"];
-    
-    self.Name = [properties valueForKey:@"Name"];
-    
-
-    return self;
-}
-@end
 @implementation OpenTradeRequest
 
 

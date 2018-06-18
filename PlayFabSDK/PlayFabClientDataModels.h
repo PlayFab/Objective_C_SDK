@@ -977,8 +977,6 @@ typedef enum
 
 @class ModifyUserVirtualCurrencyResult;
 
-@class NameIdentifier;
-
 @class OpenTradeRequest;
 
 @class OpenTradeResponse;
@@ -5464,20 +5462,6 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/// Identifier by either name or ID. Note that a name may change due to renaming, or reused after being deleted. ID is immutable and unique.
-/// </summary>
-@interface NameIdentifier : PlayFabBaseModel
-
-
-@property NSString* Id; 
-
-@property NSString* Name; 
-/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
