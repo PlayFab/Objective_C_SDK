@@ -16,6 +16,13 @@ typedef enum
 
 typedef enum
 {
+    CloudScriptRevisionOptionLive,
+    CloudScriptRevisionOptionLatest,
+    CloudScriptRevisionOptionSpecific
+} CloudScriptRevisionOption;
+
+typedef enum
+{
     EffectTypeAllow,
     EffectTypeDeny
 } EffectType;
@@ -79,6 +86,12 @@ typedef enum
 @class EntityProfileFileMetadata;
 
 @class EntityWithLineage;
+
+@class EventContents;
+
+@class ExecuteCloudScriptResult;
+
+@class ExecuteEntityCloudScriptRequest;
 
 @class FinalizeFileUploadsRequest;
 
@@ -162,6 +175,8 @@ typedef enum
 
 @class ListMembershipResponse;
 
+@class LogStatement;
+
 @class ObjectResult;
 
 @class RemoveGroupApplicationRequest;
@@ -169,6 +184,8 @@ typedef enum
 @class RemoveGroupInvitationRequest;
 
 @class RemoveMembersRequest;
+
+@class ScriptExecutionError;
 
 @class SetEntityProfilePolicyRequest;
 
@@ -195,6 +212,10 @@ typedef enum
 @class UpdateGroupRoleRequest;
 
 @class UpdateGroupRoleResponse;
+
+@class WriteEventsRequest;
+
+@class WriteEventsResponse;
 
 
 
@@ -771,6 +792,149 @@ typedef enum
 /// Dictionary of entity keys for related entities. Dictionary key is entity type.
 /// </summary>
 @property NSDictionary* Lineage; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EventContents : PlayFabBaseModel
+
+
+/// <summary>
+/// Entity associated with the event
+/// </summary>
+@property EntityKey Entity; 
+
+/// <summary>
+/// The namespace in which the event is defined. It must be prepended with 'com.playfab.events.'
+/// </summary>
+@property NSString* EventNamespace; 
+
+/// <summary>
+/// The name of this event.
+/// </summary>
+@property NSString* Name; 
+
+/// <summary>
+/// The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from the EventId value, which is assigned when the event is received by the server.
+/// </summary>
+@property NSString* OriginalId; 
+
+/// <summary>
+/// The time (in UTC) associated with this event when it occurred. If specified, this value is stored in the OriginalTimestamp property of the PlayStream event.
+/// </summary>
+@property NSDate* OriginalTimestamp; 
+
+/// <summary>
+/// Arbitrary data associated with the event. Only one of Payload or PayloadJSON is allowed.
+/// </summary>
+@property NSDictionary* Payload; 
+
+/// <summary>
+/// Arbitrary data associated with the event, represented as a JSON serialized string. Only one of Payload or PayloadJSON is allowed.
+/// </summary>
+@property NSString* PayloadJSON; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExecuteCloudScriptResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Number of PlayFab API requests issued by the CloudScript function
+/// </summary>
+@property NSNumber* APIRequestsIssued; 
+
+/// <summary>
+/// Information about the error, if any, that occurred during execution
+/// </summary>
+@property ScriptExecutionError* Error; 
+
+@property NSNumber* ExecutionTimeSeconds; 
+
+/// <summary>
+/// The name of the function that executed
+/// </summary>
+@property NSString* FunctionName; 
+
+/// <summary>
+/// The object returned from the CloudScript function, if any
+/// </summary>
+@property NSDictionary* FunctionResult; 
+
+/// <summary>
+/// Flag indicating if the FunctionResult was too large and was subsequently dropped from this event. This only occurs if the total event size is larger than 350KB.
+/// </summary>
+@property bool FunctionResultTooLarge; 
+
+/// <summary>
+/// Number of external HTTP requests issued by the CloudScript function
+/// </summary>
+@property NSNumber* HttpRequestsIssued; 
+
+/// <summary>
+/// Entries logged during the function execution. These include both entries logged in the function code using log.info() and log.error() and error entries for API and HTTP request failures.
+/// </summary>
+@property NSArray* Logs; 
+
+/// <summary>
+/// Flag indicating if the logs were too large and were subsequently dropped from this event. This only occurs if the total event size is larger than 350KB after the FunctionResult was removed.
+/// </summary>
+@property bool LogsTooLarge; 
+
+@property NSNumber* MemoryConsumedBytes; 
+
+/// <summary>
+/// Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP requests.
+/// </summary>
+@property NSNumber* ProcessorTimeSeconds; 
+
+/// <summary>
+/// The revision of the CloudScript that executed
+/// </summary>
+@property NSNumber* Revision; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExecuteEntityCloudScriptRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// The entity to perform this action on.
+/// </summary>
+@property EntityKey* Entity; 
+
+/// <summary>
+/// The name of the CloudScript function to execute
+/// </summary>
+@property NSString* FunctionName; 
+
+/// <summary>
+/// Object that is passed in to the function as the first argument
+/// </summary>
+@property NSDictionary* FunctionParameter; 
+
+/// <summary>
+/// Generate a 'entity_executed_cloudscript' PlayStream event containing the results of the function execution and other contextual information. This event will show up in the PlayStream debugger console for the player in Game Manager.
+/// </summary>
+@property bool GeneratePlayStreamEvent; 
+
+/// <summary>
+/// Option for which revision of the CloudScript to execute. 'Latest' executes the most recently created revision, 'Live' executes the current live, published revision, and 'Specific' executes the specified revision. The default value is 'Specific', if the SpecificRevision parameter is specified, otherwise it is 'Live'.
+/// </summary>
+@property CloudScriptRevisionOption RevisionSelection; 
+
+/// <summary>
+/// The specific revision to execute, when RevisionSelection is set to 'Specific'
+/// </summary>
+@property NSNumber* SpecificRevision; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1577,6 +1741,25 @@ typedef enum
 @end
 
 
+@interface LogStatement : PlayFabBaseModel
+
+
+/// <summary>
+/// Optional object accompanying the message as contextual information
+/// </summary>
+@property NSDictionary* Data; 
+
+/// <summary>
+/// 'Debug', 'Info', or 'Error'
+/// </summary>
+@property NSString* Level; 
+
+@property NSString* Message; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ObjectResult : PlayFabBaseModel
 
 
@@ -1653,6 +1836,28 @@ typedef enum
 /// The ID of the role to remove the entities from.
 /// </summary>
 @property NSString* RoleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ScriptExecutionError : PlayFabBaseModel
+
+
+/// <summary>
+/// Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded, CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError
+/// </summary>
+@property NSString* Error; 
+
+/// <summary>
+/// Details about the error
+/// </summary>
+@property NSString* Message; 
+
+/// <summary>
+/// Point during the execution of the script at which the error occurred, if any
+/// </summary>
+@property NSString* StackTrace; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1921,6 +2126,33 @@ typedef enum
 /// Indicates which operation was completed, either Created, Updated, Deleted or None.
 /// </summary>
 @property OperationTypes SetResult; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface WriteEventsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Collection of events to write to PlayStream.
+/// </summary>
+@property NSArray* Events; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface WriteEventsResponse : PlayFabBaseModel
+
+
+/// <summary>
+/// The unique identifiers assigned by the server to the events, in the same order as the events in the request. Only returned if FlushToPlayStream option is true.
+/// </summary>
+@property NSArray* AssignedEventIds; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

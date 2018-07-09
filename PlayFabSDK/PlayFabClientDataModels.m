@@ -7063,6 +7063,8 @@
     
     self.GatherDeviceInfo = [[properties valueForKey:@"GatherDeviceInfo"] boolValue];
     
+    self.GatherFocusInfo = [[properties valueForKey:@"GatherFocusInfo"] boolValue];
+    
     self.NeedsAttribution = [[properties valueForKey:@"NeedsAttribution"] boolValue];
     
 

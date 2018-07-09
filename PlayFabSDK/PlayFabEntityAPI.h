@@ -33,6 +33,8 @@ typedef void(^DeleteGroupCallback)(EmptyResult* result, NSObject* userData);
 		
 typedef void(^DeleteRoleCallback)(EmptyResult* result, NSObject* userData);
 		
+typedef void(^ExecuteEntityCloudScriptCallback)(ExecuteCloudScriptResult* result, NSObject* userData);
+		
 typedef void(^FinalizeFileUploadsCallback)(FinalizeFileUploadsResponse* result, NSObject* userData);
 		
 typedef void(^GetEntityTokenCallback)(GetEntityTokenResponse* result, NSObject* userData);
@@ -85,6 +87,8 @@ typedef void(^UpdateGroupCallback)(UpdateGroupResponse* result, NSObject* userDa
 		
 typedef void(^UpdateRoleCallback)(UpdateGroupRoleResponse* result, NSObject* userData);
 		
+typedef void(^WriteEventsCallback)(WriteEventsResponse* result, NSObject* userData);
+		
 
 + (PlayFabClientAPI*) GetInstance;
 
@@ -116,6 +120,8 @@ typedef void(^UpdateRoleCallback)(UpdateGroupRoleResponse* result, NSObject* use
 -(void) DeleteGroup:(DeleteGroupRequest*)request success:(DeleteGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) DeleteRole:(DeleteRoleRequest*)request success:(DeleteRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ExecuteEntityCloudScript:(ExecuteEntityCloudScriptRequest*)request success:(ExecuteEntityCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) FinalizeFileUploads:(FinalizeFileUploadsRequest*)request success:(FinalizeFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -169,6 +175,8 @@ typedef void(^UpdateRoleCallback)(UpdateGroupRoleResponse* result, NSObject* use
 		
 -(void) UpdateRole:(UpdateGroupRoleRequest*)request success:(UpdateRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) WriteEvents:(WriteEventsRequest*)request success:(WriteEventsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 
     //private:
 /*
@@ -197,6 +205,8 @@ typedef void(^UpdateRoleCallback)(UpdateGroupRoleResponse* result, NSObject* use
 + (void) OnDeleteGroupResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnDeleteRoleResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnExecuteEntityCloudScriptResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnFinalizeFileUploadsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
@@ -249,6 +259,8 @@ typedef void(^UpdateRoleCallback)(UpdateGroupRoleResponse* result, NSObject* use
 + (void) OnUpdateGroupResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUpdateRoleResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnWriteEventsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
  */
 

@@ -551,6 +551,49 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/DeleteRole"] body:jsonString authType:nil authKey:nil];
 }
+-(void) ExecuteEntityCloudScript:(ExecuteEntityCloudScriptRequest*)request success:(ExecuteEntityCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ExecuteEntityCloudScriptRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ExecuteCloudScriptResult *model = [[ExecuteCloudScriptResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/CloudScript/ExecuteEntityCloudScript"] body:jsonString authType:nil authKey:nil];
+}
 -(void) FinalizeFileUploads:(FinalizeFileUploadsRequest*)request success:(FinalizeFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -1668,6 +1711,49 @@ return deviceModel;
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/UpdateRole"] body:jsonString authType:nil authKey:nil];
+}
+-(void) WriteEvents:(WriteEventsRequest*)request success:(WriteEventsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[WriteEventsRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                WriteEventsResponse *model = [[WriteEventsResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Event/WriteEvents"] body:jsonString authType:nil authKey:nil];
 }
 
 @end

@@ -565,7 +565,9 @@ typedef enum
     SourceTypeBackEnd,
     SourceTypeGameClient,
     SourceTypeGameServer,
-    SourceTypePartner
+    SourceTypePartner,
+    SourceTypeCustom,
+    SourceTypeAPI
 } SourceType;
 
 typedef enum
@@ -7664,6 +7666,11 @@ typedef enum
 /// Boolean for whether this player is eligible for gathering device info.
 /// </summary>
 @property bool GatherDeviceInfo; 
+
+/// <summary>
+/// Boolean for whether this player should report OnFocus play-time tracking.
+/// </summary>
+@property bool GatherFocusInfo; 
 
 /// <summary>
 /// Boolean for whether this player is eligible for ad tracking.
