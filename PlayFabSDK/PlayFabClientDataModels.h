@@ -1334,7 +1334,7 @@ typedef enum
 /// <summary>
 /// Generic service identifier to add to the player account.
 /// </summary>
-@property GenericServiceId GenericId; 
+@property GenericServiceId * GenericId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3164,7 +3164,7 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams InfoRequestParameters; 
+@property GetPlayerCombinedInfoRequestParams * InfoRequestParameters; 
 
 /// <summary>
 /// PlayFabId of the user whose data will be returned. If not filled included, we return the data for the calling player. 
@@ -6226,7 +6226,7 @@ typedef enum
 /// <summary>
 /// Generic service identifier to be removed from the player.
 /// </summary>
-@property GenericServiceId GenericId; 
+@property GenericServiceId * GenericId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

@@ -5,69 +5,49 @@
 static NSMutableArray *sharedConnectionList = nil;
 
 @implementation PlayFabConnection
-@synthesize request,completionBlock,internalConnection;
+@synthesize completionBlock;
 
 
 -(void)postURL:(NSString*)url body:(NSString*)body authType:(NSString*)authType authKey:(NSString*)authKey
 {
     NSLog(@"postURL");
     
-    NSURL *sRequestURL = [NSURL URLWithString:url];
-    
-    NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:sRequestURL];
-    NSString *sMessageLength = [NSString stringWithFormat:@"%d", (int)[body length]];
-    
-    [myRequest addValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
-    [myRequest addValue: sMessageLength forHTTPHeaderField:@"Content-Length"];
-    [myRequest addValue: versionString forHTTPHeaderField:@"X-PlayFabSDK"];
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSMutableDictionary * additionalHeaders = [[NSMutableDictionary alloc] init];
+    additionalHeaders[@"Content-Type"] = @"application/json";
+    additionalHeaders[@"X-PlayFabSDK"] = versionString;
     if ([authType length] != 0)
     {
-        [myRequest addValue: authKey forHTTPHeaderField:authType];
+        additionalHeaders[authType] = authKey;
     }
-    [myRequest setHTTPMethod:@"POST"];
-    [myRequest setHTTPBody: [body dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:myRequest delegate:self];
-    
-    if( theConnection ) {
-        container = [NSMutableData data];
+    sessionConfiguration.HTTPAdditionalHeaders = additionalHeaders;
+     
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    NSURL *sRequestURL = [NSURL URLWithString:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:sRequestURL];
+    request.HTTPBody = [body dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPMethod = @"POST";
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            if([self completionBlock])
+                [self completionBlock](nil,error);
+            
+            [sharedConnectionList removeObject:self];
+        }
         
-        if(!sharedConnectionList)
-            sharedConnectionList = [[NSMutableArray alloc] init];
-        [sharedConnectionList addObject:self];
-    }else {
-        NSLog(@"Some error occurred in Connection");
-    }
+        else {
+            if([self completionBlock])
+                [self completionBlock](data,nil);
+            
+            [sharedConnectionList removeObject:self];
+        }
+    }];
     
-}
-
-
-#pragma mark NSURLConnectionDelegate methods
-
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    if(!sharedConnectionList)
+        sharedConnectionList = [[NSMutableArray alloc] init];
+    [sharedConnectionList addObject:self];
     
-    [container appendData:data];
-    
-}
-
-//If finish, return the data and the error nil
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    if([self completionBlock])
-        [self completionBlock](container,nil);
-    
-    [sharedConnectionList removeObject:self];
-    
-}
-
-//If fail, return nil and an error
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    
-    if([self completionBlock])
-        [self completionBlock](nil,error);
-    
-    [sharedConnectionList removeObject:self];
-    
+    [postDataTask resume];    
 }
 
 @end
