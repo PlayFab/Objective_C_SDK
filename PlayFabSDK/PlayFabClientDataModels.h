@@ -501,7 +501,11 @@ typedef enum
     LoginIdentityProviderIOSDevice,
     LoginIdentityProviderAndroidDevice,
     LoginIdentityProviderTwitch,
-    LoginIdentityProviderWindowsHello
+    LoginIdentityProviderWindowsHello,
+    LoginIdentityProviderGameServer,
+    LoginIdentityProviderCustomServer,
+    LoginIdentityProviderNintendoSwitch,
+    LoginIdentityProviderFacebookInstantGames
 } LoginIdentityProvider;
 
 typedef enum
@@ -550,7 +554,10 @@ typedef enum
     UserOriginationXboxLive,
     UserOriginationParse,
     UserOriginationTwitch,
-    UserOriginationWindowsHello
+    UserOriginationWindowsHello,
+    UserOriginationServerCustomId,
+    UserOriginationNintendoSwitchDeviceId,
+    UserOriginationFacebookInstantGamesId
 } UserOrigination;
 
 typedef enum
@@ -695,6 +702,8 @@ typedef enum
 
 @class ExecuteCloudScriptResult;
 
+@class FacebookInstantGamesPlayFabIdPair;
+
 @class FacebookPlayFabIdPair;
 
 @class FriendInfo;
@@ -809,6 +818,10 @@ typedef enum
 
 @class GetPlayFabIDsFromFacebookIDsResult;
 
+@class GetPlayFabIDsFromFacebookInstantGamesIdsRequest;
+
+@class GetPlayFabIDsFromFacebookInstantGamesIdsResult;
+
 @class GetPlayFabIDsFromGameCenterIDsRequest;
 
 @class GetPlayFabIDsFromGameCenterIDsResult;
@@ -824,6 +837,10 @@ typedef enum
 @class GetPlayFabIDsFromKongregateIDsRequest;
 
 @class GetPlayFabIDsFromKongregateIDsResult;
+
+@class GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest;
+
+@class GetPlayFabIDsFromNintendoSwitchDeviceIdsResult;
 
 @class GetPlayFabIDsFromSteamIDsRequest;
 
@@ -909,6 +926,10 @@ typedef enum
 
 @class LinkFacebookAccountResult;
 
+@class LinkFacebookInstantGamesIdRequest;
+
+@class LinkFacebookInstantGamesIdResult;
+
 @class LinkGameCenterAccountRequest;
 
 @class LinkGameCenterAccountResult;
@@ -924,6 +945,10 @@ typedef enum
 @class LinkKongregateAccountRequest;
 
 @class LinkKongregateAccountResult;
+
+@class LinkNintendoSwitchDeviceIdRequest;
+
+@class LinkNintendoSwitchDeviceIdResult;
 
 @class LinkSteamAccountRequest;
 
@@ -951,6 +976,8 @@ typedef enum
 
 @class LoginWithEmailAddressRequest;
 
+@class LoginWithFacebookInstantGamesIdRequest;
+
 @class LoginWithFacebookRequest;
 
 @class LoginWithGameCenterRequest;
@@ -960,6 +987,8 @@ typedef enum
 @class LoginWithIOSDeviceIDRequest;
 
 @class LoginWithKongregateRequest;
+
+@class LoginWithNintendoSwitchDeviceIdRequest;
 
 @class LoginWithPlayFabRequest;
 
@@ -978,6 +1007,8 @@ typedef enum
 @class MembershipModel;
 
 @class ModifyUserVirtualCurrencyResult;
+
+@class NintendoSwitchPlayFabIdPair;
 
 @class OpenTradeRequest;
 
@@ -1105,6 +1136,10 @@ typedef enum
 
 @class UnlinkFacebookAccountResult;
 
+@class UnlinkFacebookInstantGamesIdRequest;
+
+@class UnlinkFacebookInstantGamesIdResult;
+
 @class UnlinkGameCenterAccountRequest;
 
 @class UnlinkGameCenterAccountResult;
@@ -1120,6 +1155,10 @@ typedef enum
 @class UnlinkKongregateAccountRequest;
 
 @class UnlinkKongregateAccountResult;
+
+@class UnlinkNintendoSwitchDeviceIdRequest;
+
+@class UnlinkNintendoSwitchDeviceIdResult;
 
 @class UnlinkSteamAccountRequest;
 
@@ -2232,6 +2271,23 @@ typedef enum
 @end
 
 
+@interface FacebookInstantGamesPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique Facebook Instant Games identifier for a user.
+/// </summary>
+@property NSString* FacebookInstantGamesId; 
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Facebook Instant Games identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface FacebookPlayFabIdPair : PlayFabBaseModel
 
 
@@ -2387,6 +2443,11 @@ typedef enum
 @property NSString* ServerHostname; 
 
 /// <summary>
+/// IPV4 address of the server
+/// </summary>
+@property NSString* ServerIPV4Address; 
+
+/// <summary>
 /// IPV6 address of the server
 /// </summary>
 @property NSString* ServerIPV6Address; 
@@ -2395,6 +2456,11 @@ typedef enum
 /// port number to use for non-http communications with the server
 /// </summary>
 @property NSNumber* ServerPort; 
+
+/// <summary>
+/// Public DNS name (if any) of the server
+/// </summary>
+@property NSString* ServerPublicDNSName; 
 
 /// <summary>
 /// stastic used to match this game in player statistic matchmaking
@@ -3561,6 +3627,33 @@ typedef enum
 @end
 
 
+@interface GetPlayFabIDsFromFacebookInstantGamesIdsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of unique Facebook Instant Games identifiers for which the title needs to get PlayFab identifiers.
+/// </summary>
+@property NSArray* FacebookInstantGamesIds; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromFacebookInstantGamesIdsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of Facebook Instant Games identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface GetPlayFabIDsFromGameCenterIDsRequest : PlayFabBaseModel
 
 
@@ -3659,6 +3752,33 @@ typedef enum
 
 /// <summary>
 /// Mapping of Kongregate identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of unique Nintendo Switch Device identifiers for which the title needs to get PlayFab identifiers.
+/// </summary>
+@property NSArray* NintendoSwitchDeviceIds; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface GetPlayFabIDsFromNintendoSwitchDeviceIdsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of Nintendo Switch Device identifiers to PlayFab identifiers.
 /// </summary>
 @property NSArray* Data; 
 /*
@@ -4473,6 +4593,33 @@ typedef enum
 @end
 
 
+@interface LinkFacebookInstantGamesIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Facebook Instant Games signature for the user.
+/// </summary>
+@property NSString* FacebookInstantGamesSignature; 
+
+/// <summary>
+/// If another user is already linked to the Facebook Instant Games ID, unlink the other user and re-link.
+/// </summary>
+@property bool ForceLink; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LinkFacebookInstantGamesIdResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface LinkGameCenterAccountRequest : PlayFabBaseModel
 
 
@@ -4587,6 +4734,33 @@ typedef enum
 
 
 @interface LinkKongregateAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// If another user is already linked to the Nintendo Switch Device ID, unlink the other user and re-link.
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/// Nintendo Switch unique identifier for the user's device.
+/// </summary>
+@property NSString* NintendoSwitchDeviceId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4917,6 +5091,48 @@ typedef enum
 @end
 
 
+@interface LoginWithFacebookInstantGamesIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/// Facebook Instant Games signature for the user.
+/// </summary>
+@property NSString* FacebookInstantGamesSignature; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// </summary>
+@property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface LoginWithFacebookRequest : PlayFabBaseModel
 
 
@@ -5127,6 +5343,48 @@ typedef enum
 /// Flag to automatically login the player's title_player_account and return the associated entity token.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface LoginWithNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// </summary>
+@property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Nintendo Switch unique identifier for the user's device.
+/// </summary>
+@property NSString* NintendoSwitchDeviceId; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
@@ -5380,6 +5638,11 @@ typedef enum
 @property NSString* ServerHostname; 
 
 /// <summary>
+/// IPV4 address of the server
+/// </summary>
+@property NSString* ServerIPV4Address; 
+
+/// <summary>
 /// IPV6 address of the server
 /// </summary>
 @property NSString* ServerIPV6Address; 
@@ -5388,6 +5651,11 @@ typedef enum
 /// port number to use for non-http communications with the server
 /// </summary>
 @property NSNumber* ServerPort; 
+
+/// <summary>
+/// Public DNS name (if any) of the server
+/// </summary>
+@property NSString* ServerPublicDNSName; 
 
 /// <summary>
 /// result of match making process
@@ -5464,6 +5732,23 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface NintendoSwitchPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique Nintendo Switch Device identifier for a user.
+/// </summary>
+@property NSString* NintendoSwitchDeviceId; 
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Nintendo Switch Device identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -5740,7 +6025,7 @@ typedef enum
 @property NSString* TitleId; 
 
 /// <summary>
-/// Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a whole number of cents (1/100 USD).       For example, 999 indicates nine dollars and ninety-nine cents.
+/// Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
 /// </summary>
 @property NSNumber* TotalValueToDateInUSD; 
 
@@ -6519,6 +6804,11 @@ typedef enum
 @property NSString* ServerHostname; 
 
 /// <summary>
+/// server IPV4 address
+/// </summary>
+@property NSString* ServerIPV4Address; 
+
+/// <summary>
 /// server IPV6 address
 /// </summary>
 @property NSString* ServerIPV6Address; 
@@ -6527,6 +6817,11 @@ typedef enum
 /// port on the server to be used for communication
 /// </summary>
 @property NSNumber* ServerPort; 
+
+/// <summary>
+/// server public DNS name
+/// </summary>
+@property NSString* ServerPublicDNSName; 
 
 /// <summary>
 /// unique identifier for the server
@@ -7000,6 +7295,28 @@ typedef enum
 @end
 
 
+@interface UnlinkFacebookInstantGamesIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Facebook Instant Games identifier for the user. If not specified, the most recently signed in ID will be used.
+/// </summary>
+@property NSString* FacebookInstantGamesId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UnlinkFacebookInstantGamesIdResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface UnlinkGameCenterAccountRequest : PlayFabBaseModel
 
 /**/
@@ -7064,6 +7381,28 @@ typedef enum
 
 
 @interface UnlinkKongregateAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UnlinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Nintendo Switch Device identifier for the user. If not specified, the most recently signed in device ID will be used.
+/// </summary>
+@property NSString* NintendoSwitchDeviceId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface UnlinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;

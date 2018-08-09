@@ -95,6 +95,8 @@ typedef void(^GetPlayerTradesCallback)(GetPlayerTradesResponse* result, NSObject
 		
 typedef void(^GetPlayFabIDsFromFacebookIDsCallback)(GetPlayFabIDsFromFacebookIDsResult* result, NSObject* userData);
 		
+typedef void(^GetPlayFabIDsFromFacebookInstantGamesIdsCallback)(GetPlayFabIDsFromFacebookInstantGamesIdsResult* result, NSObject* userData);
+		
 typedef void(^GetPlayFabIDsFromGameCenterIDsCallback)(GetPlayFabIDsFromGameCenterIDsResult* result, NSObject* userData);
 		
 typedef void(^GetPlayFabIDsFromGenericIDsCallback)(GetPlayFabIDsFromGenericIDsResult* result, NSObject* userData);
@@ -102,6 +104,8 @@ typedef void(^GetPlayFabIDsFromGenericIDsCallback)(GetPlayFabIDsFromGenericIDsRe
 typedef void(^GetPlayFabIDsFromGoogleIDsCallback)(GetPlayFabIDsFromGoogleIDsResult* result, NSObject* userData);
 		
 typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(GetPlayFabIDsFromKongregateIDsResult* result, NSObject* userData);
+		
+typedef void(^GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)(GetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result, NSObject* userData);
 		
 typedef void(^GetPlayFabIDsFromSteamIDsCallback)(GetPlayFabIDsFromSteamIDsResult* result, NSObject* userData);
 		
@@ -145,6 +149,8 @@ typedef void(^LinkCustomIDCallback)(LinkCustomIDResult* result, NSObject* userDa
 		
 typedef void(^LinkFacebookAccountCallback)(LinkFacebookAccountResult* result, NSObject* userData);
 		
+typedef void(^LinkFacebookInstantGamesIdCallback)(LinkFacebookInstantGamesIdResult* result, NSObject* userData);
+		
 typedef void(^LinkGameCenterAccountCallback)(LinkGameCenterAccountResult* result, NSObject* userData);
 		
 typedef void(^LinkGoogleAccountCallback)(LinkGoogleAccountResult* result, NSObject* userData);
@@ -152,6 +158,8 @@ typedef void(^LinkGoogleAccountCallback)(LinkGoogleAccountResult* result, NSObje
 typedef void(^LinkIOSDeviceIDCallback)(LinkIOSDeviceIDResult* result, NSObject* userData);
 		
 typedef void(^LinkKongregateCallback)(LinkKongregateAccountResult* result, NSObject* userData);
+		
+typedef void(^LinkNintendoSwitchDeviceIdCallback)(LinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
 typedef void(^LinkSteamAccountCallback)(LinkSteamAccountResult* result, NSObject* userData);
 		
@@ -167,6 +175,8 @@ typedef void(^LoginWithEmailAddressCallback)(LoginResult* result, NSObject* user
 		
 typedef void(^LoginWithFacebookCallback)(LoginResult* result, NSObject* userData);
 		
+typedef void(^LoginWithFacebookInstantGamesIdCallback)(LoginResult* result, NSObject* userData);
+		
 typedef void(^LoginWithGameCenterCallback)(LoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithGoogleAccountCallback)(LoginResult* result, NSObject* userData);
@@ -174,6 +184,8 @@ typedef void(^LoginWithGoogleAccountCallback)(LoginResult* result, NSObject* use
 typedef void(^LoginWithIOSDeviceIDCallback)(LoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithKongregateCallback)(LoginResult* result, NSObject* userData);
+		
+typedef void(^LoginWithNintendoSwitchDeviceIdCallback)(LoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithPlayFabCallback)(LoginResult* result, NSObject* userData);
 		
@@ -231,6 +243,8 @@ typedef void(^UnlinkCustomIDCallback)(UnlinkCustomIDResult* result, NSObject* us
 		
 typedef void(^UnlinkFacebookAccountCallback)(UnlinkFacebookAccountResult* result, NSObject* userData);
 		
+typedef void(^UnlinkFacebookInstantGamesIdCallback)(UnlinkFacebookInstantGamesIdResult* result, NSObject* userData);
+		
 typedef void(^UnlinkGameCenterAccountCallback)(UnlinkGameCenterAccountResult* result, NSObject* userData);
 		
 typedef void(^UnlinkGoogleAccountCallback)(UnlinkGoogleAccountResult* result, NSObject* userData);
@@ -238,6 +252,8 @@ typedef void(^UnlinkGoogleAccountCallback)(UnlinkGoogleAccountResult* result, NS
 typedef void(^UnlinkIOSDeviceIDCallback)(UnlinkIOSDeviceIDResult* result, NSObject* userData);
 		
 typedef void(^UnlinkKongregateCallback)(UnlinkKongregateAccountResult* result, NSObject* userData);
+		
+typedef void(^UnlinkNintendoSwitchDeviceIdCallback)(UnlinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
 typedef void(^UnlinkSteamAccountCallback)(UnlinkSteamAccountResult* result, NSObject* userData);
 		
@@ -371,6 +387,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 -(void) GetPlayFabIDsFromFacebookIDs:(GetPlayFabIDsFromFacebookIDsRequest*)request success:(GetPlayFabIDsFromFacebookIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetPlayFabIDsFromFacebookInstantGamesIds:(GetPlayFabIDsFromFacebookInstantGamesIdsRequest*)request success:(GetPlayFabIDsFromFacebookInstantGamesIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) GetPlayFabIDsFromGameCenterIDs:(GetPlayFabIDsFromGameCenterIDsRequest*)request success:(GetPlayFabIDsFromGameCenterIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromGenericIDs:(GetPlayFabIDsFromGenericIDsRequest*)request success:(GetPlayFabIDsFromGenericIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -378,6 +396,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 -(void) GetPlayFabIDsFromGoogleIDs:(GetPlayFabIDsFromGoogleIDsRequest*)request success:(GetPlayFabIDsFromGoogleIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromKongregateIDs:(GetPlayFabIDsFromKongregateIDsRequest*)request success:(GetPlayFabIDsFromKongregateIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetPlayFabIDsFromNintendoSwitchDeviceIds:(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest*)request success:(GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromSteamIDs:(GetPlayFabIDsFromSteamIDsRequest*)request success:(GetPlayFabIDsFromSteamIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -421,6 +441,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 -(void) LinkFacebookAccount:(LinkFacebookAccountRequest*)request success:(LinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LinkFacebookInstantGamesId:(LinkFacebookInstantGamesIdRequest*)request success:(LinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LinkGameCenterAccount:(LinkGameCenterAccountRequest*)request success:(LinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkGoogleAccount:(LinkGoogleAccountRequest*)request success:(LinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -428,6 +450,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 -(void) LinkIOSDeviceID:(LinkIOSDeviceIDRequest*)request success:(LinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkKongregate:(LinkKongregateAccountRequest*)request success:(LinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LinkNintendoSwitchDeviceId:(LinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkSteamAccount:(LinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -443,6 +467,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 -(void) LoginWithFacebook:(LoginWithFacebookRequest*)request success:(LoginWithFacebookCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LoginWithFacebookInstantGamesId:(LoginWithFacebookInstantGamesIdRequest*)request success:(LoginWithFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LoginWithGameCenter:(LoginWithGameCenterRequest*)request success:(LoginWithGameCenterCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithGoogleAccount:(LoginWithGoogleAccountRequest*)request success:(LoginWithGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -450,6 +476,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 -(void) LoginWithIOSDeviceID:(LoginWithIOSDeviceIDRequest*)request success:(LoginWithIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithKongregate:(LoginWithKongregateRequest*)request success:(LoginWithKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LoginWithNintendoSwitchDeviceId:(LoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithPlayFab:(LoginWithPlayFabRequest*)request success:(LoginWithPlayFabCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -507,6 +535,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 -(void) UnlinkFacebookAccount:(UnlinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
+-(void) UnlinkFacebookInstantGamesId:(UnlinkFacebookInstantGamesIdRequest*)request success:(UnlinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) UnlinkGameCenterAccount:(UnlinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkGoogleAccount:(UnlinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
@@ -514,6 +544,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 -(void) UnlinkIOSDeviceID:(UnlinkIOSDeviceIDRequest*)request success:(UnlinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkKongregate:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
+-(void) UnlinkNintendoSwitchDeviceId:(UnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkSteamAccount:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
@@ -644,6 +676,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 + (void) OnGetPlayFabIDsFromFacebookIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnGetPlayFabIDsFromFacebookInstantGamesIdsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnGetPlayFabIDsFromGameCenterIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetPlayFabIDsFromGenericIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -651,6 +685,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 + (void) OnGetPlayFabIDsFromGoogleIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetPlayFabIDsFromKongregateIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnGetPlayFabIDsFromNintendoSwitchDeviceIdsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnGetPlayFabIDsFromSteamIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
@@ -694,6 +730,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 + (void) OnLinkFacebookAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnLinkFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnLinkGameCenterAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLinkGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -701,6 +739,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 + (void) OnLinkIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnLinkNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
@@ -716,6 +756,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 + (void) OnLoginWithFacebookResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnLoginWithFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnLoginWithGameCenterResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLoginWithGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -723,6 +765,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 + (void) OnLoginWithIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLoginWithKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnLoginWithNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnLoginWithPlayFabResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
@@ -780,6 +824,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 		
 + (void) OnUnlinkFacebookAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
++ (void) OnUnlinkFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
 + (void) OnUnlinkGameCenterAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUnlinkGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
@@ -787,6 +833,8 @@ typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* use
 + (void) OnUnlinkIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUnlinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
+		
++ (void) OnUnlinkNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		
 + (void) OnUnlinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
 		

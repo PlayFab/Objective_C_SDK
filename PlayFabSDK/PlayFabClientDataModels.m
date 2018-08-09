@@ -1104,6 +1104,25 @@
     return self;
 }
 @end
+@implementation FacebookInstantGamesPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.FacebookInstantGamesId = [properties valueForKey:@"FacebookInstantGamesId"];
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+
+    return self;
+}
+@end
 @implementation FacebookPlayFabIdPair
 
 
@@ -1228,9 +1247,13 @@
     
     self.ServerHostname = [properties valueForKey:@"ServerHostname"];
     
+    self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
+    
     self.ServerIPV6Address = [properties valueForKey:@"ServerIPV6Address"];
     
     self.ServerPort = [properties valueForKey:@"ServerPort"];
+    
+    self.ServerPublicDNSName = [properties valueForKey:@"ServerPublicDNSName"];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
@@ -2629,6 +2652,56 @@
     return self;
 }
 @end
+@implementation GetPlayFabIDsFromFacebookInstantGamesIdsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"FacebookInstantGamesIds"]){
+    NSArray* member_list = [properties objectForKey:@"FacebookInstantGamesIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.FacebookInstantGamesIds = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromFacebookInstantGamesIdsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[FacebookInstantGamesPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation GetPlayFabIDsFromGameCenterIDsRequest
 
 
@@ -2820,6 +2893,56 @@
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
         [mutable_storage addObject:[[KongregatePlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"NintendoSwitchDeviceIds"]){
+    NSArray* member_list = [properties objectForKey:@"NintendoSwitchDeviceIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.NintendoSwitchDeviceIds = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation GetPlayFabIDsFromNintendoSwitchDeviceIdsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[NintendoSwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -3807,6 +3930,40 @@
     return self;
 }
 @end
+@implementation LinkFacebookInstantGamesIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.FacebookInstantGamesSignature = [properties valueForKey:@"FacebookInstantGamesSignature"];
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation LinkFacebookInstantGamesIdResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation LinkGameCenterAccountRequest
 
 
@@ -3935,6 +4092,40 @@
 }
 @end
 @implementation LinkKongregateAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation LinkNintendoSwitchDeviceIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
+    
+
+    return self;
+}
+@end
+@implementation LinkNintendoSwitchDeviceIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4238,6 +4429,35 @@
     return self;
 }
 @end
+@implementation LoginWithFacebookInstantGamesIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.FacebookInstantGamesSignature = [properties valueForKey:@"FacebookInstantGamesSignature"];
+    
+    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
 @implementation LoginWithFacebookRequest
 
 
@@ -4380,6 +4600,35 @@
     self.KongregateId = [properties valueForKey:@"KongregateId"];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
+@implementation LoginWithNintendoSwitchDeviceIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
     
     self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
     
@@ -4568,9 +4817,13 @@
     
     self.ServerHostname = [properties valueForKey:@"ServerHostname"];
     
+    self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
+    
     self.ServerIPV6Address = [properties valueForKey:@"ServerIPV6Address"];
     
     self.ServerPort = [properties valueForKey:@"ServerPort"];
+    
+    self.ServerPublicDNSName = [properties valueForKey:@"ServerPublicDNSName"];
     
     self.Status = (MatchmakeStatus)[properties valueForKey:@"Status"];
     
@@ -4631,6 +4884,25 @@
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
     self.VirtualCurrency = [properties valueForKey:@"VirtualCurrency"];
+    
+
+    return self;
+}
+@end
+@implementation NintendoSwitchPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
 
     return self;
@@ -5692,9 +5964,13 @@
     
     self.ServerHostname = [properties valueForKey:@"ServerHostname"];
     
+    self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
+    
     self.ServerIPV6Address = [properties valueForKey:@"ServerIPV6Address"];
     
     self.ServerPort = [properties valueForKey:@"ServerPort"];
+    
+    self.ServerPublicDNSName = [properties valueForKey:@"ServerPublicDNSName"];
     
     self.Ticket = [properties valueForKey:@"Ticket"];
     
@@ -6223,6 +6499,38 @@
     return self;
 }
 @end
+@implementation UnlinkFacebookInstantGamesIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.FacebookInstantGamesId = [properties valueForKey:@"FacebookInstantGamesId"];
+    
+
+    return self;
+}
+@end
+@implementation UnlinkFacebookInstantGamesIdResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation UnlinkGameCenterAccountRequest
 
 
@@ -6331,6 +6639,38 @@
 }
 @end
 @implementation UnlinkKongregateAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation UnlinkNintendoSwitchDeviceIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
+    
+
+    return self;
+}
+@end
+@implementation UnlinkNintendoSwitchDeviceIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
