@@ -1,66 +1,49 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
-
 typedef enum
 {
-    CloudScriptRevisionOptionLive,
-    CloudScriptRevisionOptionLatest,
-    CloudScriptRevisionOptionSpecific
-} CloudScriptRevisionOption;
-
-typedef enum
-{
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
+    CloudScriptCloudScriptRevisionOptionLive,
+    CloudScriptCloudScriptRevisionOptionLatest,
+    CloudScriptCloudScriptRevisionOptionSpecific
+} CloudScriptCloudScriptRevisionOption;
 
 //predeclare all non-enum classes
 
-@class EntityKey;
+@class CloudScriptEntityKey;
 
-@class ExecuteCloudScriptResult;
+@class CloudScriptExecuteCloudScriptResult;
 
-@class ExecuteEntityCloudScriptRequest;
+@class CloudScriptExecuteEntityCloudScriptRequest;
 
-@class LogStatement;
+@class CloudScriptLogStatement;
 
-@class ScriptExecutionError;
+@class CloudScriptScriptExecutionError;
 
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface CloudScriptEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ExecuteCloudScriptResult : PlayFabBaseModel
+@interface CloudScriptExecuteCloudScriptResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -71,7 +54,7 @@ typedef enum
 /// <summary>
 /// Information about the error, if any, that occurred during execution
 /// </summary>
-@property ScriptExecutionError* Error; 
+@property CloudScriptScriptExecutionError* Error; 
 
 @property NSNumber* ExecutionTimeSeconds; 
 
@@ -124,13 +107,13 @@ typedef enum
 @end
 
 
-@interface ExecuteEntityCloudScriptRequest : PlayFabBaseModel
+@interface CloudScriptExecuteEntityCloudScriptRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property CloudScriptEntityKey* Entity; 
 
 /// <summary>
 /// The name of the CloudScript function to execute
@@ -150,7 +133,7 @@ typedef enum
 /// <summary>
 /// Option for which revision of the CloudScript to execute. 'Latest' executes the most recently created revision, 'Live' executes the current live, published revision, and 'Specific' executes the specified revision. The default value is 'Specific', if the SpecificRevision parameter is specified, otherwise it is 'Live'.
 /// </summary>
-@property CloudScriptRevisionOption RevisionSelection; 
+@property CloudScriptCloudScriptRevisionOption RevisionSelection; 
 
 /// <summary>
 /// The specific revision to execute, when RevisionSelection is set to 'Specific'
@@ -161,7 +144,7 @@ typedef enum
 @end
 
 
-@interface LogStatement : PlayFabBaseModel
+@interface CloudScriptLogStatement : PlayFabBaseModel
 
 
 /// <summary>
@@ -180,7 +163,7 @@ typedef enum
 @end
 
 
-@interface ScriptExecutionError : PlayFabBaseModel
+@interface CloudScriptScriptExecutionError : PlayFabBaseModel
 
 
 /// <summary>

@@ -1,7 +1,5 @@
 #import "PlayFabDataAPI.h"
 #import "PlayFabConnection.h"
-//#import "PlayFabSettings.h"
-//#import "PlayFabVersion.h"
 
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
@@ -11,7 +9,7 @@
 
 @implementation PlayFabDataAPI
 
-+(NSString*)GetURL {
++(NSString*) GetURL {
 return [NSString stringWithFormat:@"https://%@%@", PlayFabSettings.TitleId, PlayFabSettings.ProductionEnvironmentURL];
 }
 
@@ -34,12 +32,11 @@ free(model);
 return deviceModel;
 }
 
-
--(void) AbortFileUploads:(AbortFileUploadsRequest*)request success:(AbortFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) AbortFileUploads:(DataAbortFileUploadsRequest*)request success:(AbortFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[AbortFileUploadsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataAbortFileUploadsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -56,7 +53,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                AbortFileUploadsResponse *model = [[AbortFileUploadsResponse new] initWithDictionary:class_data];
+                DataAbortFileUploadsResponse *model = [[DataAbortFileUploadsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -78,11 +75,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/File/AbortFileUploads"] body:jsonString authType:nil authKey:nil];
 }
--(void) DeleteFiles:(DeleteFilesRequest*)request success:(DeleteFilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) DeleteFiles:(DataDeleteFilesRequest*)request success:(DeleteFilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[DeleteFilesRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataDeleteFilesRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -99,7 +96,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                DeleteFilesResponse *model = [[DeleteFilesResponse new] initWithDictionary:class_data];
+                DataDeleteFilesResponse *model = [[DataDeleteFilesResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -121,11 +118,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/File/DeleteFiles"] body:jsonString authType:nil authKey:nil];
 }
--(void) FinalizeFileUploads:(FinalizeFileUploadsRequest*)request success:(FinalizeFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) FinalizeFileUploads:(DataFinalizeFileUploadsRequest*)request success:(FinalizeFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[FinalizeFileUploadsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataFinalizeFileUploadsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -142,7 +139,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                FinalizeFileUploadsResponse *model = [[FinalizeFileUploadsResponse new] initWithDictionary:class_data];
+                DataFinalizeFileUploadsResponse *model = [[DataFinalizeFileUploadsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -164,11 +161,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/File/FinalizeFileUploads"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetFiles:(GetFilesRequest*)request success:(GetFilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetFiles:(DataGetFilesRequest*)request success:(GetFilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetFilesRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataGetFilesRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -185,7 +182,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetFilesResponse *model = [[GetFilesResponse new] initWithDictionary:class_data];
+                DataGetFilesResponse *model = [[DataGetFilesResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -207,11 +204,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/File/GetFiles"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetObjects:(GetObjectsRequest*)request success:(GetObjectsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetObjects:(DataGetObjectsRequest*)request success:(GetObjectsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetObjectsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataGetObjectsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -228,7 +225,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetObjectsResponse *model = [[GetObjectsResponse new] initWithDictionary:class_data];
+                DataGetObjectsResponse *model = [[DataGetObjectsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -250,11 +247,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Object/GetObjects"] body:jsonString authType:nil authKey:nil];
 }
--(void) InitiateFileUploads:(InitiateFileUploadsRequest*)request success:(InitiateFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) InitiateFileUploads:(DataInitiateFileUploadsRequest*)request success:(InitiateFileUploadsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[InitiateFileUploadsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataInitiateFileUploadsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -271,7 +268,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                InitiateFileUploadsResponse *model = [[InitiateFileUploadsResponse new] initWithDictionary:class_data];
+                DataInitiateFileUploadsResponse *model = [[DataInitiateFileUploadsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -293,11 +290,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/File/InitiateFileUploads"] body:jsonString authType:nil authKey:nil];
 }
--(void) SetObjects:(SetObjectsRequest*)request success:(SetObjectsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) SetObjects:(DataSetObjectsRequest*)request success:(SetObjectsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[SetObjectsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[DataSetObjectsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -314,7 +311,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                SetObjectsResponse *model = [[SetObjectsResponse new] initWithDictionary:class_data];
+                DataSetObjectsResponse *model = [[DataSetObjectsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }

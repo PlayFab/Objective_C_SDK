@@ -1,7 +1,5 @@
 #import "PlayFabAuthenticationAPI.h"
 #import "PlayFabConnection.h"
-//#import "PlayFabSettings.h"
-//#import "PlayFabVersion.h"
 
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
@@ -11,7 +9,7 @@
 
 @implementation PlayFabAuthenticationAPI
 
-+(NSString*)GetURL {
++(NSString*) GetURL {
 return [NSString stringWithFormat:@"https://%@%@", PlayFabSettings.TitleId, PlayFabSettings.ProductionEnvironmentURL];
 }
 
@@ -34,12 +32,11 @@ free(model);
 return deviceModel;
 }
 
-
--(void) GetEntityToken:(GetEntityTokenRequest*)request success:(GetEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetEntityToken:(AuthenticationGetEntityTokenRequest*)request success:(GetEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetEntityTokenRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[AuthenticationGetEntityTokenRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -56,7 +53,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetEntityTokenResponse *model = [[GetEntityTokenResponse new] initWithDictionary:class_data];
+                AuthenticationGetEntityTokenResponse *model = [[AuthenticationGetEntityTokenResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }

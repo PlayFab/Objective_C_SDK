@@ -1,7 +1,5 @@
 #import "PlayFabProfilesAPI.h"
 #import "PlayFabConnection.h"
-//#import "PlayFabSettings.h"
-//#import "PlayFabVersion.h"
 
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
@@ -11,7 +9,7 @@
 
 @implementation PlayFabProfilesAPI
 
-+(NSString*)GetURL {
++(NSString*) GetURL {
 return [NSString stringWithFormat:@"https://%@%@", PlayFabSettings.TitleId, PlayFabSettings.ProductionEnvironmentURL];
 }
 
@@ -34,7 +32,6 @@ free(model);
 return deviceModel;
 }
 
-
 -(void) GetGlobalPolicy:(GetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
 {
     
@@ -56,7 +53,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetGlobalPolicyResponse *model = [[GetGlobalPolicyResponse new] initWithDictionary:class_data];
+                ProfilesGetGlobalPolicyResponse *model = [[ProfilesGetGlobalPolicyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -78,11 +75,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Profile/GetGlobalPolicy"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetProfile:(GetEntityProfileRequest*)request success:(GetProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetProfile:(ProfilesGetEntityProfileRequest*)request success:(GetProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetEntityProfileRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ProfilesGetEntityProfileRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -99,7 +96,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetEntityProfileResponse *model = [[GetEntityProfileResponse new] initWithDictionary:class_data];
+                ProfilesGetEntityProfileResponse *model = [[ProfilesGetEntityProfileResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -121,11 +118,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Profile/GetProfile"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetProfiles:(GetEntityProfilesRequest*)request success:(GetProfilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetProfiles:(ProfilesGetEntityProfilesRequest*)request success:(GetProfilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetEntityProfilesRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ProfilesGetEntityProfilesRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -142,7 +139,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetEntityProfilesResponse *model = [[GetEntityProfilesResponse new] initWithDictionary:class_data];
+                ProfilesGetEntityProfilesResponse *model = [[ProfilesGetEntityProfilesResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -164,11 +161,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Profile/GetProfiles"] body:jsonString authType:nil authKey:nil];
 }
--(void) SetGlobalPolicy:(SetGlobalPolicyRequest*)request success:(SetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) SetGlobalPolicy:(ProfilesSetGlobalPolicyRequest*)request success:(SetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[SetGlobalPolicyRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ProfilesSetGlobalPolicyRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -185,7 +182,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                SetGlobalPolicyResponse *model = [[SetGlobalPolicyResponse new] initWithDictionary:class_data];
+                ProfilesSetGlobalPolicyResponse *model = [[ProfilesSetGlobalPolicyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -207,11 +204,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Profile/SetGlobalPolicy"] body:jsonString authType:nil authKey:nil];
 }
--(void) SetProfileLanguage:(SetProfileLanguageRequest*)request success:(SetProfileLanguageCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) SetProfileLanguage:(ProfilesSetProfileLanguageRequest*)request success:(SetProfileLanguageCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[SetProfileLanguageRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ProfilesSetProfileLanguageRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -228,7 +225,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                SetProfileLanguageResponse *model = [[SetProfileLanguageResponse new] initWithDictionary:class_data];
+                ProfilesSetProfileLanguageResponse *model = [[ProfilesSetProfileLanguageResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -250,11 +247,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Profile/SetProfileLanguage"] body:jsonString authType:nil authKey:nil];
 }
--(void) SetProfilePolicy:(SetEntityProfilePolicyRequest*)request success:(SetProfilePolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) SetProfilePolicy:(ProfilesSetEntityProfilePolicyRequest*)request success:(SetProfilePolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[SetEntityProfilePolicyRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ProfilesSetEntityProfilePolicyRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -271,7 +268,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                SetEntityProfilePolicyResponse *model = [[SetEntityProfilePolicyResponse new] initWithDictionary:class_data];
+                ProfilesSetEntityProfilePolicyResponse *model = [[ProfilesSetEntityProfilePolicyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }

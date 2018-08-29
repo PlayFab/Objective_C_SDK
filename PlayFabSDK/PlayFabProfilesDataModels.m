@@ -1,7 +1,7 @@
 #import "PlayFabProfilesDataModels.h"
 
 
-@implementation EntityDataObject
+@implementation ProfilesEntityDataObject
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -22,7 +22,7 @@
     return self;
 }
 @end
-@implementation EntityKey
+@implementation ProfilesEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -35,15 +35,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation EntityPermissionStatement
+@implementation ProfilesEntityPermissionStatement
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -60,7 +58,7 @@
     
     self.Condition = [properties valueForKey:@"Condition"];
     
-    self.Effect = (EffectType)[properties valueForKey:@"Effect"];
+    self.Effect = (ProfilesEffectType)[properties valueForKey:@"ProfilesEffect"];
     
     self.Principal = [properties valueForKey:@"Principal"];
     
@@ -70,7 +68,7 @@
     return self;
 }
 @end
-@implementation EntityProfileBody
+@implementation ProfilesEntityProfileBody
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -81,7 +79,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.EntityChain = [properties valueForKey:@"EntityChain"];
     
@@ -89,7 +87,7 @@
     NSDictionary* member_list = [properties objectForKey:@"Files"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[EntityProfileFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ProfilesEntityProfileFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Files = [mutable_storage copy];
 }
@@ -101,7 +99,7 @@
     NSDictionary* member_list = [properties objectForKey:@"Objects"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[EntityDataObject new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ProfilesEntityDataObject new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Objects = [mutable_storage copy];
 }
@@ -111,7 +109,7 @@
     NSArray* member_list = [properties objectForKey:@"Permissions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Permissions = [mutable_storage copy];
 }
@@ -123,7 +121,7 @@
     return self;
 }
 @end
-@implementation EntityProfileFileMetadata
+@implementation ProfilesEntityProfileFileMetadata
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -146,7 +144,7 @@
     return self;
 }
 @end
-@implementation GetEntityProfileRequest
+@implementation ProfilesGetEntityProfileRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -159,13 +157,13 @@
     
     self.DataAsObject = [[properties valueForKey:@"DataAsObject"] boolValue];
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
 
     return self;
 }
 @end
-@implementation GetEntityProfileResponse
+@implementation ProfilesGetEntityProfileResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -176,13 +174,13 @@
     }
 
     
-    self.Profile = [[EntityProfileBody new] initWithDictionary:[properties objectForKey:@"Profile"]];
+    self.Profile = [[ProfilesEntityProfileBody new] initWithDictionary:[properties objectForKey:@"Profile"]];
     
 
     return self;
 }
 @end
-@implementation GetEntityProfilesRequest
+@implementation ProfilesGetEntityProfilesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -199,7 +197,7 @@
     NSArray* member_list = [properties objectForKey:@"Entities"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Entities = [mutable_storage copy];
 }
@@ -209,7 +207,7 @@
     return self;
 }
 @end
-@implementation GetEntityProfilesResponse
+@implementation ProfilesGetEntityProfilesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -224,7 +222,7 @@
     NSArray* member_list = [properties objectForKey:@"Profiles"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityProfileBody new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityProfileBody new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Profiles = [mutable_storage copy];
 }
@@ -234,7 +232,7 @@
     return self;
 }
 @end
-@implementation GetGlobalPolicyRequest
+@implementation ProfilesGetGlobalPolicyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -249,7 +247,7 @@
     return self;
 }
 @end
-@implementation GetGlobalPolicyResponse
+@implementation ProfilesGetGlobalPolicyResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -264,7 +262,7 @@
     NSArray* member_list = [properties objectForKey:@"Permissions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Permissions = [mutable_storage copy];
 }
@@ -274,7 +272,7 @@
     return self;
 }
 @end
-@implementation SetEntityProfilePolicyRequest
+@implementation ProfilesSetEntityProfilePolicyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -285,13 +283,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"Statements"]){
     NSArray* member_list = [properties objectForKey:@"Statements"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Statements = [mutable_storage copy];
 }
@@ -301,7 +299,7 @@
     return self;
 }
 @end
-@implementation SetEntityProfilePolicyResponse
+@implementation ProfilesSetEntityProfilePolicyResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -316,7 +314,7 @@
     NSArray* member_list = [properties objectForKey:@"Permissions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Permissions = [mutable_storage copy];
 }
@@ -326,7 +324,7 @@
     return self;
 }
 @end
-@implementation SetGlobalPolicyRequest
+@implementation ProfilesSetGlobalPolicyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -341,7 +339,7 @@
     NSArray* member_list = [properties objectForKey:@"Permissions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Permissions = [mutable_storage copy];
 }
@@ -351,7 +349,7 @@
     return self;
 }
 @end
-@implementation SetGlobalPolicyResponse
+@implementation ProfilesSetGlobalPolicyResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -366,7 +364,7 @@
     return self;
 }
 @end
-@implementation SetProfileLanguageRequest
+@implementation ProfilesSetProfileLanguageRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -377,7 +375,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.ExpectedVersion = [properties valueForKey:@"ExpectedVersion"];
     
@@ -387,7 +385,7 @@
     return self;
 }
 @end
-@implementation SetProfileLanguageResponse
+@implementation ProfilesSetProfileLanguageResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -398,7 +396,7 @@
     }
 
     
-    self.OperationResult = (OperationTypes)[properties valueForKey:@"OperationResult"];
+    self.OperationResult = (ProfilesOperationTypes)[properties valueForKey:@"ProfilesOperationResult"];
     
     self.VersionNumber = [properties valueForKey:@"VersionNumber"];
     

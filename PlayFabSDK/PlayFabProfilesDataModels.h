@@ -1,75 +1,63 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
+typedef enum
+{
+    ProfilesEffectTypeAllow,
+    ProfilesEffectTypeDeny
+} ProfilesEffectType;
 
 typedef enum
 {
-    EffectTypeAllow,
-    EffectTypeDeny
-} EffectType;
-
-typedef enum
-{
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
-
-typedef enum
-{
-    OperationTypesCreated,
-    OperationTypesUpdated,
-    OperationTypesDeleted,
-    OperationTypesNone
-} OperationTypes;
+    ProfilesOperationTypesCreated,
+    ProfilesOperationTypesUpdated,
+    ProfilesOperationTypesDeleted,
+    ProfilesOperationTypesNone
+} ProfilesOperationTypes;
 
 //predeclare all non-enum classes
 
-@class EntityDataObject;
+@class ProfilesEntityDataObject;
 
-@class EntityKey;
+@class ProfilesEntityKey;
 
-@class EntityPermissionStatement;
+@class ProfilesEntityPermissionStatement;
 
-@class EntityProfileBody;
+@class ProfilesEntityProfileBody;
 
-@class EntityProfileFileMetadata;
+@class ProfilesEntityProfileFileMetadata;
 
-@class GetEntityProfileRequest;
+@class ProfilesGetEntityProfileRequest;
 
-@class GetEntityProfileResponse;
+@class ProfilesGetEntityProfileResponse;
 
-@class GetEntityProfilesRequest;
+@class ProfilesGetEntityProfilesRequest;
 
-@class GetEntityProfilesResponse;
+@class ProfilesGetEntityProfilesResponse;
 
-@class GetGlobalPolicyRequest;
+@class ProfilesGetGlobalPolicyRequest;
 
-@class GetGlobalPolicyResponse;
+@class ProfilesGetGlobalPolicyResponse;
 
-@class SetEntityProfilePolicyRequest;
+@class ProfilesSetEntityProfilePolicyRequest;
 
-@class SetEntityProfilePolicyResponse;
+@class ProfilesSetEntityProfilePolicyResponse;
 
-@class SetGlobalPolicyRequest;
+@class ProfilesSetGlobalPolicyRequest;
 
-@class SetGlobalPolicyResponse;
+@class ProfilesSetGlobalPolicyResponse;
 
-@class SetProfileLanguageRequest;
+@class ProfilesSetProfileLanguageRequest;
 
-@class SetProfileLanguageResponse;
+@class ProfilesSetProfileLanguageResponse;
 
 
 
 /// <summary>
 /// An entity object and its associated meta data.
 /// </summary>
-@interface EntityDataObject : PlayFabBaseModel
+@interface ProfilesEntityDataObject : PlayFabBaseModel
 
 
 /// <summary>
@@ -92,31 +80,26 @@ typedef enum
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface ProfilesEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface EntityPermissionStatement : PlayFabBaseModel
+@interface ProfilesEntityPermissionStatement : PlayFabBaseModel
 
 
 /// <summary>
@@ -137,7 +120,7 @@ typedef enum
 /// <summary>
 /// The effect this statement will have. It may be either Allow or Deny
 /// </summary>
-@property EffectType Effect; 
+@property ProfilesEffectType Effect; 
 
 /// <summary>
 /// The principal this statement will effect.
@@ -153,13 +136,13 @@ typedef enum
 @end
 
 
-@interface EntityProfileBody : PlayFabBaseModel
+@interface ProfilesEntityProfileBody : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property ProfilesEntityKey* Entity; 
 
 /// <summary>
 /// The chain of responsibility for this entity. This is a representation of 'ownership'. It is constructed using the following formats (replace '[ID]' with the unique identifier for the given entity): Namespace: 'namespace![Namespace ID]' Title: 'title![Namespace ID]/[Title ID]' Master Player Account: 'master_player_account![Namespace ID]/[MasterPlayerAccount ID]' Title Player Account: 'title_player_account![Namespace ID]/[Title ID]/[MasterPlayerAccount ID]/[TitlePlayerAccount ID]' Character: 'character![Namespace ID]/[Title ID]/[MasterPlayerAccount ID]/[TitlePlayerAccount ID]/[Character ID]'
@@ -198,7 +181,7 @@ typedef enum
 /// <summary>
 /// An entity file's meta data. To get a download URL call File/GetFiles API.
 /// </summary>
-@interface EntityProfileFileMetadata : PlayFabBaseModel
+@interface ProfilesEntityProfileFileMetadata : PlayFabBaseModel
 
 
 /// <summary>
@@ -225,7 +208,7 @@ typedef enum
 @end
 
 
-@interface GetEntityProfileRequest : PlayFabBaseModel
+@interface ProfilesGetEntityProfileRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -236,19 +219,19 @@ typedef enum
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property ProfilesEntityKey* Entity; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetEntityProfileResponse : PlayFabBaseModel
+@interface ProfilesGetEntityProfileResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// Entity profile
 /// </summary>
-@property EntityProfileBody* Profile; 
+@property ProfilesEntityProfileBody* Profile; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -257,7 +240,7 @@ typedef enum
 @end
 
 
-@interface GetEntityProfilesRequest : PlayFabBaseModel
+@interface ProfilesGetEntityProfilesRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -274,7 +257,7 @@ typedef enum
 @end
 
 
-@interface GetEntityProfilesResponse : PlayFabBaseModel
+@interface ProfilesGetEntityProfilesResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -289,14 +272,14 @@ typedef enum
 @end
 
 
-@interface GetGlobalPolicyRequest : PlayFabBaseModel
+@interface ProfilesGetGlobalPolicyRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetGlobalPolicyResponse : PlayFabBaseModel
+@interface ProfilesGetGlobalPolicyResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -311,13 +294,13 @@ typedef enum
 @end
 
 
-@interface SetEntityProfilePolicyRequest : PlayFabBaseModel
+@interface ProfilesSetEntityProfilePolicyRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property ProfilesEntityKey* Entity; 
 
 /// <summary>
 /// The statements to include in the access policy.
@@ -328,7 +311,7 @@ typedef enum
 @end
 
 
-@interface SetEntityProfilePolicyResponse : PlayFabBaseModel
+@interface ProfilesSetEntityProfilePolicyResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -343,7 +326,7 @@ typedef enum
 @end
 
 
-@interface SetGlobalPolicyRequest : PlayFabBaseModel
+@interface ProfilesSetGlobalPolicyRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -355,7 +338,7 @@ typedef enum
 @end
 
 
-@interface SetGlobalPolicyResponse : PlayFabBaseModel
+@interface ProfilesSetGlobalPolicyResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -365,13 +348,13 @@ typedef enum
 @end
 
 
-@interface SetProfileLanguageRequest : PlayFabBaseModel
+@interface ProfilesSetProfileLanguageRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property ProfilesEntityKey* Entity; 
 
 /// <summary>
 /// The expected version of a profile to perform this update on
@@ -387,13 +370,13 @@ typedef enum
 @end
 
 
-@interface SetProfileLanguageResponse : PlayFabBaseModel
+@interface ProfilesSetProfileLanguageResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The type of operation that occured on the profile's language
 /// </summary>
-@property OperationTypes OperationResult; 
+@property ProfilesOperationTypes OperationResult; 
 
 /// <summary>
 /// The updated version of the profile after the language update

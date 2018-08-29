@@ -1,7 +1,5 @@
 #import "PlayFabCloudScriptAPI.h"
 #import "PlayFabConnection.h"
-//#import "PlayFabSettings.h"
-//#import "PlayFabVersion.h"
 
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
@@ -11,7 +9,7 @@
 
 @implementation PlayFabCloudScriptAPI
 
-+(NSString*)GetURL {
++(NSString*) GetURL {
 return [NSString stringWithFormat:@"https://%@%@", PlayFabSettings.TitleId, PlayFabSettings.ProductionEnvironmentURL];
 }
 
@@ -34,12 +32,11 @@ free(model);
 return deviceModel;
 }
 
-
--(void) ExecuteEntityCloudScript:(ExecuteEntityCloudScriptRequest*)request success:(ExecuteEntityCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ExecuteEntityCloudScript:(CloudScriptExecuteEntityCloudScriptRequest*)request success:(ExecuteEntityCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ExecuteEntityCloudScriptRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[CloudScriptExecuteEntityCloudScriptRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -56,7 +53,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ExecuteCloudScriptResult *model = [[ExecuteCloudScriptResult new] initWithDictionary:class_data];
+                CloudScriptExecuteCloudScriptResult *model = [[CloudScriptExecuteCloudScriptResult new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }

@@ -1,78 +1,66 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
-
 typedef enum
 {
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
-
-typedef enum
-{
-    OperationTypesCreated,
-    OperationTypesUpdated,
-    OperationTypesDeleted,
-    OperationTypesNone
-} OperationTypes;
+    DataOperationTypesCreated,
+    DataOperationTypesUpdated,
+    DataOperationTypesDeleted,
+    DataOperationTypesNone
+} DataOperationTypes;
 
 //predeclare all non-enum classes
 
-@class AbortFileUploadsRequest;
+@class DataAbortFileUploadsRequest;
 
-@class AbortFileUploadsResponse;
+@class DataAbortFileUploadsResponse;
 
-@class DeleteFilesRequest;
+@class DataDeleteFilesRequest;
 
-@class DeleteFilesResponse;
+@class DataDeleteFilesResponse;
 
-@class EntityKey;
+@class DataEntityKey;
 
-@class FinalizeFileUploadsRequest;
+@class DataFinalizeFileUploadsRequest;
 
-@class FinalizeFileUploadsResponse;
+@class DataFinalizeFileUploadsResponse;
 
-@class GetFileMetadata;
+@class DataGetFileMetadata;
 
-@class GetFilesRequest;
+@class DataGetFilesRequest;
 
-@class GetFilesResponse;
+@class DataGetFilesResponse;
 
-@class GetObjectsRequest;
+@class DataGetObjectsRequest;
 
-@class GetObjectsResponse;
+@class DataGetObjectsResponse;
 
-@class InitiateFileUploadMetadata;
+@class DataInitiateFileUploadMetadata;
 
-@class InitiateFileUploadsRequest;
+@class DataInitiateFileUploadsRequest;
 
-@class InitiateFileUploadsResponse;
+@class DataInitiateFileUploadsResponse;
 
-@class ObjectResult;
+@class DataObjectResult;
 
-@class SetObject;
+@class DataSetObject;
 
-@class SetObjectInfo;
+@class DataSetObjectInfo;
 
-@class SetObjectsRequest;
+@class DataSetObjectsRequest;
 
-@class SetObjectsResponse;
+@class DataSetObjectsResponse;
 
 
 
-@interface AbortFileUploadsRequest : PlayFabBaseModel
+@interface DataAbortFileUploadsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Names of the files to have their pending uploads aborted.
@@ -88,13 +76,13 @@ typedef enum
 @end
 
 
-@interface AbortFileUploadsResponse : PlayFabBaseModel
+@interface DataAbortFileUploadsResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// The current version of the profile, can be used for concurrency control during updates.
@@ -108,13 +96,13 @@ typedef enum
 @end
 
 
-@interface DeleteFilesRequest : PlayFabBaseModel
+@interface DataDeleteFilesRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Names of the files to be deleted.
@@ -130,13 +118,13 @@ typedef enum
 @end
 
 
-@interface DeleteFilesResponse : PlayFabBaseModel
+@interface DataDeleteFilesResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// The current version of the profile, can be used for concurrency control during updates.
@@ -151,37 +139,32 @@ typedef enum
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface DataEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface FinalizeFileUploadsRequest : PlayFabBaseModel
+@interface DataFinalizeFileUploadsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Names of the files to be finalized. Restricted to a-Z, 0-9, '(', ')', '_', '-' and '.'
@@ -192,13 +175,13 @@ typedef enum
 @end
 
 
-@interface FinalizeFileUploadsResponse : PlayFabBaseModel
+@interface DataFinalizeFileUploadsResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Collection of metadata for the entity's files
@@ -217,7 +200,7 @@ typedef enum
 @end
 
 
-@interface GetFileMetadata : PlayFabBaseModel
+@interface DataGetFileMetadata : PlayFabBaseModel
 
 
 /// <summary>
@@ -249,25 +232,25 @@ typedef enum
 @end
 
 
-@interface GetFilesRequest : PlayFabBaseModel
+@interface DataGetFilesRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetFilesResponse : PlayFabBaseModel
+@interface DataGetFilesResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Collection of metadata for the entity's files
@@ -286,13 +269,13 @@ typedef enum
 @end
 
 
-@interface GetObjectsRequest : PlayFabBaseModel
+@interface DataGetObjectsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Determines whether the object will be returned as an escaped JSON string or as a un-escaped JSON object. Default is JSON object.
@@ -303,13 +286,13 @@ typedef enum
 @end
 
 
-@interface GetObjectsResponse : PlayFabBaseModel
+@interface DataGetObjectsResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Requested objects that the calling entity has access to
@@ -328,7 +311,7 @@ typedef enum
 @end
 
 
-@interface InitiateFileUploadMetadata : PlayFabBaseModel
+@interface DataInitiateFileUploadMetadata : PlayFabBaseModel
 
 
 /// <summary>
@@ -345,13 +328,13 @@ typedef enum
 @end
 
 
-@interface InitiateFileUploadsRequest : PlayFabBaseModel
+@interface DataInitiateFileUploadsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Names of the files to be set. Restricted to a-Z, 0-9, '(', ')', '_', '-' and '.'
@@ -367,13 +350,13 @@ typedef enum
 @end
 
 
-@interface InitiateFileUploadsResponse : PlayFabBaseModel
+@interface DataInitiateFileUploadsResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// The current version of the profile, can be used for concurrency control during updates.
@@ -392,7 +375,7 @@ typedef enum
 @end
 
 
-@interface ObjectResult : PlayFabBaseModel
+@interface DataObjectResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -417,7 +400,7 @@ typedef enum
 @end
 
 
-@interface SetObject : PlayFabBaseModel
+@interface DataSetObject : PlayFabBaseModel
 
 
 /// <summary>
@@ -444,7 +427,7 @@ typedef enum
 @end
 
 
-@interface SetObjectInfo : PlayFabBaseModel
+@interface DataSetObjectInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -460,19 +443,19 @@ typedef enum
 /// <summary>
 /// Indicates which operation was completed, either Created, Updated, Deleted or None.
 /// </summary>
-@property OperationTypes SetResult; 
+@property DataOperationTypes SetResult; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface SetObjectsRequest : PlayFabBaseModel
+@interface DataSetObjectsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property DataEntityKey* Entity; 
 
 /// <summary>
 /// Optional field used for concurrency control. By specifying the previously returned value of ProfileVersion from GetProfile API, you can ensure that the object set will only be performed if the profile has not been updated by any other clients since the version you last loaded.
@@ -488,7 +471,7 @@ typedef enum
 @end
 
 
-@interface SetObjectsResponse : PlayFabBaseModel
+@interface DataSetObjectsResponse : PlayFabBaseModel
 
 
 /// <summary>

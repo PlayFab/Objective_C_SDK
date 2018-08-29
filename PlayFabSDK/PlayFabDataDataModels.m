@@ -1,7 +1,7 @@
 #import "PlayFabDataDataModels.h"
 
 
-@implementation AbortFileUploadsRequest
+@implementation DataAbortFileUploadsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -12,7 +12,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"FileNames"]){
     NSArray* member_list = [properties objectForKey:@"FileNames"];
@@ -30,7 +30,7 @@
     return self;
 }
 @end
-@implementation AbortFileUploadsResponse
+@implementation DataAbortFileUploadsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -41,7 +41,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
     
@@ -49,7 +49,7 @@
     return self;
 }
 @end
-@implementation DeleteFilesRequest
+@implementation DataDeleteFilesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -60,7 +60,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"FileNames"]){
     NSArray* member_list = [properties objectForKey:@"FileNames"];
@@ -78,7 +78,7 @@
     return self;
 }
 @end
-@implementation DeleteFilesResponse
+@implementation DataDeleteFilesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -89,7 +89,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
     
@@ -97,7 +97,7 @@
     return self;
 }
 @end
-@implementation EntityKey
+@implementation DataEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -110,15 +110,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation FinalizeFileUploadsRequest
+@implementation DataFinalizeFileUploadsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -129,7 +127,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"FileNames"]){
     NSArray* member_list = [properties objectForKey:@"FileNames"];
@@ -145,7 +143,7 @@
     return self;
 }
 @end
-@implementation FinalizeFileUploadsResponse
+@implementation DataFinalizeFileUploadsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -156,13 +154,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[GetFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[DataGetFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Metadata = [mutable_storage copy];
 }
@@ -174,7 +172,7 @@
     return self;
 }
 @end
-@implementation GetFileMetadata
+@implementation DataGetFileMetadata
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -199,7 +197,7 @@
     return self;
 }
 @end
-@implementation GetFilesRequest
+@implementation DataGetFilesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -210,13 +208,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
 
     return self;
 }
 @end
-@implementation GetFilesResponse
+@implementation DataGetFilesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -227,13 +225,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[GetFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[DataGetFileMetadata new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Metadata = [mutable_storage copy];
 }
@@ -245,7 +243,7 @@
     return self;
 }
 @end
-@implementation GetObjectsRequest
+@implementation DataGetObjectsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -256,7 +254,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.EscapeObject = [[properties valueForKey:@"EscapeObject"] boolValue];
     
@@ -264,7 +262,7 @@
     return self;
 }
 @end
-@implementation GetObjectsResponse
+@implementation DataGetObjectsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -275,13 +273,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"Objects"]){
     NSDictionary* member_list = [properties objectForKey:@"Objects"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[ObjectResult new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[DataObjectResult new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Objects = [mutable_storage copy];
 }
@@ -293,7 +291,7 @@
     return self;
 }
 @end
-@implementation InitiateFileUploadMetadata
+@implementation DataInitiateFileUploadMetadata
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -312,7 +310,7 @@
     return self;
 }
 @end
-@implementation InitiateFileUploadsRequest
+@implementation DataInitiateFileUploadsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -323,7 +321,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     if ([properties objectForKey:@"FileNames"]){
     NSArray* member_list = [properties objectForKey:@"FileNames"];
@@ -341,7 +339,7 @@
     return self;
 }
 @end
-@implementation InitiateFileUploadsResponse
+@implementation DataInitiateFileUploadsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -352,7 +350,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
     
@@ -360,7 +358,7 @@
     NSArray* member_list = [properties objectForKey:@"UploadDetails"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[InitiateFileUploadMetadata new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[DataInitiateFileUploadMetadata new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.UploadDetails = [mutable_storage copy];
 }
@@ -370,7 +368,7 @@
     return self;
 }
 @end
-@implementation ObjectResult
+@implementation DataObjectResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -391,7 +389,7 @@
     return self;
 }
 @end
-@implementation SetObject
+@implementation DataSetObject
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -414,7 +412,7 @@
     return self;
 }
 @end
-@implementation SetObjectInfo
+@implementation DataSetObjectInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -429,13 +427,13 @@
     
     self.OperationReason = [properties valueForKey:@"OperationReason"];
     
-    self.SetResult = (OperationTypes)[properties valueForKey:@"SetResult"];
+    self.SetResult = (DataOperationTypes)[properties valueForKey:@"DataSetResult"];
     
 
     return self;
 }
 @end
-@implementation SetObjectsRequest
+@implementation DataSetObjectsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -446,7 +444,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[DataEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.ExpectedProfileVersion = [properties valueForKey:@"ExpectedProfileVersion"];
     
@@ -454,7 +452,7 @@
     NSArray* member_list = [properties objectForKey:@"Objects"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[SetObject new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[DataSetObject new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Objects = [mutable_storage copy];
 }
@@ -464,7 +462,7 @@
     return self;
 }
 @end
-@implementation SetObjectsResponse
+@implementation DataSetObjectsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -481,7 +479,7 @@
     NSArray* member_list = [properties objectForKey:@"SetResults"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[SetObjectInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[DataSetObjectInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.SetResults = [mutable_storage copy];
 }

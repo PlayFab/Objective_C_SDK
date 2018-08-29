@@ -1,7 +1,7 @@
 #import "PlayFabClientDataModels.h"
 
 
-@implementation AcceptTradeRequest
+@implementation ClientAcceptTradeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -30,7 +30,7 @@
     return self;
 }
 @end
-@implementation AcceptTradeResponse
+@implementation ClientAcceptTradeResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -41,13 +41,13 @@
     }
 
     
-    self.Trade = [[TradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
+    self.Trade = [[ClientTradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
     
 
     return self;
 }
 @end
-@implementation AdCampaignAttributionModel
+@implementation ClientAdCampaignAttributionModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -68,7 +68,7 @@
     return self;
 }
 @end
-@implementation AddFriendRequest
+@implementation ClientAddFriendRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -91,7 +91,7 @@
     return self;
 }
 @end
-@implementation AddFriendResult
+@implementation ClientAddFriendResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -108,7 +108,7 @@
     return self;
 }
 @end
-@implementation AddGenericIDRequest
+@implementation ClientAddGenericIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -119,13 +119,13 @@
     }
 
     
-    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    self.GenericId = [[ClientGenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
     
 
     return self;
 }
 @end
-@implementation AddGenericIDResult
+@implementation ClientAddGenericIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -140,7 +140,7 @@
     return self;
 }
 @end
-@implementation AddOrUpdateContactEmailRequest
+@implementation ClientAddOrUpdateContactEmailRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -157,7 +157,7 @@
     return self;
 }
 @end
-@implementation AddOrUpdateContactEmailResult
+@implementation ClientAddOrUpdateContactEmailResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -172,7 +172,7 @@
     return self;
 }
 @end
-@implementation AddSharedGroupMembersRequest
+@implementation ClientAddSharedGroupMembersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -199,7 +199,7 @@
     return self;
 }
 @end
-@implementation AddSharedGroupMembersResult
+@implementation ClientAddSharedGroupMembersResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -214,7 +214,7 @@
     return self;
 }
 @end
-@implementation AddUsernamePasswordRequest
+@implementation ClientAddUsernamePasswordRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -235,7 +235,7 @@
     return self;
 }
 @end
-@implementation AddUsernamePasswordResult
+@implementation ClientAddUsernamePasswordResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -252,7 +252,7 @@
     return self;
 }
 @end
-@implementation AddUserVirtualCurrencyRequest
+@implementation ClientAddUserVirtualCurrencyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -271,7 +271,7 @@
     return self;
 }
 @end
-@implementation AndroidDevicePushNotificationRegistrationRequest
+@implementation ClientAndroidDevicePushNotificationRegistrationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -292,7 +292,7 @@
     return self;
 }
 @end
-@implementation AndroidDevicePushNotificationRegistrationResult
+@implementation ClientAndroidDevicePushNotificationRegistrationResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -307,7 +307,7 @@
     return self;
 }
 @end
-@implementation AttributeInstallRequest
+@implementation ClientAttributeInstallRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -326,7 +326,7 @@
     return self;
 }
 @end
-@implementation AttributeInstallResult
+@implementation ClientAttributeInstallResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -341,7 +341,7 @@
     return self;
 }
 @end
-@implementation CancelTradeRequest
+@implementation ClientCancelTradeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -358,7 +358,7 @@
     return self;
 }
 @end
-@implementation CancelTradeResponse
+@implementation ClientCancelTradeResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -369,13 +369,13 @@
     }
 
     
-    self.Trade = [[TradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
+    self.Trade = [[ClientTradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
     
 
     return self;
 }
 @end
-@implementation CartItem
+@implementation ClientCartItem
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -430,7 +430,7 @@
     return self;
 }
 @end
-@implementation CatalogItem
+@implementation ClientCatalogItem
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -441,15 +441,15 @@
     }
 
     
-    self.Bundle = [[CatalogItemBundleInfo new] initWithDictionary:[properties objectForKey:@"Bundle"]];
+    self.Bundle = [[ClientCatalogItemBundleInfo new] initWithDictionary:[properties objectForKey:@"Bundle"]];
     
     self.CanBecomeCharacter = [[properties valueForKey:@"CanBecomeCharacter"] boolValue];
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
-    self.Consumable = [[CatalogItemConsumableInfo new] initWithDictionary:[properties objectForKey:@"Consumable"]];
+    self.Consumable = [[ClientCatalogItemConsumableInfo new] initWithDictionary:[properties objectForKey:@"Consumable"]];
     
-    self.Container = [[CatalogItemContainerInfo new] initWithDictionary:[properties objectForKey:@"Container"]];
+    self.Container = [[ClientCatalogItemContainerInfo new] initWithDictionary:[properties objectForKey:@"Container"]];
     
     self.CustomData = [properties valueForKey:@"CustomData"];
     
@@ -505,7 +505,7 @@
     return self;
 }
 @end
-@implementation CatalogItemBundleInfo
+@implementation ClientCatalogItemBundleInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -550,7 +550,7 @@
     return self;
 }
 @end
-@implementation CatalogItemConsumableInfo
+@implementation ClientCatalogItemConsumableInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -571,7 +571,7 @@
     return self;
 }
 @end
-@implementation CatalogItemContainerInfo
+@implementation ClientCatalogItemContainerInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -618,7 +618,7 @@
     return self;
 }
 @end
-@implementation CharacterInventory
+@implementation ClientCharacterInventory
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -635,7 +635,7 @@
     NSArray* member_list = [properties objectForKey:@"Inventory"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Inventory = [mutable_storage copy];
 }
@@ -645,7 +645,7 @@
     return self;
 }
 @end
-@implementation CharacterLeaderboardEntry
+@implementation ClientCharacterLeaderboardEntry
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -674,7 +674,7 @@
     return self;
 }
 @end
-@implementation CharacterResult
+@implementation ClientCharacterResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -695,7 +695,7 @@
     return self;
 }
 @end
-@implementation CollectionFilter
+@implementation ClientCollectionFilter
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -710,7 +710,7 @@
     NSArray* member_list = [properties objectForKey:@"Excludes"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[Container_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientContainer_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Excludes = [mutable_storage copy];
 }
@@ -720,7 +720,7 @@
     NSArray* member_list = [properties objectForKey:@"Includes"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[Container_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientContainer_Dictionary_String_String new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Includes = [mutable_storage copy];
 }
@@ -730,7 +730,7 @@
     return self;
 }
 @end
-@implementation ConfirmPurchaseRequest
+@implementation ClientConfirmPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -747,7 +747,7 @@
     return self;
 }
 @end
-@implementation ConfirmPurchaseResult
+@implementation ClientConfirmPurchaseResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -762,7 +762,7 @@
     NSArray* member_list = [properties objectForKey:@"Items"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Items = [mutable_storage copy];
 }
@@ -776,7 +776,7 @@
     return self;
 }
 @end
-@implementation ConsumeItemRequest
+@implementation ClientConsumeItemRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -797,7 +797,7 @@
     return self;
 }
 @end
-@implementation ConsumeItemResult
+@implementation ClientConsumeItemResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -816,7 +816,51 @@
     return self;
 }
 @end
-@implementation ContactEmailInfoModel
+@implementation ClientConsumeXboxEntitlementsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
+    
+
+    return self;
+}
+@end
+@implementation ClientConsumeXboxEntitlementsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Items"]){
+    NSArray* member_list = [properties objectForKey:@"Items"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Items = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ClientContactEmailInfoModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -831,13 +875,13 @@
     
     self.Name = [properties valueForKey:@"Name"];
     
-    self.VerificationStatus = (EmailVerificationStatus)[properties valueForKey:@"VerificationStatus"];
+    self.VerificationStatus = (ClientEmailVerificationStatus)[properties valueForKey:@"ClientVerificationStatus"];
     
 
     return self;
 }
 @end
-@implementation Container_Dictionary_String_String
+@implementation ClientContainer_Dictionary_String_String
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -862,7 +906,7 @@
     return self;
 }
 @end
-@implementation CreateSharedGroupRequest
+@implementation ClientCreateSharedGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -879,7 +923,7 @@
     return self;
 }
 @end
-@implementation CreateSharedGroupResult
+@implementation ClientCreateSharedGroupResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -896,7 +940,7 @@
     return self;
 }
 @end
-@implementation CurrentGamesRequest
+@implementation ClientCurrentGamesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -911,17 +955,17 @@
     
     self.GameMode = [properties valueForKey:@"GameMode"];
     
-    self.pfRegion = (Region)[properties valueForKey:@"Region"];
+    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
-    self.TagFilter = [[CollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
+    self.TagFilter = [[ClientCollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
     
 
     return self;
 }
 @end
-@implementation CurrentGamesResult
+@implementation ClientCurrentGamesResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -938,7 +982,7 @@
     NSArray* member_list = [properties objectForKey:@"Games"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GameInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGameInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Games = [mutable_storage copy];
 }
@@ -950,7 +994,7 @@
     return self;
 }
 @end
-@implementation DeviceInfoRequest
+@implementation ClientDeviceInfoRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -975,7 +1019,7 @@
     return self;
 }
 @end
-@implementation EmptyResult
+@implementation ClientEmptyResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -990,7 +1034,7 @@
     return self;
 }
 @end
-@implementation EntityKey
+@implementation ClientEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1003,15 +1047,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation EntityTokenResponse
+@implementation ClientEntityTokenResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1022,7 +1064,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[ClientEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.EntityToken = [properties valueForKey:@"EntityToken"];
     
@@ -1032,7 +1074,7 @@
     return self;
 }
 @end
-@implementation ExecuteCloudScriptRequest
+@implementation ClientExecuteCloudScriptRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1049,7 +1091,7 @@
     
     self.GeneratePlayStreamEvent = [[properties valueForKey:@"GeneratePlayStreamEvent"] boolValue];
     
-    self.RevisionSelection = (CloudScriptRevisionOption)[properties valueForKey:@"RevisionSelection"];
+    self.RevisionSelection = (ClientCloudScriptRevisionOption)[properties valueForKey:@"ClientRevisionSelection"];
     
     self.SpecificRevision = [properties valueForKey:@"SpecificRevision"];
     
@@ -1057,7 +1099,7 @@
     return self;
 }
 @end
-@implementation ExecuteCloudScriptResult
+@implementation ClientExecuteCloudScriptResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1070,7 +1112,7 @@
     
     self.APIRequestsIssued = [properties valueForKey:@"APIRequestsIssued"];
     
-    self.Error = [[ScriptExecutionError new] initWithDictionary:[properties objectForKey:@"Error"]];
+    self.Error = [[ClientScriptExecutionError new] initWithDictionary:[properties objectForKey:@"Error"]];
     
     self.ExecutionTimeSeconds = [properties valueForKey:@"ExecutionTimeSeconds"];
     
@@ -1086,7 +1128,7 @@
     NSArray* member_list = [properties objectForKey:@"Logs"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[LogStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientLogStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Logs = [mutable_storage copy];
 }
@@ -1104,7 +1146,7 @@
     return self;
 }
 @end
-@implementation FacebookInstantGamesPlayFabIdPair
+@implementation ClientFacebookInstantGamesPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1123,7 +1165,7 @@
     return self;
 }
 @end
-@implementation FacebookPlayFabIdPair
+@implementation ClientFacebookPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1142,7 +1184,7 @@
     return self;
 }
 @end
-@implementation FriendInfo
+@implementation ClientFriendInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1155,17 +1197,17 @@
     
     self.CurrentMatchmakerLobbyId = [properties valueForKey:@"CurrentMatchmakerLobbyId"];
     
-    self.FacebookInfo = [[UserFacebookInfo new] initWithDictionary:[properties objectForKey:@"FacebookInfo"]];
+    self.FacebookInfo = [[ClientUserFacebookInfo new] initWithDictionary:[properties objectForKey:@"FacebookInfo"]];
     
     self.FriendPlayFabId = [properties valueForKey:@"FriendPlayFabId"];
     
-    self.GameCenterInfo = [[UserGameCenterInfo new] initWithDictionary:[properties objectForKey:@"GameCenterInfo"]];
+    self.GameCenterInfo = [[ClientUserGameCenterInfo new] initWithDictionary:[properties objectForKey:@"GameCenterInfo"]];
     
-    self.Profile = [[PlayerProfileModel new] initWithDictionary:[properties objectForKey:@"Profile"]];
+    self.Profile = [[ClientPlayerProfileModel new] initWithDictionary:[properties objectForKey:@"Profile"]];
     
-    self.PSNInfo = [[UserPsnInfo new] initWithDictionary:[properties objectForKey:@"PSNInfo"]];
+    self.PSNInfo = [[ClientUserPsnInfo new] initWithDictionary:[properties objectForKey:@"PSNInfo"]];
     
-    self.SteamInfo = [[UserSteamInfo new] initWithDictionary:[properties objectForKey:@"SteamInfo"]];
+    self.SteamInfo = [[ClientUserSteamInfo new] initWithDictionary:[properties objectForKey:@"SteamInfo"]];
     
     if ([properties objectForKey:@"Tags"]){
     NSArray* member_list = [properties objectForKey:@"Tags"];
@@ -1181,13 +1223,13 @@
     
     self.Username = [properties valueForKey:@"Username"];
     
-    self.XboxInfo = [[UserXboxInfo new] initWithDictionary:[properties objectForKey:@"XboxInfo"]];
+    self.XboxInfo = [[ClientUserXboxInfo new] initWithDictionary:[properties objectForKey:@"XboxInfo"]];
     
 
     return self;
 }
 @end
-@implementation GameCenterPlayFabIdPair
+@implementation ClientGameCenterPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1206,7 +1248,7 @@
     return self;
 }
 @end
-@implementation GameInfo
+@implementation ClientGameInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1223,7 +1265,7 @@
     
     self.GameServerData = [properties valueForKey:@"GameServerData"];
     
-    self.GameServerStateEnum = (GameInstanceState)[properties valueForKey:@"GameServerStateEnum"];
+    self.GameServerStateEnum = (ClientGameInstanceState)[properties valueForKey:@"ClientGameServerStateEnum"];
     
     self.LastHeartbeat = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastHeartbeat"]];
     
@@ -1241,7 +1283,7 @@
 }
 
     
-    self.pfRegion = (Region)[properties valueForKey:@"Region"];
+    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
     self.RunTime = [properties valueForKey:@"RunTime"];
     
@@ -1271,7 +1313,7 @@
     return self;
 }
 @end
-@implementation GameServerRegionsRequest
+@implementation ClientGameServerRegionsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1290,7 +1332,7 @@
     return self;
 }
 @end
-@implementation GameServerRegionsResult
+@implementation ClientGameServerRegionsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1305,7 +1347,7 @@
     NSArray* member_list = [properties objectForKey:@"Regions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[RegionInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientRegionInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Regions = [mutable_storage copy];
 }
@@ -1315,7 +1357,7 @@
     return self;
 }
 @end
-@implementation GenericPlayFabIdPair
+@implementation ClientGenericPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1326,7 +1368,7 @@
     }
 
     
-    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    self.GenericId = [[ClientGenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
@@ -1334,7 +1376,7 @@
     return self;
 }
 @end
-@implementation GenericServiceId
+@implementation ClientGenericServiceId
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1353,7 +1395,7 @@
     return self;
 }
 @end
-@implementation GetAccountInfoRequest
+@implementation ClientGetAccountInfoRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1376,7 +1418,7 @@
     return self;
 }
 @end
-@implementation GetAccountInfoResult
+@implementation ClientGetAccountInfoResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1387,13 +1429,13 @@
     }
 
     
-    self.AccountInfo = [[UserAccountInfo new] initWithDictionary:[properties objectForKey:@"AccountInfo"]];
+    self.AccountInfo = [[ClientUserAccountInfo new] initWithDictionary:[properties objectForKey:@"AccountInfo"]];
     
 
     return self;
 }
 @end
-@implementation GetCatalogItemsRequest
+@implementation ClientGetCatalogItemsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1410,7 +1452,7 @@
     return self;
 }
 @end
-@implementation GetCatalogItemsResult
+@implementation ClientGetCatalogItemsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1425,7 +1467,7 @@
     NSArray* member_list = [properties objectForKey:@"Catalog"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CatalogItem new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCatalogItem new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Catalog = [mutable_storage copy];
 }
@@ -1435,7 +1477,7 @@
     return self;
 }
 @end
-@implementation GetCharacterDataRequest
+@implementation ClientGetCharacterDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1466,7 +1508,7 @@
     return self;
 }
 @end
-@implementation GetCharacterDataResult
+@implementation ClientGetCharacterDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1483,7 +1525,7 @@
     NSDictionary* member_list = [properties objectForKey:@"Data"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[UserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientUserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Data = [mutable_storage copy];
 }
@@ -1495,7 +1537,7 @@
     return self;
 }
 @end
-@implementation GetCharacterInventoryRequest
+@implementation ClientGetCharacterInventoryRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1514,7 +1556,7 @@
     return self;
 }
 @end
-@implementation GetCharacterInventoryResult
+@implementation ClientGetCharacterInventoryResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1531,7 +1573,7 @@
     NSArray* member_list = [properties objectForKey:@"Inventory"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Inventory = [mutable_storage copy];
 }
@@ -1551,7 +1593,7 @@
     NSDictionary* member_list = [properties objectForKey:@"VirtualCurrencyRechargeTimes"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[VirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientVirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.VirtualCurrencyRechargeTimes = [mutable_storage copy];
 }
@@ -1561,7 +1603,7 @@
     return self;
 }
 @end
-@implementation GetCharacterLeaderboardRequest
+@implementation ClientGetCharacterLeaderboardRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1584,7 +1626,7 @@
     return self;
 }
 @end
-@implementation GetCharacterLeaderboardResult
+@implementation ClientGetCharacterLeaderboardResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1599,7 +1641,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -1609,7 +1651,7 @@
     return self;
 }
 @end
-@implementation GetCharacterStatisticsRequest
+@implementation ClientGetCharacterStatisticsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1626,7 +1668,7 @@
     return self;
 }
 @end
-@implementation GetCharacterStatisticsResult
+@implementation ClientGetCharacterStatisticsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1651,7 +1693,7 @@
     return self;
 }
 @end
-@implementation GetContentDownloadUrlRequest
+@implementation ClientGetContentDownloadUrlRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1672,7 +1714,7 @@
     return self;
 }
 @end
-@implementation GetContentDownloadUrlResult
+@implementation ClientGetContentDownloadUrlResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1689,7 +1731,7 @@
     return self;
 }
 @end
-@implementation GetFriendLeaderboardAroundPlayerRequest
+@implementation ClientGetFriendLeaderboardAroundPlayerRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1708,7 +1750,7 @@
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
@@ -1720,7 +1762,7 @@
     return self;
 }
 @end
-@implementation GetFriendLeaderboardAroundPlayerResult
+@implementation ClientGetFriendLeaderboardAroundPlayerResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1735,7 +1777,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -1749,7 +1791,7 @@
     return self;
 }
 @end
-@implementation GetFriendLeaderboardRequest
+@implementation ClientGetFriendLeaderboardRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1766,7 +1808,7 @@
     
     self.MaxResultsCount = [properties valueForKey:@"MaxResultsCount"];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     self.StartPosition = [properties valueForKey:@"StartPosition"];
     
@@ -1780,7 +1822,7 @@
     return self;
 }
 @end
-@implementation GetFriendsListRequest
+@implementation ClientGetFriendsListRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1795,7 +1837,7 @@
     
     self.IncludeSteamFriends = [[properties valueForKey:@"IncludeSteamFriends"] boolValue];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     self.XboxToken = [properties valueForKey:@"XboxToken"];
     
@@ -1803,7 +1845,7 @@
     return self;
 }
 @end
-@implementation GetFriendsListResult
+@implementation ClientGetFriendsListResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1818,7 +1860,7 @@
     NSArray* member_list = [properties objectForKey:@"Friends"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[FriendInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientFriendInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Friends = [mutable_storage copy];
 }
@@ -1828,7 +1870,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardAroundCharacterRequest
+@implementation ClientGetLeaderboardAroundCharacterRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1851,7 +1893,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardAroundCharacterResult
+@implementation ClientGetLeaderboardAroundCharacterResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1866,7 +1908,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -1876,7 +1918,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardAroundPlayerRequest
+@implementation ClientGetLeaderboardAroundPlayerRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1891,7 +1933,7 @@
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
@@ -1901,7 +1943,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardAroundPlayerResult
+@implementation ClientGetLeaderboardAroundPlayerResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1916,7 +1958,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -1930,7 +1972,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardForUsersCharactersRequest
+@implementation ClientGetLeaderboardForUsersCharactersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1949,7 +1991,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardForUsersCharactersResult
+@implementation ClientGetLeaderboardForUsersCharactersResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1964,7 +2006,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -1974,7 +2016,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardRequest
+@implementation ClientGetLeaderboardRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1987,7 +2029,7 @@
     
     self.MaxResultsCount = [properties valueForKey:@"MaxResultsCount"];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     self.StartPosition = [properties valueForKey:@"StartPosition"];
     
@@ -1999,7 +2041,7 @@
     return self;
 }
 @end
-@implementation GetLeaderboardResult
+@implementation ClientGetLeaderboardResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2014,7 +2056,7 @@
     NSArray* member_list = [properties objectForKey:@"Leaderboard"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPlayerLeaderboardEntry new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Leaderboard = [mutable_storage copy];
 }
@@ -2028,7 +2070,7 @@
     return self;
 }
 @end
-@implementation GetPaymentTokenRequest
+@implementation ClientGetPaymentTokenRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2045,7 +2087,7 @@
     return self;
 }
 @end
-@implementation GetPaymentTokenResult
+@implementation ClientGetPaymentTokenResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2064,7 +2106,7 @@
     return self;
 }
 @end
-@implementation GetPhotonAuthenticationTokenRequest
+@implementation ClientGetPhotonAuthenticationTokenRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2081,7 +2123,7 @@
     return self;
 }
 @end
-@implementation GetPhotonAuthenticationTokenResult
+@implementation ClientGetPhotonAuthenticationTokenResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2098,7 +2140,7 @@
     return self;
 }
 @end
-@implementation GetPlayerCombinedInfoRequest
+@implementation ClientGetPlayerCombinedInfoRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2109,7 +2151,7 @@
     }
 
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
@@ -2117,7 +2159,7 @@
     return self;
 }
 @end
-@implementation GetPlayerCombinedInfoRequestParams
+@implementation ClientGetPlayerCombinedInfoRequestParams
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2158,7 +2200,7 @@
 }
 
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
     if ([properties objectForKey:@"TitleDataKeys"]){
     NSArray* member_list = [properties objectForKey:@"TitleDataKeys"];
@@ -2194,7 +2236,7 @@
     return self;
 }
 @end
-@implementation GetPlayerCombinedInfoResult
+@implementation ClientGetPlayerCombinedInfoResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2205,7 +2247,7 @@
     }
 
     
-    self.InfoResultPayload = [[GetPlayerCombinedInfoResultPayload new] initWithDictionary:[properties objectForKey:@"InfoResultPayload"]];
+    self.InfoResultPayload = [[ClientGetPlayerCombinedInfoResultPayload new] initWithDictionary:[properties objectForKey:@"InfoResultPayload"]];
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
@@ -2213,7 +2255,7 @@
     return self;
 }
 @end
-@implementation GetPlayerCombinedInfoResultPayload
+@implementation ClientGetPlayerCombinedInfoResultPayload
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2224,13 +2266,13 @@
     }
 
     
-    self.AccountInfo = [[UserAccountInfo new] initWithDictionary:[properties objectForKey:@"AccountInfo"]];
+    self.AccountInfo = [[ClientUserAccountInfo new] initWithDictionary:[properties objectForKey:@"AccountInfo"]];
     
     if ([properties objectForKey:@"CharacterInventories"]){
     NSArray* member_list = [properties objectForKey:@"CharacterInventories"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterInventory new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterInventory new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.CharacterInventories = [mutable_storage copy];
 }
@@ -2240,19 +2282,19 @@
     NSArray* member_list = [properties objectForKey:@"CharacterList"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterResult new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterResult new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.CharacterList = [mutable_storage copy];
 }
 
     
-    self.PlayerProfile = [[PlayerProfileModel new] initWithDictionary:[properties objectForKey:@"PlayerProfile"]];
+    self.PlayerProfile = [[ClientPlayerProfileModel new] initWithDictionary:[properties objectForKey:@"PlayerProfile"]];
     
     if ([properties objectForKey:@"PlayerStatistics"]){
     NSArray* member_list = [properties objectForKey:@"PlayerStatistics"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StatisticValue new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStatisticValue new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.PlayerStatistics = [mutable_storage copy];
 }
@@ -2272,7 +2314,7 @@
     NSDictionary* member_list = [properties objectForKey:@"UserData"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[UserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientUserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.UserData = [mutable_storage copy];
 }
@@ -2284,7 +2326,7 @@
     NSArray* member_list = [properties objectForKey:@"UserInventory"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.UserInventory = [mutable_storage copy];
 }
@@ -2294,7 +2336,7 @@
     NSDictionary* member_list = [properties objectForKey:@"UserReadOnlyData"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[UserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientUserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.UserReadOnlyData = [mutable_storage copy];
 }
@@ -2316,7 +2358,7 @@
     NSDictionary* member_list = [properties objectForKey:@"UserVirtualCurrencyRechargeTimes"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[VirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientVirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.UserVirtualCurrencyRechargeTimes = [mutable_storage copy];
 }
@@ -2326,7 +2368,7 @@
     return self;
 }
 @end
-@implementation GetPlayerProfileRequest
+@implementation ClientGetPlayerProfileRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2339,13 +2381,13 @@
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
-    self.ProfileConstraints = [[PlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
+    self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
     
 
     return self;
 }
 @end
-@implementation GetPlayerProfileResult
+@implementation ClientGetPlayerProfileResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2356,13 +2398,13 @@
     }
 
     
-    self.PlayerProfile = [[PlayerProfileModel new] initWithDictionary:[properties objectForKey:@"PlayerProfile"]];
+    self.PlayerProfile = [[ClientPlayerProfileModel new] initWithDictionary:[properties objectForKey:@"PlayerProfile"]];
     
 
     return self;
 }
 @end
-@implementation GetPlayerSegmentsRequest
+@implementation ClientGetPlayerSegmentsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2377,7 +2419,7 @@
     return self;
 }
 @end
-@implementation GetPlayerSegmentsResult
+@implementation ClientGetPlayerSegmentsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2392,7 +2434,7 @@
     NSArray* member_list = [properties objectForKey:@"Segments"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GetSegmentResult new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGetSegmentResult new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Segments = [mutable_storage copy];
 }
@@ -2402,7 +2444,7 @@
     return self;
 }
 @end
-@implementation GetPlayerStatisticsRequest
+@implementation ClientGetPlayerStatisticsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2427,7 +2469,7 @@
     NSArray* member_list = [properties objectForKey:@"StatisticNameVersions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StatisticNameVersion new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStatisticNameVersion new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.StatisticNameVersions = [mutable_storage copy];
 }
@@ -2437,7 +2479,7 @@
     return self;
 }
 @end
-@implementation GetPlayerStatisticsResult
+@implementation ClientGetPlayerStatisticsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2452,7 +2494,7 @@
     NSArray* member_list = [properties objectForKey:@"Statistics"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StatisticValue new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStatisticValue new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Statistics = [mutable_storage copy];
 }
@@ -2462,7 +2504,7 @@
     return self;
 }
 @end
-@implementation GetPlayerStatisticVersionsRequest
+@implementation ClientGetPlayerStatisticVersionsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2479,7 +2521,7 @@
     return self;
 }
 @end
-@implementation GetPlayerStatisticVersionsResult
+@implementation ClientGetPlayerStatisticVersionsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2494,7 +2536,7 @@
     NSArray* member_list = [properties objectForKey:@"StatisticVersions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PlayerStatisticVersion new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPlayerStatisticVersion new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.StatisticVersions = [mutable_storage copy];
 }
@@ -2504,7 +2546,7 @@
     return self;
 }
 @end
-@implementation GetPlayerTagsRequest
+@implementation ClientGetPlayerTagsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2523,7 +2565,7 @@
     return self;
 }
 @end
-@implementation GetPlayerTagsResult
+@implementation ClientGetPlayerTagsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2550,7 +2592,7 @@
     return self;
 }
 @end
-@implementation GetPlayerTradesRequest
+@implementation ClientGetPlayerTradesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2561,13 +2603,13 @@
     }
 
     
-    self.StatusFilter = (TradeStatus)[properties valueForKey:@"StatusFilter"];
+    self.StatusFilter = (ClientTradeStatus)[properties valueForKey:@"ClientStatusFilter"];
     
 
     return self;
 }
 @end
-@implementation GetPlayerTradesResponse
+@implementation ClientGetPlayerTradesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2582,7 +2624,7 @@
     NSArray* member_list = [properties objectForKey:@"AcceptedTrades"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[TradeInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientTradeInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.AcceptedTrades = [mutable_storage copy];
 }
@@ -2592,7 +2634,7 @@
     NSArray* member_list = [properties objectForKey:@"OpenedTrades"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[TradeInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientTradeInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.OpenedTrades = [mutable_storage copy];
 }
@@ -2602,7 +2644,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromFacebookIDsRequest
+@implementation ClientGetPlayFabIDsFromFacebookIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2627,7 +2669,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromFacebookIDsResult
+@implementation ClientGetPlayFabIDsFromFacebookIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2642,7 +2684,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[FacebookPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientFacebookPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2652,7 +2694,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromFacebookInstantGamesIdsRequest
+@implementation ClientGetPlayFabIDsFromFacebookInstantGamesIdsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2677,7 +2719,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromFacebookInstantGamesIdsResult
+@implementation ClientGetPlayFabIDsFromFacebookInstantGamesIdsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2692,7 +2734,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[FacebookInstantGamesPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientFacebookInstantGamesPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2702,7 +2744,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGameCenterIDsRequest
+@implementation ClientGetPlayFabIDsFromGameCenterIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2727,7 +2769,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGameCenterIDsResult
+@implementation ClientGetPlayFabIDsFromGameCenterIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2742,7 +2784,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GameCenterPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGameCenterPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2752,7 +2794,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGenericIDsRequest
+@implementation ClientGetPlayFabIDsFromGenericIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2767,7 +2809,7 @@
     NSArray* member_list = [properties objectForKey:@"GenericIDs"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GenericServiceId new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGenericServiceId new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.GenericIDs = [mutable_storage copy];
 }
@@ -2777,7 +2819,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGenericIDsResult
+@implementation ClientGetPlayFabIDsFromGenericIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2792,7 +2834,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GenericPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGenericPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2802,7 +2844,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGoogleIDsRequest
+@implementation ClientGetPlayFabIDsFromGoogleIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2827,7 +2869,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromGoogleIDsResult
+@implementation ClientGetPlayFabIDsFromGoogleIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2842,7 +2884,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GooglePlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientGooglePlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2852,7 +2894,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromKongregateIDsRequest
+@implementation ClientGetPlayFabIDsFromKongregateIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2877,7 +2919,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromKongregateIDsResult
+@implementation ClientGetPlayFabIDsFromKongregateIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2892,7 +2934,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[KongregatePlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientKongregatePlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2902,7 +2944,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
+@implementation ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2927,7 +2969,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromNintendoSwitchDeviceIdsResult
+@implementation ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2942,7 +2984,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[NintendoSwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientNintendoSwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -2952,7 +2994,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromSteamIDsRequest
+@implementation ClientGetPlayFabIDsFromSteamIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2977,7 +3019,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromSteamIDsResult
+@implementation ClientGetPlayFabIDsFromSteamIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2992,7 +3034,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[SteamPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientSteamPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -3002,7 +3044,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromTwitchIDsRequest
+@implementation ClientGetPlayFabIDsFromTwitchIDsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3027,7 +3069,7 @@
     return self;
 }
 @end
-@implementation GetPlayFabIDsFromTwitchIDsResult
+@implementation ClientGetPlayFabIDsFromTwitchIDsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3042,7 +3084,7 @@
     NSArray* member_list = [properties objectForKey:@"Data"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[TwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientTwitchPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Data = [mutable_storage copy];
 }
@@ -3052,7 +3094,7 @@
     return self;
 }
 @end
-@implementation GetPublisherDataRequest
+@implementation ClientGetPublisherDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3077,7 +3119,7 @@
     return self;
 }
 @end
-@implementation GetPublisherDataResult
+@implementation ClientGetPublisherDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3102,7 +3144,7 @@
     return self;
 }
 @end
-@implementation GetPurchaseRequest
+@implementation ClientGetPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3119,7 +3161,7 @@
     return self;
 }
 @end
-@implementation GetPurchaseResult
+@implementation ClientGetPurchaseResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3144,7 +3186,7 @@
     return self;
 }
 @end
-@implementation GetSegmentResult
+@implementation ClientGetSegmentResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3165,7 +3207,7 @@
     return self;
 }
 @end
-@implementation GetSharedGroupDataRequest
+@implementation ClientGetSharedGroupDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3194,7 +3236,7 @@
     return self;
 }
 @end
-@implementation GetSharedGroupDataResult
+@implementation ClientGetSharedGroupDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3209,7 +3251,7 @@
     NSDictionary* member_list = [properties objectForKey:@"Data"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[SharedGroupDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientSharedGroupDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Data = [mutable_storage copy];
 }
@@ -3229,7 +3271,7 @@
     return self;
 }
 @end
-@implementation GetStoreItemsRequest
+@implementation ClientGetStoreItemsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3248,7 +3290,7 @@
     return self;
 }
 @end
-@implementation GetStoreItemsResult
+@implementation ClientGetStoreItemsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3261,15 +3303,15 @@
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
-    self.MarketingData = [[StoreMarketingModel new] initWithDictionary:[properties objectForKey:@"MarketingData"]];
+    self.MarketingData = [[ClientStoreMarketingModel new] initWithDictionary:[properties objectForKey:@"MarketingData"]];
     
-    self.Source = (SourceType)[properties valueForKey:@"Source"];
+    self.Source = (ClientSourceType)[properties valueForKey:@"ClientSource"];
     
     if ([properties objectForKey:@"Store"]){
     NSArray* member_list = [properties objectForKey:@"Store"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StoreItem new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStoreItem new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Store = [mutable_storage copy];
 }
@@ -3281,7 +3323,7 @@
     return self;
 }
 @end
-@implementation GetTimeRequest
+@implementation ClientGetTimeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3296,7 +3338,7 @@
     return self;
 }
 @end
-@implementation GetTimeResult
+@implementation ClientGetTimeResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3313,7 +3355,7 @@
     return self;
 }
 @end
-@implementation GetTitleDataRequest
+@implementation ClientGetTitleDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3338,7 +3380,7 @@
     return self;
 }
 @end
-@implementation GetTitleDataResult
+@implementation ClientGetTitleDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3363,7 +3405,7 @@
     return self;
 }
 @end
-@implementation GetTitleNewsRequest
+@implementation ClientGetTitleNewsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3380,7 +3422,7 @@
     return self;
 }
 @end
-@implementation GetTitleNewsResult
+@implementation ClientGetTitleNewsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3395,7 +3437,7 @@
     NSArray* member_list = [properties objectForKey:@"News"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[TitleNewsItem new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientTitleNewsItem new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.News = [mutable_storage copy];
 }
@@ -3405,7 +3447,7 @@
     return self;
 }
 @end
-@implementation GetTitlePublicKeyRequest
+@implementation ClientGetTitlePublicKeyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3424,7 +3466,7 @@
     return self;
 }
 @end
-@implementation GetTitlePublicKeyResult
+@implementation ClientGetTitlePublicKeyResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3441,7 +3483,7 @@
     return self;
 }
 @end
-@implementation GetTradeStatusRequest
+@implementation ClientGetTradeStatusRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3460,7 +3502,7 @@
     return self;
 }
 @end
-@implementation GetTradeStatusResponse
+@implementation ClientGetTradeStatusResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3471,13 +3513,13 @@
     }
 
     
-    self.Trade = [[TradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
+    self.Trade = [[ClientTradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
     
 
     return self;
 }
 @end
-@implementation GetUserDataRequest
+@implementation ClientGetUserDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3506,7 +3548,7 @@
     return self;
 }
 @end
-@implementation GetUserDataResult
+@implementation ClientGetUserDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3521,7 +3563,7 @@
     NSDictionary* member_list = [properties objectForKey:@"Data"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[UserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientUserDataRecord new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Data = [mutable_storage copy];
 }
@@ -3533,7 +3575,7 @@
     return self;
 }
 @end
-@implementation GetUserInventoryRequest
+@implementation ClientGetUserInventoryRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3548,7 +3590,7 @@
     return self;
 }
 @end
-@implementation GetUserInventoryResult
+@implementation ClientGetUserInventoryResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3563,7 +3605,7 @@
     NSArray* member_list = [properties objectForKey:@"Inventory"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Inventory = [mutable_storage copy];
 }
@@ -3583,7 +3625,7 @@
     NSDictionary* member_list = [properties objectForKey:@"VirtualCurrencyRechargeTimes"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[VirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[ClientVirtualCurrencyRechargeTime new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.VirtualCurrencyRechargeTimes = [mutable_storage copy];
 }
@@ -3593,7 +3635,7 @@
     return self;
 }
 @end
-@implementation GetWindowsHelloChallengeRequest
+@implementation ClientGetWindowsHelloChallengeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3612,7 +3654,7 @@
     return self;
 }
 @end
-@implementation GetWindowsHelloChallengeResponse
+@implementation ClientGetWindowsHelloChallengeResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3629,7 +3671,7 @@
     return self;
 }
 @end
-@implementation GooglePlayFabIdPair
+@implementation ClientGooglePlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3648,7 +3690,7 @@
     return self;
 }
 @end
-@implementation GrantCharacterToUserRequest
+@implementation ClientGrantCharacterToUserRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3669,7 +3711,7 @@
     return self;
 }
 @end
-@implementation GrantCharacterToUserResult
+@implementation ClientGrantCharacterToUserResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3690,7 +3732,7 @@
     return self;
 }
 @end
-@implementation ItemInstance
+@implementation ClientItemInstance
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3751,7 +3793,7 @@
     return self;
 }
 @end
-@implementation ItemPurchaseRequest
+@implementation ClientItemPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3782,7 +3824,7 @@
     return self;
 }
 @end
-@implementation KongregatePlayFabIdPair
+@implementation ClientKongregatePlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3801,7 +3843,7 @@
     return self;
 }
 @end
-@implementation LinkAndroidDeviceIDRequest
+@implementation ClientLinkAndroidDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3824,7 +3866,7 @@
     return self;
 }
 @end
-@implementation LinkAndroidDeviceIDResult
+@implementation ClientLinkAndroidDeviceIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3839,7 +3881,7 @@
     return self;
 }
 @end
-@implementation LinkCustomIDRequest
+@implementation ClientLinkCustomIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3858,7 +3900,7 @@
     return self;
 }
 @end
-@implementation LinkCustomIDResult
+@implementation ClientLinkCustomIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3873,7 +3915,7 @@
     return self;
 }
 @end
-@implementation LinkedPlatformAccountModel
+@implementation ClientLinkedPlatformAccountModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3886,7 +3928,7 @@
     
     self.Email = [properties valueForKey:@"Email"];
     
-    self.Platform = (LoginIdentityProvider)[properties valueForKey:@"Platform"];
+    self.Platform = (ClientLoginIdentityProvider)[properties valueForKey:@"ClientPlatform"];
     
     self.PlatformUserId = [properties valueForKey:@"PlatformUserId"];
     
@@ -3896,7 +3938,7 @@
     return self;
 }
 @end
-@implementation LinkFacebookAccountRequest
+@implementation ClientLinkFacebookAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3915,7 +3957,7 @@
     return self;
 }
 @end
-@implementation LinkFacebookAccountResult
+@implementation ClientLinkFacebookAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3930,7 +3972,7 @@
     return self;
 }
 @end
-@implementation LinkFacebookInstantGamesIdRequest
+@implementation ClientLinkFacebookInstantGamesIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3949,7 +3991,7 @@
     return self;
 }
 @end
-@implementation LinkFacebookInstantGamesIdResult
+@implementation ClientLinkFacebookInstantGamesIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3964,7 +4006,7 @@
     return self;
 }
 @end
-@implementation LinkGameCenterAccountRequest
+@implementation ClientLinkGameCenterAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3983,7 +4025,7 @@
     return self;
 }
 @end
-@implementation LinkGameCenterAccountResult
+@implementation ClientLinkGameCenterAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3998,7 +4040,7 @@
     return self;
 }
 @end
-@implementation LinkGoogleAccountRequest
+@implementation ClientLinkGoogleAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4017,7 +4059,7 @@
     return self;
 }
 @end
-@implementation LinkGoogleAccountResult
+@implementation ClientLinkGoogleAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4032,7 +4074,7 @@
     return self;
 }
 @end
-@implementation LinkIOSDeviceIDRequest
+@implementation ClientLinkIOSDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4055,7 +4097,7 @@
     return self;
 }
 @end
-@implementation LinkIOSDeviceIDResult
+@implementation ClientLinkIOSDeviceIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4070,7 +4112,7 @@
     return self;
 }
 @end
-@implementation LinkKongregateAccountRequest
+@implementation ClientLinkKongregateAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4091,7 +4133,7 @@
     return self;
 }
 @end
-@implementation LinkKongregateAccountResult
+@implementation ClientLinkKongregateAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4106,7 +4148,7 @@
     return self;
 }
 @end
-@implementation LinkNintendoSwitchDeviceIdRequest
+@implementation ClientLinkNintendoSwitchDeviceIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4125,7 +4167,7 @@
     return self;
 }
 @end
-@implementation LinkNintendoSwitchDeviceIdResult
+@implementation ClientLinkNintendoSwitchDeviceIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4140,7 +4182,7 @@
     return self;
 }
 @end
-@implementation LinkSteamAccountRequest
+@implementation ClientLinkSteamAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4159,7 +4201,7 @@
     return self;
 }
 @end
-@implementation LinkSteamAccountResult
+@implementation ClientLinkSteamAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4174,7 +4216,7 @@
     return self;
 }
 @end
-@implementation LinkTwitchAccountRequest
+@implementation ClientLinkTwitchAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4193,7 +4235,7 @@
     return self;
 }
 @end
-@implementation LinkTwitchAccountResult
+@implementation ClientLinkTwitchAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4208,7 +4250,7 @@
     return self;
 }
 @end
-@implementation LinkWindowsHelloAccountRequest
+@implementation ClientLinkWindowsHelloAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4231,7 +4273,7 @@
     return self;
 }
 @end
-@implementation LinkWindowsHelloAccountResponse
+@implementation ClientLinkWindowsHelloAccountResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4246,7 +4288,41 @@
     return self;
 }
 @end
-@implementation ListUsersCharactersRequest
+@implementation ClientLinkXboxAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
+    
+
+    return self;
+}
+@end
+@implementation ClientLinkXboxAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation ClientListUsersCharactersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4263,7 +4339,7 @@
     return self;
 }
 @end
-@implementation ListUsersCharactersResult
+@implementation ClientListUsersCharactersResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4278,7 +4354,7 @@
     NSArray* member_list = [properties objectForKey:@"Characters"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CharacterResult new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCharacterResult new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Characters = [mutable_storage copy];
 }
@@ -4288,7 +4364,7 @@
     return self;
 }
 @end
-@implementation LocationModel
+@implementation ClientLocationModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4301,9 +4377,9 @@
     
     self.City = [properties valueForKey:@"City"];
     
-    self.pfContinentCode = (ContinentCode)[properties valueForKey:@"ContinentCode"];
+    self.pfContinentCode = (ClientContinentCode)[properties valueForKey:@"ClientContinentCode"];
     
-    self.pfCountryCode = (CountryCode)[properties valueForKey:@"CountryCode"];
+    self.pfCountryCode = (ClientCountryCode)[properties valueForKey:@"ClientCountryCode"];
     
     self.Latitude = [properties valueForKey:@"Latitude"];
     
@@ -4313,7 +4389,7 @@
     return self;
 }
 @end
-@implementation LoginResult
+@implementation ClientLoginResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4324,9 +4400,9 @@
     }
 
     
-    self.EntityToken = [[EntityTokenResponse new] initWithDictionary:[properties objectForKey:@"EntityToken"]];
+    self.EntityToken = [[ClientEntityTokenResponse new] initWithDictionary:[properties objectForKey:@"EntityToken"]];
     
-    self.InfoResultPayload = [[GetPlayerCombinedInfoResultPayload new] initWithDictionary:[properties objectForKey:@"InfoResultPayload"]];
+    self.InfoResultPayload = [[ClientGetPlayerCombinedInfoResultPayload new] initWithDictionary:[properties objectForKey:@"InfoResultPayload"]];
     
     self.LastLoginTime = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastLoginTime"]];
     
@@ -4336,13 +4412,13 @@
     
     self.SessionTicket = [properties valueForKey:@"SessionTicket"];
     
-    self.SettingsForUser = [[UserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
+    self.SettingsForUser = [[ClientUserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
     
 
     return self;
 }
 @end
-@implementation LoginWithAndroidDeviceIDRequest
+@implementation ClientLoginWithAndroidDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4361,7 +4437,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4375,7 +4451,7 @@
     return self;
 }
 @end
-@implementation LoginWithCustomIDRequest
+@implementation ClientLoginWithCustomIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4392,7 +4468,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4404,7 +4480,7 @@
     return self;
 }
 @end
-@implementation LoginWithEmailAddressRequest
+@implementation ClientLoginWithEmailAddressRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4417,7 +4493,7 @@
     
     self.Email = [properties valueForKey:@"Email"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4429,7 +4505,7 @@
     return self;
 }
 @end
-@implementation LoginWithFacebookInstantGamesIdRequest
+@implementation ClientLoginWithFacebookInstantGamesIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4446,7 +4522,7 @@
     
     self.FacebookInstantGamesSignature = [properties valueForKey:@"FacebookInstantGamesSignature"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4458,7 +4534,7 @@
     return self;
 }
 @end
-@implementation LoginWithFacebookRequest
+@implementation ClientLoginWithFacebookRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4475,7 +4551,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4487,7 +4563,7 @@
     return self;
 }
 @end
-@implementation LoginWithGameCenterRequest
+@implementation ClientLoginWithGameCenterRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4502,7 +4578,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4516,7 +4592,7 @@
     return self;
 }
 @end
-@implementation LoginWithGoogleAccountRequest
+@implementation ClientLoginWithGoogleAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4531,7 +4607,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4545,7 +4621,7 @@
     return self;
 }
 @end
-@implementation LoginWithIOSDeviceIDRequest
+@implementation ClientLoginWithIOSDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4564,7 +4640,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4578,7 +4654,7 @@
     return self;
 }
 @end
-@implementation LoginWithKongregateRequest
+@implementation ClientLoginWithKongregateRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4595,7 +4671,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.KongregateId = [properties valueForKey:@"KongregateId"];
     
@@ -4609,7 +4685,7 @@
     return self;
 }
 @end
-@implementation LoginWithNintendoSwitchDeviceIdRequest
+@implementation ClientLoginWithNintendoSwitchDeviceIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4624,7 +4700,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4638,7 +4714,7 @@
     return self;
 }
 @end
-@implementation LoginWithPlayFabRequest
+@implementation ClientLoginWithPlayFabRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4649,7 +4725,7 @@
     }
 
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4663,7 +4739,7 @@
     return self;
 }
 @end
-@implementation LoginWithSteamRequest
+@implementation ClientLoginWithSteamRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4678,7 +4754,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4692,7 +4768,7 @@
     return self;
 }
 @end
-@implementation LoginWithTwitchRequest
+@implementation ClientLoginWithTwitchRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4709,7 +4785,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4721,7 +4797,7 @@
     return self;
 }
 @end
-@implementation LoginWithWindowsHelloRequest
+@implementation ClientLoginWithWindowsHelloRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4734,7 +4810,7 @@
     
     self.ChallengeSignature = [properties valueForKey:@"ChallengeSignature"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -4746,7 +4822,36 @@
     return self;
 }
 @end
-@implementation LogStatement
+@implementation ClientLoginWithXboxRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
+    
+
+    return self;
+}
+@end
+@implementation ClientLogStatement
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4767,7 +4872,7 @@
     return self;
 }
 @end
-@implementation MatchmakeRequest
+@implementation ClientMatchmakeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4786,19 +4891,19 @@
     
     self.LobbyId = [properties valueForKey:@"LobbyId"];
     
-    self.pfRegion = (Region)[properties valueForKey:@"Region"];
+    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
     self.StartNewIfNoneFound = [[properties valueForKey:@"StartNewIfNoneFound"] boolValue];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
-    self.TagFilter = [[CollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
+    self.TagFilter = [[ClientCollectionFilter new] initWithDictionary:[properties objectForKey:@"TagFilter"]];
     
 
     return self;
 }
 @end
-@implementation MatchmakeResult
+@implementation ClientMatchmakeResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4825,7 +4930,7 @@
     
     self.ServerPublicDNSName = [properties valueForKey:@"ServerPublicDNSName"];
     
-    self.Status = (MatchmakeStatus)[properties valueForKey:@"Status"];
+    self.Status = (ClientMatchmakeStatus)[properties valueForKey:@"ClientStatus"];
     
     self.Ticket = [properties valueForKey:@"Ticket"];
     
@@ -4833,7 +4938,7 @@
     return self;
 }
 @end
-@implementation MembershipModel
+@implementation ClientMembershipModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4856,7 +4961,7 @@
     NSArray* member_list = [properties objectForKey:@"Subscriptions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[SubscriptionModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientSubscriptionModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Subscriptions = [mutable_storage copy];
 }
@@ -4866,7 +4971,7 @@
     return self;
 }
 @end
-@implementation ModifyUserVirtualCurrencyResult
+@implementation ClientModifyUserVirtualCurrencyResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4889,7 +4994,7 @@
     return self;
 }
 @end
-@implementation NintendoSwitchPlayFabIdPair
+@implementation ClientNintendoSwitchPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4908,7 +5013,7 @@
     return self;
 }
 @end
-@implementation OpenTradeRequest
+@implementation ClientOpenTradeRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4953,7 +5058,7 @@
     return self;
 }
 @end
-@implementation OpenTradeResponse
+@implementation ClientOpenTradeResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4964,13 +5069,13 @@
     }
 
     
-    self.Trade = [[TradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
+    self.Trade = [[ClientTradeInfo new] initWithDictionary:[properties objectForKey:@"Trade"]];
     
 
     return self;
 }
 @end
-@implementation PayForPurchaseRequest
+@implementation ClientPayForPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4993,7 +5098,7 @@
     return self;
 }
 @end
-@implementation PayForPurchaseResult
+@implementation ClientPayForPurchaseResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5018,7 +5123,7 @@
     
     self.PurchasePrice = [properties valueForKey:@"PurchasePrice"];
     
-    self.Status = (TransactionStatus)[properties valueForKey:@"Status"];
+    self.Status = (ClientTransactionStatus)[properties valueForKey:@"ClientStatus"];
     
     if ([properties objectForKey:@"VCAmount"]){
     NSDictionary* member_list = [properties objectForKey:@"VCAmount"];
@@ -5044,7 +5149,7 @@
     return self;
 }
 @end
-@implementation PaymentOption
+@implementation ClientPaymentOption
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5067,7 +5172,7 @@
     return self;
 }
 @end
-@implementation PlayerLeaderboardEntry
+@implementation ClientPlayerLeaderboardEntry
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5084,7 +5189,7 @@
     
     self.Position = [properties valueForKey:@"Position"];
     
-    self.Profile = [[PlayerProfileModel new] initWithDictionary:[properties objectForKey:@"Profile"]];
+    self.Profile = [[ClientPlayerProfileModel new] initWithDictionary:[properties objectForKey:@"Profile"]];
     
     self.StatValue = [properties valueForKey:@"StatValue"];
     
@@ -5092,7 +5197,7 @@
     return self;
 }
 @end
-@implementation PlayerProfileModel
+@implementation ClientPlayerProfileModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5107,7 +5212,7 @@
     NSArray* member_list = [properties objectForKey:@"AdCampaignAttributions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[AdCampaignAttributionModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientAdCampaignAttributionModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.AdCampaignAttributions = [mutable_storage copy];
 }
@@ -5121,7 +5226,7 @@
     NSArray* member_list = [properties objectForKey:@"ContactEmailAddresses"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ContactEmailInfoModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientContactEmailInfoModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.ContactEmailAddresses = [mutable_storage copy];
 }
@@ -5137,7 +5242,7 @@
     NSArray* member_list = [properties objectForKey:@"LinkedAccounts"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[LinkedPlatformAccountModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientLinkedPlatformAccountModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.LinkedAccounts = [mutable_storage copy];
 }
@@ -5147,7 +5252,7 @@
     NSArray* member_list = [properties objectForKey:@"Locations"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[LocationModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientLocationModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Locations = [mutable_storage copy];
 }
@@ -5157,13 +5262,13 @@
     NSArray* member_list = [properties objectForKey:@"Memberships"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[MembershipModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientMembershipModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Memberships = [mutable_storage copy];
 }
 
     
-    self.Origination = (LoginIdentityProvider)[properties valueForKey:@"Origination"];
+    self.Origination = (ClientLoginIdentityProvider)[properties valueForKey:@"ClientOrigination"];
     
     self.PlayerId = [properties valueForKey:@"PlayerId"];
     
@@ -5173,7 +5278,7 @@
     NSArray* member_list = [properties objectForKey:@"PushNotificationRegistrations"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PushNotificationRegistrationModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPushNotificationRegistrationModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.PushNotificationRegistrations = [mutable_storage copy];
 }
@@ -5183,7 +5288,7 @@
     NSArray* member_list = [properties objectForKey:@"Statistics"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StatisticModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStatisticModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Statistics = [mutable_storage copy];
 }
@@ -5193,7 +5298,7 @@
     NSArray* member_list = [properties objectForKey:@"Tags"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[TagModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientTagModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Tags = [mutable_storage copy];
 }
@@ -5207,7 +5312,7 @@
     NSArray* member_list = [properties objectForKey:@"ValuesToDate"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ValueToDateModel new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientValueToDateModel new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.ValuesToDate = [mutable_storage copy];
 }
@@ -5217,7 +5322,7 @@
     return self;
 }
 @end
-@implementation PlayerProfileViewConstraints
+@implementation ClientPlayerProfileViewConstraints
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5264,7 +5369,7 @@
     return self;
 }
 @end
-@implementation PlayerStatisticVersion
+@implementation ClientPlayerStatisticVersion
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5291,7 +5396,7 @@
     return self;
 }
 @end
-@implementation PurchaseItemRequest
+@implementation ClientPurchaseItemRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5318,7 +5423,7 @@
     return self;
 }
 @end
-@implementation PurchaseItemResult
+@implementation ClientPurchaseItemResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5333,7 +5438,7 @@
     NSArray* member_list = [properties objectForKey:@"Items"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Items = [mutable_storage copy];
 }
@@ -5343,7 +5448,7 @@
     return self;
 }
 @end
-@implementation PushNotificationRegistrationModel
+@implementation ClientPushNotificationRegistrationModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5356,13 +5461,13 @@
     
     self.NotificationEndpointARN = [properties valueForKey:@"NotificationEndpointARN"];
     
-    self.Platform = (PushNotificationPlatform)[properties valueForKey:@"Platform"];
+    self.Platform = (ClientPushNotificationPlatform)[properties valueForKey:@"ClientPlatform"];
     
 
     return self;
 }
 @end
-@implementation RedeemCouponRequest
+@implementation ClientRedeemCouponRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5383,7 +5488,7 @@
     return self;
 }
 @end
-@implementation RedeemCouponResult
+@implementation ClientRedeemCouponResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5398,7 +5503,7 @@
     NSArray* member_list = [properties objectForKey:@"GrantedItems"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.GrantedItems = [mutable_storage copy];
 }
@@ -5408,7 +5513,7 @@
     return self;
 }
 @end
-@implementation RegionInfo
+@implementation ClientRegionInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5425,13 +5530,13 @@
     
     self.PingUrl = [properties valueForKey:@"PingUrl"];
     
-    self.pfRegion = (Region)[properties valueForKey:@"Region"];
+    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
 
     return self;
 }
 @end
-@implementation RegisterForIOSPushNotificationRequest
+@implementation ClientRegisterForIOSPushNotificationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5452,7 +5557,7 @@
     return self;
 }
 @end
-@implementation RegisterForIOSPushNotificationResult
+@implementation ClientRegisterForIOSPushNotificationResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5467,7 +5572,7 @@
     return self;
 }
 @end
-@implementation RegisterPlayFabUserRequest
+@implementation ClientRegisterPlayFabUserRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5484,7 +5589,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -5502,7 +5607,7 @@
     return self;
 }
 @end
-@implementation RegisterPlayFabUserResult
+@implementation ClientRegisterPlayFabUserResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5513,13 +5618,13 @@
     }
 
     
-    self.EntityToken = [[EntityTokenResponse new] initWithDictionary:[properties objectForKey:@"EntityToken"]];
+    self.EntityToken = [[ClientEntityTokenResponse new] initWithDictionary:[properties objectForKey:@"EntityToken"]];
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
     self.SessionTicket = [properties valueForKey:@"SessionTicket"];
     
-    self.SettingsForUser = [[UserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
+    self.SettingsForUser = [[ClientUserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
     
     self.Username = [properties valueForKey:@"Username"];
     
@@ -5527,7 +5632,7 @@
     return self;
 }
 @end
-@implementation RegisterWithWindowsHelloRequest
+@implementation ClientRegisterWithWindowsHelloRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5542,7 +5647,7 @@
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
-    self.InfoRequestParameters = [[GetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
     
@@ -5558,7 +5663,7 @@
     return self;
 }
 @end
-@implementation RemoveContactEmailRequest
+@implementation ClientRemoveContactEmailRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5573,7 +5678,7 @@
     return self;
 }
 @end
-@implementation RemoveContactEmailResult
+@implementation ClientRemoveContactEmailResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5588,7 +5693,7 @@
     return self;
 }
 @end
-@implementation RemoveFriendRequest
+@implementation ClientRemoveFriendRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5605,7 +5710,7 @@
     return self;
 }
 @end
-@implementation RemoveFriendResult
+@implementation ClientRemoveFriendResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5620,7 +5725,7 @@
     return self;
 }
 @end
-@implementation RemoveGenericIDRequest
+@implementation ClientRemoveGenericIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5631,13 +5736,13 @@
     }
 
     
-    self.GenericId = [[GenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
+    self.GenericId = [[ClientGenericServiceId new] initWithDictionary:[properties objectForKey:@"GenericId"]];
     
 
     return self;
 }
 @end
-@implementation RemoveGenericIDResult
+@implementation ClientRemoveGenericIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5652,7 +5757,7 @@
     return self;
 }
 @end
-@implementation RemoveSharedGroupMembersRequest
+@implementation ClientRemoveSharedGroupMembersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5679,7 +5784,7 @@
     return self;
 }
 @end
-@implementation RemoveSharedGroupMembersResult
+@implementation ClientRemoveSharedGroupMembersResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5694,7 +5799,7 @@
     return self;
 }
 @end
-@implementation ReportPlayerClientRequest
+@implementation ClientReportPlayerClientRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5713,7 +5818,7 @@
     return self;
 }
 @end
-@implementation ReportPlayerClientResult
+@implementation ClientReportPlayerClientResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5730,7 +5835,7 @@
     return self;
 }
 @end
-@implementation RestoreIOSPurchasesRequest
+@implementation ClientRestoreIOSPurchasesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5747,7 +5852,7 @@
     return self;
 }
 @end
-@implementation RestoreIOSPurchasesResult
+@implementation ClientRestoreIOSPurchasesResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5762,7 +5867,7 @@
     return self;
 }
 @end
-@implementation ScriptExecutionError
+@implementation ClientScriptExecutionError
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5783,7 +5888,7 @@
     return self;
 }
 @end
-@implementation SendAccountRecoveryEmailRequest
+@implementation ClientSendAccountRecoveryEmailRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5804,7 +5909,7 @@
     return self;
 }
 @end
-@implementation SendAccountRecoveryEmailResult
+@implementation ClientSendAccountRecoveryEmailResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5819,7 +5924,7 @@
     return self;
 }
 @end
-@implementation SetFriendTagsRequest
+@implementation ClientSetFriendTagsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5846,7 +5951,7 @@
     return self;
 }
 @end
-@implementation SetFriendTagsResult
+@implementation ClientSetFriendTagsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5861,7 +5966,7 @@
     return self;
 }
 @end
-@implementation SetPlayerSecretRequest
+@implementation ClientSetPlayerSecretRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5880,7 +5985,7 @@
     return self;
 }
 @end
-@implementation SetPlayerSecretResult
+@implementation ClientSetPlayerSecretResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5895,7 +6000,7 @@
     return self;
 }
 @end
-@implementation SharedGroupDataRecord
+@implementation ClientSharedGroupDataRecord
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5910,7 +6015,7 @@
     
     self.LastUpdatedBy = [properties valueForKey:@"LastUpdatedBy"];
     
-    self.Permission = (UserDataPermission)[properties valueForKey:@"Permission"];
+    self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
     self.Value = [properties valueForKey:@"Value"];
     
@@ -5918,7 +6023,7 @@
     return self;
 }
 @end
-@implementation StartGameRequest
+@implementation ClientStartGameRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5937,7 +6042,7 @@
     
     self.GameMode = [properties valueForKey:@"GameMode"];
     
-    self.pfRegion = (Region)[properties valueForKey:@"Region"];
+    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
@@ -5945,7 +6050,7 @@
     return self;
 }
 @end
-@implementation StartGameResult
+@implementation ClientStartGameResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5978,7 +6083,7 @@
     return self;
 }
 @end
-@implementation StartPurchaseRequest
+@implementation ClientStartPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5995,7 +6100,7 @@
     NSArray* member_list = [properties objectForKey:@"Items"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemPurchaseRequest new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemPurchaseRequest new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Items = [mutable_storage copy];
 }
@@ -6007,7 +6112,7 @@
     return self;
 }
 @end
-@implementation StartPurchaseResult
+@implementation ClientStartPurchaseResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6022,7 +6127,7 @@
     NSArray* member_list = [properties objectForKey:@"Contents"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[CartItem new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientCartItem new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Contents = [mutable_storage copy];
 }
@@ -6034,7 +6139,7 @@
     NSArray* member_list = [properties objectForKey:@"PaymentOptions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[PaymentOption new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientPaymentOption new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.PaymentOptions = [mutable_storage copy];
 }
@@ -6054,7 +6159,7 @@
     return self;
 }
 @end
-@implementation StatisticModel
+@implementation ClientStatisticModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6075,7 +6180,7 @@
     return self;
 }
 @end
-@implementation StatisticNameVersion
+@implementation ClientStatisticNameVersion
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6094,28 +6199,7 @@
     return self;
 }
 @end
-@implementation StatisticUpdate
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.StatisticName = [properties valueForKey:@"StatisticName"];
-    
-    self.Value = [properties valueForKey:@"Value"];
-    
-    self.Version = [properties valueForKey:@"Version"];
-    
-
-    return self;
-}
-@end
-@implementation StatisticValue
+@implementation ClientStatisticUpdate
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6136,7 +6220,28 @@
     return self;
 }
 @end
-@implementation SteamPlayFabIdPair
+@implementation ClientStatisticValue
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.StatisticName = [properties valueForKey:@"StatisticName"];
+    
+    self.Value = [properties valueForKey:@"Value"];
+    
+    self.Version = [properties valueForKey:@"Version"];
+    
+
+    return self;
+}
+@end
+@implementation ClientSteamPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6155,7 +6260,7 @@
     return self;
 }
 @end
-@implementation StoreItem
+@implementation ClientStoreItem
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6196,7 +6301,7 @@
     return self;
 }
 @end
-@implementation StoreMarketingModel
+@implementation ClientStoreMarketingModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6217,7 +6322,7 @@
     return self;
 }
 @end
-@implementation SubscriptionModel
+@implementation ClientSubscriptionModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6234,7 +6339,7 @@
     
     self.IsActive = [[properties valueForKey:@"IsActive"] boolValue];
     
-    self.Status = (SubscriptionProviderStatus)[properties valueForKey:@"Status"];
+    self.Status = (ClientSubscriptionProviderStatus)[properties valueForKey:@"ClientStatus"];
     
     self.SubscriptionId = [properties valueForKey:@"SubscriptionId"];
     
@@ -6246,7 +6351,7 @@
     return self;
 }
 @end
-@implementation SubtractUserVirtualCurrencyRequest
+@implementation ClientSubtractUserVirtualCurrencyRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6265,7 +6370,7 @@
     return self;
 }
 @end
-@implementation TagModel
+@implementation ClientTagModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6282,7 +6387,7 @@
     return self;
 }
 @end
-@implementation TitleNewsItem
+@implementation ClientTitleNewsItem
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6305,7 +6410,7 @@
     return self;
 }
 @end
-@implementation TradeInfo
+@implementation ClientTradeInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6378,7 +6483,7 @@
 }
 
     
-    self.Status = (TradeStatus)[properties valueForKey:@"Status"];
+    self.Status = (ClientTradeStatus)[properties valueForKey:@"ClientStatus"];
     
     self.TradeId = [properties valueForKey:@"TradeId"];
     
@@ -6386,7 +6491,7 @@
     return self;
 }
 @end
-@implementation TwitchPlayFabIdPair
+@implementation ClientTwitchPlayFabIdPair
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6405,7 +6510,7 @@
     return self;
 }
 @end
-@implementation UnlinkAndroidDeviceIDRequest
+@implementation ClientUnlinkAndroidDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6422,7 +6527,7 @@
     return self;
 }
 @end
-@implementation UnlinkAndroidDeviceIDResult
+@implementation ClientUnlinkAndroidDeviceIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6437,7 +6542,7 @@
     return self;
 }
 @end
-@implementation UnlinkCustomIDRequest
+@implementation ClientUnlinkCustomIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6454,7 +6559,7 @@
     return self;
 }
 @end
-@implementation UnlinkCustomIDResult
+@implementation ClientUnlinkCustomIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6469,7 +6574,7 @@
     return self;
 }
 @end
-@implementation UnlinkFacebookAccountRequest
+@implementation ClientUnlinkFacebookAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6484,7 +6589,7 @@
     return self;
 }
 @end
-@implementation UnlinkFacebookAccountResult
+@implementation ClientUnlinkFacebookAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6499,7 +6604,7 @@
     return self;
 }
 @end
-@implementation UnlinkFacebookInstantGamesIdRequest
+@implementation ClientUnlinkFacebookInstantGamesIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6516,7 +6621,7 @@
     return self;
 }
 @end
-@implementation UnlinkFacebookInstantGamesIdResult
+@implementation ClientUnlinkFacebookInstantGamesIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6531,7 +6636,7 @@
     return self;
 }
 @end
-@implementation UnlinkGameCenterAccountRequest
+@implementation ClientUnlinkGameCenterAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6546,7 +6651,7 @@
     return self;
 }
 @end
-@implementation UnlinkGameCenterAccountResult
+@implementation ClientUnlinkGameCenterAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6561,7 +6666,7 @@
     return self;
 }
 @end
-@implementation UnlinkGoogleAccountRequest
+@implementation ClientUnlinkGoogleAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6576,7 +6681,7 @@
     return self;
 }
 @end
-@implementation UnlinkGoogleAccountResult
+@implementation ClientUnlinkGoogleAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6591,7 +6696,7 @@
     return self;
 }
 @end
-@implementation UnlinkIOSDeviceIDRequest
+@implementation ClientUnlinkIOSDeviceIDRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6608,7 +6713,7 @@
     return self;
 }
 @end
-@implementation UnlinkIOSDeviceIDResult
+@implementation ClientUnlinkIOSDeviceIDResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6623,7 +6728,7 @@
     return self;
 }
 @end
-@implementation UnlinkKongregateAccountRequest
+@implementation ClientUnlinkKongregateAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6638,7 +6743,7 @@
     return self;
 }
 @end
-@implementation UnlinkKongregateAccountResult
+@implementation ClientUnlinkKongregateAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6653,7 +6758,7 @@
     return self;
 }
 @end
-@implementation UnlinkNintendoSwitchDeviceIdRequest
+@implementation ClientUnlinkNintendoSwitchDeviceIdRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6670,7 +6775,7 @@
     return self;
 }
 @end
-@implementation UnlinkNintendoSwitchDeviceIdResult
+@implementation ClientUnlinkNintendoSwitchDeviceIdResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6685,7 +6790,7 @@
     return self;
 }
 @end
-@implementation UnlinkSteamAccountRequest
+@implementation ClientUnlinkSteamAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6700,7 +6805,7 @@
     return self;
 }
 @end
-@implementation UnlinkSteamAccountResult
+@implementation ClientUnlinkSteamAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6715,7 +6820,7 @@
     return self;
 }
 @end
-@implementation UnlinkTwitchAccountRequest
+@implementation ClientUnlinkTwitchAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6730,7 +6835,7 @@
     return self;
 }
 @end
-@implementation UnlinkTwitchAccountResult
+@implementation ClientUnlinkTwitchAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6745,7 +6850,7 @@
     return self;
 }
 @end
-@implementation UnlinkWindowsHelloAccountRequest
+@implementation ClientUnlinkWindowsHelloAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6762,7 +6867,7 @@
     return self;
 }
 @end
-@implementation UnlinkWindowsHelloAccountResponse
+@implementation ClientUnlinkWindowsHelloAccountResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6777,7 +6882,39 @@
     return self;
 }
 @end
-@implementation UnlockContainerInstanceRequest
+@implementation ClientUnlinkXboxAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlinkXboxAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlockContainerInstanceRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6800,7 +6937,7 @@
     return self;
 }
 @end
-@implementation UnlockContainerItemRequest
+@implementation ClientUnlockContainerItemRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6821,7 +6958,7 @@
     return self;
 }
 @end
-@implementation UnlockContainerItemResult
+@implementation ClientUnlockContainerItemResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6836,7 +6973,7 @@
     NSArray* member_list = [properties objectForKey:@"GrantedItems"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[ItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.GrantedItems = [mutable_storage copy];
 }
@@ -6860,7 +6997,7 @@
     return self;
 }
 @end
-@implementation UpdateAvatarUrlRequest
+@implementation ClientUpdateAvatarUrlRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6877,7 +7014,7 @@
     return self;
 }
 @end
-@implementation UpdateCharacterDataRequest
+@implementation ClientUpdateCharacterDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6910,13 +7047,13 @@
 }
 
     
-    self.Permission = (UserDataPermission)[properties valueForKey:@"Permission"];
+    self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
 
     return self;
 }
 @end
-@implementation UpdateCharacterDataResult
+@implementation ClientUpdateCharacterDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6933,7 +7070,7 @@
     return self;
 }
 @end
-@implementation UpdateCharacterStatisticsRequest
+@implementation ClientUpdateCharacterStatisticsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6960,7 +7097,7 @@
     return self;
 }
 @end
-@implementation UpdateCharacterStatisticsResult
+@implementation ClientUpdateCharacterStatisticsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6975,7 +7112,7 @@
     return self;
 }
 @end
-@implementation UpdatePlayerStatisticsRequest
+@implementation ClientUpdatePlayerStatisticsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -6990,7 +7127,7 @@
     NSArray* member_list = [properties objectForKey:@"Statistics"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[StatisticUpdate new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[ClientStatisticUpdate new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Statistics = [mutable_storage copy];
 }
@@ -7000,7 +7137,7 @@
     return self;
 }
 @end
-@implementation UpdatePlayerStatisticsResult
+@implementation ClientUpdatePlayerStatisticsResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7015,7 +7152,7 @@
     return self;
 }
 @end
-@implementation UpdateSharedGroupDataRequest
+@implementation ClientUpdateSharedGroupDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7046,7 +7183,7 @@
 }
 
     
-    self.Permission = (UserDataPermission)[properties valueForKey:@"Permission"];
+    self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
     self.SharedGroupId = [properties valueForKey:@"SharedGroupId"];
     
@@ -7054,7 +7191,7 @@
     return self;
 }
 @end
-@implementation UpdateSharedGroupDataResult
+@implementation ClientUpdateSharedGroupDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7069,7 +7206,7 @@
     return self;
 }
 @end
-@implementation UpdateUserDataRequest
+@implementation ClientUpdateUserDataRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7100,13 +7237,13 @@
 }
 
     
-    self.Permission = (UserDataPermission)[properties valueForKey:@"Permission"];
+    self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
 
     return self;
 }
 @end
-@implementation UpdateUserDataResult
+@implementation ClientUpdateUserDataResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7123,7 +7260,7 @@
     return self;
 }
 @end
-@implementation UpdateUserTitleDisplayNameRequest
+@implementation ClientUpdateUserTitleDisplayNameRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7140,7 +7277,7 @@
     return self;
 }
 @end
-@implementation UpdateUserTitleDisplayNameResult
+@implementation ClientUpdateUserTitleDisplayNameResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7157,7 +7294,7 @@
     return self;
 }
 @end
-@implementation UserAccountInfo
+@implementation ClientUserAccountInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7168,43 +7305,59 @@
     }
 
     
-    self.AndroidDeviceInfo = [[UserAndroidDeviceInfo new] initWithDictionary:[properties objectForKey:@"AndroidDeviceInfo"]];
+    self.AndroidDeviceInfo = [[ClientUserAndroidDeviceInfo new] initWithDictionary:[properties objectForKey:@"AndroidDeviceInfo"]];
     
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
-    self.CustomIdInfo = [[UserCustomIdInfo new] initWithDictionary:[properties objectForKey:@"CustomIdInfo"]];
+    self.CustomIdInfo = [[ClientUserCustomIdInfo new] initWithDictionary:[properties objectForKey:@"CustomIdInfo"]];
     
-    self.FacebookInfo = [[UserFacebookInfo new] initWithDictionary:[properties objectForKey:@"FacebookInfo"]];
+    self.FacebookInfo = [[ClientUserFacebookInfo new] initWithDictionary:[properties objectForKey:@"FacebookInfo"]];
     
-    self.GameCenterInfo = [[UserGameCenterInfo new] initWithDictionary:[properties objectForKey:@"GameCenterInfo"]];
+    self.FacebookInstantGamesIdInfo = [[ClientUserFacebookInstantGamesIdInfo new] initWithDictionary:[properties objectForKey:@"FacebookInstantGamesIdInfo"]];
     
-    self.GoogleInfo = [[UserGoogleInfo new] initWithDictionary:[properties objectForKey:@"GoogleInfo"]];
+    self.GameCenterInfo = [[ClientUserGameCenterInfo new] initWithDictionary:[properties objectForKey:@"GameCenterInfo"]];
     
-    self.IosDeviceInfo = [[UserIosDeviceInfo new] initWithDictionary:[properties objectForKey:@"IosDeviceInfo"]];
+    self.GoogleInfo = [[ClientUserGoogleInfo new] initWithDictionary:[properties objectForKey:@"GoogleInfo"]];
     
-    self.KongregateInfo = [[UserKongregateInfo new] initWithDictionary:[properties objectForKey:@"KongregateInfo"]];
+    self.IosDeviceInfo = [[ClientUserIosDeviceInfo new] initWithDictionary:[properties objectForKey:@"IosDeviceInfo"]];
+    
+    self.KongregateInfo = [[ClientUserKongregateInfo new] initWithDictionary:[properties objectForKey:@"KongregateInfo"]];
+    
+    self.NintendoSwitchDeviceIdInfo = [[ClientUserNintendoSwitchDeviceIdInfo new] initWithDictionary:[properties objectForKey:@"NintendoSwitchDeviceIdInfo"]];
+    
+    if ([properties objectForKey:@"OpenIdInfo"]){
+    NSArray* member_list = [properties objectForKey:@"OpenIdInfo"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientUserOpenIdInfo new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.OpenIdInfo = [mutable_storage copy];
+}
+
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
-    self.PrivateInfo = [[UserPrivateAccountInfo new] initWithDictionary:[properties objectForKey:@"PrivateInfo"]];
+    self.PrivateInfo = [[ClientUserPrivateAccountInfo new] initWithDictionary:[properties objectForKey:@"PrivateInfo"]];
     
-    self.PsnInfo = [[UserPsnInfo new] initWithDictionary:[properties objectForKey:@"PsnInfo"]];
+    self.PsnInfo = [[ClientUserPsnInfo new] initWithDictionary:[properties objectForKey:@"PsnInfo"]];
     
-    self.SteamInfo = [[UserSteamInfo new] initWithDictionary:[properties objectForKey:@"SteamInfo"]];
+    self.SteamInfo = [[ClientUserSteamInfo new] initWithDictionary:[properties objectForKey:@"SteamInfo"]];
     
-    self.TitleInfo = [[UserTitleInfo new] initWithDictionary:[properties objectForKey:@"TitleInfo"]];
+    self.TitleInfo = [[ClientUserTitleInfo new] initWithDictionary:[properties objectForKey:@"TitleInfo"]];
     
-    self.TwitchInfo = [[UserTwitchInfo new] initWithDictionary:[properties objectForKey:@"TwitchInfo"]];
+    self.TwitchInfo = [[ClientUserTwitchInfo new] initWithDictionary:[properties objectForKey:@"TwitchInfo"]];
     
     self.Username = [properties valueForKey:@"Username"];
     
-    self.XboxInfo = [[UserXboxInfo new] initWithDictionary:[properties objectForKey:@"XboxInfo"]];
+    self.WindowsHelloInfo = [[ClientUserWindowsHelloInfo new] initWithDictionary:[properties objectForKey:@"WindowsHelloInfo"]];
+    
+    self.XboxInfo = [[ClientUserXboxInfo new] initWithDictionary:[properties objectForKey:@"XboxInfo"]];
     
 
     return self;
 }
 @end
-@implementation UserAndroidDeviceInfo
+@implementation ClientUserAndroidDeviceInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7221,7 +7374,7 @@
     return self;
 }
 @end
-@implementation UserCustomIdInfo
+@implementation ClientUserCustomIdInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7238,7 +7391,7 @@
     return self;
 }
 @end
-@implementation UserDataRecord
+@implementation ClientUserDataRecord
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7251,7 +7404,7 @@
     
     self.LastUpdated = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastUpdated"]];
     
-    self.Permission = (UserDataPermission)[properties valueForKey:@"Permission"];
+    self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
     self.Value = [properties valueForKey:@"Value"];
     
@@ -7259,7 +7412,7 @@
     return self;
 }
 @end
-@implementation UserFacebookInfo
+@implementation ClientUserFacebookInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7278,7 +7431,24 @@
     return self;
 }
 @end
-@implementation UserGameCenterInfo
+@implementation ClientUserFacebookInstantGamesIdInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.FacebookInstantGamesId = [properties valueForKey:@"FacebookInstantGamesId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserGameCenterInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7295,7 +7465,7 @@
     return self;
 }
 @end
-@implementation UserGoogleInfo
+@implementation ClientUserGoogleInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7318,7 +7488,7 @@
     return self;
 }
 @end
-@implementation UserIosDeviceInfo
+@implementation ClientUserIosDeviceInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7335,7 +7505,7 @@
     return self;
 }
 @end
-@implementation UserKongregateInfo
+@implementation ClientUserKongregateInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7354,7 +7524,45 @@
     return self;
 }
 @end
-@implementation UserPrivateAccountInfo
+@implementation ClientUserNintendoSwitchDeviceIdInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserOpenIdInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
+    
+    self.Issuer = [properties valueForKey:@"Issuer"];
+    
+    self.Subject = [properties valueForKey:@"Subject"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserPrivateAccountInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7371,7 +7579,7 @@
     return self;
 }
 @end
-@implementation UserPsnInfo
+@implementation ClientUserPsnInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7390,7 +7598,7 @@
     return self;
 }
 @end
-@implementation UserSettings
+@implementation ClientUserSettings
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7411,7 +7619,7 @@
     return self;
 }
 @end
-@implementation UserSteamInfo
+@implementation ClientUserSteamInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7422,11 +7630,11 @@
     }
 
     
-    self.SteamActivationStatus = (TitleActivationStatus)[properties valueForKey:@"SteamActivationStatus"];
+    self.SteamActivationStatus = (ClientTitleActivationStatus)[properties valueForKey:@"ClientSteamActivationStatus"];
     
     self.SteamCountry = [properties valueForKey:@"SteamCountry"];
     
-    self.SteamCurrency = (Currency)[properties valueForKey:@"SteamCurrency"];
+    self.SteamCurrency = (ClientCurrency)[properties valueForKey:@"ClientSteamCurrency"];
     
     self.SteamId = [properties valueForKey:@"SteamId"];
     
@@ -7434,7 +7642,7 @@
     return self;
 }
 @end
-@implementation UserTitleInfo
+@implementation ClientUserTitleInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7457,15 +7665,15 @@
     
     self.LastLogin = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastLogin"]];
     
-    self.Origination = (UserOrigination)[properties valueForKey:@"Origination"];
+    self.Origination = (ClientUserOrigination)[properties valueForKey:@"ClientOrigination"];
     
-    self.TitlePlayerAccount = [[EntityKey new] initWithDictionary:[properties objectForKey:@"TitlePlayerAccount"]];
+    self.TitlePlayerAccount = [[ClientEntityKey new] initWithDictionary:[properties objectForKey:@"TitlePlayerAccount"]];
     
 
     return self;
 }
 @end
-@implementation UserTwitchInfo
+@implementation ClientUserTwitchInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7484,7 +7692,26 @@
     return self;
 }
 @end
-@implementation UserXboxInfo
+@implementation ClientUserWindowsHelloInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.WindowsHelloDeviceName = [properties valueForKey:@"WindowsHelloDeviceName"];
+    
+    self.WindowsHelloPublicKeyHash = [properties valueForKey:@"WindowsHelloPublicKeyHash"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserXboxInfo
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7501,7 +7728,7 @@
     return self;
 }
 @end
-@implementation ValidateAmazonReceiptRequest
+@implementation ClientValidateAmazonReceiptRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7526,7 +7753,7 @@
     return self;
 }
 @end
-@implementation ValidateAmazonReceiptResult
+@implementation ClientValidateAmazonReceiptResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7541,7 +7768,7 @@
     return self;
 }
 @end
-@implementation ValidateGooglePlayPurchaseRequest
+@implementation ClientValidateGooglePlayPurchaseRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7564,7 +7791,7 @@
     return self;
 }
 @end
-@implementation ValidateGooglePlayPurchaseResult
+@implementation ClientValidateGooglePlayPurchaseResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7579,7 +7806,7 @@
     return self;
 }
 @end
-@implementation ValidateIOSReceiptRequest
+@implementation ClientValidateIOSReceiptRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7600,7 +7827,7 @@
     return self;
 }
 @end
-@implementation ValidateIOSReceiptResult
+@implementation ClientValidateIOSReceiptResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7615,7 +7842,7 @@
     return self;
 }
 @end
-@implementation ValidateWindowsReceiptRequest
+@implementation ClientValidateWindowsReceiptRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7638,7 +7865,7 @@
     return self;
 }
 @end
-@implementation ValidateWindowsReceiptResult
+@implementation ClientValidateWindowsReceiptResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7653,7 +7880,7 @@
     return self;
 }
 @end
-@implementation ValueToDateModel
+@implementation ClientValueToDateModel
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7674,7 +7901,7 @@
     return self;
 }
 @end
-@implementation VirtualCurrencyRechargeTime
+@implementation ClientVirtualCurrencyRechargeTime
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7695,7 +7922,7 @@
     return self;
 }
 @end
-@implementation WriteClientCharacterEventRequest
+@implementation ClientWriteClientCharacterEventRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7726,7 +7953,7 @@
     return self;
 }
 @end
-@implementation WriteClientPlayerEventRequest
+@implementation ClientWriteClientPlayerEventRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7755,7 +7982,7 @@
     return self;
 }
 @end
-@implementation WriteEventResponse
+@implementation ClientWriteEventResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7772,7 +7999,7 @@
     return self;
 }
 @end
-@implementation WriteTitleEventRequest
+@implementation ClientWriteTitleEventRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

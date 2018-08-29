@@ -1,7 +1,7 @@
 #import "PlayFabCloudScriptDataModels.h"
 
 
-@implementation EntityKey
+@implementation CloudScriptEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -14,15 +14,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation ExecuteCloudScriptResult
+@implementation CloudScriptExecuteCloudScriptResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -35,7 +33,7 @@
     
     self.APIRequestsIssued = [properties valueForKey:@"APIRequestsIssued"];
     
-    self.Error = [[ScriptExecutionError new] initWithDictionary:[properties objectForKey:@"Error"]];
+    self.Error = [[CloudScriptScriptExecutionError new] initWithDictionary:[properties objectForKey:@"Error"]];
     
     self.ExecutionTimeSeconds = [properties valueForKey:@"ExecutionTimeSeconds"];
     
@@ -51,7 +49,7 @@
     NSArray* member_list = [properties objectForKey:@"Logs"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[LogStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[CloudScriptLogStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Logs = [mutable_storage copy];
 }
@@ -69,7 +67,7 @@
     return self;
 }
 @end
-@implementation ExecuteEntityCloudScriptRequest
+@implementation CloudScriptExecuteEntityCloudScriptRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -80,7 +78,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];
     
@@ -88,7 +86,7 @@
     
     self.GeneratePlayStreamEvent = [[properties valueForKey:@"GeneratePlayStreamEvent"] boolValue];
     
-    self.RevisionSelection = (CloudScriptRevisionOption)[properties valueForKey:@"RevisionSelection"];
+    self.RevisionSelection = (CloudScriptCloudScriptRevisionOption)[properties valueForKey:@"CloudScriptRevisionSelection"];
     
     self.SpecificRevision = [properties valueForKey:@"SpecificRevision"];
     
@@ -96,7 +94,7 @@
     return self;
 }
 @end
-@implementation LogStatement
+@implementation CloudScriptLogStatement
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -117,7 +115,7 @@
     return self;
 }
 @end
-@implementation ScriptExecutionError
+@implementation CloudScriptScriptExecutionError
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

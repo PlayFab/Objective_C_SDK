@@ -1,1272 +1,1284 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
+typedef enum
+{
+    ClientTradeStatusInvalid,
+    ClientTradeStatusOpening,
+    ClientTradeStatusOpen,
+    ClientTradeStatusAccepting,
+    ClientTradeStatusAccepted,
+    ClientTradeStatusFilled,
+    ClientTradeStatusCancelled
+} ClientTradeStatus;
 
 typedef enum
 {
-    TradeStatusInvalid,
-    TradeStatusOpening,
-    TradeStatusOpen,
-    TradeStatusAccepting,
-    TradeStatusAccepted,
-    TradeStatusFilled,
-    TradeStatusCancelled
-} TradeStatus;
+    ClientCloudScriptRevisionOptionLive,
+    ClientCloudScriptRevisionOptionLatest,
+    ClientCloudScriptRevisionOptionSpecific
+} ClientCloudScriptRevisionOption;
 
 typedef enum
 {
-    CloudScriptRevisionOptionLive,
-    CloudScriptRevisionOptionLatest,
-    CloudScriptRevisionOptionSpecific
-} CloudScriptRevisionOption;
+    ClientEmailVerificationStatusUnverified,
+    ClientEmailVerificationStatusPending,
+    ClientEmailVerificationStatusConfirmed
+} ClientEmailVerificationStatus;
 
 typedef enum
 {
-    EmailVerificationStatusUnverified,
-    EmailVerificationStatusPending,
-    EmailVerificationStatusConfirmed
-} EmailVerificationStatus;
+    ClientContinentCodeAF,
+    ClientContinentCodeAN,
+    ClientContinentCodeAS,
+    ClientContinentCodeEU,
+    ClientContinentCodeNA,
+    ClientContinentCodeOC,
+    ClientContinentCodeSA
+} ClientContinentCode;
 
 typedef enum
 {
-    ContinentCodeAF,
-    ContinentCodeAN,
-    ContinentCodeAS,
-    ContinentCodeEU,
-    ContinentCodeNA,
-    ContinentCodeOC,
-    ContinentCodeSA
-} ContinentCode;
+    ClientCountryCodeAF,
+    ClientCountryCodeAX,
+    ClientCountryCodeAL,
+    ClientCountryCodeDZ,
+    ClientCountryCodeAS,
+    ClientCountryCodeAD,
+    ClientCountryCodeAO,
+    ClientCountryCodeAI,
+    ClientCountryCodeAQ,
+    ClientCountryCodeAG,
+    ClientCountryCodeAR,
+    ClientCountryCodeAM,
+    ClientCountryCodeAW,
+    ClientCountryCodeAU,
+    ClientCountryCodeAT,
+    ClientCountryCodeAZ,
+    ClientCountryCodeBS,
+    ClientCountryCodeBH,
+    ClientCountryCodeBD,
+    ClientCountryCodeBB,
+    ClientCountryCodeBY,
+    ClientCountryCodeBE,
+    ClientCountryCodeBZ,
+    ClientCountryCodeBJ,
+    ClientCountryCodeBM,
+    ClientCountryCodeBT,
+    ClientCountryCodeBO,
+    ClientCountryCodeBQ,
+    ClientCountryCodeBA,
+    ClientCountryCodeBW,
+    ClientCountryCodeBV,
+    ClientCountryCodeBR,
+    ClientCountryCodeIO,
+    ClientCountryCodeBN,
+    ClientCountryCodeBG,
+    ClientCountryCodeBF,
+    ClientCountryCodeBI,
+    ClientCountryCodeKH,
+    ClientCountryCodeCM,
+    ClientCountryCodeCA,
+    ClientCountryCodeCV,
+    ClientCountryCodeKY,
+    ClientCountryCodeCF,
+    ClientCountryCodeTD,
+    ClientCountryCodeCL,
+    ClientCountryCodeCN,
+    ClientCountryCodeCX,
+    ClientCountryCodeCC,
+    ClientCountryCodeCO,
+    ClientCountryCodeKM,
+    ClientCountryCodeCG,
+    ClientCountryCodeCD,
+    ClientCountryCodeCK,
+    ClientCountryCodeCR,
+    ClientCountryCodeCI,
+    ClientCountryCodeHR,
+    ClientCountryCodeCU,
+    ClientCountryCodeCW,
+    ClientCountryCodeCY,
+    ClientCountryCodeCZ,
+    ClientCountryCodeDK,
+    ClientCountryCodeDJ,
+    ClientCountryCodeDM,
+    ClientCountryCodeDO,
+    ClientCountryCodeEC,
+    ClientCountryCodeEG,
+    ClientCountryCodeSV,
+    ClientCountryCodeGQ,
+    ClientCountryCodeER,
+    ClientCountryCodeEE,
+    ClientCountryCodeET,
+    ClientCountryCodeFK,
+    ClientCountryCodeFO,
+    ClientCountryCodeFJ,
+    ClientCountryCodeFI,
+    ClientCountryCodeFR,
+    ClientCountryCodeGF,
+    ClientCountryCodePF,
+    ClientCountryCodeTF,
+    ClientCountryCodeGA,
+    ClientCountryCodeGM,
+    ClientCountryCodeGE,
+    ClientCountryCodeDE,
+    ClientCountryCodeGH,
+    ClientCountryCodeGI,
+    ClientCountryCodeGR,
+    ClientCountryCodeGL,
+    ClientCountryCodeGD,
+    ClientCountryCodeGP,
+    ClientCountryCodeGU,
+    ClientCountryCodeGT,
+    ClientCountryCodeGG,
+    ClientCountryCodeGN,
+    ClientCountryCodeGW,
+    ClientCountryCodeGY,
+    ClientCountryCodeHT,
+    ClientCountryCodeHM,
+    ClientCountryCodeVA,
+    ClientCountryCodeHN,
+    ClientCountryCodeHK,
+    ClientCountryCodeHU,
+    ClientCountryCodeIS,
+    ClientCountryCodeIN,
+    ClientCountryCodeID,
+    ClientCountryCodeIR,
+    ClientCountryCodeIQ,
+    ClientCountryCodeIE,
+    ClientCountryCodeIM,
+    ClientCountryCodeIL,
+    ClientCountryCodeIT,
+    ClientCountryCodeJM,
+    ClientCountryCodeJP,
+    ClientCountryCodeJE,
+    ClientCountryCodeJO,
+    ClientCountryCodeKZ,
+    ClientCountryCodeKE,
+    ClientCountryCodeKI,
+    ClientCountryCodeKP,
+    ClientCountryCodeKR,
+    ClientCountryCodeKW,
+    ClientCountryCodeKG,
+    ClientCountryCodeLA,
+    ClientCountryCodeLV,
+    ClientCountryCodeLB,
+    ClientCountryCodeLS,
+    ClientCountryCodeLR,
+    ClientCountryCodeLY,
+    ClientCountryCodeLI,
+    ClientCountryCodeLT,
+    ClientCountryCodeLU,
+    ClientCountryCodeMO,
+    ClientCountryCodeMK,
+    ClientCountryCodeMG,
+    ClientCountryCodeMW,
+    ClientCountryCodeMY,
+    ClientCountryCodeMV,
+    ClientCountryCodeML,
+    ClientCountryCodeMT,
+    ClientCountryCodeMH,
+    ClientCountryCodeMQ,
+    ClientCountryCodeMR,
+    ClientCountryCodeMU,
+    ClientCountryCodeYT,
+    ClientCountryCodeMX,
+    ClientCountryCodeFM,
+    ClientCountryCodeMD,
+    ClientCountryCodeMC,
+    ClientCountryCodeMN,
+    ClientCountryCodeME,
+    ClientCountryCodeMS,
+    ClientCountryCodeMA,
+    ClientCountryCodeMZ,
+    ClientCountryCodeMM,
+    ClientCountryCodeNA,
+    ClientCountryCodeNR,
+    ClientCountryCodeNP,
+    ClientCountryCodeNL,
+    ClientCountryCodeNC,
+    ClientCountryCodeNZ,
+    ClientCountryCodeNI,
+    ClientCountryCodeNE,
+    ClientCountryCodeNG,
+    ClientCountryCodeNU,
+    ClientCountryCodeNF,
+    ClientCountryCodeMP,
+    ClientCountryCodeNO,
+    ClientCountryCodeOM,
+    ClientCountryCodePK,
+    ClientCountryCodePW,
+    ClientCountryCodePS,
+    ClientCountryCodePA,
+    ClientCountryCodePG,
+    ClientCountryCodePY,
+    ClientCountryCodePE,
+    ClientCountryCodePH,
+    ClientCountryCodePN,
+    ClientCountryCodePL,
+    ClientCountryCodePT,
+    ClientCountryCodePR,
+    ClientCountryCodeQA,
+    ClientCountryCodeRE,
+    ClientCountryCodeRO,
+    ClientCountryCodeRU,
+    ClientCountryCodeRW,
+    ClientCountryCodeBL,
+    ClientCountryCodeSH,
+    ClientCountryCodeKN,
+    ClientCountryCodeLC,
+    ClientCountryCodeMF,
+    ClientCountryCodePM,
+    ClientCountryCodeVC,
+    ClientCountryCodeWS,
+    ClientCountryCodeSM,
+    ClientCountryCodeST,
+    ClientCountryCodeSA,
+    ClientCountryCodeSN,
+    ClientCountryCodeRS,
+    ClientCountryCodeSC,
+    ClientCountryCodeSL,
+    ClientCountryCodeSG,
+    ClientCountryCodeSX,
+    ClientCountryCodeSK,
+    ClientCountryCodeSI,
+    ClientCountryCodeSB,
+    ClientCountryCodeSO,
+    ClientCountryCodeZA,
+    ClientCountryCodeGS,
+    ClientCountryCodeSS,
+    ClientCountryCodeES,
+    ClientCountryCodeLK,
+    ClientCountryCodeSD,
+    ClientCountryCodeSR,
+    ClientCountryCodeSJ,
+    ClientCountryCodeSZ,
+    ClientCountryCodeSE,
+    ClientCountryCodeCH,
+    ClientCountryCodeSY,
+    ClientCountryCodeTW,
+    ClientCountryCodeTJ,
+    ClientCountryCodeTZ,
+    ClientCountryCodeTH,
+    ClientCountryCodeTL,
+    ClientCountryCodeTG,
+    ClientCountryCodeTK,
+    ClientCountryCodeTO,
+    ClientCountryCodeTT,
+    ClientCountryCodeTN,
+    ClientCountryCodeTR,
+    ClientCountryCodeTM,
+    ClientCountryCodeTC,
+    ClientCountryCodeTV,
+    ClientCountryCodeUG,
+    ClientCountryCodeUA,
+    ClientCountryCodeAE,
+    ClientCountryCodeGB,
+    ClientCountryCodeUS,
+    ClientCountryCodeUM,
+    ClientCountryCodeUY,
+    ClientCountryCodeUZ,
+    ClientCountryCodeVU,
+    ClientCountryCodeVE,
+    ClientCountryCodeVN,
+    ClientCountryCodeVG,
+    ClientCountryCodeVI,
+    ClientCountryCodeWF,
+    ClientCountryCodeEH,
+    ClientCountryCodeYE,
+    ClientCountryCodeZM,
+    ClientCountryCodeZW
+} ClientCountryCode;
 
 typedef enum
 {
-    CountryCodeAF,
-    CountryCodeAX,
-    CountryCodeAL,
-    CountryCodeDZ,
-    CountryCodeAS,
-    CountryCodeAD,
-    CountryCodeAO,
-    CountryCodeAI,
-    CountryCodeAQ,
-    CountryCodeAG,
-    CountryCodeAR,
-    CountryCodeAM,
-    CountryCodeAW,
-    CountryCodeAU,
-    CountryCodeAT,
-    CountryCodeAZ,
-    CountryCodeBS,
-    CountryCodeBH,
-    CountryCodeBD,
-    CountryCodeBB,
-    CountryCodeBY,
-    CountryCodeBE,
-    CountryCodeBZ,
-    CountryCodeBJ,
-    CountryCodeBM,
-    CountryCodeBT,
-    CountryCodeBO,
-    CountryCodeBQ,
-    CountryCodeBA,
-    CountryCodeBW,
-    CountryCodeBV,
-    CountryCodeBR,
-    CountryCodeIO,
-    CountryCodeBN,
-    CountryCodeBG,
-    CountryCodeBF,
-    CountryCodeBI,
-    CountryCodeKH,
-    CountryCodeCM,
-    CountryCodeCA,
-    CountryCodeCV,
-    CountryCodeKY,
-    CountryCodeCF,
-    CountryCodeTD,
-    CountryCodeCL,
-    CountryCodeCN,
-    CountryCodeCX,
-    CountryCodeCC,
-    CountryCodeCO,
-    CountryCodeKM,
-    CountryCodeCG,
-    CountryCodeCD,
-    CountryCodeCK,
-    CountryCodeCR,
-    CountryCodeCI,
-    CountryCodeHR,
-    CountryCodeCU,
-    CountryCodeCW,
-    CountryCodeCY,
-    CountryCodeCZ,
-    CountryCodeDK,
-    CountryCodeDJ,
-    CountryCodeDM,
-    CountryCodeDO,
-    CountryCodeEC,
-    CountryCodeEG,
-    CountryCodeSV,
-    CountryCodeGQ,
-    CountryCodeER,
-    CountryCodeEE,
-    CountryCodeET,
-    CountryCodeFK,
-    CountryCodeFO,
-    CountryCodeFJ,
-    CountryCodeFI,
-    CountryCodeFR,
-    CountryCodeGF,
-    CountryCodePF,
-    CountryCodeTF,
-    CountryCodeGA,
-    CountryCodeGM,
-    CountryCodeGE,
-    CountryCodeDE,
-    CountryCodeGH,
-    CountryCodeGI,
-    CountryCodeGR,
-    CountryCodeGL,
-    CountryCodeGD,
-    CountryCodeGP,
-    CountryCodeGU,
-    CountryCodeGT,
-    CountryCodeGG,
-    CountryCodeGN,
-    CountryCodeGW,
-    CountryCodeGY,
-    CountryCodeHT,
-    CountryCodeHM,
-    CountryCodeVA,
-    CountryCodeHN,
-    CountryCodeHK,
-    CountryCodeHU,
-    CountryCodeIS,
-    CountryCodeIN,
-    CountryCodeID,
-    CountryCodeIR,
-    CountryCodeIQ,
-    CountryCodeIE,
-    CountryCodeIM,
-    CountryCodeIL,
-    CountryCodeIT,
-    CountryCodeJM,
-    CountryCodeJP,
-    CountryCodeJE,
-    CountryCodeJO,
-    CountryCodeKZ,
-    CountryCodeKE,
-    CountryCodeKI,
-    CountryCodeKP,
-    CountryCodeKR,
-    CountryCodeKW,
-    CountryCodeKG,
-    CountryCodeLA,
-    CountryCodeLV,
-    CountryCodeLB,
-    CountryCodeLS,
-    CountryCodeLR,
-    CountryCodeLY,
-    CountryCodeLI,
-    CountryCodeLT,
-    CountryCodeLU,
-    CountryCodeMO,
-    CountryCodeMK,
-    CountryCodeMG,
-    CountryCodeMW,
-    CountryCodeMY,
-    CountryCodeMV,
-    CountryCodeML,
-    CountryCodeMT,
-    CountryCodeMH,
-    CountryCodeMQ,
-    CountryCodeMR,
-    CountryCodeMU,
-    CountryCodeYT,
-    CountryCodeMX,
-    CountryCodeFM,
-    CountryCodeMD,
-    CountryCodeMC,
-    CountryCodeMN,
-    CountryCodeME,
-    CountryCodeMS,
-    CountryCodeMA,
-    CountryCodeMZ,
-    CountryCodeMM,
-    CountryCodeNA,
-    CountryCodeNR,
-    CountryCodeNP,
-    CountryCodeNL,
-    CountryCodeNC,
-    CountryCodeNZ,
-    CountryCodeNI,
-    CountryCodeNE,
-    CountryCodeNG,
-    CountryCodeNU,
-    CountryCodeNF,
-    CountryCodeMP,
-    CountryCodeNO,
-    CountryCodeOM,
-    CountryCodePK,
-    CountryCodePW,
-    CountryCodePS,
-    CountryCodePA,
-    CountryCodePG,
-    CountryCodePY,
-    CountryCodePE,
-    CountryCodePH,
-    CountryCodePN,
-    CountryCodePL,
-    CountryCodePT,
-    CountryCodePR,
-    CountryCodeQA,
-    CountryCodeRE,
-    CountryCodeRO,
-    CountryCodeRU,
-    CountryCodeRW,
-    CountryCodeBL,
-    CountryCodeSH,
-    CountryCodeKN,
-    CountryCodeLC,
-    CountryCodeMF,
-    CountryCodePM,
-    CountryCodeVC,
-    CountryCodeWS,
-    CountryCodeSM,
-    CountryCodeST,
-    CountryCodeSA,
-    CountryCodeSN,
-    CountryCodeRS,
-    CountryCodeSC,
-    CountryCodeSL,
-    CountryCodeSG,
-    CountryCodeSX,
-    CountryCodeSK,
-    CountryCodeSI,
-    CountryCodeSB,
-    CountryCodeSO,
-    CountryCodeZA,
-    CountryCodeGS,
-    CountryCodeSS,
-    CountryCodeES,
-    CountryCodeLK,
-    CountryCodeSD,
-    CountryCodeSR,
-    CountryCodeSJ,
-    CountryCodeSZ,
-    CountryCodeSE,
-    CountryCodeCH,
-    CountryCodeSY,
-    CountryCodeTW,
-    CountryCodeTJ,
-    CountryCodeTZ,
-    CountryCodeTH,
-    CountryCodeTL,
-    CountryCodeTG,
-    CountryCodeTK,
-    CountryCodeTO,
-    CountryCodeTT,
-    CountryCodeTN,
-    CountryCodeTR,
-    CountryCodeTM,
-    CountryCodeTC,
-    CountryCodeTV,
-    CountryCodeUG,
-    CountryCodeUA,
-    CountryCodeAE,
-    CountryCodeGB,
-    CountryCodeUS,
-    CountryCodeUM,
-    CountryCodeUY,
-    CountryCodeUZ,
-    CountryCodeVU,
-    CountryCodeVE,
-    CountryCodeVN,
-    CountryCodeVG,
-    CountryCodeVI,
-    CountryCodeWF,
-    CountryCodeEH,
-    CountryCodeYE,
-    CountryCodeZM,
-    CountryCodeZW
-} CountryCode;
+    ClientCurrencyAED,
+    ClientCurrencyAFN,
+    ClientCurrencyALL,
+    ClientCurrencyAMD,
+    ClientCurrencyANG,
+    ClientCurrencyAOA,
+    ClientCurrencyARS,
+    ClientCurrencyAUD,
+    ClientCurrencyAWG,
+    ClientCurrencyAZN,
+    ClientCurrencyBAM,
+    ClientCurrencyBBD,
+    ClientCurrencyBDT,
+    ClientCurrencyBGN,
+    ClientCurrencyBHD,
+    ClientCurrencyBIF,
+    ClientCurrencyBMD,
+    ClientCurrencyBND,
+    ClientCurrencyBOB,
+    ClientCurrencyBRL,
+    ClientCurrencyBSD,
+    ClientCurrencyBTN,
+    ClientCurrencyBWP,
+    ClientCurrencyBYR,
+    ClientCurrencyBZD,
+    ClientCurrencyCAD,
+    ClientCurrencyCDF,
+    ClientCurrencyCHF,
+    ClientCurrencyCLP,
+    ClientCurrencyCNY,
+    ClientCurrencyCOP,
+    ClientCurrencyCRC,
+    ClientCurrencyCUC,
+    ClientCurrencyCUP,
+    ClientCurrencyCVE,
+    ClientCurrencyCZK,
+    ClientCurrencyDJF,
+    ClientCurrencyDKK,
+    ClientCurrencyDOP,
+    ClientCurrencyDZD,
+    ClientCurrencyEGP,
+    ClientCurrencyERN,
+    ClientCurrencyETB,
+    ClientCurrencyEUR,
+    ClientCurrencyFJD,
+    ClientCurrencyFKP,
+    ClientCurrencyGBP,
+    ClientCurrencyGEL,
+    ClientCurrencyGGP,
+    ClientCurrencyGHS,
+    ClientCurrencyGIP,
+    ClientCurrencyGMD,
+    ClientCurrencyGNF,
+    ClientCurrencyGTQ,
+    ClientCurrencyGYD,
+    ClientCurrencyHKD,
+    ClientCurrencyHNL,
+    ClientCurrencyHRK,
+    ClientCurrencyHTG,
+    ClientCurrencyHUF,
+    ClientCurrencyIDR,
+    ClientCurrencyILS,
+    ClientCurrencyIMP,
+    ClientCurrencyINR,
+    ClientCurrencyIQD,
+    ClientCurrencyIRR,
+    ClientCurrencyISK,
+    ClientCurrencyJEP,
+    ClientCurrencyJMD,
+    ClientCurrencyJOD,
+    ClientCurrencyJPY,
+    ClientCurrencyKES,
+    ClientCurrencyKGS,
+    ClientCurrencyKHR,
+    ClientCurrencyKMF,
+    ClientCurrencyKPW,
+    ClientCurrencyKRW,
+    ClientCurrencyKWD,
+    ClientCurrencyKYD,
+    ClientCurrencyKZT,
+    ClientCurrencyLAK,
+    ClientCurrencyLBP,
+    ClientCurrencyLKR,
+    ClientCurrencyLRD,
+    ClientCurrencyLSL,
+    ClientCurrencyLYD,
+    ClientCurrencyMAD,
+    ClientCurrencyMDL,
+    ClientCurrencyMGA,
+    ClientCurrencyMKD,
+    ClientCurrencyMMK,
+    ClientCurrencyMNT,
+    ClientCurrencyMOP,
+    ClientCurrencyMRO,
+    ClientCurrencyMUR,
+    ClientCurrencyMVR,
+    ClientCurrencyMWK,
+    ClientCurrencyMXN,
+    ClientCurrencyMYR,
+    ClientCurrencyMZN,
+    ClientCurrencyNAD,
+    ClientCurrencyNGN,
+    ClientCurrencyNIO,
+    ClientCurrencyNOK,
+    ClientCurrencyNPR,
+    ClientCurrencyNZD,
+    ClientCurrencyOMR,
+    ClientCurrencyPAB,
+    ClientCurrencyPEN,
+    ClientCurrencyPGK,
+    ClientCurrencyPHP,
+    ClientCurrencyPKR,
+    ClientCurrencyPLN,
+    ClientCurrencyPYG,
+    ClientCurrencyQAR,
+    ClientCurrencyRON,
+    ClientCurrencyRSD,
+    ClientCurrencyRUB,
+    ClientCurrencyRWF,
+    ClientCurrencySAR,
+    ClientCurrencySBD,
+    ClientCurrencySCR,
+    ClientCurrencySDG,
+    ClientCurrencySEK,
+    ClientCurrencySGD,
+    ClientCurrencySHP,
+    ClientCurrencySLL,
+    ClientCurrencySOS,
+    ClientCurrencySPL,
+    ClientCurrencySRD,
+    ClientCurrencySTD,
+    ClientCurrencySVC,
+    ClientCurrencySYP,
+    ClientCurrencySZL,
+    ClientCurrencyTHB,
+    ClientCurrencyTJS,
+    ClientCurrencyTMT,
+    ClientCurrencyTND,
+    ClientCurrencyTOP,
+    ClientCurrencyTRY,
+    ClientCurrencyTTD,
+    ClientCurrencyTVD,
+    ClientCurrencyTWD,
+    ClientCurrencyTZS,
+    ClientCurrencyUAH,
+    ClientCurrencyUGX,
+    ClientCurrencyUSD,
+    ClientCurrencyUYU,
+    ClientCurrencyUZS,
+    ClientCurrencyVEF,
+    ClientCurrencyVND,
+    ClientCurrencyVUV,
+    ClientCurrencyWST,
+    ClientCurrencyXAF,
+    ClientCurrencyXCD,
+    ClientCurrencyXDR,
+    ClientCurrencyXOF,
+    ClientCurrencyXPF,
+    ClientCurrencyYER,
+    ClientCurrencyZAR,
+    ClientCurrencyZMW,
+    ClientCurrencyZWD
+} ClientCurrency;
 
 typedef enum
 {
-    CurrencyAED,
-    CurrencyAFN,
-    CurrencyALL,
-    CurrencyAMD,
-    CurrencyANG,
-    CurrencyAOA,
-    CurrencyARS,
-    CurrencyAUD,
-    CurrencyAWG,
-    CurrencyAZN,
-    CurrencyBAM,
-    CurrencyBBD,
-    CurrencyBDT,
-    CurrencyBGN,
-    CurrencyBHD,
-    CurrencyBIF,
-    CurrencyBMD,
-    CurrencyBND,
-    CurrencyBOB,
-    CurrencyBRL,
-    CurrencyBSD,
-    CurrencyBTN,
-    CurrencyBWP,
-    CurrencyBYR,
-    CurrencyBZD,
-    CurrencyCAD,
-    CurrencyCDF,
-    CurrencyCHF,
-    CurrencyCLP,
-    CurrencyCNY,
-    CurrencyCOP,
-    CurrencyCRC,
-    CurrencyCUC,
-    CurrencyCUP,
-    CurrencyCVE,
-    CurrencyCZK,
-    CurrencyDJF,
-    CurrencyDKK,
-    CurrencyDOP,
-    CurrencyDZD,
-    CurrencyEGP,
-    CurrencyERN,
-    CurrencyETB,
-    CurrencyEUR,
-    CurrencyFJD,
-    CurrencyFKP,
-    CurrencyGBP,
-    CurrencyGEL,
-    CurrencyGGP,
-    CurrencyGHS,
-    CurrencyGIP,
-    CurrencyGMD,
-    CurrencyGNF,
-    CurrencyGTQ,
-    CurrencyGYD,
-    CurrencyHKD,
-    CurrencyHNL,
-    CurrencyHRK,
-    CurrencyHTG,
-    CurrencyHUF,
-    CurrencyIDR,
-    CurrencyILS,
-    CurrencyIMP,
-    CurrencyINR,
-    CurrencyIQD,
-    CurrencyIRR,
-    CurrencyISK,
-    CurrencyJEP,
-    CurrencyJMD,
-    CurrencyJOD,
-    CurrencyJPY,
-    CurrencyKES,
-    CurrencyKGS,
-    CurrencyKHR,
-    CurrencyKMF,
-    CurrencyKPW,
-    CurrencyKRW,
-    CurrencyKWD,
-    CurrencyKYD,
-    CurrencyKZT,
-    CurrencyLAK,
-    CurrencyLBP,
-    CurrencyLKR,
-    CurrencyLRD,
-    CurrencyLSL,
-    CurrencyLYD,
-    CurrencyMAD,
-    CurrencyMDL,
-    CurrencyMGA,
-    CurrencyMKD,
-    CurrencyMMK,
-    CurrencyMNT,
-    CurrencyMOP,
-    CurrencyMRO,
-    CurrencyMUR,
-    CurrencyMVR,
-    CurrencyMWK,
-    CurrencyMXN,
-    CurrencyMYR,
-    CurrencyMZN,
-    CurrencyNAD,
-    CurrencyNGN,
-    CurrencyNIO,
-    CurrencyNOK,
-    CurrencyNPR,
-    CurrencyNZD,
-    CurrencyOMR,
-    CurrencyPAB,
-    CurrencyPEN,
-    CurrencyPGK,
-    CurrencyPHP,
-    CurrencyPKR,
-    CurrencyPLN,
-    CurrencyPYG,
-    CurrencyQAR,
-    CurrencyRON,
-    CurrencyRSD,
-    CurrencyRUB,
-    CurrencyRWF,
-    CurrencySAR,
-    CurrencySBD,
-    CurrencySCR,
-    CurrencySDG,
-    CurrencySEK,
-    CurrencySGD,
-    CurrencySHP,
-    CurrencySLL,
-    CurrencySOS,
-    CurrencySPL,
-    CurrencySRD,
-    CurrencySTD,
-    CurrencySVC,
-    CurrencySYP,
-    CurrencySZL,
-    CurrencyTHB,
-    CurrencyTJS,
-    CurrencyTMT,
-    CurrencyTND,
-    CurrencyTOP,
-    CurrencyTRY,
-    CurrencyTTD,
-    CurrencyTVD,
-    CurrencyTWD,
-    CurrencyTZS,
-    CurrencyUAH,
-    CurrencyUGX,
-    CurrencyUSD,
-    CurrencyUYU,
-    CurrencyUZS,
-    CurrencyVEF,
-    CurrencyVND,
-    CurrencyVUV,
-    CurrencyWST,
-    CurrencyXAF,
-    CurrencyXCD,
-    CurrencyXDR,
-    CurrencyXOF,
-    CurrencyXPF,
-    CurrencyYER,
-    CurrencyZAR,
-    CurrencyZMW,
-    CurrencyZWD
-} Currency;
+    ClientRegionUSCentral,
+    ClientRegionUSEast,
+    ClientRegionEUWest,
+    ClientRegionSingapore,
+    ClientRegionJapan,
+    ClientRegionBrazil,
+    ClientRegionAustralia
+} ClientRegion;
 
 typedef enum
 {
-    RegionUSCentral,
-    RegionUSEast,
-    RegionEUWest,
-    RegionSingapore,
-    RegionJapan,
-    RegionBrazil,
-    RegionAustralia
-} Region;
+    ClientGameInstanceStateOpen,
+    ClientGameInstanceStateClosed
+} ClientGameInstanceState;
 
 typedef enum
 {
-    GameInstanceStateOpen,
-    GameInstanceStateClosed
-} GameInstanceState;
+    ClientLoginIdentityProviderUnknown,
+    ClientLoginIdentityProviderPlayFab,
+    ClientLoginIdentityProviderCustom,
+    ClientLoginIdentityProviderGameCenter,
+    ClientLoginIdentityProviderGooglePlay,
+    ClientLoginIdentityProviderSteam,
+    ClientLoginIdentityProviderXBoxLive,
+    ClientLoginIdentityProviderPSN,
+    ClientLoginIdentityProviderKongregate,
+    ClientLoginIdentityProviderFacebook,
+    ClientLoginIdentityProviderIOSDevice,
+    ClientLoginIdentityProviderAndroidDevice,
+    ClientLoginIdentityProviderTwitch,
+    ClientLoginIdentityProviderWindowsHello,
+    ClientLoginIdentityProviderGameServer,
+    ClientLoginIdentityProviderCustomServer,
+    ClientLoginIdentityProviderNintendoSwitch,
+    ClientLoginIdentityProviderFacebookInstantGames,
+    ClientLoginIdentityProviderOpenIdConnect
+} ClientLoginIdentityProvider;
 
 typedef enum
 {
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
+    ClientSubscriptionProviderStatusNoError,
+    ClientSubscriptionProviderStatusCancelled,
+    ClientSubscriptionProviderStatusUnknownError,
+    ClientSubscriptionProviderStatusBillingError,
+    ClientSubscriptionProviderStatusProductUnavailable,
+    ClientSubscriptionProviderStatusCustomerDidNotAcceptPriceChange,
+    ClientSubscriptionProviderStatusFreeTrial,
+    ClientSubscriptionProviderStatusPaymentPending
+} ClientSubscriptionProviderStatus;
 
 typedef enum
 {
-    LoginIdentityProviderUnknown,
-    LoginIdentityProviderPlayFab,
-    LoginIdentityProviderCustom,
-    LoginIdentityProviderGameCenter,
-    LoginIdentityProviderGooglePlay,
-    LoginIdentityProviderSteam,
-    LoginIdentityProviderXBoxLive,
-    LoginIdentityProviderPSN,
-    LoginIdentityProviderKongregate,
-    LoginIdentityProviderFacebook,
-    LoginIdentityProviderIOSDevice,
-    LoginIdentityProviderAndroidDevice,
-    LoginIdentityProviderTwitch,
-    LoginIdentityProviderWindowsHello,
-    LoginIdentityProviderGameServer,
-    LoginIdentityProviderCustomServer,
-    LoginIdentityProviderNintendoSwitch,
-    LoginIdentityProviderFacebookInstantGames
-} LoginIdentityProvider;
+    ClientPushNotificationPlatformApplePushNotificationService,
+    ClientPushNotificationPlatformGoogleCloudMessaging
+} ClientPushNotificationPlatform;
 
 typedef enum
 {
-    SubscriptionProviderStatusNoError,
-    SubscriptionProviderStatusCancelled,
-    SubscriptionProviderStatusUnknownError,
-    SubscriptionProviderStatusBillingError,
-    SubscriptionProviderStatusProductUnavailable,
-    SubscriptionProviderStatusCustomerDidNotAcceptPriceChange,
-    SubscriptionProviderStatusFreeTrial,
-    SubscriptionProviderStatusPaymentPending
-} SubscriptionProviderStatus;
+    ClientTitleActivationStatusNone,
+    ClientTitleActivationStatusActivatedTitleKey,
+    ClientTitleActivationStatusPendingSteam,
+    ClientTitleActivationStatusActivatedSteam,
+    ClientTitleActivationStatusRevokedSteam
+} ClientTitleActivationStatus;
 
 typedef enum
 {
-    PushNotificationPlatformApplePushNotificationService,
-    PushNotificationPlatformGoogleCloudMessaging
-} PushNotificationPlatform;
+    ClientUserOriginationOrganic,
+    ClientUserOriginationSteam,
+    ClientUserOriginationGoogle,
+    ClientUserOriginationAmazon,
+    ClientUserOriginationFacebook,
+    ClientUserOriginationKongregate,
+    ClientUserOriginationGamersFirst,
+    ClientUserOriginationUnknown,
+    ClientUserOriginationIOS,
+    ClientUserOriginationLoadTest,
+    ClientUserOriginationAndroid,
+    ClientUserOriginationPSN,
+    ClientUserOriginationGameCenter,
+    ClientUserOriginationCustomId,
+    ClientUserOriginationXboxLive,
+    ClientUserOriginationParse,
+    ClientUserOriginationTwitch,
+    ClientUserOriginationWindowsHello,
+    ClientUserOriginationServerCustomId,
+    ClientUserOriginationNintendoSwitchDeviceId,
+    ClientUserOriginationFacebookInstantGamesId,
+    ClientUserOriginationOpenIdConnect
+} ClientUserOrigination;
 
 typedef enum
 {
-    TitleActivationStatusNone,
-    TitleActivationStatusActivatedTitleKey,
-    TitleActivationStatusPendingSteam,
-    TitleActivationStatusActivatedSteam,
-    TitleActivationStatusRevokedSteam
-} TitleActivationStatus;
+    ClientUserDataPermissionPrivate,
+    ClientUserDataPermissionPublic
+} ClientUserDataPermission;
 
 typedef enum
 {
-    UserOriginationOrganic,
-    UserOriginationSteam,
-    UserOriginationGoogle,
-    UserOriginationAmazon,
-    UserOriginationFacebook,
-    UserOriginationKongregate,
-    UserOriginationGamersFirst,
-    UserOriginationUnknown,
-    UserOriginationIOS,
-    UserOriginationLoadTest,
-    UserOriginationAndroid,
-    UserOriginationPSN,
-    UserOriginationGameCenter,
-    UserOriginationCustomId,
-    UserOriginationXboxLive,
-    UserOriginationParse,
-    UserOriginationTwitch,
-    UserOriginationWindowsHello,
-    UserOriginationServerCustomId,
-    UserOriginationNintendoSwitchDeviceId,
-    UserOriginationFacebookInstantGamesId
-} UserOrigination;
+    ClientSourceTypeAdmin,
+    ClientSourceTypeBackEnd,
+    ClientSourceTypeGameClient,
+    ClientSourceTypeGameServer,
+    ClientSourceTypePartner,
+    ClientSourceTypeCustom,
+    ClientSourceTypeAPI
+} ClientSourceType;
 
 typedef enum
 {
-    UserDataPermissionPrivate,
-    UserDataPermissionPublic
-} UserDataPermission;
+    ClientMatchmakeStatusComplete,
+    ClientMatchmakeStatusWaiting,
+    ClientMatchmakeStatusGameNotFound,
+    ClientMatchmakeStatusNoAvailableSlots,
+    ClientMatchmakeStatusSessionClosed
+} ClientMatchmakeStatus;
 
 typedef enum
 {
-    SourceTypeAdmin,
-    SourceTypeBackEnd,
-    SourceTypeGameClient,
-    SourceTypeGameServer,
-    SourceTypePartner,
-    SourceTypeCustom,
-    SourceTypeAPI
-} SourceType;
-
-typedef enum
-{
-    MatchmakeStatusComplete,
-    MatchmakeStatusWaiting,
-    MatchmakeStatusGameNotFound,
-    MatchmakeStatusNoAvailableSlots,
-    MatchmakeStatusSessionClosed
-} MatchmakeStatus;
-
-typedef enum
-{
-    TransactionStatusCreateCart,
-    TransactionStatusInit,
-    TransactionStatusApproved,
-    TransactionStatusSucceeded,
-    TransactionStatusFailedByProvider,
-    TransactionStatusDisputePending,
-    TransactionStatusRefundPending,
-    TransactionStatusRefunded,
-    TransactionStatusRefundFailed,
-    TransactionStatusChargedBack,
-    TransactionStatusFailedByUber,
-    TransactionStatusFailedByPlayFab,
-    TransactionStatusRevoked,
-    TransactionStatusTradePending,
-    TransactionStatusTraded,
-    TransactionStatusUpgraded,
-    TransactionStatusStackPending,
-    TransactionStatusStacked,
-    TransactionStatusOther,
-    TransactionStatusFailed
-} TransactionStatus;
+    ClientTransactionStatusCreateCart,
+    ClientTransactionStatusInit,
+    ClientTransactionStatusApproved,
+    ClientTransactionStatusSucceeded,
+    ClientTransactionStatusFailedByProvider,
+    ClientTransactionStatusDisputePending,
+    ClientTransactionStatusRefundPending,
+    ClientTransactionStatusRefunded,
+    ClientTransactionStatusRefundFailed,
+    ClientTransactionStatusChargedBack,
+    ClientTransactionStatusFailedByUber,
+    ClientTransactionStatusFailedByPlayFab,
+    ClientTransactionStatusRevoked,
+    ClientTransactionStatusTradePending,
+    ClientTransactionStatusTraded,
+    ClientTransactionStatusUpgraded,
+    ClientTransactionStatusStackPending,
+    ClientTransactionStatusStacked,
+    ClientTransactionStatusOther,
+    ClientTransactionStatusFailed
+} ClientTransactionStatus;
 
 //predeclare all non-enum classes
 
-@class AcceptTradeRequest;
+@class ClientAcceptTradeRequest;
 
-@class AcceptTradeResponse;
+@class ClientAcceptTradeResponse;
 
-@class AdCampaignAttributionModel;
+@class ClientAdCampaignAttributionModel;
 
-@class AddFriendRequest;
+@class ClientAddFriendRequest;
 
-@class AddFriendResult;
+@class ClientAddFriendResult;
 
-@class AddGenericIDRequest;
+@class ClientAddGenericIDRequest;
 
-@class AddGenericIDResult;
+@class ClientAddGenericIDResult;
 
-@class AddOrUpdateContactEmailRequest;
+@class ClientAddOrUpdateContactEmailRequest;
 
-@class AddOrUpdateContactEmailResult;
+@class ClientAddOrUpdateContactEmailResult;
 
-@class AddSharedGroupMembersRequest;
+@class ClientAddSharedGroupMembersRequest;
 
-@class AddSharedGroupMembersResult;
+@class ClientAddSharedGroupMembersResult;
 
-@class AddUsernamePasswordRequest;
+@class ClientAddUsernamePasswordRequest;
 
-@class AddUsernamePasswordResult;
+@class ClientAddUsernamePasswordResult;
 
-@class AddUserVirtualCurrencyRequest;
+@class ClientAddUserVirtualCurrencyRequest;
 
-@class AndroidDevicePushNotificationRegistrationRequest;
+@class ClientAndroidDevicePushNotificationRegistrationRequest;
 
-@class AndroidDevicePushNotificationRegistrationResult;
+@class ClientAndroidDevicePushNotificationRegistrationResult;
 
-@class AttributeInstallRequest;
+@class ClientAttributeInstallRequest;
 
-@class AttributeInstallResult;
+@class ClientAttributeInstallResult;
 
-@class CancelTradeRequest;
+@class ClientCancelTradeRequest;
 
-@class CancelTradeResponse;
+@class ClientCancelTradeResponse;
 
-@class CartItem;
+@class ClientCartItem;
 
-@class CatalogItem;
+@class ClientCatalogItem;
 
-@class CatalogItemBundleInfo;
+@class ClientCatalogItemBundleInfo;
 
-@class CatalogItemConsumableInfo;
+@class ClientCatalogItemConsumableInfo;
 
-@class CatalogItemContainerInfo;
+@class ClientCatalogItemContainerInfo;
 
-@class CharacterInventory;
+@class ClientCharacterInventory;
 
-@class CharacterLeaderboardEntry;
+@class ClientCharacterLeaderboardEntry;
 
-@class CharacterResult;
+@class ClientCharacterResult;
 
-@class CollectionFilter;
+@class ClientCollectionFilter;
 
-@class ConfirmPurchaseRequest;
+@class ClientConfirmPurchaseRequest;
 
-@class ConfirmPurchaseResult;
+@class ClientConfirmPurchaseResult;
 
-@class ConsumeItemRequest;
+@class ClientConsumeItemRequest;
 
-@class ConsumeItemResult;
+@class ClientConsumeItemResult;
 
-@class ContactEmailInfoModel;
+@class ClientConsumeXboxEntitlementsRequest;
 
-@class Container_Dictionary_String_String;
+@class ClientConsumeXboxEntitlementsResult;
 
-@class CreateSharedGroupRequest;
+@class ClientContactEmailInfoModel;
 
-@class CreateSharedGroupResult;
+@class ClientContainer_Dictionary_String_String;
 
-@class CurrentGamesRequest;
+@class ClientCreateSharedGroupRequest;
 
-@class CurrentGamesResult;
+@class ClientCreateSharedGroupResult;
 
-@class DeviceInfoRequest;
+@class ClientCurrentGamesRequest;
 
-@class EmptyResult;
+@class ClientCurrentGamesResult;
 
-@class EntityKey;
+@class ClientDeviceInfoRequest;
 
-@class EntityTokenResponse;
+@class ClientEmptyResponse;
 
-@class ExecuteCloudScriptRequest;
+@class ClientEntityKey;
 
-@class ExecuteCloudScriptResult;
+@class ClientEntityTokenResponse;
 
-@class FacebookInstantGamesPlayFabIdPair;
+@class ClientExecuteCloudScriptRequest;
 
-@class FacebookPlayFabIdPair;
+@class ClientExecuteCloudScriptResult;
 
-@class FriendInfo;
+@class ClientFacebookInstantGamesPlayFabIdPair;
 
-@class GameCenterPlayFabIdPair;
+@class ClientFacebookPlayFabIdPair;
 
-@class GameInfo;
+@class ClientFriendInfo;
 
-@class GameServerRegionsRequest;
+@class ClientGameCenterPlayFabIdPair;
 
-@class GameServerRegionsResult;
+@class ClientGameInfo;
 
-@class GenericPlayFabIdPair;
+@class ClientGameServerRegionsRequest;
 
-@class GenericServiceId;
+@class ClientGameServerRegionsResult;
 
-@class GetAccountInfoRequest;
+@class ClientGenericPlayFabIdPair;
 
-@class GetAccountInfoResult;
+@class ClientGenericServiceId;
 
-@class GetCatalogItemsRequest;
+@class ClientGetAccountInfoRequest;
 
-@class GetCatalogItemsResult;
+@class ClientGetAccountInfoResult;
 
-@class GetCharacterDataRequest;
+@class ClientGetCatalogItemsRequest;
 
-@class GetCharacterDataResult;
+@class ClientGetCatalogItemsResult;
 
-@class GetCharacterInventoryRequest;
+@class ClientGetCharacterDataRequest;
 
-@class GetCharacterInventoryResult;
+@class ClientGetCharacterDataResult;
 
-@class GetCharacterLeaderboardRequest;
+@class ClientGetCharacterInventoryRequest;
 
-@class GetCharacterLeaderboardResult;
+@class ClientGetCharacterInventoryResult;
 
-@class GetCharacterStatisticsRequest;
+@class ClientGetCharacterLeaderboardRequest;
 
-@class GetCharacterStatisticsResult;
+@class ClientGetCharacterLeaderboardResult;
 
-@class GetContentDownloadUrlRequest;
+@class ClientGetCharacterStatisticsRequest;
 
-@class GetContentDownloadUrlResult;
+@class ClientGetCharacterStatisticsResult;
 
-@class GetFriendLeaderboardAroundPlayerRequest;
+@class ClientGetContentDownloadUrlRequest;
 
-@class GetFriendLeaderboardAroundPlayerResult;
+@class ClientGetContentDownloadUrlResult;
 
-@class GetFriendLeaderboardRequest;
+@class ClientGetFriendLeaderboardAroundPlayerRequest;
 
-@class GetFriendsListRequest;
+@class ClientGetFriendLeaderboardAroundPlayerResult;
 
-@class GetFriendsListResult;
+@class ClientGetFriendLeaderboardRequest;
 
-@class GetLeaderboardAroundCharacterRequest;
+@class ClientGetFriendsListRequest;
 
-@class GetLeaderboardAroundCharacterResult;
+@class ClientGetFriendsListResult;
 
-@class GetLeaderboardAroundPlayerRequest;
+@class ClientGetLeaderboardAroundCharacterRequest;
 
-@class GetLeaderboardAroundPlayerResult;
+@class ClientGetLeaderboardAroundCharacterResult;
 
-@class GetLeaderboardForUsersCharactersRequest;
+@class ClientGetLeaderboardAroundPlayerRequest;
 
-@class GetLeaderboardForUsersCharactersResult;
+@class ClientGetLeaderboardAroundPlayerResult;
 
-@class GetLeaderboardRequest;
+@class ClientGetLeaderboardForUsersCharactersRequest;
 
-@class GetLeaderboardResult;
+@class ClientGetLeaderboardForUsersCharactersResult;
 
-@class GetPaymentTokenRequest;
+@class ClientGetLeaderboardRequest;
 
-@class GetPaymentTokenResult;
+@class ClientGetLeaderboardResult;
 
-@class GetPhotonAuthenticationTokenRequest;
+@class ClientGetPaymentTokenRequest;
 
-@class GetPhotonAuthenticationTokenResult;
+@class ClientGetPaymentTokenResult;
 
-@class GetPlayerCombinedInfoRequest;
+@class ClientGetPhotonAuthenticationTokenRequest;
 
-@class GetPlayerCombinedInfoRequestParams;
+@class ClientGetPhotonAuthenticationTokenResult;
 
-@class GetPlayerCombinedInfoResult;
+@class ClientGetPlayerCombinedInfoRequest;
 
-@class GetPlayerCombinedInfoResultPayload;
+@class ClientGetPlayerCombinedInfoRequestParams;
 
-@class GetPlayerProfileRequest;
+@class ClientGetPlayerCombinedInfoResult;
 
-@class GetPlayerProfileResult;
+@class ClientGetPlayerCombinedInfoResultPayload;
 
-@class GetPlayerSegmentsRequest;
+@class ClientGetPlayerProfileRequest;
 
-@class GetPlayerSegmentsResult;
+@class ClientGetPlayerProfileResult;
 
-@class GetPlayerStatisticsRequest;
+@class ClientGetPlayerSegmentsRequest;
 
-@class GetPlayerStatisticsResult;
+@class ClientGetPlayerSegmentsResult;
 
-@class GetPlayerStatisticVersionsRequest;
+@class ClientGetPlayerStatisticsRequest;
 
-@class GetPlayerStatisticVersionsResult;
+@class ClientGetPlayerStatisticsResult;
 
-@class GetPlayerTagsRequest;
+@class ClientGetPlayerStatisticVersionsRequest;
 
-@class GetPlayerTagsResult;
+@class ClientGetPlayerStatisticVersionsResult;
 
-@class GetPlayerTradesRequest;
+@class ClientGetPlayerTagsRequest;
 
-@class GetPlayerTradesResponse;
+@class ClientGetPlayerTagsResult;
 
-@class GetPlayFabIDsFromFacebookIDsRequest;
+@class ClientGetPlayerTradesRequest;
 
-@class GetPlayFabIDsFromFacebookIDsResult;
+@class ClientGetPlayerTradesResponse;
 
-@class GetPlayFabIDsFromFacebookInstantGamesIdsRequest;
+@class ClientGetPlayFabIDsFromFacebookIDsRequest;
 
-@class GetPlayFabIDsFromFacebookInstantGamesIdsResult;
+@class ClientGetPlayFabIDsFromFacebookIDsResult;
 
-@class GetPlayFabIDsFromGameCenterIDsRequest;
+@class ClientGetPlayFabIDsFromFacebookInstantGamesIdsRequest;
 
-@class GetPlayFabIDsFromGameCenterIDsResult;
+@class ClientGetPlayFabIDsFromFacebookInstantGamesIdsResult;
 
-@class GetPlayFabIDsFromGenericIDsRequest;
+@class ClientGetPlayFabIDsFromGameCenterIDsRequest;
 
-@class GetPlayFabIDsFromGenericIDsResult;
+@class ClientGetPlayFabIDsFromGameCenterIDsResult;
 
-@class GetPlayFabIDsFromGoogleIDsRequest;
+@class ClientGetPlayFabIDsFromGenericIDsRequest;
 
-@class GetPlayFabIDsFromGoogleIDsResult;
+@class ClientGetPlayFabIDsFromGenericIDsResult;
 
-@class GetPlayFabIDsFromKongregateIDsRequest;
+@class ClientGetPlayFabIDsFromGoogleIDsRequest;
 
-@class GetPlayFabIDsFromKongregateIDsResult;
+@class ClientGetPlayFabIDsFromGoogleIDsResult;
 
-@class GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest;
+@class ClientGetPlayFabIDsFromKongregateIDsRequest;
 
-@class GetPlayFabIDsFromNintendoSwitchDeviceIdsResult;
+@class ClientGetPlayFabIDsFromKongregateIDsResult;
 
-@class GetPlayFabIDsFromSteamIDsRequest;
+@class ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest;
 
-@class GetPlayFabIDsFromSteamIDsResult;
+@class ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult;
 
-@class GetPlayFabIDsFromTwitchIDsRequest;
+@class ClientGetPlayFabIDsFromSteamIDsRequest;
 
-@class GetPlayFabIDsFromTwitchIDsResult;
+@class ClientGetPlayFabIDsFromSteamIDsResult;
 
-@class GetPublisherDataRequest;
+@class ClientGetPlayFabIDsFromTwitchIDsRequest;
 
-@class GetPublisherDataResult;
+@class ClientGetPlayFabIDsFromTwitchIDsResult;
 
-@class GetPurchaseRequest;
+@class ClientGetPublisherDataRequest;
 
-@class GetPurchaseResult;
+@class ClientGetPublisherDataResult;
 
-@class GetSegmentResult;
+@class ClientGetPurchaseRequest;
 
-@class GetSharedGroupDataRequest;
+@class ClientGetPurchaseResult;
 
-@class GetSharedGroupDataResult;
+@class ClientGetSegmentResult;
 
-@class GetStoreItemsRequest;
+@class ClientGetSharedGroupDataRequest;
 
-@class GetStoreItemsResult;
+@class ClientGetSharedGroupDataResult;
 
-@class GetTimeRequest;
+@class ClientGetStoreItemsRequest;
 
-@class GetTimeResult;
+@class ClientGetStoreItemsResult;
 
-@class GetTitleDataRequest;
+@class ClientGetTimeRequest;
 
-@class GetTitleDataResult;
+@class ClientGetTimeResult;
 
-@class GetTitleNewsRequest;
+@class ClientGetTitleDataRequest;
 
-@class GetTitleNewsResult;
+@class ClientGetTitleDataResult;
 
-@class GetTitlePublicKeyRequest;
+@class ClientGetTitleNewsRequest;
 
-@class GetTitlePublicKeyResult;
+@class ClientGetTitleNewsResult;
 
-@class GetTradeStatusRequest;
+@class ClientGetTitlePublicKeyRequest;
 
-@class GetTradeStatusResponse;
+@class ClientGetTitlePublicKeyResult;
 
-@class GetUserDataRequest;
+@class ClientGetTradeStatusRequest;
 
-@class GetUserDataResult;
+@class ClientGetTradeStatusResponse;
 
-@class GetUserInventoryRequest;
+@class ClientGetUserDataRequest;
 
-@class GetUserInventoryResult;
+@class ClientGetUserDataResult;
 
-@class GetWindowsHelloChallengeRequest;
+@class ClientGetUserInventoryRequest;
 
-@class GetWindowsHelloChallengeResponse;
+@class ClientGetUserInventoryResult;
 
-@class GooglePlayFabIdPair;
+@class ClientGetWindowsHelloChallengeRequest;
 
-@class GrantCharacterToUserRequest;
+@class ClientGetWindowsHelloChallengeResponse;
 
-@class GrantCharacterToUserResult;
+@class ClientGooglePlayFabIdPair;
 
-@class ItemInstance;
+@class ClientGrantCharacterToUserRequest;
 
-@class ItemPurchaseRequest;
+@class ClientGrantCharacterToUserResult;
 
-@class KongregatePlayFabIdPair;
+@class ClientItemInstance;
 
-@class LinkAndroidDeviceIDRequest;
+@class ClientItemPurchaseRequest;
 
-@class LinkAndroidDeviceIDResult;
+@class ClientKongregatePlayFabIdPair;
 
-@class LinkCustomIDRequest;
+@class ClientLinkAndroidDeviceIDRequest;
 
-@class LinkCustomIDResult;
+@class ClientLinkAndroidDeviceIDResult;
 
-@class LinkedPlatformAccountModel;
+@class ClientLinkCustomIDRequest;
 
-@class LinkFacebookAccountRequest;
+@class ClientLinkCustomIDResult;
 
-@class LinkFacebookAccountResult;
+@class ClientLinkedPlatformAccountModel;
 
-@class LinkFacebookInstantGamesIdRequest;
+@class ClientLinkFacebookAccountRequest;
 
-@class LinkFacebookInstantGamesIdResult;
+@class ClientLinkFacebookAccountResult;
 
-@class LinkGameCenterAccountRequest;
+@class ClientLinkFacebookInstantGamesIdRequest;
 
-@class LinkGameCenterAccountResult;
+@class ClientLinkFacebookInstantGamesIdResult;
 
-@class LinkGoogleAccountRequest;
+@class ClientLinkGameCenterAccountRequest;
 
-@class LinkGoogleAccountResult;
+@class ClientLinkGameCenterAccountResult;
 
-@class LinkIOSDeviceIDRequest;
+@class ClientLinkGoogleAccountRequest;
 
-@class LinkIOSDeviceIDResult;
+@class ClientLinkGoogleAccountResult;
 
-@class LinkKongregateAccountRequest;
+@class ClientLinkIOSDeviceIDRequest;
 
-@class LinkKongregateAccountResult;
+@class ClientLinkIOSDeviceIDResult;
 
-@class LinkNintendoSwitchDeviceIdRequest;
+@class ClientLinkKongregateAccountRequest;
 
-@class LinkNintendoSwitchDeviceIdResult;
+@class ClientLinkKongregateAccountResult;
 
-@class LinkSteamAccountRequest;
+@class ClientLinkNintendoSwitchDeviceIdRequest;
 
-@class LinkSteamAccountResult;
+@class ClientLinkNintendoSwitchDeviceIdResult;
 
-@class LinkTwitchAccountRequest;
+@class ClientLinkSteamAccountRequest;
 
-@class LinkTwitchAccountResult;
+@class ClientLinkSteamAccountResult;
 
-@class LinkWindowsHelloAccountRequest;
+@class ClientLinkTwitchAccountRequest;
 
-@class LinkWindowsHelloAccountResponse;
+@class ClientLinkTwitchAccountResult;
 
-@class ListUsersCharactersRequest;
+@class ClientLinkWindowsHelloAccountRequest;
 
-@class ListUsersCharactersResult;
+@class ClientLinkWindowsHelloAccountResponse;
 
-@class LocationModel;
+@class ClientLinkXboxAccountRequest;
 
-@class LoginResult;
+@class ClientLinkXboxAccountResult;
 
-@class LoginWithAndroidDeviceIDRequest;
+@class ClientListUsersCharactersRequest;
 
-@class LoginWithCustomIDRequest;
+@class ClientListUsersCharactersResult;
 
-@class LoginWithEmailAddressRequest;
+@class ClientLocationModel;
 
-@class LoginWithFacebookInstantGamesIdRequest;
+@class ClientLoginResult;
 
-@class LoginWithFacebookRequest;
+@class ClientLoginWithAndroidDeviceIDRequest;
 
-@class LoginWithGameCenterRequest;
+@class ClientLoginWithCustomIDRequest;
 
-@class LoginWithGoogleAccountRequest;
+@class ClientLoginWithEmailAddressRequest;
 
-@class LoginWithIOSDeviceIDRequest;
+@class ClientLoginWithFacebookInstantGamesIdRequest;
 
-@class LoginWithKongregateRequest;
+@class ClientLoginWithFacebookRequest;
 
-@class LoginWithNintendoSwitchDeviceIdRequest;
+@class ClientLoginWithGameCenterRequest;
 
-@class LoginWithPlayFabRequest;
+@class ClientLoginWithGoogleAccountRequest;
 
-@class LoginWithSteamRequest;
+@class ClientLoginWithIOSDeviceIDRequest;
 
-@class LoginWithTwitchRequest;
+@class ClientLoginWithKongregateRequest;
 
-@class LoginWithWindowsHelloRequest;
+@class ClientLoginWithNintendoSwitchDeviceIdRequest;
 
-@class LogStatement;
+@class ClientLoginWithPlayFabRequest;
 
-@class MatchmakeRequest;
+@class ClientLoginWithSteamRequest;
 
-@class MatchmakeResult;
+@class ClientLoginWithTwitchRequest;
 
-@class MembershipModel;
+@class ClientLoginWithWindowsHelloRequest;
 
-@class ModifyUserVirtualCurrencyResult;
+@class ClientLoginWithXboxRequest;
 
-@class NintendoSwitchPlayFabIdPair;
+@class ClientLogStatement;
 
-@class OpenTradeRequest;
+@class ClientMatchmakeRequest;
 
-@class OpenTradeResponse;
+@class ClientMatchmakeResult;
 
-@class PayForPurchaseRequest;
+@class ClientMembershipModel;
 
-@class PayForPurchaseResult;
+@class ClientModifyUserVirtualCurrencyResult;
 
-@class PaymentOption;
+@class ClientNintendoSwitchPlayFabIdPair;
 
-@class PlayerLeaderboardEntry;
+@class ClientOpenTradeRequest;
 
-@class PlayerProfileModel;
+@class ClientOpenTradeResponse;
 
-@class PlayerProfileViewConstraints;
+@class ClientPayForPurchaseRequest;
 
-@class PlayerStatisticVersion;
+@class ClientPayForPurchaseResult;
 
-@class PurchaseItemRequest;
+@class ClientPaymentOption;
 
-@class PurchaseItemResult;
+@class ClientPlayerLeaderboardEntry;
 
-@class PushNotificationRegistrationModel;
+@class ClientPlayerProfileModel;
 
-@class RedeemCouponRequest;
+@class ClientPlayerProfileViewConstraints;
 
-@class RedeemCouponResult;
+@class ClientPlayerStatisticVersion;
 
-@class RegionInfo;
+@class ClientPurchaseItemRequest;
 
-@class RegisterForIOSPushNotificationRequest;
+@class ClientPurchaseItemResult;
 
-@class RegisterForIOSPushNotificationResult;
+@class ClientPushNotificationRegistrationModel;
 
-@class RegisterPlayFabUserRequest;
+@class ClientRedeemCouponRequest;
 
-@class RegisterPlayFabUserResult;
+@class ClientRedeemCouponResult;
 
-@class RegisterWithWindowsHelloRequest;
+@class ClientRegionInfo;
 
-@class RemoveContactEmailRequest;
+@class ClientRegisterForIOSPushNotificationRequest;
 
-@class RemoveContactEmailResult;
+@class ClientRegisterForIOSPushNotificationResult;
 
-@class RemoveFriendRequest;
+@class ClientRegisterPlayFabUserRequest;
 
-@class RemoveFriendResult;
+@class ClientRegisterPlayFabUserResult;
 
-@class RemoveGenericIDRequest;
+@class ClientRegisterWithWindowsHelloRequest;
 
-@class RemoveGenericIDResult;
+@class ClientRemoveContactEmailRequest;
 
-@class RemoveSharedGroupMembersRequest;
+@class ClientRemoveContactEmailResult;
 
-@class RemoveSharedGroupMembersResult;
+@class ClientRemoveFriendRequest;
 
-@class ReportPlayerClientRequest;
+@class ClientRemoveFriendResult;
 
-@class ReportPlayerClientResult;
+@class ClientRemoveGenericIDRequest;
 
-@class RestoreIOSPurchasesRequest;
+@class ClientRemoveGenericIDResult;
 
-@class RestoreIOSPurchasesResult;
+@class ClientRemoveSharedGroupMembersRequest;
 
-@class ScriptExecutionError;
+@class ClientRemoveSharedGroupMembersResult;
 
-@class SendAccountRecoveryEmailRequest;
+@class ClientReportPlayerClientRequest;
 
-@class SendAccountRecoveryEmailResult;
+@class ClientReportPlayerClientResult;
 
-@class SetFriendTagsRequest;
+@class ClientRestoreIOSPurchasesRequest;
 
-@class SetFriendTagsResult;
+@class ClientRestoreIOSPurchasesResult;
 
-@class SetPlayerSecretRequest;
+@class ClientScriptExecutionError;
 
-@class SetPlayerSecretResult;
+@class ClientSendAccountRecoveryEmailRequest;
 
-@class SharedGroupDataRecord;
+@class ClientSendAccountRecoveryEmailResult;
 
-@class StartGameRequest;
+@class ClientSetFriendTagsRequest;
 
-@class StartGameResult;
+@class ClientSetFriendTagsResult;
 
-@class StartPurchaseRequest;
+@class ClientSetPlayerSecretRequest;
 
-@class StartPurchaseResult;
+@class ClientSetPlayerSecretResult;
 
-@class StatisticModel;
+@class ClientSharedGroupDataRecord;
 
-@class StatisticNameVersion;
+@class ClientStartGameRequest;
 
-@class StatisticUpdate;
+@class ClientStartGameResult;
 
-@class StatisticValue;
+@class ClientStartPurchaseRequest;
 
-@class SteamPlayFabIdPair;
+@class ClientStartPurchaseResult;
 
-@class StoreItem;
+@class ClientStatisticModel;
 
-@class StoreMarketingModel;
+@class ClientStatisticNameVersion;
 
-@class SubscriptionModel;
+@class ClientStatisticUpdate;
 
-@class SubtractUserVirtualCurrencyRequest;
+@class ClientStatisticValue;
 
-@class TagModel;
+@class ClientSteamPlayFabIdPair;
 
-@class TitleNewsItem;
+@class ClientStoreItem;
 
-@class TradeInfo;
+@class ClientStoreMarketingModel;
 
-@class TwitchPlayFabIdPair;
+@class ClientSubscriptionModel;
 
-@class UnlinkAndroidDeviceIDRequest;
+@class ClientSubtractUserVirtualCurrencyRequest;
 
-@class UnlinkAndroidDeviceIDResult;
+@class ClientTagModel;
 
-@class UnlinkCustomIDRequest;
+@class ClientTitleNewsItem;
 
-@class UnlinkCustomIDResult;
+@class ClientTradeInfo;
 
-@class UnlinkFacebookAccountRequest;
+@class ClientTwitchPlayFabIdPair;
 
-@class UnlinkFacebookAccountResult;
+@class ClientUnlinkAndroidDeviceIDRequest;
 
-@class UnlinkFacebookInstantGamesIdRequest;
+@class ClientUnlinkAndroidDeviceIDResult;
 
-@class UnlinkFacebookInstantGamesIdResult;
+@class ClientUnlinkCustomIDRequest;
 
-@class UnlinkGameCenterAccountRequest;
+@class ClientUnlinkCustomIDResult;
 
-@class UnlinkGameCenterAccountResult;
+@class ClientUnlinkFacebookAccountRequest;
 
-@class UnlinkGoogleAccountRequest;
+@class ClientUnlinkFacebookAccountResult;
 
-@class UnlinkGoogleAccountResult;
+@class ClientUnlinkFacebookInstantGamesIdRequest;
 
-@class UnlinkIOSDeviceIDRequest;
+@class ClientUnlinkFacebookInstantGamesIdResult;
 
-@class UnlinkIOSDeviceIDResult;
+@class ClientUnlinkGameCenterAccountRequest;
 
-@class UnlinkKongregateAccountRequest;
+@class ClientUnlinkGameCenterAccountResult;
 
-@class UnlinkKongregateAccountResult;
+@class ClientUnlinkGoogleAccountRequest;
 
-@class UnlinkNintendoSwitchDeviceIdRequest;
+@class ClientUnlinkGoogleAccountResult;
 
-@class UnlinkNintendoSwitchDeviceIdResult;
+@class ClientUnlinkIOSDeviceIDRequest;
 
-@class UnlinkSteamAccountRequest;
+@class ClientUnlinkIOSDeviceIDResult;
 
-@class UnlinkSteamAccountResult;
+@class ClientUnlinkKongregateAccountRequest;
 
-@class UnlinkTwitchAccountRequest;
+@class ClientUnlinkKongregateAccountResult;
 
-@class UnlinkTwitchAccountResult;
+@class ClientUnlinkNintendoSwitchDeviceIdRequest;
 
-@class UnlinkWindowsHelloAccountRequest;
+@class ClientUnlinkNintendoSwitchDeviceIdResult;
 
-@class UnlinkWindowsHelloAccountResponse;
+@class ClientUnlinkSteamAccountRequest;
 
-@class UnlockContainerInstanceRequest;
+@class ClientUnlinkSteamAccountResult;
 
-@class UnlockContainerItemRequest;
+@class ClientUnlinkTwitchAccountRequest;
 
-@class UnlockContainerItemResult;
+@class ClientUnlinkTwitchAccountResult;
 
-@class UpdateAvatarUrlRequest;
+@class ClientUnlinkWindowsHelloAccountRequest;
 
-@class UpdateCharacterDataRequest;
+@class ClientUnlinkWindowsHelloAccountResponse;
 
-@class UpdateCharacterDataResult;
+@class ClientUnlinkXboxAccountRequest;
 
-@class UpdateCharacterStatisticsRequest;
+@class ClientUnlinkXboxAccountResult;
 
-@class UpdateCharacterStatisticsResult;
+@class ClientUnlockContainerInstanceRequest;
 
-@class UpdatePlayerStatisticsRequest;
+@class ClientUnlockContainerItemRequest;
 
-@class UpdatePlayerStatisticsResult;
+@class ClientUnlockContainerItemResult;
 
-@class UpdateSharedGroupDataRequest;
+@class ClientUpdateAvatarUrlRequest;
 
-@class UpdateSharedGroupDataResult;
+@class ClientUpdateCharacterDataRequest;
 
-@class UpdateUserDataRequest;
+@class ClientUpdateCharacterDataResult;
 
-@class UpdateUserDataResult;
+@class ClientUpdateCharacterStatisticsRequest;
 
-@class UpdateUserTitleDisplayNameRequest;
+@class ClientUpdateCharacterStatisticsResult;
 
-@class UpdateUserTitleDisplayNameResult;
+@class ClientUpdatePlayerStatisticsRequest;
 
-@class UserAccountInfo;
+@class ClientUpdatePlayerStatisticsResult;
 
-@class UserAndroidDeviceInfo;
+@class ClientUpdateSharedGroupDataRequest;
 
-@class UserCustomIdInfo;
+@class ClientUpdateSharedGroupDataResult;
 
-@class UserDataRecord;
+@class ClientUpdateUserDataRequest;
 
-@class UserFacebookInfo;
+@class ClientUpdateUserDataResult;
 
-@class UserGameCenterInfo;
+@class ClientUpdateUserTitleDisplayNameRequest;
 
-@class UserGoogleInfo;
+@class ClientUpdateUserTitleDisplayNameResult;
 
-@class UserIosDeviceInfo;
+@class ClientUserAccountInfo;
 
-@class UserKongregateInfo;
+@class ClientUserAndroidDeviceInfo;
 
-@class UserPrivateAccountInfo;
+@class ClientUserCustomIdInfo;
 
-@class UserPsnInfo;
+@class ClientUserDataRecord;
 
-@class UserSettings;
+@class ClientUserFacebookInfo;
 
-@class UserSteamInfo;
+@class ClientUserFacebookInstantGamesIdInfo;
 
-@class UserTitleInfo;
+@class ClientUserGameCenterInfo;
 
-@class UserTwitchInfo;
+@class ClientUserGoogleInfo;
 
-@class UserXboxInfo;
+@class ClientUserIosDeviceInfo;
 
-@class ValidateAmazonReceiptRequest;
+@class ClientUserKongregateInfo;
 
-@class ValidateAmazonReceiptResult;
+@class ClientUserNintendoSwitchDeviceIdInfo;
 
-@class ValidateGooglePlayPurchaseRequest;
+@class ClientUserOpenIdInfo;
 
-@class ValidateGooglePlayPurchaseResult;
+@class ClientUserPrivateAccountInfo;
 
-@class ValidateIOSReceiptRequest;
+@class ClientUserPsnInfo;
 
-@class ValidateIOSReceiptResult;
+@class ClientUserSettings;
 
-@class ValidateWindowsReceiptRequest;
+@class ClientUserSteamInfo;
 
-@class ValidateWindowsReceiptResult;
+@class ClientUserTitleInfo;
 
-@class ValueToDateModel;
+@class ClientUserTwitchInfo;
 
-@class VirtualCurrencyRechargeTime;
+@class ClientUserWindowsHelloInfo;
 
-@class WriteClientCharacterEventRequest;
+@class ClientUserXboxInfo;
 
-@class WriteClientPlayerEventRequest;
+@class ClientValidateAmazonReceiptRequest;
 
-@class WriteEventResponse;
+@class ClientValidateAmazonReceiptResult;
 
-@class WriteTitleEventRequest;
+@class ClientValidateGooglePlayPurchaseRequest;
 
+@class ClientValidateGooglePlayPurchaseResult;
 
+@class ClientValidateIOSReceiptRequest;
 
-@interface AcceptTradeRequest : PlayFabBaseModel
+@class ClientValidateIOSReceiptResult;
+
+@class ClientValidateWindowsReceiptRequest;
+
+@class ClientValidateWindowsReceiptResult;
+
+@class ClientValueToDateModel;
+
+@class ClientVirtualCurrencyRechargeTime;
+
+@class ClientWriteClientCharacterEventRequest;
+
+@class ClientWriteClientPlayerEventRequest;
+
+@class ClientWriteEventResponse;
+
+@class ClientWriteTitleEventRequest;
+
+
+
+@interface ClientAcceptTradeRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1288,13 +1300,13 @@ typedef enum
 @end
 
 
-@interface AcceptTradeResponse : PlayFabBaseModel
+@interface ClientAcceptTradeResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// Details about trade which was just accepted.
 /// </summary>
-@property TradeInfo* Trade; 
+@property ClientTradeInfo* Trade; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -1303,7 +1315,7 @@ typedef enum
 @end
 
 
-@interface AdCampaignAttributionModel : PlayFabBaseModel
+@interface ClientAdCampaignAttributionModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -1325,7 +1337,7 @@ typedef enum
 @end
 
 
-@interface AddFriendRequest : PlayFabBaseModel
+@interface ClientAddFriendRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1352,7 +1364,7 @@ typedef enum
 @end
 
 
-@interface AddFriendResult : PlayFabBaseModel
+@interface ClientAddFriendResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -1367,19 +1379,19 @@ typedef enum
 @end
 
 
-@interface AddGenericIDRequest : PlayFabBaseModel
+@interface ClientAddGenericIDRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Generic service identifier to add to the player account.
 /// </summary>
-@property GenericServiceId GenericId; 
+@property ClientGenericServiceId* GenericId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface AddGenericIDResult : PlayFabBaseModel
+@interface ClientAddGenericIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1389,7 +1401,7 @@ typedef enum
 @end
 
 
-@interface AddOrUpdateContactEmailRequest : PlayFabBaseModel
+@interface ClientAddOrUpdateContactEmailRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1401,7 +1413,7 @@ typedef enum
 @end
 
 
-@interface AddOrUpdateContactEmailResult : PlayFabBaseModel
+@interface ClientAddOrUpdateContactEmailResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1411,7 +1423,7 @@ typedef enum
 @end
 
 
-@interface AddSharedGroupMembersRequest : PlayFabBaseModel
+@interface ClientAddSharedGroupMembersRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1428,7 +1440,7 @@ typedef enum
 @end
 
 
-@interface AddSharedGroupMembersResult : PlayFabBaseModel
+@interface ClientAddSharedGroupMembersResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1438,7 +1450,7 @@ typedef enum
 @end
 
 
-@interface AddUsernamePasswordRequest : PlayFabBaseModel
+@interface ClientAddUsernamePasswordRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1460,7 +1472,7 @@ typedef enum
 @end
 
 
-@interface AddUsernamePasswordResult : PlayFabBaseModel
+@interface ClientAddUsernamePasswordResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -1475,7 +1487,7 @@ typedef enum
 @end
 
 
-@interface AddUserVirtualCurrencyRequest : PlayFabBaseModel
+@interface ClientAddUserVirtualCurrencyRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1492,7 +1504,7 @@ typedef enum
 @end
 
 
-@interface AndroidDevicePushNotificationRegistrationRequest : PlayFabBaseModel
+@interface ClientAndroidDevicePushNotificationRegistrationRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1514,7 +1526,7 @@ typedef enum
 @end
 
 
-@interface AndroidDevicePushNotificationRegistrationResult : PlayFabBaseModel
+@interface ClientAndroidDevicePushNotificationRegistrationResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1524,7 +1536,7 @@ typedef enum
 @end
 
 
-@interface AttributeInstallRequest : PlayFabBaseModel
+@interface ClientAttributeInstallRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1541,7 +1553,7 @@ typedef enum
 @end
 
 
-@interface AttributeInstallResult : PlayFabBaseModel
+@interface ClientAttributeInstallResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1551,7 +1563,7 @@ typedef enum
 @end
 
 
-@interface CancelTradeRequest : PlayFabBaseModel
+@interface ClientCancelTradeRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1563,13 +1575,13 @@ typedef enum
 @end
 
 
-@interface CancelTradeResponse : PlayFabBaseModel
+@interface ClientCancelTradeResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// Details about trade which was just canceled.
 /// </summary>
-@property TradeInfo* Trade; 
+@property ClientTradeInfo* Trade; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -1578,7 +1590,7 @@ typedef enum
 @end
 
 
-@interface CartItem : PlayFabBaseModel
+@interface ClientCartItem : PlayFabBaseModel
 
 
 /// <summary>
@@ -1628,13 +1640,13 @@ typedef enum
 /// <summary>
 /// A purchasable item from the item catalog
 /// </summary>
-@interface CatalogItem : PlayFabBaseModel
+@interface ClientCatalogItem : PlayFabBaseModel
 
 
 /// <summary>
 /// defines the bundle properties for the item - bundles are items which contain other items, including random drop tables and virtual currencies
 /// </summary>
-@property CatalogItemBundleInfo* Bundle; 
+@property ClientCatalogItemBundleInfo* Bundle; 
 
 /// <summary>
 /// if true, then an item instance of this type can be used to grant a character to a user.
@@ -1649,12 +1661,12 @@ typedef enum
 /// <summary>
 /// defines the consumable properties (number of uses, timeout) for the item
 /// </summary>
-@property CatalogItemConsumableInfo* Consumable; 
+@property ClientCatalogItemConsumableInfo* Consumable; 
 
 /// <summary>
 /// defines the container properties for the item - what items it contains, including random drop tables and virtual currencies, and what item (if any) is required to open it via the UnlockContainerItem API
 /// </summary>
-@property CatalogItemContainerInfo* Container; 
+@property ClientCatalogItemContainerInfo* Container; 
 
 /// <summary>
 /// game specific custom data
@@ -1725,7 +1737,7 @@ typedef enum
 @end
 
 
-@interface CatalogItemBundleInfo : PlayFabBaseModel
+@interface ClientCatalogItemBundleInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -1747,7 +1759,7 @@ typedef enum
 @end
 
 
-@interface CatalogItemConsumableInfo : PlayFabBaseModel
+@interface ClientCatalogItemConsumableInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -1772,7 +1784,7 @@ typedef enum
 /// <summary>
 /// Containers are inventory items that can hold other items defined in the catalog, as well as virtual currency, which is added to the player inventory when the container is unlocked, using the UnlockContainerItem API. The items can be anything defined in the catalog, as well as RandomResultTable objects which will be resolved when the container is unlocked. Containers and their keys should be defined as Consumable (having a limited number of uses) in their catalog defintiions, unless the intent is for the player to be able to re-use them infinitely.
 /// </summary>
-@interface CatalogItemContainerInfo : PlayFabBaseModel
+@interface ClientCatalogItemContainerInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -1799,7 +1811,7 @@ typedef enum
 @end
 
 
-@interface CharacterInventory : PlayFabBaseModel
+@interface ClientCharacterInventory : PlayFabBaseModel
 
 
 /// <summary>
@@ -1816,7 +1828,7 @@ typedef enum
 @end
 
 
-@interface CharacterLeaderboardEntry : PlayFabBaseModel
+@interface ClientCharacterLeaderboardEntry : PlayFabBaseModel
 
 
 /// <summary>
@@ -1858,7 +1870,7 @@ typedef enum
 @end
 
 
-@interface CharacterResult : PlayFabBaseModel
+@interface ClientCharacterResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -1886,7 +1898,7 @@ typedef enum
 /// <summary>
 /// Collection filter to include and/or exclude collections with certain key-value pairs. The filter generates a collection set defined by Includes rules and then remove collections that matches the Excludes rules. A collection is considered matching a rule if the rule describes a subset of the collection. 
 /// </summary>
-@interface CollectionFilter : PlayFabBaseModel
+@interface ClientCollectionFilter : PlayFabBaseModel
 
 
 /// <summary>
@@ -1903,7 +1915,7 @@ typedef enum
 @end
 
 
-@interface ConfirmPurchaseRequest : PlayFabBaseModel
+@interface ClientConfirmPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1915,7 +1927,7 @@ typedef enum
 @end
 
 
-@interface ConfirmPurchaseResult : PlayFabBaseModel
+@interface ClientConfirmPurchaseResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -1940,7 +1952,7 @@ typedef enum
 @end
 
 
-@interface ConsumeItemRequest : PlayFabBaseModel
+@interface ClientConsumeItemRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1962,7 +1974,7 @@ typedef enum
 @end
 
 
-@interface ConsumeItemResult : PlayFabBaseModel
+@interface ClientConsumeItemResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -1982,7 +1994,39 @@ typedef enum
 @end
 
 
-@interface ContactEmailInfoModel : PlayFabBaseModel
+@interface ClientConsumeXboxEntitlementsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Catalog version to use
+/// </summary>
+@property NSString* CatalogVersion; 
+
+/// <summary>
+/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com", "").
+/// </summary>
+@property NSString* XboxToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumeXboxEntitlementsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Details for the items purchased.
+/// </summary>
+@property NSArray* Items; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientContactEmailInfoModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -1998,7 +2042,7 @@ typedef enum
 /// <summary>
 /// The verification status of the email
 /// </summary>
-@property EmailVerificationStatus VerificationStatus; 
+@property ClientEmailVerificationStatus VerificationStatus; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2007,7 +2051,7 @@ typedef enum
 /// <summary>
 /// A data container
 /// </summary>
-@interface Container_Dictionary_String_String : PlayFabBaseModel
+@interface ClientContainer_Dictionary_String_String : PlayFabBaseModel
 
 
 /// <summary>
@@ -2019,7 +2063,7 @@ typedef enum
 @end
 
 
-@interface CreateSharedGroupRequest : PlayFabBaseModel
+@interface ClientCreateSharedGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2031,7 +2075,7 @@ typedef enum
 @end
 
 
-@interface CreateSharedGroupResult : PlayFabBaseModel
+@interface ClientCreateSharedGroupResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2046,7 +2090,7 @@ typedef enum
 @end
 
 
-@interface CurrentGamesRequest : PlayFabBaseModel
+@interface ClientCurrentGamesRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2062,7 +2106,7 @@ typedef enum
 /// <summary>
 /// Region to check for Game Server Instances.
 /// </summary>
-@property Region pfRegion; 
+@property ClientRegion pfRegion; 
 
 /// <summary>
 /// Statistic name to find statistic-based matches.
@@ -2072,13 +2116,13 @@ typedef enum
 /// <summary>
 /// Filter to include and/or exclude Game Server Instances associated with certain tags.
 /// </summary>
-@property CollectionFilter* TagFilter; 
+@property ClientCollectionFilter* TagFilter; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface CurrentGamesResult : PlayFabBaseModel
+@interface ClientCurrentGamesResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2103,7 +2147,7 @@ typedef enum
 @end
 
 
-@interface DeviceInfoRequest : PlayFabBaseModel
+@interface ClientDeviceInfoRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2115,7 +2159,7 @@ typedef enum
 @end
 
 
-@interface EmptyResult : PlayFabBaseModel
+@interface ClientEmptyResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -2126,37 +2170,32 @@ typedef enum
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface ClientEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface EntityTokenResponse : PlayFabBaseModel
+@interface ClientEntityTokenResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property ClientEntityKey* Entity; 
 
 /// <summary>
 /// The token used to set X-EntityToken for all entity based API calls.
@@ -2175,7 +2214,7 @@ typedef enum
 @end
 
 
-@interface ExecuteCloudScriptRequest : PlayFabBaseModel
+@interface ClientExecuteCloudScriptRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2196,7 +2235,7 @@ typedef enum
 /// <summary>
 /// Option for which revision of the CloudScript to execute. 'Latest' executes the most recently created revision, 'Live' executes the current live, published revision, and 'Specific' executes the specified revision. The default value is 'Specific', if the SpeificRevision parameter is specified, otherwise it is 'Live'.
 /// </summary>
-@property CloudScriptRevisionOption RevisionSelection; 
+@property ClientCloudScriptRevisionOption RevisionSelection; 
 
 /// <summary>
 /// The specivic revision to execute, when RevisionSelection is set to 'Specific'
@@ -2207,7 +2246,7 @@ typedef enum
 @end
 
 
-@interface ExecuteCloudScriptResult : PlayFabBaseModel
+@interface ClientExecuteCloudScriptResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2218,7 +2257,7 @@ typedef enum
 /// <summary>
 /// Information about the error, if any, that occurred during execution
 /// </summary>
-@property ScriptExecutionError* Error; 
+@property ClientScriptExecutionError* Error; 
 
 @property NSNumber* ExecutionTimeSeconds; 
 
@@ -2271,7 +2310,7 @@ typedef enum
 @end
 
 
-@interface FacebookInstantGamesPlayFabIdPair : PlayFabBaseModel
+@interface ClientFacebookInstantGamesPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -2288,7 +2327,7 @@ typedef enum
 @end
 
 
-@interface FacebookPlayFabIdPair : PlayFabBaseModel
+@interface ClientFacebookPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -2305,7 +2344,7 @@ typedef enum
 @end
 
 
-@interface FriendInfo : PlayFabBaseModel
+@interface ClientFriendInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -2316,7 +2355,7 @@ typedef enum
 /// <summary>
 /// Available Facebook information (if the user and PlayFab friend are also connected in Facebook).
 /// </summary>
-@property UserFacebookInfo* FacebookInfo; 
+@property ClientUserFacebookInfo* FacebookInfo; 
 
 /// <summary>
 /// PlayFab unique identifier for this friend.
@@ -2326,22 +2365,22 @@ typedef enum
 /// <summary>
 /// Available Game Center information (if the user and PlayFab friend are also connected in Game Center).
 /// </summary>
-@property UserGameCenterInfo* GameCenterInfo; 
+@property ClientUserGameCenterInfo* GameCenterInfo; 
 
 /// <summary>
 /// The profile of the user, if requested.
 /// </summary>
-@property PlayerProfileModel* Profile; 
+@property ClientPlayerProfileModel* Profile; 
 
 /// <summary>
 /// Available PSN information, if the user and PlayFab friend are both connected to PSN.
 /// </summary>
-@property UserPsnInfo* PSNInfo; 
+@property ClientUserPsnInfo* PSNInfo; 
 
 /// <summary>
 /// Available Steam information (if the user and PlayFab friend are also connected in Steam).
 /// </summary>
-@property UserSteamInfo* SteamInfo; 
+@property ClientUserSteamInfo* SteamInfo; 
 
 /// <summary>
 /// Tags which have been associated with this friend.
@@ -2361,13 +2400,13 @@ typedef enum
 /// <summary>
 /// Available Xbox information, if the user and PlayFab friend are both connected to Xbox Live.
 /// </summary>
-@property UserXboxInfo* XboxInfo; 
+@property ClientUserXboxInfo* XboxInfo; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GameCenterPlayFabIdPair : PlayFabBaseModel
+@interface ClientGameCenterPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -2384,7 +2423,7 @@ typedef enum
 @end
 
 
-@interface GameInfo : PlayFabBaseModel
+@interface ClientGameInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -2405,7 +2444,7 @@ typedef enum
 /// <summary>
 /// game specific string denoting server configuration
 /// </summary>
-@property GameInstanceState GameServerStateEnum; 
+@property ClientGameInstanceState GameServerStateEnum; 
 
 /// <summary>
 /// last heartbeat of the game server instance, used in external game server provider mode
@@ -2430,7 +2469,7 @@ typedef enum
 /// <summary>
 /// region to which this server is associated
 /// </summary>
-@property Region pfRegion; 
+@property ClientRegion pfRegion; 
 
 /// <summary>
 /// duration in seconds this server has been running
@@ -2476,7 +2515,7 @@ typedef enum
 @end
 
 
-@interface GameServerRegionsRequest : PlayFabBaseModel
+@interface ClientGameServerRegionsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2493,7 +2532,7 @@ typedef enum
 @end
 
 
-@interface GameServerRegionsResult : PlayFabBaseModel
+@interface ClientGameServerRegionsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2508,13 +2547,13 @@ typedef enum
 @end
 
 
-@interface GenericPlayFabIdPair : PlayFabBaseModel
+@interface ClientGenericPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
 /// Unique generic service identifier for a user.
 /// </summary>
-@property GenericServiceId* GenericId; 
+@property ClientGenericServiceId* GenericId; 
 
 /// <summary>
 /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the given generic identifier.
@@ -2525,7 +2564,7 @@ typedef enum
 @end
 
 
-@interface GenericServiceId : PlayFabBaseModel
+@interface ClientGenericServiceId : PlayFabBaseModel
 
 
 /// <summary>
@@ -2542,7 +2581,7 @@ typedef enum
 @end
 
 
-@interface GetAccountInfoRequest : PlayFabBaseModel
+@interface ClientGetAccountInfoRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2569,13 +2608,13 @@ typedef enum
 @end
 
 
-@interface GetAccountInfoResult : PlayFabBaseModel
+@interface ClientGetAccountInfoResult : PlayFabBaseModel
 
 
 /// <summary>
 /// Account information for the local user.
 /// </summary>
-@property UserAccountInfo* AccountInfo; 
+@property ClientUserAccountInfo* AccountInfo; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -2584,7 +2623,7 @@ typedef enum
 @end
 
 
-@interface GetCatalogItemsRequest : PlayFabBaseModel
+@interface ClientGetCatalogItemsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2596,7 +2635,7 @@ typedef enum
 @end
 
 
-@interface GetCatalogItemsResult : PlayFabBaseModel
+@interface ClientGetCatalogItemsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2611,7 +2650,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterDataRequest : PlayFabBaseModel
+@interface ClientGetCharacterDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2638,7 +2677,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterDataResult : PlayFabBaseModel
+@interface ClientGetCharacterDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2663,7 +2702,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterInventoryRequest : PlayFabBaseModel
+@interface ClientGetCharacterInventoryRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2680,7 +2719,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterInventoryResult : PlayFabBaseModel
+@interface ClientGetCharacterInventoryResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2710,7 +2749,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterLeaderboardRequest : PlayFabBaseModel
+@interface ClientGetCharacterLeaderboardRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2737,7 +2776,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterLeaderboardResult : PlayFabBaseModel
+@interface ClientGetCharacterLeaderboardResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2752,7 +2791,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterStatisticsRequest : PlayFabBaseModel
+@interface ClientGetCharacterStatisticsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2764,7 +2803,7 @@ typedef enum
 @end
 
 
-@interface GetCharacterStatisticsResult : PlayFabBaseModel
+@interface ClientGetCharacterStatisticsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2779,7 +2818,7 @@ typedef enum
 @end
 
 
-@interface GetContentDownloadUrlRequest : PlayFabBaseModel
+@interface ClientGetContentDownloadUrlRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2801,7 +2840,7 @@ typedef enum
 @end
 
 
-@interface GetContentDownloadUrlResult : PlayFabBaseModel
+@interface ClientGetContentDownloadUrlResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2816,7 +2855,7 @@ typedef enum
 @end
 
 
-@interface GetFriendLeaderboardAroundPlayerRequest : PlayFabBaseModel
+@interface ClientGetFriendLeaderboardAroundPlayerRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2842,7 +2881,7 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Statistic used to rank players for this leaderboard.
@@ -2863,7 +2902,7 @@ typedef enum
 @end
 
 
-@interface GetFriendLeaderboardAroundPlayerResult : PlayFabBaseModel
+@interface ClientGetFriendLeaderboardAroundPlayerResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2888,7 +2927,7 @@ typedef enum
 @end
 
 
-@interface GetFriendLeaderboardRequest : PlayFabBaseModel
+@interface ClientGetFriendLeaderboardRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2909,7 +2948,7 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Position in the leaderboard to start this listing (defaults to the first entry).
@@ -2935,7 +2974,7 @@ typedef enum
 @end
 
 
-@interface GetFriendsListRequest : PlayFabBaseModel
+@interface ClientGetFriendsListRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -2951,7 +2990,7 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
@@ -2962,7 +3001,7 @@ typedef enum
 @end
 
 
-@interface GetFriendsListResult : PlayFabBaseModel
+@interface ClientGetFriendsListResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -2977,7 +3016,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardAroundCharacterRequest : PlayFabBaseModel
+@interface ClientGetLeaderboardAroundCharacterRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3004,7 +3043,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardAroundCharacterResult : PlayFabBaseModel
+@interface ClientGetLeaderboardAroundCharacterResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3019,7 +3058,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardAroundPlayerRequest : PlayFabBaseModel
+@interface ClientGetLeaderboardAroundPlayerRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3035,7 +3074,7 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Statistic used to rank players for this leaderboard.
@@ -3051,7 +3090,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardAroundPlayerResult : PlayFabBaseModel
+@interface ClientGetLeaderboardAroundPlayerResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3076,7 +3115,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardForUsersCharactersRequest : PlayFabBaseModel
+@interface ClientGetLeaderboardForUsersCharactersRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3093,7 +3132,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardForUsersCharactersResult : PlayFabBaseModel
+@interface ClientGetLeaderboardForUsersCharactersResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3108,7 +3147,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardRequest : PlayFabBaseModel
+@interface ClientGetLeaderboardRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3119,7 +3158,7 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Position in the leaderboard to start this listing (defaults to the first entry).
@@ -3140,7 +3179,7 @@ typedef enum
 @end
 
 
-@interface GetLeaderboardResult : PlayFabBaseModel
+@interface ClientGetLeaderboardResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3165,7 +3204,7 @@ typedef enum
 @end
 
 
-@interface GetPaymentTokenRequest : PlayFabBaseModel
+@interface ClientGetPaymentTokenRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3177,7 +3216,7 @@ typedef enum
 @end
 
 
-@interface GetPaymentTokenResult : PlayFabBaseModel
+@interface ClientGetPaymentTokenResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3197,7 +3236,7 @@ typedef enum
 @end
 
 
-@interface GetPhotonAuthenticationTokenRequest : PlayFabBaseModel
+@interface ClientGetPhotonAuthenticationTokenRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3209,7 +3248,7 @@ typedef enum
 @end
 
 
-@interface GetPhotonAuthenticationTokenResult : PlayFabBaseModel
+@interface ClientGetPhotonAuthenticationTokenResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3224,13 +3263,13 @@ typedef enum
 @end
 
 
-@interface GetPlayerCombinedInfoRequest : PlayFabBaseModel
+@interface ClientGetPlayerCombinedInfoRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
 /// PlayFabId of the user whose data will be returned. If not filled included, we return the data for the calling player. 
@@ -3241,7 +3280,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerCombinedInfoRequestParams : PlayFabBaseModel
+@interface ClientGetPlayerCombinedInfoRequestParams : PlayFabBaseModel
 
 
 /// <summary>
@@ -3302,7 +3341,7 @@ typedef enum
 /// <summary>
 /// Specifies the properties to return from the player profile. Defaults to returning the player's display name.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 
 /// <summary>
 /// Specific keys to search for in the custom data. Leave null to get all keys. Has no effect if GetTitleData is false
@@ -3323,13 +3362,13 @@ typedef enum
 @end
 
 
-@interface GetPlayerCombinedInfoResult : PlayFabBaseModel
+@interface ClientGetPlayerCombinedInfoResult : PlayFabBaseModel
 
 
 /// <summary>
 /// Results for requested info.
 /// </summary>
-@property GetPlayerCombinedInfoResultPayload* InfoResultPayload; 
+@property ClientGetPlayerCombinedInfoResultPayload* InfoResultPayload; 
 
 /// <summary>
 /// Unique PlayFab assigned ID of the user on whom the operation will be performed.
@@ -3343,13 +3382,13 @@ typedef enum
 @end
 
 
-@interface GetPlayerCombinedInfoResultPayload : PlayFabBaseModel
+@interface ClientGetPlayerCombinedInfoResultPayload : PlayFabBaseModel
 
 
 /// <summary>
 /// Account information for the user. This is always retrieved.
 /// </summary>
-@property UserAccountInfo* AccountInfo; 
+@property ClientUserAccountInfo* AccountInfo; 
 
 /// <summary>
 /// Inventories for each character for the user.
@@ -3364,7 +3403,7 @@ typedef enum
 /// <summary>
 /// The profile of the players. This profile is not guaranteed to be up-to-date. For a new player, this profile will not exist.
 /// </summary>
-@property PlayerProfileModel* PlayerProfile; 
+@property ClientPlayerProfileModel* PlayerProfile; 
 
 /// <summary>
 /// List of statistics for this player.
@@ -3418,7 +3457,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerProfileRequest : PlayFabBaseModel
+@interface ClientGetPlayerProfileRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3429,19 +3468,19 @@ typedef enum
 /// <summary>
 /// If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
 /// </summary>
-@property PlayerProfileViewConstraints* ProfileConstraints; 
+@property ClientPlayerProfileViewConstraints* ProfileConstraints; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetPlayerProfileResult : PlayFabBaseModel
+@interface ClientGetPlayerProfileResult : PlayFabBaseModel
 
 
 /// <summary>
 /// The profile of the player. This profile is not guaranteed to be up-to-date. For a new player, this profile will not exist.
 /// </summary>
-@property PlayerProfileModel* PlayerProfile; 
+@property ClientPlayerProfileModel* PlayerProfile; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -3450,14 +3489,14 @@ typedef enum
 @end
 
 
-@interface GetPlayerSegmentsRequest : PlayFabBaseModel
+@interface ClientGetPlayerSegmentsRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetPlayerSegmentsResult : PlayFabBaseModel
+@interface ClientGetPlayerSegmentsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3472,7 +3511,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerStatisticsRequest : PlayFabBaseModel
+@interface ClientGetPlayerStatisticsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3489,7 +3528,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerStatisticsResult : PlayFabBaseModel
+@interface ClientGetPlayerStatisticsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3504,7 +3543,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerStatisticVersionsRequest : PlayFabBaseModel
+@interface ClientGetPlayerStatisticVersionsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3516,7 +3555,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerStatisticVersionsResult : PlayFabBaseModel
+@interface ClientGetPlayerStatisticVersionsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3531,7 +3570,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerTagsRequest : PlayFabBaseModel
+@interface ClientGetPlayerTagsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3548,7 +3587,7 @@ typedef enum
 @end
 
 
-@interface GetPlayerTagsResult : PlayFabBaseModel
+@interface ClientGetPlayerTagsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3568,19 +3607,19 @@ typedef enum
 @end
 
 
-@interface GetPlayerTradesRequest : PlayFabBaseModel
+@interface ClientGetPlayerTradesRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Returns only trades with the given status. If null, returns all trades.
 /// </summary>
-@property TradeStatus StatusFilter; 
+@property ClientTradeStatus StatusFilter; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetPlayerTradesResponse : PlayFabBaseModel
+@interface ClientGetPlayerTradesResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -3600,7 +3639,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromFacebookIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromFacebookIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3612,7 +3651,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromFacebookIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromFacebookIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3627,7 +3666,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromFacebookInstantGamesIdsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromFacebookInstantGamesIdsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3639,7 +3678,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromFacebookInstantGamesIdsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromFacebookInstantGamesIdsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3654,7 +3693,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGameCenterIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGameCenterIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3666,7 +3705,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGameCenterIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGameCenterIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3681,7 +3720,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGenericIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGenericIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3693,7 +3732,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGenericIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGenericIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3708,7 +3747,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGoogleIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGoogleIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3720,7 +3759,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromGoogleIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromGoogleIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3735,7 +3774,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromKongregateIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromKongregateIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3747,7 +3786,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromKongregateIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromKongregateIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3762,7 +3801,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3774,7 +3813,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromNintendoSwitchDeviceIdsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3789,7 +3828,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromSteamIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromSteamIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3801,7 +3840,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromSteamIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromSteamIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3816,7 +3855,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromTwitchIDsRequest : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromTwitchIDsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3828,7 +3867,7 @@ typedef enum
 @end
 
 
-@interface GetPlayFabIDsFromTwitchIDsResult : PlayFabBaseModel
+@interface ClientGetPlayFabIDsFromTwitchIDsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3843,7 +3882,7 @@ typedef enum
 @end
 
 
-@interface GetPublisherDataRequest : PlayFabBaseModel
+@interface ClientGetPublisherDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3855,7 +3894,7 @@ typedef enum
 @end
 
 
-@interface GetPublisherDataResult : PlayFabBaseModel
+@interface ClientGetPublisherDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3870,7 +3909,7 @@ typedef enum
 @end
 
 
-@interface GetPurchaseRequest : PlayFabBaseModel
+@interface ClientGetPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3882,7 +3921,7 @@ typedef enum
 @end
 
 
-@interface GetPurchaseResult : PlayFabBaseModel
+@interface ClientGetPurchaseResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3917,7 +3956,7 @@ typedef enum
 @end
 
 
-@interface GetSegmentResult : PlayFabBaseModel
+@interface ClientGetSegmentResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3942,7 +3981,7 @@ typedef enum
 @end
 
 
-@interface GetSharedGroupDataRequest : PlayFabBaseModel
+@interface ClientGetSharedGroupDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -3964,7 +4003,7 @@ typedef enum
 @end
 
 
-@interface GetSharedGroupDataResult : PlayFabBaseModel
+@interface ClientGetSharedGroupDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -3984,7 +4023,7 @@ typedef enum
 @end
 
 
-@interface GetStoreItemsRequest : PlayFabBaseModel
+@interface ClientGetStoreItemsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4001,7 +4040,7 @@ typedef enum
 @end
 
 
-@interface GetStoreItemsResult : PlayFabBaseModel
+@interface ClientGetStoreItemsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4012,12 +4051,12 @@ typedef enum
 /// <summary>
 /// Additional data about the store.
 /// </summary>
-@property StoreMarketingModel* MarketingData; 
+@property ClientStoreMarketingModel* MarketingData; 
 
 /// <summary>
 /// How the store was last updated (Admin or a third party).
 /// </summary>
-@property SourceType Source; 
+@property ClientSourceType Source; 
 
 /// <summary>
 /// Array of items which can be purchased from this store.
@@ -4036,14 +4075,14 @@ typedef enum
 @end
 
 
-@interface GetTimeRequest : PlayFabBaseModel
+@interface ClientGetTimeRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetTimeResult : PlayFabBaseModel
+@interface ClientGetTimeResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4058,7 +4097,7 @@ typedef enum
 @end
 
 
-@interface GetTitleDataRequest : PlayFabBaseModel
+@interface ClientGetTitleDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4070,7 +4109,7 @@ typedef enum
 @end
 
 
-@interface GetTitleDataResult : PlayFabBaseModel
+@interface ClientGetTitleDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4085,7 +4124,7 @@ typedef enum
 @end
 
 
-@interface GetTitleNewsRequest : PlayFabBaseModel
+@interface ClientGetTitleNewsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4097,7 +4136,7 @@ typedef enum
 @end
 
 
-@interface GetTitleNewsResult : PlayFabBaseModel
+@interface ClientGetTitleNewsResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4112,7 +4151,7 @@ typedef enum
 @end
 
 
-@interface GetTitlePublicKeyRequest : PlayFabBaseModel
+@interface ClientGetTitlePublicKeyRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4129,7 +4168,7 @@ typedef enum
 @end
 
 
-@interface GetTitlePublicKeyResult : PlayFabBaseModel
+@interface ClientGetTitlePublicKeyResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4144,7 +4183,7 @@ typedef enum
 @end
 
 
-@interface GetTradeStatusRequest : PlayFabBaseModel
+@interface ClientGetTradeStatusRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4161,13 +4200,13 @@ typedef enum
 @end
 
 
-@interface GetTradeStatusResponse : PlayFabBaseModel
+@interface ClientGetTradeStatusResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// Information about the requested trade.
 /// </summary>
-@property TradeInfo* Trade; 
+@property ClientTradeInfo* Trade; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -4176,7 +4215,7 @@ typedef enum
 @end
 
 
-@interface GetUserDataRequest : PlayFabBaseModel
+@interface ClientGetUserDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4198,7 +4237,7 @@ typedef enum
 @end
 
 
-@interface GetUserDataResult : PlayFabBaseModel
+@interface ClientGetUserDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4218,14 +4257,14 @@ typedef enum
 @end
 
 
-@interface GetUserInventoryRequest : PlayFabBaseModel
+@interface ClientGetUserInventoryRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetUserInventoryResult : PlayFabBaseModel
+@interface ClientGetUserInventoryResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4250,7 +4289,7 @@ typedef enum
 @end
 
 
-@interface GetWindowsHelloChallengeRequest : PlayFabBaseModel
+@interface ClientGetWindowsHelloChallengeRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4267,7 +4306,7 @@ typedef enum
 @end
 
 
-@interface GetWindowsHelloChallengeResponse : PlayFabBaseModel
+@interface ClientGetWindowsHelloChallengeResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -4282,7 +4321,7 @@ typedef enum
 @end
 
 
-@interface GooglePlayFabIdPair : PlayFabBaseModel
+@interface ClientGooglePlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -4299,7 +4338,7 @@ typedef enum
 @end
 
 
-@interface GrantCharacterToUserRequest : PlayFabBaseModel
+@interface ClientGrantCharacterToUserRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4321,7 +4360,7 @@ typedef enum
 @end
 
 
-@interface GrantCharacterToUserResult : PlayFabBaseModel
+@interface ClientGrantCharacterToUserResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4349,7 +4388,7 @@ typedef enum
 /// <summary>
 /// A unique instance of an item in a user's inventory. Note, to retrieve additional information for an item instance (such as Tags, Description, or Custom Data that are set on the root catalog item), a call to GetCatalogItems is required. The Item ID of the instance can then be matched to a catalog entry, which contains the additional information. Also note that Custom Data is only set here from a call to UpdateUserInventoryItemCustomData.
 /// </summary>
-@interface ItemInstance : PlayFabBaseModel
+@interface ClientItemInstance : PlayFabBaseModel
 
 
 /// <summary>
@@ -4431,7 +4470,7 @@ typedef enum
 @end
 
 
-@interface ItemPurchaseRequest : PlayFabBaseModel
+@interface ClientItemPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4445,7 +4484,7 @@ typedef enum
 @property NSString* ItemId; 
 
 /// <summary>
-/// How many of this item to purchase.
+/// How many of this item to purchase. Min 1, maximum 25.
 /// </summary>
 @property NSNumber* Quantity; 
 
@@ -4458,7 +4497,7 @@ typedef enum
 @end
 
 
-@interface KongregatePlayFabIdPair : PlayFabBaseModel
+@interface ClientKongregatePlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -4475,7 +4514,7 @@ typedef enum
 @end
 
 
-@interface LinkAndroidDeviceIDRequest : PlayFabBaseModel
+@interface ClientLinkAndroidDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4502,7 +4541,7 @@ typedef enum
 @end
 
 
-@interface LinkAndroidDeviceIDResult : PlayFabBaseModel
+@interface ClientLinkAndroidDeviceIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4512,7 +4551,7 @@ typedef enum
 @end
 
 
-@interface LinkCustomIDRequest : PlayFabBaseModel
+@interface ClientLinkCustomIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4529,7 +4568,7 @@ typedef enum
 @end
 
 
-@interface LinkCustomIDResult : PlayFabBaseModel
+@interface ClientLinkCustomIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4539,7 +4578,7 @@ typedef enum
 @end
 
 
-@interface LinkedPlatformAccountModel : PlayFabBaseModel
+@interface ClientLinkedPlatformAccountModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -4550,7 +4589,7 @@ typedef enum
 /// <summary>
 /// Authentication platform
 /// </summary>
-@property LoginIdentityProvider Platform; 
+@property ClientLoginIdentityProvider Platform; 
 
 /// <summary>
 /// Unique account identifier of the user on the platform
@@ -4566,7 +4605,7 @@ typedef enum
 @end
 
 
-@interface LinkFacebookAccountRequest : PlayFabBaseModel
+@interface ClientLinkFacebookAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4583,7 +4622,7 @@ typedef enum
 @end
 
 
-@interface LinkFacebookAccountResult : PlayFabBaseModel
+@interface ClientLinkFacebookAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4593,7 +4632,7 @@ typedef enum
 @end
 
 
-@interface LinkFacebookInstantGamesIdRequest : PlayFabBaseModel
+@interface ClientLinkFacebookInstantGamesIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4610,7 +4649,7 @@ typedef enum
 @end
 
 
-@interface LinkFacebookInstantGamesIdResult : PlayFabBaseModel
+@interface ClientLinkFacebookInstantGamesIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4620,7 +4659,7 @@ typedef enum
 @end
 
 
-@interface LinkGameCenterAccountRequest : PlayFabBaseModel
+@interface ClientLinkGameCenterAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4637,7 +4676,7 @@ typedef enum
 @end
 
 
-@interface LinkGameCenterAccountResult : PlayFabBaseModel
+@interface ClientLinkGameCenterAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4647,7 +4686,7 @@ typedef enum
 @end
 
 
-@interface LinkGoogleAccountRequest : PlayFabBaseModel
+@interface ClientLinkGoogleAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4664,7 +4703,7 @@ typedef enum
 @end
 
 
-@interface LinkGoogleAccountResult : PlayFabBaseModel
+@interface ClientLinkGoogleAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4674,7 +4713,7 @@ typedef enum
 @end
 
 
-@interface LinkIOSDeviceIDRequest : PlayFabBaseModel
+@interface ClientLinkIOSDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4701,7 +4740,7 @@ typedef enum
 @end
 
 
-@interface LinkIOSDeviceIDResult : PlayFabBaseModel
+@interface ClientLinkIOSDeviceIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4711,7 +4750,7 @@ typedef enum
 @end
 
 
-@interface LinkKongregateAccountRequest : PlayFabBaseModel
+@interface ClientLinkKongregateAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4733,7 +4772,7 @@ typedef enum
 @end
 
 
-@interface LinkKongregateAccountResult : PlayFabBaseModel
+@interface ClientLinkKongregateAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4743,7 +4782,7 @@ typedef enum
 @end
 
 
-@interface LinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+@interface ClientLinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4760,7 +4799,7 @@ typedef enum
 @end
 
 
-@interface LinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
+@interface ClientLinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4770,7 +4809,7 @@ typedef enum
 @end
 
 
-@interface LinkSteamAccountRequest : PlayFabBaseModel
+@interface ClientLinkSteamAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4787,7 +4826,7 @@ typedef enum
 @end
 
 
-@interface LinkSteamAccountResult : PlayFabBaseModel
+@interface ClientLinkSteamAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4797,7 +4836,7 @@ typedef enum
 @end
 
 
-@interface LinkTwitchAccountRequest : PlayFabBaseModel
+@interface ClientLinkTwitchAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4814,7 +4853,7 @@ typedef enum
 @end
 
 
-@interface LinkTwitchAccountResult : PlayFabBaseModel
+@interface ClientLinkTwitchAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4824,7 +4863,7 @@ typedef enum
 @end
 
 
-@interface LinkWindowsHelloAccountRequest : PlayFabBaseModel
+@interface ClientLinkWindowsHelloAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4851,7 +4890,7 @@ typedef enum
 @end
 
 
-@interface LinkWindowsHelloAccountResponse : PlayFabBaseModel
+@interface ClientLinkWindowsHelloAccountResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -4861,7 +4900,34 @@ typedef enum
 @end
 
 
-@interface ListUsersCharactersRequest : PlayFabBaseModel
+@interface ClientLinkXboxAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// If another user is already linked to the account, unlink the other user and re-link.
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com", "").
+/// </summary>
+@property NSString* XboxToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientLinkXboxAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientListUsersCharactersRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4873,7 +4939,7 @@ typedef enum
 @end
 
 
-@interface ListUsersCharactersResult : PlayFabBaseModel
+@interface ClientListUsersCharactersResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -4888,7 +4954,7 @@ typedef enum
 @end
 
 
-@interface LocationModel : PlayFabBaseModel
+@interface ClientLocationModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -4899,12 +4965,12 @@ typedef enum
 /// <summary>
 /// The two-character continent code for this location
 /// </summary>
-@property ContinentCode pfContinentCode; 
+@property ClientContinentCode pfContinentCode; 
 
 /// <summary>
 /// The two-character ISO 3166-1 country code for the country associated with the location
 /// </summary>
-@property CountryCode pfCountryCode; 
+@property ClientCountryCode pfCountryCode; 
 
 /// <summary>
 /// Latitude coordinate of the geographic location.
@@ -4920,18 +4986,18 @@ typedef enum
 @end
 
 
-@interface LoginResult : PlayFabBaseModel
+@interface ClientLoginResult : PlayFabBaseModel
 
 
 /// <summary>
 /// If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account will also be logged in and returned.
 /// </summary>
-@property EntityTokenResponse* EntityToken; 
+@property ClientEntityTokenResponse* EntityToken; 
 
 /// <summary>
 /// Results for requested info.
 /// </summary>
-@property GetPlayerCombinedInfoResultPayload* InfoResultPayload; 
+@property ClientGetPlayerCombinedInfoResultPayload* InfoResultPayload; 
 
 /// <summary>
 /// The time of this user's previous login. If there was no previous login, then it's DateTime.MinValue
@@ -4956,7 +5022,7 @@ typedef enum
 /// <summary>
 /// Settings specific to this user.
 /// </summary>
-@property UserSettings* SettingsForUser; 
+@property ClientUserSettings* SettingsForUser; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -4965,7 +5031,7 @@ typedef enum
 @end
 
 
-@interface LoginWithAndroidDeviceIDRequest : PlayFabBaseModel
+@interface ClientLoginWithAndroidDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -4991,10 +5057,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5017,7 +5083,7 @@ typedef enum
 @end
 
 
-@interface LoginWithCustomIDRequest : PlayFabBaseModel
+@interface ClientLoginWithCustomIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5038,10 +5104,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5059,7 +5125,7 @@ typedef enum
 @end
 
 
-@interface LoginWithEmailAddressRequest : PlayFabBaseModel
+@interface ClientLoginWithEmailAddressRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5070,10 +5136,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5091,7 +5157,7 @@ typedef enum
 @end
 
 
-@interface LoginWithFacebookInstantGamesIdRequest : PlayFabBaseModel
+@interface ClientLoginWithFacebookInstantGamesIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5112,10 +5178,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5133,7 +5199,7 @@ typedef enum
 @end
 
 
-@interface LoginWithFacebookRequest : PlayFabBaseModel
+@interface ClientLoginWithFacebookRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5154,10 +5220,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5175,7 +5241,7 @@ typedef enum
 @end
 
 
-@interface LoginWithGameCenterRequest : PlayFabBaseModel
+@interface ClientLoginWithGameCenterRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5191,10 +5257,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5217,7 +5283,7 @@ typedef enum
 @end
 
 
-@interface LoginWithGoogleAccountRequest : PlayFabBaseModel
+@interface ClientLoginWithGoogleAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5233,10 +5299,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5259,7 +5325,7 @@ typedef enum
 @end
 
 
-@interface LoginWithIOSDeviceIDRequest : PlayFabBaseModel
+@interface ClientLoginWithIOSDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5285,10 +5351,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5311,7 +5377,7 @@ typedef enum
 @end
 
 
-@interface LoginWithKongregateRequest : PlayFabBaseModel
+@interface ClientLoginWithKongregateRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5332,7 +5398,7 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
 /// Numeric user ID assigned by Kongregate
@@ -5340,7 +5406,7 @@ typedef enum
 @property NSString* KongregateId; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5358,7 +5424,7 @@ typedef enum
 @end
 
 
-@interface LoginWithNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+@interface ClientLoginWithNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5374,10 +5440,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5400,16 +5466,16 @@ typedef enum
 @end
 
 
-@interface LoginWithPlayFabRequest : PlayFabBaseModel
+@interface ClientLoginWithPlayFabRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5432,7 +5498,7 @@ typedef enum
 @end
 
 
-@interface LoginWithSteamRequest : PlayFabBaseModel
+@interface ClientLoginWithSteamRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5448,10 +5514,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5474,7 +5540,7 @@ typedef enum
 @end
 
 
-@interface LoginWithTwitchRequest : PlayFabBaseModel
+@interface ClientLoginWithTwitchRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5495,10 +5561,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5516,7 +5582,7 @@ typedef enum
 @end
 
 
-@interface LoginWithWindowsHelloRequest : PlayFabBaseModel
+@interface ClientLoginWithWindowsHelloRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5527,10 +5593,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -5548,7 +5614,49 @@ typedef enum
 @end
 
 
-@interface LogStatement : PlayFabBaseModel
+@interface ClientLoginWithXboxRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
+/// </summary>
+@property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+/// </summary>
+@property NSString* TitleId; 
+
+/// <summary>
+/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com", "").
+/// </summary>
+@property NSString* XboxToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientLogStatement : PlayFabBaseModel
 
 
 /// <summary>
@@ -5567,7 +5675,7 @@ typedef enum
 @end
 
 
-@interface MatchmakeRequest : PlayFabBaseModel
+@interface ClientMatchmakeRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5593,7 +5701,7 @@ typedef enum
 /// <summary>
 /// Region to match make against. [Note: Required if LobbyId is not specified]
 /// </summary>
-@property Region pfRegion; 
+@property ClientRegion pfRegion; 
 
 /// <summary>
 /// Start a game session if one with an open slot is not found. Defaults to true.
@@ -5608,13 +5716,13 @@ typedef enum
 /// <summary>
 /// Filter to include and/or exclude Game Server Instances associated with certain Tags
 /// </summary>
-@property CollectionFilter* TagFilter; 
+@property ClientCollectionFilter* TagFilter; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface MatchmakeResult : PlayFabBaseModel
+@interface ClientMatchmakeResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -5660,7 +5768,7 @@ typedef enum
 /// <summary>
 /// result of match making process
 /// </summary>
-@property MatchmakeStatus Status; 
+@property ClientMatchmakeStatus Status; 
 
 /// <summary>
 /// server authorization ticket (used by RedeemMatchmakerTicket to validate user insertion into the game)
@@ -5674,7 +5782,7 @@ typedef enum
 @end
 
 
-@interface MembershipModel : PlayFabBaseModel
+@interface ClientMembershipModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -5706,7 +5814,7 @@ typedef enum
 @end
 
 
-@interface ModifyUserVirtualCurrencyResult : PlayFabBaseModel
+@interface ClientModifyUserVirtualCurrencyResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -5736,7 +5844,7 @@ typedef enum
 @end
 
 
-@interface NintendoSwitchPlayFabIdPair : PlayFabBaseModel
+@interface ClientNintendoSwitchPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -5753,7 +5861,7 @@ typedef enum
 @end
 
 
-@interface OpenTradeRequest : PlayFabBaseModel
+@interface ClientOpenTradeRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5775,13 +5883,13 @@ typedef enum
 @end
 
 
-@interface OpenTradeResponse : PlayFabBaseModel
+@interface ClientOpenTradeResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The information about the trade that was just opened.
 /// </summary>
-@property TradeInfo* Trade; 
+@property ClientTradeInfo* Trade; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -5790,7 +5898,7 @@ typedef enum
 @end
 
 
-@interface PayForPurchaseRequest : PlayFabBaseModel
+@interface ClientPayForPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -5817,7 +5925,7 @@ typedef enum
 @end
 
 
-@interface PayForPurchaseResult : PlayFabBaseModel
+@interface ClientPayForPurchaseResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -5858,7 +5966,7 @@ typedef enum
 /// <summary>
 /// Status of the transaction.
 /// </summary>
-@property TransactionStatus Status; 
+@property ClientTransactionStatus Status; 
 
 /// <summary>
 /// Virtual currencies granted by the transaction, if any.
@@ -5877,7 +5985,7 @@ typedef enum
 @end
 
 
-@interface PaymentOption : PlayFabBaseModel
+@interface ClientPaymentOption : PlayFabBaseModel
 
 
 /// <summary>
@@ -5904,7 +6012,7 @@ typedef enum
 @end
 
 
-@interface PlayerLeaderboardEntry : PlayFabBaseModel
+@interface ClientPlayerLeaderboardEntry : PlayFabBaseModel
 
 
 /// <summary>
@@ -5925,7 +6033,7 @@ typedef enum
 /// <summary>
 /// The profile of the user, if requested.
 /// </summary>
-@property PlayerProfileModel* Profile; 
+@property ClientPlayerProfileModel* Profile; 
 
 /// <summary>
 /// Specific value of the user's statistic.
@@ -5936,7 +6044,7 @@ typedef enum
 @end
 
 
-@interface PlayerProfileModel : PlayFabBaseModel
+@interface ClientPlayerProfileModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -5992,7 +6100,7 @@ typedef enum
 /// <summary>
 /// Player account origination
 /// </summary>
-@property LoginIdentityProvider Origination; 
+@property ClientLoginIdentityProvider Origination; 
 
 /// <summary>
 /// PlayFab player account unique identifier
@@ -6038,7 +6146,7 @@ typedef enum
 @end
 
 
-@interface PlayerProfileViewConstraints : PlayFabBaseModel
+@interface ClientPlayerProfileViewConstraints : PlayFabBaseModel
 
 
 /// <summary>
@@ -6125,7 +6233,7 @@ typedef enum
 @end
 
 
-@interface PlayerStatisticVersion : PlayFabBaseModel
+@interface ClientPlayerStatisticVersion : PlayFabBaseModel
 
 
 /// <summary>
@@ -6162,7 +6270,7 @@ typedef enum
 @end
 
 
-@interface PurchaseItemRequest : PlayFabBaseModel
+@interface ClientPurchaseItemRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6199,7 +6307,7 @@ typedef enum
 @end
 
 
-@interface PurchaseItemResult : PlayFabBaseModel
+@interface ClientPurchaseItemResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -6214,7 +6322,7 @@ typedef enum
 @end
 
 
-@interface PushNotificationRegistrationModel : PlayFabBaseModel
+@interface ClientPushNotificationRegistrationModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -6225,13 +6333,13 @@ typedef enum
 /// <summary>
 /// Push notification platform
 /// </summary>
-@property PushNotificationPlatform Platform; 
+@property ClientPushNotificationPlatform Platform; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RedeemCouponRequest : PlayFabBaseModel
+@interface ClientRedeemCouponRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6253,7 +6361,7 @@ typedef enum
 @end
 
 
-@interface RedeemCouponResult : PlayFabBaseModel
+@interface ClientRedeemCouponResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -6268,7 +6376,7 @@ typedef enum
 @end
 
 
-@interface RegionInfo : PlayFabBaseModel
+@interface ClientRegionInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -6289,13 +6397,13 @@ typedef enum
 /// <summary>
 /// unique identifier for the region
 /// </summary>
-@property Region pfRegion; 
+@property ClientRegion pfRegion; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RegisterForIOSPushNotificationRequest : PlayFabBaseModel
+@interface ClientRegisterForIOSPushNotificationRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6317,7 +6425,7 @@ typedef enum
 @end
 
 
-@interface RegisterForIOSPushNotificationResult : PlayFabBaseModel
+@interface ClientRegisterForIOSPushNotificationResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6327,7 +6435,7 @@ typedef enum
 @end
 
 
-@interface RegisterPlayFabUserRequest : PlayFabBaseModel
+@interface ClientRegisterPlayFabUserRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6348,10 +6456,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -6384,13 +6492,13 @@ typedef enum
 @end
 
 
-@interface RegisterPlayFabUserResult : PlayFabBaseModel
+@interface ClientRegisterPlayFabUserResult : PlayFabBaseModel
 
 
 /// <summary>
 /// If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account will also be logged in and returned.
 /// </summary>
-@property EntityTokenResponse* EntityToken; 
+@property ClientEntityTokenResponse* EntityToken; 
 
 /// <summary>
 /// PlayFab unique identifier for this newly created account.
@@ -6405,7 +6513,7 @@ typedef enum
 /// <summary>
 /// Settings specific to this user.
 /// </summary>
-@property UserSettings* SettingsForUser; 
+@property ClientUserSettings* SettingsForUser; 
 
 /// <summary>
 /// PlayFab unique user name.
@@ -6419,7 +6527,7 @@ typedef enum
 @end
 
 
-@interface RegisterWithWindowsHelloRequest : PlayFabBaseModel
+@interface ClientRegisterWithWindowsHelloRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6435,10 +6543,10 @@ typedef enum
 /// <summary>
 /// Flags for which pieces of info to return for the user.
 /// </summary>
-@property GetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Flag to automatically login the player's title_player_account and return the associated entity token.
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
 /// </summary>
 @property bool LoginTitlePlayerAccountEntity; 
 
@@ -6466,14 +6574,14 @@ typedef enum
 @end
 
 
-@interface RemoveContactEmailRequest : PlayFabBaseModel
+@interface ClientRemoveContactEmailRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RemoveContactEmailResult : PlayFabBaseModel
+@interface ClientRemoveContactEmailResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6483,7 +6591,7 @@ typedef enum
 @end
 
 
-@interface RemoveFriendRequest : PlayFabBaseModel
+@interface ClientRemoveFriendRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6495,7 +6603,7 @@ typedef enum
 @end
 
 
-@interface RemoveFriendResult : PlayFabBaseModel
+@interface ClientRemoveFriendResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6505,19 +6613,19 @@ typedef enum
 @end
 
 
-@interface RemoveGenericIDRequest : PlayFabBaseModel
+@interface ClientRemoveGenericIDRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Generic service identifier to be removed from the player.
 /// </summary>
-@property GenericServiceId GenericId; 
+@property ClientGenericServiceId* GenericId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RemoveGenericIDResult : PlayFabBaseModel
+@interface ClientRemoveGenericIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6527,7 +6635,7 @@ typedef enum
 @end
 
 
-@interface RemoveSharedGroupMembersRequest : PlayFabBaseModel
+@interface ClientRemoveSharedGroupMembersRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6544,7 +6652,7 @@ typedef enum
 @end
 
 
-@interface RemoveSharedGroupMembersResult : PlayFabBaseModel
+@interface ClientRemoveSharedGroupMembersResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6554,7 +6662,7 @@ typedef enum
 @end
 
 
-@interface ReportPlayerClientRequest : PlayFabBaseModel
+@interface ClientReportPlayerClientRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6571,7 +6679,7 @@ typedef enum
 @end
 
 
-@interface ReportPlayerClientResult : PlayFabBaseModel
+@interface ClientReportPlayerClientResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -6586,7 +6694,7 @@ typedef enum
 @end
 
 
-@interface RestoreIOSPurchasesRequest : PlayFabBaseModel
+@interface ClientRestoreIOSPurchasesRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6598,7 +6706,7 @@ typedef enum
 @end
 
 
-@interface RestoreIOSPurchasesResult : PlayFabBaseModel
+@interface ClientRestoreIOSPurchasesResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6608,7 +6716,7 @@ typedef enum
 @end
 
 
-@interface ScriptExecutionError : PlayFabBaseModel
+@interface ClientScriptExecutionError : PlayFabBaseModel
 
 
 /// <summary>
@@ -6630,7 +6738,7 @@ typedef enum
 @end
 
 
-@interface SendAccountRecoveryEmailRequest : PlayFabBaseModel
+@interface ClientSendAccountRecoveryEmailRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6652,7 +6760,7 @@ typedef enum
 @end
 
 
-@interface SendAccountRecoveryEmailResult : PlayFabBaseModel
+@interface ClientSendAccountRecoveryEmailResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6662,7 +6770,7 @@ typedef enum
 @end
 
 
-@interface SetFriendTagsRequest : PlayFabBaseModel
+@interface ClientSetFriendTagsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6679,7 +6787,7 @@ typedef enum
 @end
 
 
-@interface SetFriendTagsResult : PlayFabBaseModel
+@interface ClientSetFriendTagsResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6689,7 +6797,7 @@ typedef enum
 @end
 
 
-@interface SetPlayerSecretRequest : PlayFabBaseModel
+@interface ClientSetPlayerSecretRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6706,7 +6814,7 @@ typedef enum
 @end
 
 
-@interface SetPlayerSecretResult : PlayFabBaseModel
+@interface ClientSetPlayerSecretResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -6716,7 +6824,7 @@ typedef enum
 @end
 
 
-@interface SharedGroupDataRecord : PlayFabBaseModel
+@interface ClientSharedGroupDataRecord : PlayFabBaseModel
 
 
 /// <summary>
@@ -6732,7 +6840,7 @@ typedef enum
 /// <summary>
 /// Indicates whether this data can be read by all users (public) or only members of the group (private).
 /// </summary>
-@property UserDataPermission Permission; 
+@property ClientUserDataPermission Permission; 
 
 /// <summary>
 /// Data stored for the specified group data key.
@@ -6743,7 +6851,7 @@ typedef enum
 @end
 
 
-@interface StartGameRequest : PlayFabBaseModel
+@interface ClientStartGameRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6769,7 +6877,7 @@ typedef enum
 /// <summary>
 /// the region to associate this server with for match filtering
 /// </summary>
-@property Region pfRegion; 
+@property ClientRegion pfRegion; 
 
 /// <summary>
 /// player statistic for others to use in finding this game. May be null for no stat-based matching
@@ -6780,7 +6888,7 @@ typedef enum
 @end
 
 
-@interface StartGameResult : PlayFabBaseModel
+@interface ClientStartGameResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -6835,7 +6943,7 @@ typedef enum
 @end
 
 
-@interface StartPurchaseRequest : PlayFabBaseModel
+@interface ClientStartPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -6857,7 +6965,7 @@ typedef enum
 @end
 
 
-@interface StartPurchaseResult : PlayFabBaseModel
+@interface ClientStartPurchaseResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -6887,7 +6995,7 @@ typedef enum
 @end
 
 
-@interface StatisticModel : PlayFabBaseModel
+@interface ClientStatisticModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -6909,7 +7017,7 @@ typedef enum
 @end
 
 
-@interface StatisticNameVersion : PlayFabBaseModel
+@interface ClientStatisticNameVersion : PlayFabBaseModel
 
 
 /// <summary>
@@ -6926,7 +7034,7 @@ typedef enum
 @end
 
 
-@interface StatisticUpdate : PlayFabBaseModel
+@interface ClientStatisticUpdate : PlayFabBaseModel
 
 
 /// <summary>
@@ -6948,7 +7056,7 @@ typedef enum
 @end
 
 
-@interface StatisticValue : PlayFabBaseModel
+@interface ClientStatisticValue : PlayFabBaseModel
 
 
 /// <summary>
@@ -6970,7 +7078,7 @@ typedef enum
 @end
 
 
-@interface SteamPlayFabIdPair : PlayFabBaseModel
+@interface ClientSteamPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -6990,7 +7098,7 @@ typedef enum
 /// <summary>
 /// A store entry that list a catalog item at a particular price
 /// </summary>
-@interface StoreItem : PlayFabBaseModel
+@interface ClientStoreItem : PlayFabBaseModel
 
 
 /// <summary>
@@ -7025,7 +7133,7 @@ typedef enum
 /// <summary>
 /// Marketing data about a specific store
 /// </summary>
-@interface StoreMarketingModel : PlayFabBaseModel
+@interface ClientStoreMarketingModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -7047,7 +7155,7 @@ typedef enum
 @end
 
 
-@interface SubscriptionModel : PlayFabBaseModel
+@interface ClientSubscriptionModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -7068,7 +7176,7 @@ typedef enum
 /// <summary>
 /// The status of this subscription, according to the subscription provider.
 /// </summary>
-@property SubscriptionProviderStatus Status; 
+@property ClientSubscriptionProviderStatus Status; 
 
 /// <summary>
 /// The id for this subscription
@@ -7089,7 +7197,7 @@ typedef enum
 @end
 
 
-@interface SubtractUserVirtualCurrencyRequest : PlayFabBaseModel
+@interface ClientSubtractUserVirtualCurrencyRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7106,7 +7214,7 @@ typedef enum
 @end
 
 
-@interface TagModel : PlayFabBaseModel
+@interface ClientTagModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -7118,7 +7226,7 @@ typedef enum
 @end
 
 
-@interface TitleNewsItem : PlayFabBaseModel
+@interface ClientTitleNewsItem : PlayFabBaseModel
 
 
 /// <summary>
@@ -7145,7 +7253,7 @@ typedef enum
 @end
 
 
-@interface TradeInfo : PlayFabBaseModel
+@interface ClientTradeInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7206,7 +7314,7 @@ typedef enum
 /// <summary>
 /// Describes the current state of this trade.
 /// </summary>
-@property TradeStatus Status; 
+@property ClientTradeStatus Status; 
 
 /// <summary>
 /// The identifier for this trade.
@@ -7217,7 +7325,7 @@ typedef enum
 @end
 
 
-@interface TwitchPlayFabIdPair : PlayFabBaseModel
+@interface ClientTwitchPlayFabIdPair : PlayFabBaseModel
 
 
 /// <summary>
@@ -7234,7 +7342,7 @@ typedef enum
 @end
 
 
-@interface UnlinkAndroidDeviceIDRequest : PlayFabBaseModel
+@interface ClientUnlinkAndroidDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7246,7 +7354,7 @@ typedef enum
 @end
 
 
-@interface UnlinkAndroidDeviceIDResult : PlayFabBaseModel
+@interface ClientUnlinkAndroidDeviceIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7256,7 +7364,7 @@ typedef enum
 @end
 
 
-@interface UnlinkCustomIDRequest : PlayFabBaseModel
+@interface ClientUnlinkCustomIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7268,7 +7376,7 @@ typedef enum
 @end
 
 
-@interface UnlinkCustomIDResult : PlayFabBaseModel
+@interface ClientUnlinkCustomIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7278,14 +7386,14 @@ typedef enum
 @end
 
 
-@interface UnlinkFacebookAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkFacebookAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkFacebookAccountResult : PlayFabBaseModel
+@interface ClientUnlinkFacebookAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7295,7 +7403,7 @@ typedef enum
 @end
 
 
-@interface UnlinkFacebookInstantGamesIdRequest : PlayFabBaseModel
+@interface ClientUnlinkFacebookInstantGamesIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7307,7 +7415,7 @@ typedef enum
 @end
 
 
-@interface UnlinkFacebookInstantGamesIdResult : PlayFabBaseModel
+@interface ClientUnlinkFacebookInstantGamesIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7317,14 +7425,14 @@ typedef enum
 @end
 
 
-@interface UnlinkGameCenterAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkGameCenterAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkGameCenterAccountResult : PlayFabBaseModel
+@interface ClientUnlinkGameCenterAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7334,14 +7442,14 @@ typedef enum
 @end
 
 
-@interface UnlinkGoogleAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkGoogleAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkGoogleAccountResult : PlayFabBaseModel
+@interface ClientUnlinkGoogleAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7351,7 +7459,7 @@ typedef enum
 @end
 
 
-@interface UnlinkIOSDeviceIDRequest : PlayFabBaseModel
+@interface ClientUnlinkIOSDeviceIDRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7363,7 +7471,7 @@ typedef enum
 @end
 
 
-@interface UnlinkIOSDeviceIDResult : PlayFabBaseModel
+@interface ClientUnlinkIOSDeviceIDResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7373,14 +7481,14 @@ typedef enum
 @end
 
 
-@interface UnlinkKongregateAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkKongregateAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkKongregateAccountResult : PlayFabBaseModel
+@interface ClientUnlinkKongregateAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7390,7 +7498,7 @@ typedef enum
 @end
 
 
-@interface UnlinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
+@interface ClientUnlinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7402,7 +7510,7 @@ typedef enum
 @end
 
 
-@interface UnlinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
+@interface ClientUnlinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7412,14 +7520,14 @@ typedef enum
 @end
 
 
-@interface UnlinkSteamAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkSteamAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkSteamAccountResult : PlayFabBaseModel
+@interface ClientUnlinkSteamAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7429,14 +7537,14 @@ typedef enum
 @end
 
 
-@interface UnlinkTwitchAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkTwitchAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UnlinkTwitchAccountResult : PlayFabBaseModel
+@interface ClientUnlinkTwitchAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7446,7 +7554,7 @@ typedef enum
 @end
 
 
-@interface UnlinkWindowsHelloAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkWindowsHelloAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7458,7 +7566,7 @@ typedef enum
 @end
 
 
-@interface UnlinkWindowsHelloAccountResponse : PlayFabBaseModel
+@interface ClientUnlinkWindowsHelloAccountResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7468,7 +7576,29 @@ typedef enum
 @end
 
 
-@interface UnlockContainerInstanceRequest : PlayFabBaseModel
+@interface ClientUnlinkXboxAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com", "").
+/// </summary>
+@property NSString* XboxToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlinkXboxAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlockContainerInstanceRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7495,7 +7625,7 @@ typedef enum
 @end
 
 
-@interface UnlockContainerItemRequest : PlayFabBaseModel
+@interface ClientUnlockContainerItemRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7517,7 +7647,7 @@ typedef enum
 @end
 
 
-@interface UnlockContainerItemResult : PlayFabBaseModel
+@interface ClientUnlockContainerItemResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -7547,7 +7677,7 @@ typedef enum
 @end
 
 
-@interface UpdateAvatarUrlRequest : PlayFabBaseModel
+@interface ClientUpdateAvatarUrlRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7559,7 +7689,7 @@ typedef enum
 @end
 
 
-@interface UpdateCharacterDataRequest : PlayFabBaseModel
+@interface ClientUpdateCharacterDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7580,13 +7710,13 @@ typedef enum
 /// <summary>
 /// Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
 /// </summary>
-@property UserDataPermission Permission; 
+@property ClientUserDataPermission Permission; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UpdateCharacterDataResult : PlayFabBaseModel
+@interface ClientUpdateCharacterDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -7601,7 +7731,7 @@ typedef enum
 @end
 
 
-@interface UpdateCharacterStatisticsRequest : PlayFabBaseModel
+@interface ClientUpdateCharacterStatisticsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7618,7 +7748,7 @@ typedef enum
 @end
 
 
-@interface UpdateCharacterStatisticsResult : PlayFabBaseModel
+@interface ClientUpdateCharacterStatisticsResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7628,7 +7758,7 @@ typedef enum
 @end
 
 
-@interface UpdatePlayerStatisticsRequest : PlayFabBaseModel
+@interface ClientUpdatePlayerStatisticsRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7640,7 +7770,7 @@ typedef enum
 @end
 
 
-@interface UpdatePlayerStatisticsResult : PlayFabBaseModel
+@interface ClientUpdatePlayerStatisticsResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7650,7 +7780,7 @@ typedef enum
 @end
 
 
-@interface UpdateSharedGroupDataRequest : PlayFabBaseModel
+@interface ClientUpdateSharedGroupDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7666,7 +7796,7 @@ typedef enum
 /// <summary>
 /// Permission to be applied to all user data keys in this request.
 /// </summary>
-@property UserDataPermission Permission; 
+@property ClientUserDataPermission Permission; 
 
 /// <summary>
 /// Unique identifier for the shared group.
@@ -7677,7 +7807,7 @@ typedef enum
 @end
 
 
-@interface UpdateSharedGroupDataResult : PlayFabBaseModel
+@interface ClientUpdateSharedGroupDataResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7687,7 +7817,7 @@ typedef enum
 @end
 
 
-@interface UpdateUserDataRequest : PlayFabBaseModel
+@interface ClientUpdateUserDataRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7703,13 +7833,13 @@ typedef enum
 /// <summary>
 /// Permission to be applied to all user data keys written in this request. Defaults to "private" if not set. This is used for requests by one player for information about another player; those requests will only return Public keys.
 /// </summary>
-@property UserDataPermission Permission; 
+@property ClientUserDataPermission Permission; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UpdateUserDataResult : PlayFabBaseModel
+@interface ClientUpdateUserDataResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -7724,7 +7854,7 @@ typedef enum
 @end
 
 
-@interface UpdateUserTitleDisplayNameRequest : PlayFabBaseModel
+@interface ClientUpdateUserTitleDisplayNameRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7736,7 +7866,7 @@ typedef enum
 @end
 
 
-@interface UpdateUserTitleDisplayNameResult : PlayFabBaseModel
+@interface ClientUpdateUserTitleDisplayNameResult : PlayFabBaseModel
 
 
 /// <summary>
@@ -7751,13 +7881,13 @@ typedef enum
 @end
 
 
-@interface UserAccountInfo : PlayFabBaseModel
+@interface ClientUserAccountInfo : PlayFabBaseModel
 
 
 /// <summary>
 /// User Android device information, if an Android device has been linked
 /// </summary>
-@property UserAndroidDeviceInfo* AndroidDeviceInfo; 
+@property ClientUserAndroidDeviceInfo* AndroidDeviceInfo; 
 
 /// <summary>
 /// Timestamp indicating when the user account was created
@@ -7767,32 +7897,47 @@ typedef enum
 /// <summary>
 /// Custom ID information, if a custom ID has been assigned
 /// </summary>
-@property UserCustomIdInfo* CustomIdInfo; 
+@property ClientUserCustomIdInfo* CustomIdInfo; 
 
 /// <summary>
 /// User Facebook information, if a Facebook account has been linked
 /// </summary>
-@property UserFacebookInfo* FacebookInfo; 
+@property ClientUserFacebookInfo* FacebookInfo; 
+
+/// <summary>
+/// Facebook Instant Games account information, if a Facebook Instant Games account has been linked
+/// </summary>
+@property ClientUserFacebookInstantGamesIdInfo* FacebookInstantGamesIdInfo; 
 
 /// <summary>
 /// User Gamecenter information, if a Gamecenter account has been linked
 /// </summary>
-@property UserGameCenterInfo* GameCenterInfo; 
+@property ClientUserGameCenterInfo* GameCenterInfo; 
 
 /// <summary>
 /// User Google account information, if a Google account has been linked
 /// </summary>
-@property UserGoogleInfo* GoogleInfo; 
+@property ClientUserGoogleInfo* GoogleInfo; 
 
 /// <summary>
 /// User iOS device information, if an iOS device has been linked
 /// </summary>
-@property UserIosDeviceInfo* IosDeviceInfo; 
+@property ClientUserIosDeviceInfo* IosDeviceInfo; 
 
 /// <summary>
 /// User Kongregate account information, if a Kongregate account has been linked
 /// </summary>
-@property UserKongregateInfo* KongregateInfo; 
+@property ClientUserKongregateInfo* KongregateInfo; 
+
+/// <summary>
+/// Nintendo Switch account information, if a Nintendo Switch account has been linked
+/// </summary>
+@property ClientUserNintendoSwitchDeviceIdInfo* NintendoSwitchDeviceIdInfo; 
+
+/// <summary>
+/// OpenID Connect information, if any OpenID Connect accounts have been linked
+/// </summary>
+@property NSArray* OpenIdInfo; 
 
 /// <summary>
 /// Unique identifier for the user account
@@ -7802,27 +7947,27 @@ typedef enum
 /// <summary>
 /// Personal information for the user which is considered more sensitive
 /// </summary>
-@property UserPrivateAccountInfo* PrivateInfo; 
+@property ClientUserPrivateAccountInfo* PrivateInfo; 
 
 /// <summary>
 /// User PSN account information, if a PSN account has been linked
 /// </summary>
-@property UserPsnInfo* PsnInfo; 
+@property ClientUserPsnInfo* PsnInfo; 
 
 /// <summary>
 /// User Steam information, if a Steam account has been linked
 /// </summary>
-@property UserSteamInfo* SteamInfo; 
+@property ClientUserSteamInfo* SteamInfo; 
 
 /// <summary>
 /// Title-specific information for the user account
 /// </summary>
-@property UserTitleInfo* TitleInfo; 
+@property ClientUserTitleInfo* TitleInfo; 
 
 /// <summary>
 /// User Twitch account information, if a Twitch account has been linked
 /// </summary>
-@property UserTwitchInfo* TwitchInfo; 
+@property ClientUserTwitchInfo* TwitchInfo; 
 
 /// <summary>
 /// User account name in the PlayFab service
@@ -7830,15 +7975,20 @@ typedef enum
 @property NSString* Username; 
 
 /// <summary>
+/// Windows Hello account information, if a Windows Hello account has been linked
+/// </summary>
+@property ClientUserWindowsHelloInfo* WindowsHelloInfo; 
+
+/// <summary>
 /// User XBox account information, if a XBox account has been linked
 /// </summary>
-@property UserXboxInfo* XboxInfo; 
+@property ClientUserXboxInfo* XboxInfo; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UserAndroidDeviceInfo : PlayFabBaseModel
+@interface ClientUserAndroidDeviceInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7850,7 +8000,7 @@ typedef enum
 @end
 
 
-@interface UserCustomIdInfo : PlayFabBaseModel
+@interface ClientUserCustomIdInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7862,7 +8012,7 @@ typedef enum
 @end
 
 
-@interface UserDataRecord : PlayFabBaseModel
+@interface ClientUserDataRecord : PlayFabBaseModel
 
 
 /// <summary>
@@ -7873,7 +8023,7 @@ typedef enum
 /// <summary>
 /// Indicates whether this data can be read by all users (public) or only the user (private). This is used for GetUserData requests being made by one player about another player.
 /// </summary>
-@property UserDataPermission Permission; 
+@property ClientUserDataPermission Permission; 
 
 /// <summary>
 /// Data stored for the specified user data key.
@@ -7884,7 +8034,7 @@ typedef enum
 @end
 
 
-@interface UserFacebookInfo : PlayFabBaseModel
+@interface ClientUserFacebookInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7901,7 +8051,19 @@ typedef enum
 @end
 
 
-@interface UserGameCenterInfo : PlayFabBaseModel
+@interface ClientUserFacebookInstantGamesIdInfo : PlayFabBaseModel
+
+
+/// <summary>
+/// Facebook Instant Games ID
+/// </summary>
+@property NSString* FacebookInstantGamesId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserGameCenterInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7913,7 +8075,7 @@ typedef enum
 @end
 
 
-@interface UserGoogleInfo : PlayFabBaseModel
+@interface ClientUserGoogleInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7940,7 +8102,7 @@ typedef enum
 @end
 
 
-@interface UserIosDeviceInfo : PlayFabBaseModel
+@interface ClientUserIosDeviceInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7952,7 +8114,7 @@ typedef enum
 @end
 
 
-@interface UserKongregateInfo : PlayFabBaseModel
+@interface ClientUserKongregateInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7969,7 +8131,41 @@ typedef enum
 @end
 
 
-@interface UserPrivateAccountInfo : PlayFabBaseModel
+@interface ClientUserNintendoSwitchDeviceIdInfo : PlayFabBaseModel
+
+
+/// <summary>
+/// Nintendo Switch Device ID
+/// </summary>
+@property NSString* NintendoSwitchDeviceId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserOpenIdInfo : PlayFabBaseModel
+
+
+/// <summary>
+/// OpenID Connection ID
+/// </summary>
+@property NSString* ConnectionId; 
+
+/// <summary>
+/// OpenID Issuer
+/// </summary>
+@property NSString* Issuer; 
+
+/// <summary>
+/// OpenID Subject
+/// </summary>
+@property NSString* Subject; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserPrivateAccountInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7981,7 +8177,7 @@ typedef enum
 @end
 
 
-@interface UserPsnInfo : PlayFabBaseModel
+@interface ClientUserPsnInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -7998,7 +8194,7 @@ typedef enum
 @end
 
 
-@interface UserSettings : PlayFabBaseModel
+@interface ClientUserSettings : PlayFabBaseModel
 
 
 /// <summary>
@@ -8020,13 +8216,13 @@ typedef enum
 @end
 
 
-@interface UserSteamInfo : PlayFabBaseModel
+@interface ClientUserSteamInfo : PlayFabBaseModel
 
 
 /// <summary>
 /// what stage of game ownership the user is listed as being in, from Steam
 /// </summary>
-@property TitleActivationStatus SteamActivationStatus; 
+@property ClientTitleActivationStatus SteamActivationStatus; 
 
 /// <summary>
 /// the country in which the player resides, from Steam data
@@ -8036,7 +8232,7 @@ typedef enum
 /// <summary>
 /// currency type set in the user Steam account
 /// </summary>
-@property Currency SteamCurrency; 
+@property ClientCurrency SteamCurrency; 
 
 /// <summary>
 /// Steam identifier
@@ -8047,7 +8243,7 @@ typedef enum
 @end
 
 
-@interface UserTitleInfo : PlayFabBaseModel
+@interface ClientUserTitleInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -8083,18 +8279,18 @@ typedef enum
 /// <summary>
 /// source by which the user first joined the game, if known
 /// </summary>
-@property UserOrigination Origination; 
+@property ClientUserOrigination Origination; 
 
 /// <summary>
 /// Title player account entity for this user
 /// </summary>
-@property EntityKey* TitlePlayerAccount; 
+@property ClientEntityKey* TitlePlayerAccount; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UserTwitchInfo : PlayFabBaseModel
+@interface ClientUserTwitchInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -8111,7 +8307,24 @@ typedef enum
 @end
 
 
-@interface UserXboxInfo : PlayFabBaseModel
+@interface ClientUserWindowsHelloInfo : PlayFabBaseModel
+
+
+/// <summary>
+/// Windows Hello Device Name
+/// </summary>
+@property NSString* WindowsHelloDeviceName; 
+
+/// <summary>
+/// Windows Hello Public Key Hash
+/// </summary>
+@property NSString* WindowsHelloPublicKeyHash; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserXboxInfo : PlayFabBaseModel
 
 
 /// <summary>
@@ -8123,7 +8336,7 @@ typedef enum
 @end
 
 
-@interface ValidateAmazonReceiptRequest : PlayFabBaseModel
+@interface ClientValidateAmazonReceiptRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8155,7 +8368,7 @@ typedef enum
 @end
 
 
-@interface ValidateAmazonReceiptResult : PlayFabBaseModel
+@interface ClientValidateAmazonReceiptResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -8165,7 +8378,7 @@ typedef enum
 @end
 
 
-@interface ValidateGooglePlayPurchaseRequest : PlayFabBaseModel
+@interface ClientValidateGooglePlayPurchaseRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8192,7 +8405,7 @@ typedef enum
 @end
 
 
-@interface ValidateGooglePlayPurchaseResult : PlayFabBaseModel
+@interface ClientValidateGooglePlayPurchaseResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -8202,7 +8415,7 @@ typedef enum
 @end
 
 
-@interface ValidateIOSReceiptRequest : PlayFabBaseModel
+@interface ClientValidateIOSReceiptRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8224,7 +8437,7 @@ typedef enum
 @end
 
 
-@interface ValidateIOSReceiptResult : PlayFabBaseModel
+@interface ClientValidateIOSReceiptResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -8234,7 +8447,7 @@ typedef enum
 @end
 
 
-@interface ValidateWindowsReceiptRequest : PlayFabBaseModel
+@interface ClientValidateWindowsReceiptRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8261,7 +8474,7 @@ typedef enum
 @end
 
 
-@interface ValidateWindowsReceiptResult : PlayFabBaseModel
+@interface ClientValidateWindowsReceiptResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -8271,7 +8484,7 @@ typedef enum
 @end
 
 
-@interface ValueToDateModel : PlayFabBaseModel
+@interface ClientValueToDateModel : PlayFabBaseModel
 
 
 /// <summary>
@@ -8293,7 +8506,7 @@ typedef enum
 @end
 
 
-@interface VirtualCurrencyRechargeTime : PlayFabBaseModel
+@interface ClientVirtualCurrencyRechargeTime : PlayFabBaseModel
 
 
 /// <summary>
@@ -8315,7 +8528,7 @@ typedef enum
 @end
 
 
-@interface WriteClientCharacterEventRequest : PlayFabBaseModel
+@interface ClientWriteClientCharacterEventRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8342,7 +8555,7 @@ typedef enum
 @end
 
 
-@interface WriteClientPlayerEventRequest : PlayFabBaseModel
+@interface ClientWriteClientPlayerEventRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -8364,7 +8577,7 @@ typedef enum
 @end
 
 
-@interface WriteEventResponse : PlayFabBaseModel
+@interface ClientWriteEventResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -8379,7 +8592,7 @@ typedef enum
 @end
 
 
-@interface WriteTitleEventRequest : PlayFabBaseModel
+@interface ClientWriteTitleEventRequest : PlayFabBaseModel
 
 
 /// <summary>

@@ -1,13 +1,4 @@
-//#ifndef PLAYFAB_PLAYFABERROR_H_
-//#define PLAYFAB_PLAYFABERROR_H_
-
-//#include <string>
-//#include <map>
-
 #import "PlayFabBaseModel.h"
-//namespace PlayFab
-//{
-
     typedef enum 
     {
         PlayFabErrorHostnameNotFound=1,
@@ -383,16 +374,16 @@
         PlayFabErrorNoValidCertificateForAad = 1376,
         PlayFabErrorInvalidCertificateForAad = 1377,
         PlayFabErrorDuplicateDropTableId = 1378,
-        PlayFabErrorGameServerOk = 1379,
-        PlayFabErrorGameServerAccepted = 1380,
-        PlayFabErrorGameServerNoContent = 1381,
-        PlayFabErrorGameServerBadRequest = 1382,
-        PlayFabErrorGameServerUnauthorized = 1383,
-        PlayFabErrorGameServerForbidden = 1384,
-        PlayFabErrorGameServerNotFound = 1385,
-        PlayFabErrorGameServerConflict = 1386,
-        PlayFabErrorGameServerInternalServerError = 1387,
-        PlayFabErrorGameServerServiceUnavailable = 1388,
+        PlayFabErrorMultiplayerServerError = 1379,
+        PlayFabErrorMultiplayerServerTooManyRequests = 1380,
+        PlayFabErrorMultiplayerServerNoContent = 1381,
+        PlayFabErrorMultiplayerServerBadRequest = 1382,
+        PlayFabErrorMultiplayerServerUnauthorized = 1383,
+        PlayFabErrorMultiplayerServerForbidden = 1384,
+        PlayFabErrorMultiplayerServerNotFound = 1385,
+        PlayFabErrorMultiplayerServerConflict = 1386,
+        PlayFabErrorMultiplayerServerInternalServerError = 1387,
+        PlayFabErrorMultiplayerServerUnavailable = 1388,
         PlayFabErrorExplicitContentDetected = 1389,
         PlayFabErrorPIIContentDetected = 1390,
         PlayFabErrorInvalidScheduledTaskParameter = 1391,
@@ -449,5 +440,3 @@
     @end
 
     typedef void(^ErrorCallback)(PlayFabError* error, NSObject* userData);
-//}
-//#endif

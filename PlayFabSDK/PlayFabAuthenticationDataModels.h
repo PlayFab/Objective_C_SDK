@@ -1,73 +1,56 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
-
-typedef enum
-{
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
-
 //predeclare all non-enum classes
 
-@class EntityKey;
+@class AuthenticationEntityKey;
 
-@class GetEntityTokenRequest;
+@class AuthenticationGetEntityTokenRequest;
 
-@class GetEntityTokenResponse;
+@class AuthenticationGetEntityTokenResponse;
 
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface AuthenticationEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetEntityTokenRequest : PlayFabBaseModel
+@interface AuthenticationGetEntityTokenRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property AuthenticationEntityKey* Entity; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface GetEntityTokenResponse : PlayFabBaseModel
+@interface AuthenticationGetEntityTokenResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity id and type.
 /// </summary>
-@property EntityKey* Entity; 
+@property AuthenticationEntityKey* Entity; 
 
 /// <summary>
 /// The token used to set X-EntityToken for all entity based API calls.

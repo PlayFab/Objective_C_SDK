@@ -1,885 +1,608 @@
-
-
 #import <Foundation/Foundation.h>
 
 #import "PlayFabClientDataModels.h"
 #import "PlayFabError.h"
 #import "PlayFabSettings.h"
 
+
 @interface PlayFabClientAPI : NSObject
+
++(NSString*) GetURL;
+
 
 @property (nonatomic) NSString* mUserSessionTicket;
 
 		
-typedef void(^AcceptTradeCallback)(AcceptTradeResponse* result, NSObject* userData);
+typedef void(^AcceptTradeCallback)(ClientAcceptTradeResponse* result, NSObject* userData);
 		
-typedef void(^AddFriendCallback)(AddFriendResult* result, NSObject* userData);
+typedef void(^AddFriendCallback)(ClientAddFriendResult* result, NSObject* userData);
 		
-typedef void(^AddGenericIDCallback)(AddGenericIDResult* result, NSObject* userData);
+typedef void(^AddGenericIDCallback)(ClientAddGenericIDResult* result, NSObject* userData);
 		
-typedef void(^AddOrUpdateContactEmailCallback)(AddOrUpdateContactEmailResult* result, NSObject* userData);
+typedef void(^AddOrUpdateContactEmailCallback)(ClientAddOrUpdateContactEmailResult* result, NSObject* userData);
 		
-typedef void(^AddSharedGroupMembersCallback)(AddSharedGroupMembersResult* result, NSObject* userData);
+typedef void(^AddSharedGroupMembersCallback)(ClientAddSharedGroupMembersResult* result, NSObject* userData);
 		
-typedef void(^AddUsernamePasswordCallback)(AddUsernamePasswordResult* result, NSObject* userData);
+typedef void(^AddUsernamePasswordCallback)(ClientAddUsernamePasswordResult* result, NSObject* userData);
 		
-typedef void(^AddUserVirtualCurrencyCallback)(ModifyUserVirtualCurrencyResult* result, NSObject* userData);
+typedef void(^AddUserVirtualCurrencyCallback)(ClientModifyUserVirtualCurrencyResult* result, NSObject* userData);
 		
-typedef void(^AndroidDevicePushNotificationRegistrationCallback)(AndroidDevicePushNotificationRegistrationResult* result, NSObject* userData);
+typedef void(^AndroidDevicePushNotificationRegistrationCallback)(ClientAndroidDevicePushNotificationRegistrationResult* result, NSObject* userData);
 		
-typedef void(^AttributeInstallCallback)(AttributeInstallResult* result, NSObject* userData);
+typedef void(^AttributeInstallCallback)(ClientAttributeInstallResult* result, NSObject* userData);
 		
-typedef void(^CancelTradeCallback)(CancelTradeResponse* result, NSObject* userData);
+typedef void(^CancelTradeCallback)(ClientCancelTradeResponse* result, NSObject* userData);
 		
-typedef void(^ConfirmPurchaseCallback)(ConfirmPurchaseResult* result, NSObject* userData);
+typedef void(^ConfirmPurchaseCallback)(ClientConfirmPurchaseResult* result, NSObject* userData);
 		
-typedef void(^ConsumeItemCallback)(ConsumeItemResult* result, NSObject* userData);
+typedef void(^ConsumeItemCallback)(ClientConsumeItemResult* result, NSObject* userData);
 		
-typedef void(^CreateSharedGroupCallback)(CreateSharedGroupResult* result, NSObject* userData);
+typedef void(^ConsumeXboxEntitlementsCallback)(ClientConsumeXboxEntitlementsResult* result, NSObject* userData);
 		
-typedef void(^ExecuteCloudScriptCallback)(ExecuteCloudScriptResult* result, NSObject* userData);
+typedef void(^CreateSharedGroupCallback)(ClientCreateSharedGroupResult* result, NSObject* userData);
 		
-typedef void(^GetAccountInfoCallback)(GetAccountInfoResult* result, NSObject* userData);
+typedef void(^ExecuteCloudScriptCallback)(ClientExecuteCloudScriptResult* result, NSObject* userData);
 		
-typedef void(^GetAllUsersCharactersCallback)(ListUsersCharactersResult* result, NSObject* userData);
+typedef void(^GetAccountInfoCallback)(ClientGetAccountInfoResult* result, NSObject* userData);
 		
-typedef void(^GetCatalogItemsCallback)(GetCatalogItemsResult* result, NSObject* userData);
+typedef void(^GetAllUsersCharactersCallback)(ClientListUsersCharactersResult* result, NSObject* userData);
 		
-typedef void(^GetCharacterDataCallback)(GetCharacterDataResult* result, NSObject* userData);
+typedef void(^GetCatalogItemsCallback)(ClientGetCatalogItemsResult* result, NSObject* userData);
 		
-typedef void(^GetCharacterInventoryCallback)(GetCharacterInventoryResult* result, NSObject* userData);
+typedef void(^GetCharacterDataCallback)(ClientGetCharacterDataResult* result, NSObject* userData);
 		
-typedef void(^GetCharacterLeaderboardCallback)(GetCharacterLeaderboardResult* result, NSObject* userData);
+typedef void(^GetCharacterInventoryCallback)(ClientGetCharacterInventoryResult* result, NSObject* userData);
 		
-typedef void(^GetCharacterReadOnlyDataCallback)(GetCharacterDataResult* result, NSObject* userData);
+typedef void(^GetCharacterLeaderboardCallback)(ClientGetCharacterLeaderboardResult* result, NSObject* userData);
 		
-typedef void(^GetCharacterStatisticsCallback)(GetCharacterStatisticsResult* result, NSObject* userData);
+typedef void(^GetCharacterReadOnlyDataCallback)(ClientGetCharacterDataResult* result, NSObject* userData);
 		
-typedef void(^GetContentDownloadUrlCallback)(GetContentDownloadUrlResult* result, NSObject* userData);
+typedef void(^GetCharacterStatisticsCallback)(ClientGetCharacterStatisticsResult* result, NSObject* userData);
 		
-typedef void(^GetCurrentGamesCallback)(CurrentGamesResult* result, NSObject* userData);
+typedef void(^GetContentDownloadUrlCallback)(ClientGetContentDownloadUrlResult* result, NSObject* userData);
 		
-typedef void(^GetFriendLeaderboardCallback)(GetLeaderboardResult* result, NSObject* userData);
+typedef void(^GetCurrentGamesCallback)(ClientCurrentGamesResult* result, NSObject* userData);
 		
-typedef void(^GetFriendLeaderboardAroundPlayerCallback)(GetFriendLeaderboardAroundPlayerResult* result, NSObject* userData);
+typedef void(^GetFriendLeaderboardCallback)(ClientGetLeaderboardResult* result, NSObject* userData);
 		
-typedef void(^GetFriendsListCallback)(GetFriendsListResult* result, NSObject* userData);
+typedef void(^GetFriendLeaderboardAroundPlayerCallback)(ClientGetFriendLeaderboardAroundPlayerResult* result, NSObject* userData);
 		
-typedef void(^GetGameServerRegionsCallback)(GameServerRegionsResult* result, NSObject* userData);
+typedef void(^GetFriendsListCallback)(ClientGetFriendsListResult* result, NSObject* userData);
 		
-typedef void(^GetLeaderboardCallback)(GetLeaderboardResult* result, NSObject* userData);
+typedef void(^GetGameServerRegionsCallback)(ClientGameServerRegionsResult* result, NSObject* userData);
 		
-typedef void(^GetLeaderboardAroundCharacterCallback)(GetLeaderboardAroundCharacterResult* result, NSObject* userData);
+typedef void(^GetLeaderboardCallback)(ClientGetLeaderboardResult* result, NSObject* userData);
 		
-typedef void(^GetLeaderboardAroundPlayerCallback)(GetLeaderboardAroundPlayerResult* result, NSObject* userData);
+typedef void(^GetLeaderboardAroundCharacterCallback)(ClientGetLeaderboardAroundCharacterResult* result, NSObject* userData);
 		
-typedef void(^GetLeaderboardForUserCharactersCallback)(GetLeaderboardForUsersCharactersResult* result, NSObject* userData);
+typedef void(^GetLeaderboardAroundPlayerCallback)(ClientGetLeaderboardAroundPlayerResult* result, NSObject* userData);
 		
-typedef void(^GetPaymentTokenCallback)(GetPaymentTokenResult* result, NSObject* userData);
+typedef void(^GetLeaderboardForUserCharactersCallback)(ClientGetLeaderboardForUsersCharactersResult* result, NSObject* userData);
 		
-typedef void(^GetPhotonAuthenticationTokenCallback)(GetPhotonAuthenticationTokenResult* result, NSObject* userData);
+typedef void(^GetPaymentTokenCallback)(ClientGetPaymentTokenResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerCombinedInfoCallback)(GetPlayerCombinedInfoResult* result, NSObject* userData);
+typedef void(^GetPhotonAuthenticationTokenCallback)(ClientGetPhotonAuthenticationTokenResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerProfileCallback)(GetPlayerProfileResult* result, NSObject* userData);
+typedef void(^GetPlayerCombinedInfoCallback)(ClientGetPlayerCombinedInfoResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerSegmentsCallback)(GetPlayerSegmentsResult* result, NSObject* userData);
+typedef void(^GetPlayerProfileCallback)(ClientGetPlayerProfileResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerStatisticsCallback)(GetPlayerStatisticsResult* result, NSObject* userData);
+typedef void(^GetPlayerSegmentsCallback)(ClientGetPlayerSegmentsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerStatisticVersionsCallback)(GetPlayerStatisticVersionsResult* result, NSObject* userData);
+typedef void(^GetPlayerStatisticsCallback)(ClientGetPlayerStatisticsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerTagsCallback)(GetPlayerTagsResult* result, NSObject* userData);
+typedef void(^GetPlayerStatisticVersionsCallback)(ClientGetPlayerStatisticVersionsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayerTradesCallback)(GetPlayerTradesResponse* result, NSObject* userData);
+typedef void(^GetPlayerTagsCallback)(ClientGetPlayerTagsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromFacebookIDsCallback)(GetPlayFabIDsFromFacebookIDsResult* result, NSObject* userData);
+typedef void(^GetPlayerTradesCallback)(ClientGetPlayerTradesResponse* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromFacebookInstantGamesIdsCallback)(GetPlayFabIDsFromFacebookInstantGamesIdsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromFacebookIDsCallback)(ClientGetPlayFabIDsFromFacebookIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromGameCenterIDsCallback)(GetPlayFabIDsFromGameCenterIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromFacebookInstantGamesIdsCallback)(ClientGetPlayFabIDsFromFacebookInstantGamesIdsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromGenericIDsCallback)(GetPlayFabIDsFromGenericIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromGameCenterIDsCallback)(ClientGetPlayFabIDsFromGameCenterIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromGoogleIDsCallback)(GetPlayFabIDsFromGoogleIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromGenericIDsCallback)(ClientGetPlayFabIDsFromGenericIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(GetPlayFabIDsFromKongregateIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromGoogleIDsCallback)(ClientGetPlayFabIDsFromGoogleIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)(GetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(ClientGetPlayFabIDsFromKongregateIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromSteamIDsCallback)(GetPlayFabIDsFromSteamIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result, NSObject* userData);
 		
-typedef void(^GetPlayFabIDsFromTwitchIDsCallback)(GetPlayFabIDsFromTwitchIDsResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromSteamIDsCallback)(ClientGetPlayFabIDsFromSteamIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPublisherDataCallback)(GetPublisherDataResult* result, NSObject* userData);
+typedef void(^GetPlayFabIDsFromTwitchIDsCallback)(ClientGetPlayFabIDsFromTwitchIDsResult* result, NSObject* userData);
 		
-typedef void(^GetPurchaseCallback)(GetPurchaseResult* result, NSObject* userData);
+typedef void(^GetPublisherDataCallback)(ClientGetPublisherDataResult* result, NSObject* userData);
 		
-typedef void(^GetSharedGroupDataCallback)(GetSharedGroupDataResult* result, NSObject* userData);
+typedef void(^GetPurchaseCallback)(ClientGetPurchaseResult* result, NSObject* userData);
 		
-typedef void(^GetStoreItemsCallback)(GetStoreItemsResult* result, NSObject* userData);
+typedef void(^GetSharedGroupDataCallback)(ClientGetSharedGroupDataResult* result, NSObject* userData);
 		
-typedef void(^GetTimeCallback)(GetTimeResult* result, NSObject* userData);
+typedef void(^GetStoreItemsCallback)(ClientGetStoreItemsResult* result, NSObject* userData);
 		
-typedef void(^GetTitleDataCallback)(GetTitleDataResult* result, NSObject* userData);
+typedef void(^GetTimeCallback)(ClientGetTimeResult* result, NSObject* userData);
 		
-typedef void(^GetTitleNewsCallback)(GetTitleNewsResult* result, NSObject* userData);
+typedef void(^GetTitleDataCallback)(ClientGetTitleDataResult* result, NSObject* userData);
 		
-typedef void(^GetTitlePublicKeyCallback)(GetTitlePublicKeyResult* result, NSObject* userData);
+typedef void(^GetTitleNewsCallback)(ClientGetTitleNewsResult* result, NSObject* userData);
 		
-typedef void(^GetTradeStatusCallback)(GetTradeStatusResponse* result, NSObject* userData);
+typedef void(^GetTitlePublicKeyCallback)(ClientGetTitlePublicKeyResult* result, NSObject* userData);
 		
-typedef void(^GetUserDataCallback)(GetUserDataResult* result, NSObject* userData);
+typedef void(^GetTradeStatusCallback)(ClientGetTradeStatusResponse* result, NSObject* userData);
 		
-typedef void(^GetUserInventoryCallback)(GetUserInventoryResult* result, NSObject* userData);
+typedef void(^GetUserDataCallback)(ClientGetUserDataResult* result, NSObject* userData);
 		
-typedef void(^GetUserPublisherDataCallback)(GetUserDataResult* result, NSObject* userData);
+typedef void(^GetUserInventoryCallback)(ClientGetUserInventoryResult* result, NSObject* userData);
 		
-typedef void(^GetUserPublisherReadOnlyDataCallback)(GetUserDataResult* result, NSObject* userData);
+typedef void(^GetUserPublisherDataCallback)(ClientGetUserDataResult* result, NSObject* userData);
 		
-typedef void(^GetUserReadOnlyDataCallback)(GetUserDataResult* result, NSObject* userData);
+typedef void(^GetUserPublisherReadOnlyDataCallback)(ClientGetUserDataResult* result, NSObject* userData);
 		
-typedef void(^GetWindowsHelloChallengeCallback)(GetWindowsHelloChallengeResponse* result, NSObject* userData);
+typedef void(^GetUserReadOnlyDataCallback)(ClientGetUserDataResult* result, NSObject* userData);
 		
-typedef void(^GrantCharacterToUserCallback)(GrantCharacterToUserResult* result, NSObject* userData);
+typedef void(^GetWindowsHelloChallengeCallback)(ClientGetWindowsHelloChallengeResponse* result, NSObject* userData);
 		
-typedef void(^LinkAndroidDeviceIDCallback)(LinkAndroidDeviceIDResult* result, NSObject* userData);
+typedef void(^GrantCharacterToUserCallback)(ClientGrantCharacterToUserResult* result, NSObject* userData);
 		
-typedef void(^LinkCustomIDCallback)(LinkCustomIDResult* result, NSObject* userData);
+typedef void(^LinkAndroidDeviceIDCallback)(ClientLinkAndroidDeviceIDResult* result, NSObject* userData);
 		
-typedef void(^LinkFacebookAccountCallback)(LinkFacebookAccountResult* result, NSObject* userData);
+typedef void(^LinkCustomIDCallback)(ClientLinkCustomIDResult* result, NSObject* userData);
 		
-typedef void(^LinkFacebookInstantGamesIdCallback)(LinkFacebookInstantGamesIdResult* result, NSObject* userData);
+typedef void(^LinkFacebookAccountCallback)(ClientLinkFacebookAccountResult* result, NSObject* userData);
 		
-typedef void(^LinkGameCenterAccountCallback)(LinkGameCenterAccountResult* result, NSObject* userData);
+typedef void(^LinkFacebookInstantGamesIdCallback)(ClientLinkFacebookInstantGamesIdResult* result, NSObject* userData);
 		
-typedef void(^LinkGoogleAccountCallback)(LinkGoogleAccountResult* result, NSObject* userData);
+typedef void(^LinkGameCenterAccountCallback)(ClientLinkGameCenterAccountResult* result, NSObject* userData);
 		
-typedef void(^LinkIOSDeviceIDCallback)(LinkIOSDeviceIDResult* result, NSObject* userData);
+typedef void(^LinkGoogleAccountCallback)(ClientLinkGoogleAccountResult* result, NSObject* userData);
 		
-typedef void(^LinkKongregateCallback)(LinkKongregateAccountResult* result, NSObject* userData);
+typedef void(^LinkIOSDeviceIDCallback)(ClientLinkIOSDeviceIDResult* result, NSObject* userData);
 		
-typedef void(^LinkNintendoSwitchDeviceIdCallback)(LinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
+typedef void(^LinkKongregateCallback)(ClientLinkKongregateAccountResult* result, NSObject* userData);
 		
-typedef void(^LinkSteamAccountCallback)(LinkSteamAccountResult* result, NSObject* userData);
+typedef void(^LinkNintendoSwitchDeviceIdCallback)(ClientLinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
-typedef void(^LinkTwitchCallback)(LinkTwitchAccountResult* result, NSObject* userData);
+typedef void(^LinkSteamAccountCallback)(ClientLinkSteamAccountResult* result, NSObject* userData);
 		
-typedef void(^LinkWindowsHelloCallback)(LinkWindowsHelloAccountResponse* result, NSObject* userData);
+typedef void(^LinkTwitchCallback)(ClientLinkTwitchAccountResult* result, NSObject* userData);
 		
-typedef void(^LoginWithAndroidDeviceIDCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LinkWindowsHelloCallback)(ClientLinkWindowsHelloAccountResponse* result, NSObject* userData);
 		
-typedef void(^LoginWithCustomIDCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LinkXboxAccountCallback)(ClientLinkXboxAccountResult* result, NSObject* userData);
 		
-typedef void(^LoginWithEmailAddressCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithAndroidDeviceIDCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithFacebookCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithCustomIDCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithFacebookInstantGamesIdCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithEmailAddressCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithGameCenterCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithFacebookCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithGoogleAccountCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithFacebookInstantGamesIdCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithIOSDeviceIDCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithGameCenterCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithKongregateCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithGoogleAccountCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithNintendoSwitchDeviceIdCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithIOSDeviceIDCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithPlayFabCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithKongregateCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithSteamCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithNintendoSwitchDeviceIdCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithTwitchCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithPlayFabCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithWindowsHelloCallback)(LoginResult* result, NSObject* userData);
+typedef void(^LoginWithSteamCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^MatchmakeCallback)(MatchmakeResult* result, NSObject* userData);
+typedef void(^LoginWithTwitchCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^OpenTradeCallback)(OpenTradeResponse* result, NSObject* userData);
+typedef void(^LoginWithWindowsHelloCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^PayForPurchaseCallback)(PayForPurchaseResult* result, NSObject* userData);
+typedef void(^LoginWithXboxCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^PurchaseItemCallback)(PurchaseItemResult* result, NSObject* userData);
+typedef void(^MatchmakeCallback)(ClientMatchmakeResult* result, NSObject* userData);
 		
-typedef void(^RedeemCouponCallback)(RedeemCouponResult* result, NSObject* userData);
+typedef void(^OpenTradeCallback)(ClientOpenTradeResponse* result, NSObject* userData);
 		
-typedef void(^RegisterForIOSPushNotificationCallback)(RegisterForIOSPushNotificationResult* result, NSObject* userData);
+typedef void(^PayForPurchaseCallback)(ClientPayForPurchaseResult* result, NSObject* userData);
 		
-typedef void(^RegisterPlayFabUserCallback)(RegisterPlayFabUserResult* result, NSObject* userData);
+typedef void(^PurchaseItemCallback)(ClientPurchaseItemResult* result, NSObject* userData);
 		
-typedef void(^RegisterWithWindowsHelloCallback)(LoginResult* result, NSObject* userData);
+typedef void(^RedeemCouponCallback)(ClientRedeemCouponResult* result, NSObject* userData);
 		
-typedef void(^RemoveContactEmailCallback)(RemoveContactEmailResult* result, NSObject* userData);
+typedef void(^RegisterForIOSPushNotificationCallback)(ClientRegisterForIOSPushNotificationResult* result, NSObject* userData);
 		
-typedef void(^RemoveFriendCallback)(RemoveFriendResult* result, NSObject* userData);
+typedef void(^RegisterPlayFabUserCallback)(ClientRegisterPlayFabUserResult* result, NSObject* userData);
 		
-typedef void(^RemoveGenericIDCallback)(RemoveGenericIDResult* result, NSObject* userData);
+typedef void(^RegisterWithWindowsHelloCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^RemoveSharedGroupMembersCallback)(RemoveSharedGroupMembersResult* result, NSObject* userData);
+typedef void(^RemoveContactEmailCallback)(ClientRemoveContactEmailResult* result, NSObject* userData);
 		
-typedef void(^ReportDeviceInfoCallback)(EmptyResult* result, NSObject* userData);
+typedef void(^RemoveFriendCallback)(ClientRemoveFriendResult* result, NSObject* userData);
 		
-typedef void(^ReportPlayerCallback)(ReportPlayerClientResult* result, NSObject* userData);
+typedef void(^RemoveGenericIDCallback)(ClientRemoveGenericIDResult* result, NSObject* userData);
 		
-typedef void(^RestoreIOSPurchasesCallback)(RestoreIOSPurchasesResult* result, NSObject* userData);
+typedef void(^RemoveSharedGroupMembersCallback)(ClientRemoveSharedGroupMembersResult* result, NSObject* userData);
 		
-typedef void(^SendAccountRecoveryEmailCallback)(SendAccountRecoveryEmailResult* result, NSObject* userData);
+typedef void(^ReportDeviceInfoCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
-typedef void(^SetFriendTagsCallback)(SetFriendTagsResult* result, NSObject* userData);
+typedef void(^ReportPlayerCallback)(ClientReportPlayerClientResult* result, NSObject* userData);
 		
-typedef void(^SetPlayerSecretCallback)(SetPlayerSecretResult* result, NSObject* userData);
+typedef void(^RestoreIOSPurchasesCallback)(ClientRestoreIOSPurchasesResult* result, NSObject* userData);
 		
-typedef void(^StartGameCallback)(StartGameResult* result, NSObject* userData);
+typedef void(^SendAccountRecoveryEmailCallback)(ClientSendAccountRecoveryEmailResult* result, NSObject* userData);
 		
-typedef void(^StartPurchaseCallback)(StartPurchaseResult* result, NSObject* userData);
+typedef void(^SetFriendTagsCallback)(ClientSetFriendTagsResult* result, NSObject* userData);
 		
-typedef void(^SubtractUserVirtualCurrencyCallback)(ModifyUserVirtualCurrencyResult* result, NSObject* userData);
+typedef void(^SetPlayerSecretCallback)(ClientSetPlayerSecretResult* result, NSObject* userData);
 		
-typedef void(^UnlinkAndroidDeviceIDCallback)(UnlinkAndroidDeviceIDResult* result, NSObject* userData);
+typedef void(^StartGameCallback)(ClientStartGameResult* result, NSObject* userData);
 		
-typedef void(^UnlinkCustomIDCallback)(UnlinkCustomIDResult* result, NSObject* userData);
+typedef void(^StartPurchaseCallback)(ClientStartPurchaseResult* result, NSObject* userData);
 		
-typedef void(^UnlinkFacebookAccountCallback)(UnlinkFacebookAccountResult* result, NSObject* userData);
+typedef void(^SubtractUserVirtualCurrencyCallback)(ClientModifyUserVirtualCurrencyResult* result, NSObject* userData);
 		
-typedef void(^UnlinkFacebookInstantGamesIdCallback)(UnlinkFacebookInstantGamesIdResult* result, NSObject* userData);
+typedef void(^UnlinkAndroidDeviceIDCallback)(ClientUnlinkAndroidDeviceIDResult* result, NSObject* userData);
 		
-typedef void(^UnlinkGameCenterAccountCallback)(UnlinkGameCenterAccountResult* result, NSObject* userData);
+typedef void(^UnlinkCustomIDCallback)(ClientUnlinkCustomIDResult* result, NSObject* userData);
 		
-typedef void(^UnlinkGoogleAccountCallback)(UnlinkGoogleAccountResult* result, NSObject* userData);
+typedef void(^UnlinkFacebookAccountCallback)(ClientUnlinkFacebookAccountResult* result, NSObject* userData);
 		
-typedef void(^UnlinkIOSDeviceIDCallback)(UnlinkIOSDeviceIDResult* result, NSObject* userData);
+typedef void(^UnlinkFacebookInstantGamesIdCallback)(ClientUnlinkFacebookInstantGamesIdResult* result, NSObject* userData);
 		
-typedef void(^UnlinkKongregateCallback)(UnlinkKongregateAccountResult* result, NSObject* userData);
+typedef void(^UnlinkGameCenterAccountCallback)(ClientUnlinkGameCenterAccountResult* result, NSObject* userData);
 		
-typedef void(^UnlinkNintendoSwitchDeviceIdCallback)(UnlinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
+typedef void(^UnlinkGoogleAccountCallback)(ClientUnlinkGoogleAccountResult* result, NSObject* userData);
 		
-typedef void(^UnlinkSteamAccountCallback)(UnlinkSteamAccountResult* result, NSObject* userData);
+typedef void(^UnlinkIOSDeviceIDCallback)(ClientUnlinkIOSDeviceIDResult* result, NSObject* userData);
 		
-typedef void(^UnlinkTwitchCallback)(UnlinkTwitchAccountResult* result, NSObject* userData);
+typedef void(^UnlinkKongregateCallback)(ClientUnlinkKongregateAccountResult* result, NSObject* userData);
 		
-typedef void(^UnlinkWindowsHelloCallback)(UnlinkWindowsHelloAccountResponse* result, NSObject* userData);
+typedef void(^UnlinkNintendoSwitchDeviceIdCallback)(ClientUnlinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
-typedef void(^UnlockContainerInstanceCallback)(UnlockContainerItemResult* result, NSObject* userData);
+typedef void(^UnlinkSteamAccountCallback)(ClientUnlinkSteamAccountResult* result, NSObject* userData);
 		
-typedef void(^UnlockContainerItemCallback)(UnlockContainerItemResult* result, NSObject* userData);
+typedef void(^UnlinkTwitchCallback)(ClientUnlinkTwitchAccountResult* result, NSObject* userData);
 		
-typedef void(^UpdateAvatarUrlCallback)(EmptyResult* result, NSObject* userData);
+typedef void(^UnlinkWindowsHelloCallback)(ClientUnlinkWindowsHelloAccountResponse* result, NSObject* userData);
 		
-typedef void(^UpdateCharacterDataCallback)(UpdateCharacterDataResult* result, NSObject* userData);
+typedef void(^UnlinkXboxAccountCallback)(ClientUnlinkXboxAccountResult* result, NSObject* userData);
 		
-typedef void(^UpdateCharacterStatisticsCallback)(UpdateCharacterStatisticsResult* result, NSObject* userData);
+typedef void(^UnlockContainerInstanceCallback)(ClientUnlockContainerItemResult* result, NSObject* userData);
 		
-typedef void(^UpdatePlayerStatisticsCallback)(UpdatePlayerStatisticsResult* result, NSObject* userData);
+typedef void(^UnlockContainerItemCallback)(ClientUnlockContainerItemResult* result, NSObject* userData);
 		
-typedef void(^UpdateSharedGroupDataCallback)(UpdateSharedGroupDataResult* result, NSObject* userData);
+typedef void(^UpdateAvatarUrlCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
-typedef void(^UpdateUserDataCallback)(UpdateUserDataResult* result, NSObject* userData);
+typedef void(^UpdateCharacterDataCallback)(ClientUpdateCharacterDataResult* result, NSObject* userData);
 		
-typedef void(^UpdateUserPublisherDataCallback)(UpdateUserDataResult* result, NSObject* userData);
+typedef void(^UpdateCharacterStatisticsCallback)(ClientUpdateCharacterStatisticsResult* result, NSObject* userData);
 		
-typedef void(^UpdateUserTitleDisplayNameCallback)(UpdateUserTitleDisplayNameResult* result, NSObject* userData);
+typedef void(^UpdatePlayerStatisticsCallback)(ClientUpdatePlayerStatisticsResult* result, NSObject* userData);
 		
-typedef void(^ValidateAmazonIAPReceiptCallback)(ValidateAmazonReceiptResult* result, NSObject* userData);
+typedef void(^UpdateSharedGroupDataCallback)(ClientUpdateSharedGroupDataResult* result, NSObject* userData);
 		
-typedef void(^ValidateGooglePlayPurchaseCallback)(ValidateGooglePlayPurchaseResult* result, NSObject* userData);
+typedef void(^UpdateUserDataCallback)(ClientUpdateUserDataResult* result, NSObject* userData);
 		
-typedef void(^ValidateIOSReceiptCallback)(ValidateIOSReceiptResult* result, NSObject* userData);
+typedef void(^UpdateUserPublisherDataCallback)(ClientUpdateUserDataResult* result, NSObject* userData);
 		
-typedef void(^ValidateWindowsStoreReceiptCallback)(ValidateWindowsReceiptResult* result, NSObject* userData);
+typedef void(^UpdateUserTitleDisplayNameCallback)(ClientUpdateUserTitleDisplayNameResult* result, NSObject* userData);
 		
-typedef void(^WriteCharacterEventCallback)(WriteEventResponse* result, NSObject* userData);
+typedef void(^ValidateAmazonIAPReceiptCallback)(ClientValidateAmazonReceiptResult* result, NSObject* userData);
 		
-typedef void(^WritePlayerEventCallback)(WriteEventResponse* result, NSObject* userData);
+typedef void(^ValidateGooglePlayPurchaseCallback)(ClientValidateGooglePlayPurchaseResult* result, NSObject* userData);
 		
-typedef void(^WriteTitleEventCallback)(WriteEventResponse* result, NSObject* userData);
+typedef void(^ValidateIOSReceiptCallback)(ClientValidateIOSReceiptResult* result, NSObject* userData);
+		
+typedef void(^ValidateWindowsStoreReceiptCallback)(ClientValidateWindowsReceiptResult* result, NSObject* userData);
+		
+typedef void(^WriteCharacterEventCallback)(ClientWriteEventResponse* result, NSObject* userData);
+		
+typedef void(^WritePlayerEventCallback)(ClientWriteEventResponse* result, NSObject* userData);
+		
+typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObject* userData);
 		
 
 + (PlayFabClientAPI*) GetInstance;
 
 		+(bool) IsClientLoggedIn;
 
-
-        // ------------ Generated API calls
+// ------------ Generated API calls
 		
--(void) AcceptTrade:(AcceptTradeRequest*)request success:(AcceptTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AcceptTrade:(ClientAcceptTradeRequest*)request success:(AcceptTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddFriend:(AddFriendRequest*)request success:(AddFriendCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddFriend:(ClientAddFriendRequest*)request success:(AddFriendCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddGenericID:(AddGenericIDRequest*)request success:(AddGenericIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddGenericID:(ClientAddGenericIDRequest*)request success:(AddGenericIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddOrUpdateContactEmail:(AddOrUpdateContactEmailRequest*)request success:(AddOrUpdateContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddOrUpdateContactEmail:(ClientAddOrUpdateContactEmailRequest*)request success:(AddOrUpdateContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddSharedGroupMembers:(AddSharedGroupMembersRequest*)request success:(AddSharedGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddSharedGroupMembers:(ClientAddSharedGroupMembersRequest*)request success:(AddSharedGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddUsernamePassword:(AddUsernamePasswordRequest*)request success:(AddUsernamePasswordCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddUsernamePassword:(ClientAddUsernamePasswordRequest*)request success:(AddUsernamePasswordCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AddUserVirtualCurrency:(AddUserVirtualCurrencyRequest*)request success:(AddUserVirtualCurrencyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AddUserVirtualCurrency:(ClientAddUserVirtualCurrencyRequest*)request success:(AddUserVirtualCurrencyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AndroidDevicePushNotificationRegistration:(AndroidDevicePushNotificationRegistrationRequest*)request success:(AndroidDevicePushNotificationRegistrationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AndroidDevicePushNotificationRegistration:(ClientAndroidDevicePushNotificationRegistrationRequest*)request success:(AndroidDevicePushNotificationRegistrationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) AttributeInstall:(AttributeInstallRequest*)request success:(AttributeInstallCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) AttributeInstall:(ClientAttributeInstallRequest*)request success:(AttributeInstallCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) CancelTrade:(CancelTradeRequest*)request success:(CancelTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) CancelTrade:(ClientCancelTradeRequest*)request success:(CancelTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ConfirmPurchase:(ConfirmPurchaseRequest*)request success:(ConfirmPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ConfirmPurchase:(ClientConfirmPurchaseRequest*)request success:(ConfirmPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ConsumeItem:(ConsumeItemRequest*)request success:(ConsumeItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ConsumeItem:(ClientConsumeItemRequest*)request success:(ConsumeItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) CreateSharedGroup:(CreateSharedGroupRequest*)request success:(CreateSharedGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ConsumeXboxEntitlements:(ClientConsumeXboxEntitlementsRequest*)request success:(ConsumeXboxEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ExecuteCloudScript:(ExecuteCloudScriptRequest*)request success:(ExecuteCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) CreateSharedGroup:(ClientCreateSharedGroupRequest*)request success:(CreateSharedGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetAccountInfo:(GetAccountInfoRequest*)request success:(GetAccountInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ExecuteCloudScript:(ClientExecuteCloudScriptRequest*)request success:(ExecuteCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetAllUsersCharacters:(ListUsersCharactersRequest*)request success:(GetAllUsersCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetAccountInfo:(ClientGetAccountInfoRequest*)request success:(GetAccountInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCatalogItems:(GetCatalogItemsRequest*)request success:(GetCatalogItemsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetAllUsersCharacters:(ClientListUsersCharactersRequest*)request success:(GetAllUsersCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCharacterData:(GetCharacterDataRequest*)request success:(GetCharacterDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCatalogItems:(ClientGetCatalogItemsRequest*)request success:(GetCatalogItemsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCharacterInventory:(GetCharacterInventoryRequest*)request success:(GetCharacterInventoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCharacterData:(ClientGetCharacterDataRequest*)request success:(GetCharacterDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCharacterLeaderboard:(GetCharacterLeaderboardRequest*)request success:(GetCharacterLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCharacterInventory:(ClientGetCharacterInventoryRequest*)request success:(GetCharacterInventoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCharacterReadOnlyData:(GetCharacterDataRequest*)request success:(GetCharacterReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCharacterLeaderboard:(ClientGetCharacterLeaderboardRequest*)request success:(GetCharacterLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCharacterStatistics:(GetCharacterStatisticsRequest*)request success:(GetCharacterStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCharacterReadOnlyData:(ClientGetCharacterDataRequest*)request success:(GetCharacterReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetContentDownloadUrl:(GetContentDownloadUrlRequest*)request success:(GetContentDownloadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCharacterStatistics:(ClientGetCharacterStatisticsRequest*)request success:(GetCharacterStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetCurrentGames:(CurrentGamesRequest*)request success:(GetCurrentGamesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetContentDownloadUrl:(ClientGetContentDownloadUrlRequest*)request success:(GetContentDownloadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetFriendLeaderboard:(GetFriendLeaderboardRequest*)request success:(GetFriendLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetCurrentGames:(ClientCurrentGamesRequest*)request success:(GetCurrentGamesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetFriendLeaderboardAroundPlayer:(GetFriendLeaderboardAroundPlayerRequest*)request success:(GetFriendLeaderboardAroundPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetFriendLeaderboard:(ClientGetFriendLeaderboardRequest*)request success:(GetFriendLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetFriendsList:(GetFriendsListRequest*)request success:(GetFriendsListCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetFriendLeaderboardAroundPlayer:(ClientGetFriendLeaderboardAroundPlayerRequest*)request success:(GetFriendLeaderboardAroundPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetGameServerRegions:(GameServerRegionsRequest*)request success:(GetGameServerRegionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetFriendsList:(ClientGetFriendsListRequest*)request success:(GetFriendsListCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetLeaderboard:(GetLeaderboardRequest*)request success:(GetLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetGameServerRegions:(ClientGameServerRegionsRequest*)request success:(GetGameServerRegionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetLeaderboardAroundCharacter:(GetLeaderboardAroundCharacterRequest*)request success:(GetLeaderboardAroundCharacterCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetLeaderboard:(ClientGetLeaderboardRequest*)request success:(GetLeaderboardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetLeaderboardAroundPlayer:(GetLeaderboardAroundPlayerRequest*)request success:(GetLeaderboardAroundPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetLeaderboardAroundCharacter:(ClientGetLeaderboardAroundCharacterRequest*)request success:(GetLeaderboardAroundCharacterCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetLeaderboardForUserCharacters:(GetLeaderboardForUsersCharactersRequest*)request success:(GetLeaderboardForUserCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetLeaderboardAroundPlayer:(ClientGetLeaderboardAroundPlayerRequest*)request success:(GetLeaderboardAroundPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPaymentToken:(GetPaymentTokenRequest*)request success:(GetPaymentTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetLeaderboardForUserCharacters:(ClientGetLeaderboardForUsersCharactersRequest*)request success:(GetLeaderboardForUserCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPhotonAuthenticationToken:(GetPhotonAuthenticationTokenRequest*)request success:(GetPhotonAuthenticationTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPaymentToken:(ClientGetPaymentTokenRequest*)request success:(GetPaymentTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayerCombinedInfo:(GetPlayerCombinedInfoRequest*)request success:(GetPlayerCombinedInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPhotonAuthenticationToken:(ClientGetPhotonAuthenticationTokenRequest*)request success:(GetPhotonAuthenticationTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayerProfile:(GetPlayerProfileRequest*)request success:(GetPlayerProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayerCombinedInfo:(ClientGetPlayerCombinedInfoRequest*)request success:(GetPlayerCombinedInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetPlayerProfile:(ClientGetPlayerProfileRequest*)request success:(GetPlayerProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayerSegments:(GetPlayerSegmentsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) GetPlayerStatistics:(GetPlayerStatisticsRequest*)request success:(GetPlayerStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayerStatistics:(ClientGetPlayerStatisticsRequest*)request success:(GetPlayerStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayerStatisticVersions:(GetPlayerStatisticVersionsRequest*)request success:(GetPlayerStatisticVersionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayerStatisticVersions:(ClientGetPlayerStatisticVersionsRequest*)request success:(GetPlayerStatisticVersionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayerTags:(GetPlayerTagsRequest*)request success:(GetPlayerTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayerTags:(ClientGetPlayerTagsRequest*)request success:(GetPlayerTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayerTrades:(GetPlayerTradesRequest*)request success:(GetPlayerTradesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayerTrades:(ClientGetPlayerTradesRequest*)request success:(GetPlayerTradesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromFacebookIDs:(GetPlayFabIDsFromFacebookIDsRequest*)request success:(GetPlayFabIDsFromFacebookIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromFacebookIDs:(ClientGetPlayFabIDsFromFacebookIDsRequest*)request success:(GetPlayFabIDsFromFacebookIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromFacebookInstantGamesIds:(GetPlayFabIDsFromFacebookInstantGamesIdsRequest*)request success:(GetPlayFabIDsFromFacebookInstantGamesIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromFacebookInstantGamesIds:(ClientGetPlayFabIDsFromFacebookInstantGamesIdsRequest*)request success:(GetPlayFabIDsFromFacebookInstantGamesIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromGameCenterIDs:(GetPlayFabIDsFromGameCenterIDsRequest*)request success:(GetPlayFabIDsFromGameCenterIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromGameCenterIDs:(ClientGetPlayFabIDsFromGameCenterIDsRequest*)request success:(GetPlayFabIDsFromGameCenterIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromGenericIDs:(GetPlayFabIDsFromGenericIDsRequest*)request success:(GetPlayFabIDsFromGenericIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromGenericIDs:(ClientGetPlayFabIDsFromGenericIDsRequest*)request success:(GetPlayFabIDsFromGenericIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromGoogleIDs:(GetPlayFabIDsFromGoogleIDsRequest*)request success:(GetPlayFabIDsFromGoogleIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromGoogleIDs:(ClientGetPlayFabIDsFromGoogleIDsRequest*)request success:(GetPlayFabIDsFromGoogleIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromKongregateIDs:(GetPlayFabIDsFromKongregateIDsRequest*)request success:(GetPlayFabIDsFromKongregateIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromKongregateIDs:(ClientGetPlayFabIDsFromKongregateIDsRequest*)request success:(GetPlayFabIDsFromKongregateIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromNintendoSwitchDeviceIds:(GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest*)request success:(GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromNintendoSwitchDeviceIds:(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest*)request success:(GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromSteamIDs:(GetPlayFabIDsFromSteamIDsRequest*)request success:(GetPlayFabIDsFromSteamIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromSteamIDs:(ClientGetPlayFabIDsFromSteamIDsRequest*)request success:(GetPlayFabIDsFromSteamIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPlayFabIDsFromTwitchIDs:(GetPlayFabIDsFromTwitchIDsRequest*)request success:(GetPlayFabIDsFromTwitchIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPlayFabIDsFromTwitchIDs:(ClientGetPlayFabIDsFromTwitchIDsRequest*)request success:(GetPlayFabIDsFromTwitchIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPublisherData:(GetPublisherDataRequest*)request success:(GetPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPublisherData:(ClientGetPublisherDataRequest*)request success:(GetPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetPurchase:(GetPurchaseRequest*)request success:(GetPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetPurchase:(ClientGetPurchaseRequest*)request success:(GetPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetSharedGroupData:(GetSharedGroupDataRequest*)request success:(GetSharedGroupDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetSharedGroupData:(ClientGetSharedGroupDataRequest*)request success:(GetSharedGroupDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetStoreItems:(GetStoreItemsRequest*)request success:(GetStoreItemsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetStoreItems:(ClientGetStoreItemsRequest*)request success:(GetStoreItemsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetTime:(GetTimeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) GetTitleData:(GetTitleDataRequest*)request success:(GetTitleDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetTitleData:(ClientGetTitleDataRequest*)request success:(GetTitleDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetTitleNews:(GetTitleNewsRequest*)request success:(GetTitleNewsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetTitleNews:(ClientGetTitleNewsRequest*)request success:(GetTitleNewsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetTitlePublicKey:(GetTitlePublicKeyRequest*)request success:(GetTitlePublicKeyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetTitlePublicKey:(ClientGetTitlePublicKeyRequest*)request success:(GetTitlePublicKeyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetTradeStatus:(GetTradeStatusRequest*)request success:(GetTradeStatusCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetTradeStatus:(ClientGetTradeStatusRequest*)request success:(GetTradeStatusCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetUserData:(GetUserDataRequest*)request success:(GetUserDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetUserData:(ClientGetUserDataRequest*)request success:(GetUserDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetUserInventory:(GetUserInventoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) GetUserPublisherData:(GetUserDataRequest*)request success:(GetUserPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetUserPublisherData:(ClientGetUserDataRequest*)request success:(GetUserPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetUserPublisherReadOnlyData:(GetUserDataRequest*)request success:(GetUserPublisherReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetUserPublisherReadOnlyData:(ClientGetUserDataRequest*)request success:(GetUserPublisherReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetUserReadOnlyData:(GetUserDataRequest*)request success:(GetUserReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetUserReadOnlyData:(ClientGetUserDataRequest*)request success:(GetUserReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetWindowsHelloChallenge:(GetWindowsHelloChallengeRequest*)request success:(GetWindowsHelloChallengeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetWindowsHelloChallenge:(ClientGetWindowsHelloChallengeRequest*)request success:(GetWindowsHelloChallengeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GrantCharacterToUser:(GrantCharacterToUserRequest*)request success:(GrantCharacterToUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GrantCharacterToUser:(ClientGrantCharacterToUserRequest*)request success:(GrantCharacterToUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkAndroidDeviceID:(LinkAndroidDeviceIDRequest*)request success:(LinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkAndroidDeviceID:(ClientLinkAndroidDeviceIDRequest*)request success:(LinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkCustomID:(LinkCustomIDRequest*)request success:(LinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkCustomID:(ClientLinkCustomIDRequest*)request success:(LinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkFacebookAccount:(LinkFacebookAccountRequest*)request success:(LinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkFacebookAccount:(ClientLinkFacebookAccountRequest*)request success:(LinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkFacebookInstantGamesId:(LinkFacebookInstantGamesIdRequest*)request success:(LinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkFacebookInstantGamesId:(ClientLinkFacebookInstantGamesIdRequest*)request success:(LinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkGameCenterAccount:(LinkGameCenterAccountRequest*)request success:(LinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkGameCenterAccount:(ClientLinkGameCenterAccountRequest*)request success:(LinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkGoogleAccount:(LinkGoogleAccountRequest*)request success:(LinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkGoogleAccount:(ClientLinkGoogleAccountRequest*)request success:(LinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkIOSDeviceID:(LinkIOSDeviceIDRequest*)request success:(LinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkIOSDeviceID:(ClientLinkIOSDeviceIDRequest*)request success:(LinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkKongregate:(LinkKongregateAccountRequest*)request success:(LinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkKongregate:(ClientLinkKongregateAccountRequest*)request success:(LinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkNintendoSwitchDeviceId:(LinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkNintendoSwitchDeviceId:(ClientLinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkSteamAccount:(LinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkSteamAccount:(ClientLinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkTwitch:(LinkTwitchAccountRequest*)request success:(LinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkTwitch:(ClientLinkTwitchAccountRequest*)request success:(LinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LinkWindowsHello:(LinkWindowsHelloAccountRequest*)request success:(LinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkWindowsHello:(ClientLinkWindowsHelloAccountRequest*)request success:(LinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithAndroidDeviceID:(LoginWithAndroidDeviceIDRequest*)request success:(LoginWithAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LinkXboxAccount:(ClientLinkXboxAccountRequest*)request success:(LinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithCustomID:(LoginWithCustomIDRequest*)request success:(LoginWithCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithAndroidDeviceID:(ClientLoginWithAndroidDeviceIDRequest*)request success:(LoginWithAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithEmailAddress:(LoginWithEmailAddressRequest*)request success:(LoginWithEmailAddressCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithCustomID:(ClientLoginWithCustomIDRequest*)request success:(LoginWithCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithFacebook:(LoginWithFacebookRequest*)request success:(LoginWithFacebookCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithEmailAddress:(ClientLoginWithEmailAddressRequest*)request success:(LoginWithEmailAddressCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithFacebookInstantGamesId:(LoginWithFacebookInstantGamesIdRequest*)request success:(LoginWithFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithFacebook:(ClientLoginWithFacebookRequest*)request success:(LoginWithFacebookCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithGameCenter:(LoginWithGameCenterRequest*)request success:(LoginWithGameCenterCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithFacebookInstantGamesId:(ClientLoginWithFacebookInstantGamesIdRequest*)request success:(LoginWithFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithGoogleAccount:(LoginWithGoogleAccountRequest*)request success:(LoginWithGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithGameCenter:(ClientLoginWithGameCenterRequest*)request success:(LoginWithGameCenterCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithIOSDeviceID:(LoginWithIOSDeviceIDRequest*)request success:(LoginWithIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithGoogleAccount:(ClientLoginWithGoogleAccountRequest*)request success:(LoginWithGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithKongregate:(LoginWithKongregateRequest*)request success:(LoginWithKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithIOSDeviceID:(ClientLoginWithIOSDeviceIDRequest*)request success:(LoginWithIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithNintendoSwitchDeviceId:(LoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithKongregate:(ClientLoginWithKongregateRequest*)request success:(LoginWithKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithPlayFab:(LoginWithPlayFabRequest*)request success:(LoginWithPlayFabCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithNintendoSwitchDeviceId:(ClientLoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithSteam:(LoginWithSteamRequest*)request success:(LoginWithSteamCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithPlayFab:(ClientLoginWithPlayFabRequest*)request success:(LoginWithPlayFabCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithTwitch:(LoginWithTwitchRequest*)request success:(LoginWithTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithSteam:(ClientLoginWithSteamRequest*)request success:(LoginWithSteamCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithWindowsHello:(LoginWithWindowsHelloRequest*)request success:(LoginWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithTwitch:(ClientLoginWithTwitchRequest*)request success:(LoginWithTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) Matchmake:(MatchmakeRequest*)request success:(MatchmakeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithWindowsHello:(ClientLoginWithWindowsHelloRequest*)request success:(LoginWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) OpenTrade:(OpenTradeRequest*)request success:(OpenTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) LoginWithXbox:(ClientLoginWithXboxRequest*)request success:(LoginWithXboxCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) PayForPurchase:(PayForPurchaseRequest*)request success:(PayForPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) Matchmake:(ClientMatchmakeRequest*)request success:(MatchmakeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) PurchaseItem:(PurchaseItemRequest*)request success:(PurchaseItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) OpenTrade:(ClientOpenTradeRequest*)request success:(OpenTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RedeemCoupon:(RedeemCouponRequest*)request success:(RedeemCouponCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) PayForPurchase:(ClientPayForPurchaseRequest*)request success:(PayForPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RegisterForIOSPushNotification:(RegisterForIOSPushNotificationRequest*)request success:(RegisterForIOSPushNotificationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) PurchaseItem:(ClientPurchaseItemRequest*)request success:(PurchaseItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RegisterPlayFabUser:(RegisterPlayFabUserRequest*)request success:(RegisterPlayFabUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RedeemCoupon:(ClientRedeemCouponRequest*)request success:(RedeemCouponCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RegisterWithWindowsHello:(RegisterWithWindowsHelloRequest*)request success:(RegisterWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RegisterForIOSPushNotification:(ClientRegisterForIOSPushNotificationRequest*)request success:(RegisterForIOSPushNotificationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) RegisterPlayFabUser:(ClientRegisterPlayFabUserRequest*)request success:(RegisterPlayFabUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) RegisterWithWindowsHello:(ClientRegisterWithWindowsHelloRequest*)request success:(RegisterWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RemoveContactEmail:(RemoveContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) RemoveFriend:(RemoveFriendRequest*)request success:(RemoveFriendCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RemoveFriend:(ClientRemoveFriendRequest*)request success:(RemoveFriendCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RemoveGenericID:(RemoveGenericIDRequest*)request success:(RemoveGenericIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RemoveGenericID:(ClientRemoveGenericIDRequest*)request success:(RemoveGenericIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RemoveSharedGroupMembers:(RemoveSharedGroupMembersRequest*)request success:(RemoveSharedGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RemoveSharedGroupMembers:(ClientRemoveSharedGroupMembersRequest*)request success:(RemoveSharedGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ReportDeviceInfo:(DeviceInfoRequest*)request success:(ReportDeviceInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ReportDeviceInfo:(ClientDeviceInfoRequest*)request success:(ReportDeviceInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ReportPlayer:(ReportPlayerClientRequest*)request success:(ReportPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ReportPlayer:(ClientReportPlayerClientRequest*)request success:(ReportPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RestoreIOSPurchases:(RestoreIOSPurchasesRequest*)request success:(RestoreIOSPurchasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) RestoreIOSPurchases:(ClientRestoreIOSPurchasesRequest*)request success:(RestoreIOSPurchasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) SendAccountRecoveryEmail:(SendAccountRecoveryEmailRequest*)request success:(SendAccountRecoveryEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) SendAccountRecoveryEmail:(ClientSendAccountRecoveryEmailRequest*)request success:(SendAccountRecoveryEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) SetFriendTags:(SetFriendTagsRequest*)request success:(SetFriendTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) SetFriendTags:(ClientSetFriendTagsRequest*)request success:(SetFriendTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) SetPlayerSecret:(SetPlayerSecretRequest*)request success:(SetPlayerSecretCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) SetPlayerSecret:(ClientSetPlayerSecretRequest*)request success:(SetPlayerSecretCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) StartGame:(StartGameRequest*)request success:(StartGameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) StartGame:(ClientStartGameRequest*)request success:(StartGameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) StartPurchase:(StartPurchaseRequest*)request success:(StartPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) StartPurchase:(ClientStartPurchaseRequest*)request success:(StartPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) SubtractUserVirtualCurrency:(SubtractUserVirtualCurrencyRequest*)request success:(SubtractUserVirtualCurrencyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) SubtractUserVirtualCurrency:(ClientSubtractUserVirtualCurrencyRequest*)request success:(SubtractUserVirtualCurrencyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UnlinkAndroidDeviceID:(UnlinkAndroidDeviceIDRequest*)request success:(UnlinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkAndroidDeviceID:(ClientUnlinkAndroidDeviceIDRequest*)request success:(UnlinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UnlinkCustomID:(UnlinkCustomIDRequest*)request success:(UnlinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkCustomID:(ClientUnlinkCustomIDRequest*)request success:(UnlinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkFacebookAccount:(UnlinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) UnlinkFacebookInstantGamesId:(UnlinkFacebookInstantGamesIdRequest*)request success:(UnlinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkFacebookInstantGamesId:(ClientUnlinkFacebookInstantGamesIdRequest*)request success:(UnlinkFacebookInstantGamesIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkGameCenterAccount:(UnlinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkGoogleAccount:(UnlinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) UnlinkIOSDeviceID:(UnlinkIOSDeviceIDRequest*)request success:(UnlinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkIOSDeviceID:(ClientUnlinkIOSDeviceIDRequest*)request success:(UnlinkIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkKongregate:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) UnlinkNintendoSwitchDeviceId:(UnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkNintendoSwitchDeviceId:(ClientUnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkSteamAccount:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkTwitch:(UnlinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
--(void) UnlinkWindowsHello:(UnlinkWindowsHelloAccountRequest*)request success:(UnlinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkWindowsHello:(ClientUnlinkWindowsHelloAccountRequest*)request success:(UnlinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UnlockContainerInstance:(UnlockContainerInstanceRequest*)request success:(UnlockContainerInstanceCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkXboxAccount:(ClientUnlinkXboxAccountRequest*)request success:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UnlockContainerItem:(UnlockContainerItemRequest*)request success:(UnlockContainerItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlockContainerInstance:(ClientUnlockContainerInstanceRequest*)request success:(UnlockContainerInstanceCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateAvatarUrl:(UpdateAvatarUrlRequest*)request success:(UpdateAvatarUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlockContainerItem:(ClientUnlockContainerItemRequest*)request success:(UnlockContainerItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateCharacterData:(UpdateCharacterDataRequest*)request success:(UpdateCharacterDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateAvatarUrl:(ClientUpdateAvatarUrlRequest*)request success:(UpdateAvatarUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateCharacterStatistics:(UpdateCharacterStatisticsRequest*)request success:(UpdateCharacterStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateCharacterData:(ClientUpdateCharacterDataRequest*)request success:(UpdateCharacterDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdatePlayerStatistics:(UpdatePlayerStatisticsRequest*)request success:(UpdatePlayerStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateCharacterStatistics:(ClientUpdateCharacterStatisticsRequest*)request success:(UpdateCharacterStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateSharedGroupData:(UpdateSharedGroupDataRequest*)request success:(UpdateSharedGroupDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdatePlayerStatistics:(ClientUpdatePlayerStatisticsRequest*)request success:(UpdatePlayerStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateUserData:(UpdateUserDataRequest*)request success:(UpdateUserDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateSharedGroupData:(ClientUpdateSharedGroupDataRequest*)request success:(UpdateSharedGroupDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateUserPublisherData:(UpdateUserDataRequest*)request success:(UpdateUserPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateUserData:(ClientUpdateUserDataRequest*)request success:(UpdateUserDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UpdateUserTitleDisplayName:(UpdateUserTitleDisplayNameRequest*)request success:(UpdateUserTitleDisplayNameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateUserPublisherData:(ClientUpdateUserDataRequest*)request success:(UpdateUserPublisherDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ValidateAmazonIAPReceipt:(ValidateAmazonReceiptRequest*)request success:(ValidateAmazonIAPReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UpdateUserTitleDisplayName:(ClientUpdateUserTitleDisplayNameRequest*)request success:(UpdateUserTitleDisplayNameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ValidateGooglePlayPurchase:(ValidateGooglePlayPurchaseRequest*)request success:(ValidateGooglePlayPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ValidateAmazonIAPReceipt:(ClientValidateAmazonReceiptRequest*)request success:(ValidateAmazonIAPReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ValidateIOSReceipt:(ValidateIOSReceiptRequest*)request success:(ValidateIOSReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ValidateGooglePlayPurchase:(ClientValidateGooglePlayPurchaseRequest*)request success:(ValidateGooglePlayPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ValidateWindowsStoreReceipt:(ValidateWindowsReceiptRequest*)request success:(ValidateWindowsStoreReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ValidateIOSReceipt:(ClientValidateIOSReceiptRequest*)request success:(ValidateIOSReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) WriteCharacterEvent:(WriteClientCharacterEventRequest*)request success:(WriteCharacterEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ValidateWindowsStoreReceipt:(ClientValidateWindowsReceiptRequest*)request success:(ValidateWindowsStoreReceiptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) WritePlayerEvent:(WriteClientPlayerEventRequest*)request success:(WritePlayerEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) WriteCharacterEvent:(ClientWriteClientCharacterEventRequest*)request success:(WriteCharacterEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) WriteTitleEvent:(WriteTitleEventRequest*)request success:(WriteTitleEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) WritePlayerEvent:(ClientWriteClientPlayerEventRequest*)request success:(WritePlayerEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
-
-    //private:
-/*
-        // ------------ Generated result handlers
+-(void) WriteTitleEvent:(ClientWriteTitleEventRequest*)request success:(WriteTitleEventCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
-+ (void) OnAcceptTradeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddFriendResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddGenericIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddOrUpdateContactEmailResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddSharedGroupMembersResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddUsernamePasswordResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAddUserVirtualCurrencyResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAndroidDevicePushNotificationRegistrationResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnAttributeInstallResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnCancelTradeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnConfirmPurchaseResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnConsumeItemResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnCreateSharedGroupResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnExecuteCloudScriptResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetAccountInfoResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetAllUsersCharactersResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCatalogItemsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCharacterDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCharacterInventoryResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCharacterLeaderboardResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCharacterReadOnlyDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCharacterStatisticsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetContentDownloadUrlResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetCurrentGamesResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetFriendLeaderboardResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetFriendLeaderboardAroundPlayerResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetFriendsListResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetGameServerRegionsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetLeaderboardResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetLeaderboardAroundCharacterResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetLeaderboardAroundPlayerResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetLeaderboardForUserCharactersResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPaymentTokenResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPhotonAuthenticationTokenResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerCombinedInfoResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerProfileResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerSegmentsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerStatisticsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerStatisticVersionsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerTagsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayerTradesResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromFacebookIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromFacebookInstantGamesIdsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromGameCenterIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromGenericIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromGoogleIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromKongregateIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromNintendoSwitchDeviceIdsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromSteamIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPlayFabIDsFromTwitchIDsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPublisherDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetPurchaseResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetSharedGroupDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetStoreItemsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetTimeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetTitleDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetTitleNewsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetTitlePublicKeyResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetTradeStatusResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetUserDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetUserInventoryResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetUserPublisherDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetUserPublisherReadOnlyDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetUserReadOnlyDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGetWindowsHelloChallengeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnGrantCharacterToUserResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkAndroidDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkCustomIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkFacebookAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkGameCenterAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLinkWindowsHelloResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithAndroidDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithCustomIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithEmailAddressResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithFacebookResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithGameCenterResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithPlayFabResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithSteamResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnLoginWithWindowsHelloResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnMatchmakeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnOpenTradeResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnPayForPurchaseResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnPurchaseItemResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRedeemCouponResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRegisterForIOSPushNotificationResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRegisterPlayFabUserResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRegisterWithWindowsHelloResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRemoveContactEmailResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRemoveFriendResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRemoveGenericIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRemoveSharedGroupMembersResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnReportDeviceInfoResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnReportPlayerResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnRestoreIOSPurchasesResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnSendAccountRecoveryEmailResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnSetFriendTagsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnSetPlayerSecretResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnStartGameResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnStartPurchaseResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnSubtractUserVirtualCurrencyResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkAndroidDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkCustomIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkFacebookAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkFacebookInstantGamesIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkGameCenterAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkGoogleAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkIOSDeviceIDResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkKongregateResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkNintendoSwitchDeviceIdResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkSteamAccountResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkTwitchResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlinkWindowsHelloResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlockContainerInstanceResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUnlockContainerItemResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateAvatarUrlResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateCharacterDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateCharacterStatisticsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdatePlayerStatisticsResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateSharedGroupDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateUserDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateUserPublisherDataResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnUpdateUserTitleDisplayNameResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnValidateAmazonIAPReceiptResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnValidateGooglePlayPurchaseResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnValidateIOSReceiptResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnValidateWindowsStoreReceiptResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnWriteCharacterEventResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnWritePlayerEventResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
-+ (void) OnWriteTitleEventResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
- */
-
-        //@property bool mOwnsRequester;
-        //@property AFHTTPClient* mHttpRequester;
-
 
 @end

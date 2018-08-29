@@ -1,37 +1,26 @@
-
-
 #import <Foundation/Foundation.h>
 
 #import "PlayFabAuthenticationDataModels.h"
 #import "PlayFabError.h"
 #import "PlayFabSettings.h"
 
+
 @interface PlayFabAuthenticationAPI : NSObject
 
++(NSString*) GetURL;
+
+
 		
-typedef void(^GetEntityTokenCallback)(GetEntityTokenResponse* result, NSObject* userData);
+typedef void(^GetEntityTokenCallback)(AuthenticationGetEntityTokenResponse* result, NSObject* userData);
 		
 
 + (PlayFabClientAPI*) GetInstance;
 
 		
 
-
-        // ------------ Generated API calls
+// ------------ Generated API calls
 		
--(void) GetEntityToken:(GetEntityTokenRequest*)request success:(GetEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) GetEntityToken:(AuthenticationGetEntityTokenRequest*)request success:(GetEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
-
-    //private:
-/*
-        // ------------ Generated result handlers
-		
-+ (void) OnGetEntityTokenResult:(int)httpStatus withRequest:(HttpRequest*) request withUserData:(void*) userData;
-		
- */
-
-        //@property bool mOwnsRequester;
-        //@property AFHTTPClient* mHttpRequester;
-
 
 @end

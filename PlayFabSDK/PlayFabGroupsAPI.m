@@ -1,7 +1,5 @@
 #import "PlayFabGroupsAPI.h"
 #import "PlayFabConnection.h"
-//#import "PlayFabSettings.h"
-//#import "PlayFabVersion.h"
 
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
@@ -11,7 +9,7 @@
 
 @implementation PlayFabGroupsAPI
 
-+(NSString*)GetURL {
++(NSString*) GetURL {
 return [NSString stringWithFormat:@"https://%@%@", PlayFabSettings.TitleId, PlayFabSettings.ProductionEnvironmentURL];
 }
 
@@ -34,12 +32,11 @@ free(model);
 return deviceModel;
 }
 
-
--(void) AcceptGroupApplication:(AcceptGroupApplicationRequest*)request success:(AcceptGroupApplicationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) AcceptGroupApplication:(GroupsAcceptGroupApplicationRequest*)request success:(AcceptGroupApplicationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[AcceptGroupApplicationRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsAcceptGroupApplicationRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -56,7 +53,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -78,11 +75,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/AcceptGroupApplication"] body:jsonString authType:nil authKey:nil];
 }
--(void) AcceptGroupInvitation:(AcceptGroupInvitationRequest*)request success:(AcceptGroupInvitationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) AcceptGroupInvitation:(GroupsAcceptGroupInvitationRequest*)request success:(AcceptGroupInvitationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[AcceptGroupInvitationRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsAcceptGroupInvitationRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -99,7 +96,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -121,11 +118,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/AcceptGroupInvitation"] body:jsonString authType:nil authKey:nil];
 }
--(void) AddMembers:(AddMembersRequest*)request success:(AddMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) AddMembers:(GroupsAddMembersRequest*)request success:(AddMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[AddMembersRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsAddMembersRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -142,7 +139,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -164,11 +161,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/AddMembers"] body:jsonString authType:nil authKey:nil];
 }
--(void) ApplyToGroup:(ApplyToGroupRequest*)request success:(ApplyToGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ApplyToGroup:(GroupsApplyToGroupRequest*)request success:(ApplyToGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ApplyToGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsApplyToGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -185,7 +182,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ApplyToGroupResponse *model = [[ApplyToGroupResponse new] initWithDictionary:class_data];
+                GroupsApplyToGroupResponse *model = [[GroupsApplyToGroupResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -207,11 +204,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ApplyToGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) BlockEntity:(BlockEntityRequest*)request success:(BlockEntityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) BlockEntity:(GroupsBlockEntityRequest*)request success:(BlockEntityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[BlockEntityRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsBlockEntityRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -228,7 +225,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -250,11 +247,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/BlockEntity"] body:jsonString authType:nil authKey:nil];
 }
--(void) ChangeMemberRole:(ChangeMemberRoleRequest*)request success:(ChangeMemberRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ChangeMemberRole:(GroupsChangeMemberRoleRequest*)request success:(ChangeMemberRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ChangeMemberRoleRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsChangeMemberRoleRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -271,7 +268,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -293,11 +290,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ChangeMemberRole"] body:jsonString authType:nil authKey:nil];
 }
--(void) CreateGroup:(CreateGroupRequest*)request success:(CreateGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) CreateGroup:(GroupsCreateGroupRequest*)request success:(CreateGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[CreateGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsCreateGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -314,7 +311,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                CreateGroupResponse *model = [[CreateGroupResponse new] initWithDictionary:class_data];
+                GroupsCreateGroupResponse *model = [[GroupsCreateGroupResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -336,11 +333,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/CreateGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) CreateRole:(CreateGroupRoleRequest*)request success:(CreateRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) CreateRole:(GroupsCreateGroupRoleRequest*)request success:(CreateRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[CreateGroupRoleRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsCreateGroupRoleRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -357,7 +354,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                CreateGroupRoleResponse *model = [[CreateGroupRoleResponse new] initWithDictionary:class_data];
+                GroupsCreateGroupRoleResponse *model = [[GroupsCreateGroupRoleResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -379,11 +376,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/CreateRole"] body:jsonString authType:nil authKey:nil];
 }
--(void) DeleteGroup:(DeleteGroupRequest*)request success:(DeleteGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) DeleteGroup:(GroupsDeleteGroupRequest*)request success:(DeleteGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[DeleteGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsDeleteGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -400,7 +397,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -422,11 +419,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/DeleteGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) DeleteRole:(DeleteRoleRequest*)request success:(DeleteRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) DeleteRole:(GroupsDeleteRoleRequest*)request success:(DeleteRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[DeleteRoleRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsDeleteRoleRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -443,7 +440,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -465,11 +462,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/DeleteRole"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetGroup:(GetGroupRequest*)request success:(GetGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) GetGroup:(GroupsGetGroupRequest*)request success:(GetGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[GetGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsGetGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -486,7 +483,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                GetGroupResponse *model = [[GetGroupResponse new] initWithDictionary:class_data];
+                GroupsGetGroupResponse *model = [[GroupsGetGroupResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -508,11 +505,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/GetGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) InviteToGroup:(InviteToGroupRequest*)request success:(InviteToGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) InviteToGroup:(GroupsInviteToGroupRequest*)request success:(InviteToGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[InviteToGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsInviteToGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -529,7 +526,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                InviteToGroupResponse *model = [[InviteToGroupResponse new] initWithDictionary:class_data];
+                GroupsInviteToGroupResponse *model = [[GroupsInviteToGroupResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -551,11 +548,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/InviteToGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) IsMember:(IsMemberRequest*)request success:(IsMemberCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) IsMember:(GroupsIsMemberRequest*)request success:(IsMemberCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[IsMemberRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsIsMemberRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -572,7 +569,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                IsMemberResponse *model = [[IsMemberResponse new] initWithDictionary:class_data];
+                GroupsIsMemberResponse *model = [[GroupsIsMemberResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -594,11 +591,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/IsMember"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListGroupApplications:(ListGroupApplicationsRequest*)request success:(ListGroupApplicationsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListGroupApplications:(GroupsListGroupApplicationsRequest*)request success:(ListGroupApplicationsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListGroupApplicationsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListGroupApplicationsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -615,7 +612,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListGroupApplicationsResponse *model = [[ListGroupApplicationsResponse new] initWithDictionary:class_data];
+                GroupsListGroupApplicationsResponse *model = [[GroupsListGroupApplicationsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -637,11 +634,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListGroupApplications"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListGroupBlocks:(ListGroupBlocksRequest*)request success:(ListGroupBlocksCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListGroupBlocks:(GroupsListGroupBlocksRequest*)request success:(ListGroupBlocksCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListGroupBlocksRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListGroupBlocksRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -658,7 +655,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListGroupBlocksResponse *model = [[ListGroupBlocksResponse new] initWithDictionary:class_data];
+                GroupsListGroupBlocksResponse *model = [[GroupsListGroupBlocksResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -680,11 +677,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListGroupBlocks"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListGroupInvitations:(ListGroupInvitationsRequest*)request success:(ListGroupInvitationsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListGroupInvitations:(GroupsListGroupInvitationsRequest*)request success:(ListGroupInvitationsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListGroupInvitationsRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListGroupInvitationsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -701,7 +698,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListGroupInvitationsResponse *model = [[ListGroupInvitationsResponse new] initWithDictionary:class_data];
+                GroupsListGroupInvitationsResponse *model = [[GroupsListGroupInvitationsResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -723,11 +720,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListGroupInvitations"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListGroupMembers:(ListGroupMembersRequest*)request success:(ListGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListGroupMembers:(GroupsListGroupMembersRequest*)request success:(ListGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListGroupMembersRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListGroupMembersRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -744,7 +741,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListGroupMembersResponse *model = [[ListGroupMembersResponse new] initWithDictionary:class_data];
+                GroupsListGroupMembersResponse *model = [[GroupsListGroupMembersResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -766,11 +763,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListGroupMembers"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListMembership:(ListMembershipRequest*)request success:(ListMembershipCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListMembership:(GroupsListMembershipRequest*)request success:(ListMembershipCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListMembershipRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListMembershipRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -787,7 +784,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListMembershipResponse *model = [[ListMembershipResponse new] initWithDictionary:class_data];
+                GroupsListMembershipResponse *model = [[GroupsListMembershipResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -809,11 +806,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListMembership"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListMembershipOpportunities:(ListMembershipOpportunitiesRequest*)request success:(ListMembershipOpportunitiesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) ListMembershipOpportunities:(GroupsListMembershipOpportunitiesRequest*)request success:(ListMembershipOpportunitiesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ListMembershipOpportunitiesRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsListMembershipOpportunitiesRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -830,7 +827,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ListMembershipOpportunitiesResponse *model = [[ListMembershipOpportunitiesResponse new] initWithDictionary:class_data];
+                GroupsListMembershipOpportunitiesResponse *model = [[GroupsListMembershipOpportunitiesResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -852,11 +849,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/ListMembershipOpportunities"] body:jsonString authType:nil authKey:nil];
 }
--(void) RemoveGroupApplication:(RemoveGroupApplicationRequest*)request success:(RemoveGroupApplicationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) RemoveGroupApplication:(GroupsRemoveGroupApplicationRequest*)request success:(RemoveGroupApplicationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[RemoveGroupApplicationRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsRemoveGroupApplicationRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -873,7 +870,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -895,11 +892,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/RemoveGroupApplication"] body:jsonString authType:nil authKey:nil];
 }
--(void) RemoveGroupInvitation:(RemoveGroupInvitationRequest*)request success:(RemoveGroupInvitationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) RemoveGroupInvitation:(GroupsRemoveGroupInvitationRequest*)request success:(RemoveGroupInvitationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[RemoveGroupInvitationRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsRemoveGroupInvitationRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -916,7 +913,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -938,11 +935,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/RemoveGroupInvitation"] body:jsonString authType:nil authKey:nil];
 }
--(void) RemoveMembers:(RemoveMembersRequest*)request success:(RemoveMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) RemoveMembers:(GroupsRemoveMembersRequest*)request success:(RemoveMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[RemoveMembersRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsRemoveMembersRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -959,7 +956,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -981,11 +978,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/RemoveMembers"] body:jsonString authType:nil authKey:nil];
 }
--(void) UnblockEntity:(UnblockEntityRequest*)request success:(UnblockEntityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) UnblockEntity:(GroupsUnblockEntityRequest*)request success:(UnblockEntityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[UnblockEntityRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsUnblockEntityRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -1002,7 +999,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                EmptyResult *model = [[EmptyResult new] initWithDictionary:class_data];
+                GroupsEmptyResponse *model = [[GroupsEmptyResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -1024,11 +1021,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/UnblockEntity"] body:jsonString authType:nil authKey:nil];
 }
--(void) UpdateGroup:(UpdateGroupRequest*)request success:(UpdateGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) UpdateGroup:(GroupsUpdateGroupRequest*)request success:(UpdateGroupCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[UpdateGroupRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsUpdateGroupRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -1045,7 +1042,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                UpdateGroupResponse *model = [[UpdateGroupResponse new] initWithDictionary:class_data];
+                GroupsUpdateGroupResponse *model = [[GroupsUpdateGroupResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }
@@ -1067,11 +1064,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Group/UpdateGroup"] body:jsonString authType:nil authKey:nil];
 }
--(void) UpdateRole:(UpdateGroupRoleRequest*)request success:(UpdateRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) UpdateRole:(GroupsUpdateGroupRoleRequest*)request success:(UpdateRoleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[UpdateGroupRoleRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[GroupsUpdateGroupRoleRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -1088,7 +1085,7 @@ return deviceModel;
                 errorCallback (playfab_error_object, userData);
             } else {
                 NSDictionary *class_data = [JSON valueForKey:@"data"];
-                UpdateGroupRoleResponse *model = [[UpdateGroupRoleResponse new] initWithDictionary:class_data];
+                GroupsUpdateGroupRoleResponse *model = [[GroupsUpdateGroupRoleResponse new] initWithDictionary:class_data];
                 
                 callback (model, userData);
             }

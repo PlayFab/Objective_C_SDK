@@ -1,7 +1,7 @@
 #import "PlayFabGroupsDataModels.h"
 
 
-@implementation AcceptGroupApplicationRequest
+@implementation GroupsAcceptGroupApplicationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -12,15 +12,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation AcceptGroupInvitationRequest
+@implementation GroupsAcceptGroupInvitationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -31,15 +31,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation AddMembersRequest
+@implementation GroupsAddMembersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -50,13 +50,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     if ([properties objectForKey:@"Members"]){
     NSArray* member_list = [properties objectForKey:@"Members"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Members = [mutable_storage copy];
 }
@@ -68,7 +68,7 @@
     return self;
 }
 @end
-@implementation ApplyToGroupRequest
+@implementation GroupsApplyToGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -81,15 +81,15 @@
     
     self.AutoAcceptOutstandingInvite = [[properties valueForKey:@"AutoAcceptOutstandingInvite"] boolValue];
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ApplyToGroupResponse
+@implementation GroupsApplyToGroupResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -100,17 +100,17 @@
     }
 
     
-    self.Entity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.Expires = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Expires"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation BlockEntityRequest
+@implementation GroupsBlockEntityRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -121,15 +121,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ChangeMemberRoleRequest
+@implementation GroupsChangeMemberRoleRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -142,13 +142,13 @@
     
     self.DestinationRoleId = [properties valueForKey:@"DestinationRoleId"];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     if ([properties objectForKey:@"Members"]){
     NSArray* member_list = [properties objectForKey:@"Members"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Members = [mutable_storage copy];
 }
@@ -160,7 +160,7 @@
     return self;
 }
 @end
-@implementation CreateGroupRequest
+@implementation GroupsCreateGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -171,7 +171,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -179,7 +179,7 @@
     return self;
 }
 @end
-@implementation CreateGroupResponse
+@implementation GroupsCreateGroupResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -194,7 +194,7 @@
     
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -216,7 +216,7 @@
     return self;
 }
 @end
-@implementation CreateGroupRoleRequest
+@implementation GroupsCreateGroupRoleRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -227,7 +227,7 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -237,7 +237,7 @@
     return self;
 }
 @end
-@implementation CreateGroupRoleResponse
+@implementation GroupsCreateGroupRoleResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -258,7 +258,7 @@
     return self;
 }
 @end
-@implementation DeleteGroupRequest
+@implementation GroupsDeleteGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -269,13 +269,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation DeleteRoleRequest
+@implementation GroupsDeleteRoleRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -286,7 +286,7 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -294,7 +294,7 @@
     return self;
 }
 @end
-@implementation EmptyResult
+@implementation GroupsEmptyResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -309,7 +309,7 @@
     return self;
 }
 @end
-@implementation EntityKey
+@implementation GroupsEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -322,15 +322,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation EntityMemberRole
+@implementation GroupsEntityMemberRole
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -345,7 +343,7 @@
     NSArray* member_list = [properties objectForKey:@"Members"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityWithLineage new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsEntityWithLineage new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Members = [mutable_storage copy];
 }
@@ -359,7 +357,7 @@
     return self;
 }
 @end
-@implementation EntityWithLineage
+@implementation GroupsEntityWithLineage
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -370,13 +368,13 @@
     }
 
     
-    self.Key = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Key"]];
+    self.Key = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Key"]];
     
     if ([properties objectForKey:@"Lineage"]){
     NSDictionary* member_list = [properties objectForKey:@"Lineage"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
     for(NSString* key in member_list){
-        [mutable_storage setValue:[[EntityKey new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+        [mutable_storage setValue:[[GroupsEntityKey new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
     }
     self.Lineage = [mutable_storage copy];
 }
@@ -386,7 +384,7 @@
     return self;
 }
 @end
-@implementation GetGroupRequest
+@implementation GroupsGetGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -397,7 +395,7 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -405,7 +403,7 @@
     return self;
 }
 @end
-@implementation GetGroupResponse
+@implementation GroupsGetGroupResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -420,7 +418,7 @@
     
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -442,7 +440,7 @@
     return self;
 }
 @end
-@implementation GroupApplication
+@implementation GroupsGroupApplication
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -453,17 +451,17 @@
     }
 
     
-    self.Entity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.Expires = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Expires"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation GroupBlock
+@implementation GroupsGroupBlock
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -474,15 +472,15 @@
     }
 
     
-    self.Entity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation GroupInvitation
+@implementation GroupsGroupInvitation
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -495,11 +493,11 @@
     
     self.Expires = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Expires"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
-    self.InvitedByEntity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedByEntity"]];
+    self.InvitedByEntity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedByEntity"]];
     
-    self.InvitedEntity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedEntity"]];
+    self.InvitedEntity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedEntity"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -507,7 +505,7 @@
     return self;
 }
 @end
-@implementation GroupRole
+@implementation GroupsGroupRole
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -526,7 +524,7 @@
     return self;
 }
 @end
-@implementation GroupWithRoles
+@implementation GroupsGroupWithRoles
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -537,7 +535,7 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -547,7 +545,7 @@
     NSArray* member_list = [properties objectForKey:@"Roles"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupRole new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupRole new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Roles = [mutable_storage copy];
 }
@@ -557,7 +555,7 @@
     return self;
 }
 @end
-@implementation InviteToGroupRequest
+@implementation GroupsInviteToGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -570,9 +568,9 @@
     
     self.AutoAcceptOutstandingApplication = [[properties valueForKey:@"AutoAcceptOutstandingApplication"] boolValue];
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -580,7 +578,7 @@
     return self;
 }
 @end
-@implementation InviteToGroupResponse
+@implementation GroupsInviteToGroupResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -593,11 +591,11 @@
     
     self.Expires = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Expires"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
-    self.InvitedByEntity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedByEntity"]];
+    self.InvitedByEntity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedByEntity"]];
     
-    self.InvitedEntity = [[EntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedEntity"]];
+    self.InvitedEntity = [[GroupsEntityWithLineage new] initWithDictionary:[properties objectForKey:@"InvitedEntity"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -605,7 +603,7 @@
     return self;
 }
 @end
-@implementation IsMemberRequest
+@implementation GroupsIsMemberRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -616,9 +614,9 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -626,7 +624,7 @@
     return self;
 }
 @end
-@implementation IsMemberResponse
+@implementation GroupsIsMemberResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -643,7 +641,7 @@
     return self;
 }
 @end
-@implementation ListGroupApplicationsRequest
+@implementation GroupsListGroupApplicationsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -654,13 +652,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ListGroupApplicationsResponse
+@implementation GroupsListGroupApplicationsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -675,7 +673,7 @@
     NSArray* member_list = [properties objectForKey:@"Applications"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupApplication new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupApplication new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Applications = [mutable_storage copy];
 }
@@ -685,7 +683,7 @@
     return self;
 }
 @end
-@implementation ListGroupBlocksRequest
+@implementation GroupsListGroupBlocksRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -696,13 +694,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ListGroupBlocksResponse
+@implementation GroupsListGroupBlocksResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -717,7 +715,7 @@
     NSArray* member_list = [properties objectForKey:@"BlockedEntities"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupBlock new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupBlock new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.BlockedEntities = [mutable_storage copy];
 }
@@ -727,7 +725,7 @@
     return self;
 }
 @end
-@implementation ListGroupInvitationsRequest
+@implementation GroupsListGroupInvitationsRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -738,13 +736,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ListGroupInvitationsResponse
+@implementation GroupsListGroupInvitationsResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -759,7 +757,7 @@
     NSArray* member_list = [properties objectForKey:@"Invitations"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupInvitation new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupInvitation new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Invitations = [mutable_storage copy];
 }
@@ -769,7 +767,7 @@
     return self;
 }
 @end
-@implementation ListGroupMembersRequest
+@implementation GroupsListGroupMembersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -780,13 +778,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation ListGroupMembersResponse
+@implementation GroupsListGroupMembersResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -801,7 +799,7 @@
     NSArray* member_list = [properties objectForKey:@"Members"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityMemberRole new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsEntityMemberRole new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Members = [mutable_storage copy];
 }
@@ -811,7 +809,7 @@
     return self;
 }
 @end
-@implementation ListMembershipOpportunitiesRequest
+@implementation GroupsListMembershipOpportunitiesRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -822,13 +820,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
 
     return self;
 }
 @end
-@implementation ListMembershipOpportunitiesResponse
+@implementation GroupsListMembershipOpportunitiesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -843,7 +841,7 @@
     NSArray* member_list = [properties objectForKey:@"Applications"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupApplication new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupApplication new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Applications = [mutable_storage copy];
 }
@@ -853,7 +851,7 @@
     NSArray* member_list = [properties objectForKey:@"Invitations"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupInvitation new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupInvitation new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Invitations = [mutable_storage copy];
 }
@@ -863,7 +861,7 @@
     return self;
 }
 @end
-@implementation ListMembershipRequest
+@implementation GroupsListMembershipRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -874,13 +872,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
 
     return self;
 }
 @end
-@implementation ListMembershipResponse
+@implementation GroupsListMembershipResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -895,7 +893,7 @@
     NSArray* member_list = [properties objectForKey:@"Groups"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[GroupWithRoles new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsGroupWithRoles new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Groups = [mutable_storage copy];
 }
@@ -905,7 +903,7 @@
     return self;
 }
 @end
-@implementation RemoveGroupApplicationRequest
+@implementation GroupsRemoveGroupApplicationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -916,15 +914,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation RemoveGroupInvitationRequest
+@implementation GroupsRemoveGroupInvitationRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -935,15 +933,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation RemoveMembersRequest
+@implementation GroupsRemoveMembersRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -954,13 +952,13 @@
     }
 
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     if ([properties objectForKey:@"Members"]){
     NSArray* member_list = [properties objectForKey:@"Members"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+        [mutable_storage addObject:[[GroupsEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Members = [mutable_storage copy];
 }
@@ -972,7 +970,7 @@
     return self;
 }
 @end
-@implementation UnblockEntityRequest
+@implementation GroupsUnblockEntityRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -983,15 +981,15 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
 
     return self;
 }
 @end
-@implementation UpdateGroupRequest
+@implementation GroupsUpdateGroupRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1006,7 +1004,7 @@
     
     self.ExpectedProfileVersion = [properties valueForKey:@"ExpectedProfileVersion"];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.GroupName = [properties valueForKey:@"GroupName"];
     
@@ -1016,7 +1014,7 @@
     return self;
 }
 @end
-@implementation UpdateGroupResponse
+@implementation GroupsUpdateGroupResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1031,13 +1029,13 @@
     
     self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
     
-    self.SetResult = (OperationTypes)[properties valueForKey:@"SetResult"];
+    self.SetResult = (GroupsOperationTypes)[properties valueForKey:@"GroupsSetResult"];
     
 
     return self;
 }
 @end
-@implementation UpdateGroupRoleRequest
+@implementation GroupsUpdateGroupRoleRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1050,7 +1048,7 @@
     
     self.ExpectedProfileVersion = [properties valueForKey:@"ExpectedProfileVersion"];
     
-    self.Group = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
+    self.Group = [[GroupsEntityKey new] initWithDictionary:[properties objectForKey:@"Group"]];
     
     self.RoleId = [properties valueForKey:@"RoleId"];
     
@@ -1060,7 +1058,7 @@
     return self;
 }
 @end
-@implementation UpdateGroupRoleResponse
+@implementation GroupsUpdateGroupRoleResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1075,7 +1073,7 @@
     
     self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
     
-    self.SetResult = (OperationTypes)[properties valueForKey:@"SetResult"];
+    self.SetResult = (GroupsOperationTypes)[properties valueForKey:@"GroupsSetResult"];
     
 
     return self;

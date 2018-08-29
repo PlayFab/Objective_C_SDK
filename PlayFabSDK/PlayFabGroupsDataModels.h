@@ -1,168 +1,156 @@
-
 #import <Foundation/Foundation.h>
 #import "PlayFabBaseModel.h"
 
 
-
 typedef enum
 {
-    EntityTypestitle,
-    EntityTypesmaster_player_account,
-    EntityTypestitle_player_account,
-    EntityTypescharacter,
-    EntityTypesgroup,
-    EntityTypesservice
-} EntityTypes;
-
-typedef enum
-{
-    OperationTypesCreated,
-    OperationTypesUpdated,
-    OperationTypesDeleted,
-    OperationTypesNone
-} OperationTypes;
+    GroupsOperationTypesCreated,
+    GroupsOperationTypesUpdated,
+    GroupsOperationTypesDeleted,
+    GroupsOperationTypesNone
+} GroupsOperationTypes;
 
 //predeclare all non-enum classes
 
-@class AcceptGroupApplicationRequest;
+@class GroupsAcceptGroupApplicationRequest;
 
-@class AcceptGroupInvitationRequest;
+@class GroupsAcceptGroupInvitationRequest;
 
-@class AddMembersRequest;
+@class GroupsAddMembersRequest;
 
-@class ApplyToGroupRequest;
+@class GroupsApplyToGroupRequest;
 
-@class ApplyToGroupResponse;
+@class GroupsApplyToGroupResponse;
 
-@class BlockEntityRequest;
+@class GroupsBlockEntityRequest;
 
-@class ChangeMemberRoleRequest;
+@class GroupsChangeMemberRoleRequest;
 
-@class CreateGroupRequest;
+@class GroupsCreateGroupRequest;
 
-@class CreateGroupResponse;
+@class GroupsCreateGroupResponse;
 
-@class CreateGroupRoleRequest;
+@class GroupsCreateGroupRoleRequest;
 
-@class CreateGroupRoleResponse;
+@class GroupsCreateGroupRoleResponse;
 
-@class DeleteGroupRequest;
+@class GroupsDeleteGroupRequest;
 
-@class DeleteRoleRequest;
+@class GroupsDeleteRoleRequest;
 
-@class EmptyResult;
+@class GroupsEmptyResponse;
 
-@class EntityKey;
+@class GroupsEntityKey;
 
-@class EntityMemberRole;
+@class GroupsEntityMemberRole;
 
-@class EntityWithLineage;
+@class GroupsEntityWithLineage;
 
-@class GetGroupRequest;
+@class GroupsGetGroupRequest;
 
-@class GetGroupResponse;
+@class GroupsGetGroupResponse;
 
-@class GroupApplication;
+@class GroupsGroupApplication;
 
-@class GroupBlock;
+@class GroupsGroupBlock;
 
-@class GroupInvitation;
+@class GroupsGroupInvitation;
 
-@class GroupRole;
+@class GroupsGroupRole;
 
-@class GroupWithRoles;
+@class GroupsGroupWithRoles;
 
-@class InviteToGroupRequest;
+@class GroupsInviteToGroupRequest;
 
-@class InviteToGroupResponse;
+@class GroupsInviteToGroupResponse;
 
-@class IsMemberRequest;
+@class GroupsIsMemberRequest;
 
-@class IsMemberResponse;
+@class GroupsIsMemberResponse;
 
-@class ListGroupApplicationsRequest;
+@class GroupsListGroupApplicationsRequest;
 
-@class ListGroupApplicationsResponse;
+@class GroupsListGroupApplicationsResponse;
 
-@class ListGroupBlocksRequest;
+@class GroupsListGroupBlocksRequest;
 
-@class ListGroupBlocksResponse;
+@class GroupsListGroupBlocksResponse;
 
-@class ListGroupInvitationsRequest;
+@class GroupsListGroupInvitationsRequest;
 
-@class ListGroupInvitationsResponse;
+@class GroupsListGroupInvitationsResponse;
 
-@class ListGroupMembersRequest;
+@class GroupsListGroupMembersRequest;
 
-@class ListGroupMembersResponse;
+@class GroupsListGroupMembersResponse;
 
-@class ListMembershipOpportunitiesRequest;
+@class GroupsListMembershipOpportunitiesRequest;
 
-@class ListMembershipOpportunitiesResponse;
+@class GroupsListMembershipOpportunitiesResponse;
 
-@class ListMembershipRequest;
+@class GroupsListMembershipRequest;
 
-@class ListMembershipResponse;
+@class GroupsListMembershipResponse;
 
-@class RemoveGroupApplicationRequest;
+@class GroupsRemoveGroupApplicationRequest;
 
-@class RemoveGroupInvitationRequest;
+@class GroupsRemoveGroupInvitationRequest;
 
-@class RemoveMembersRequest;
+@class GroupsRemoveMembersRequest;
 
-@class UnblockEntityRequest;
+@class GroupsUnblockEntityRequest;
 
-@class UpdateGroupRequest;
+@class GroupsUpdateGroupRequest;
 
-@class UpdateGroupResponse;
+@class GroupsUpdateGroupResponse;
 
-@class UpdateGroupRoleRequest;
+@class GroupsUpdateGroupRoleRequest;
 
-@class UpdateGroupRoleResponse;
+@class GroupsUpdateGroupRoleResponse;
 
 
 
-@interface AcceptGroupApplicationRequest : PlayFabBaseModel
+@interface GroupsAcceptGroupApplicationRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// Optional. Type of the entity to accept as. If specified, must be the same entity as the claimant or an entity that is a child of the claimant entity. Defaults to the claimant entity.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface AcceptGroupInvitationRequest : PlayFabBaseModel
+@interface GroupsAcceptGroupInvitationRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface AddMembersRequest : PlayFabBaseModel
+@interface GroupsAddMembersRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// List of entities to add to the group. Only entities of type title_player_account and character may be added to groups.
@@ -178,7 +166,7 @@ typedef enum
 @end
 
 
-@interface ApplyToGroupRequest : PlayFabBaseModel
+@interface GroupsApplyToGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -189,12 +177,12 @@ typedef enum
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -203,13 +191,13 @@ typedef enum
 /// <summary>
 /// Describes an application to join a group
 /// </summary>
-@interface ApplyToGroupResponse : PlayFabBaseModel
+@interface GroupsApplyToGroupResponse : PlayFabBaseModel
 
 
 /// <summary>
 /// Type of entity that requested membership
 /// </summary>
-@property EntityWithLineage* Entity; 
+@property GroupsEntityWithLineage* Entity; 
 
 /// <summary>
 /// When the application to join will expire and be deleted
@@ -219,7 +207,7 @@ typedef enum
 /// <summary>
 /// ID of the group that the entity requesting membership to
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -228,24 +216,24 @@ typedef enum
 @end
 
 
-@interface BlockEntityRequest : PlayFabBaseModel
+@interface GroupsBlockEntityRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ChangeMemberRoleRequest : PlayFabBaseModel
+@interface GroupsChangeMemberRoleRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -256,7 +244,7 @@ typedef enum
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// List of entities to move between roles in the group. All entities in this list must be members of the group and origin role.
@@ -272,13 +260,13 @@ typedef enum
 @end
 
 
-@interface CreateGroupRequest : PlayFabBaseModel
+@interface GroupsCreateGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The name of the group. This is unique at the title level by default.
@@ -289,7 +277,7 @@ typedef enum
 @end
 
 
-@interface CreateGroupResponse : PlayFabBaseModel
+@interface GroupsCreateGroupResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -305,7 +293,7 @@ typedef enum
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The name of the group.
@@ -334,13 +322,13 @@ typedef enum
 @end
 
 
-@interface CreateGroupRoleRequest : PlayFabBaseModel
+@interface GroupsCreateGroupRoleRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The ID of the role. This must be unique within the group and cannot be changed. Role IDs must be between 1 and 64 characters long.
@@ -356,7 +344,7 @@ typedef enum
 @end
 
 
-@interface CreateGroupRoleResponse : PlayFabBaseModel
+@interface GroupsCreateGroupRoleResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -381,25 +369,25 @@ typedef enum
 @end
 
 
-@interface DeleteGroupRequest : PlayFabBaseModel
+@interface GroupsDeleteGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// ID of the group or role to remove
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface DeleteRoleRequest : PlayFabBaseModel
+@interface GroupsDeleteRoleRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The ID of the role to delete. Role IDs must be between 1 and 64 characters long.
@@ -410,7 +398,7 @@ typedef enum
 @end
 
 
-@interface EmptyResult : PlayFabBaseModel
+@interface GroupsEmptyResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -421,31 +409,26 @@ typedef enum
 
 
 /// <summary>
-/// Entity identifier class that contains both the ID and type.
+/// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
-@interface EntityKey : PlayFabBaseModel
+@interface GroupsEntityKey : PlayFabBaseModel
 
 
 /// <summary>
-/// Entity profile ID.
+/// Unique ID of the entity.
 /// </summary>
 @property NSString* Id; 
 
 /// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
+/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
 /// </summary>
-@property EntityTypes Type; 
-
-/// <summary>
-/// Entity type. Optional to be used but one of EntityType or EntityTypeString must be set.
-/// </summary>
-@property NSString* TypeString; 
+@property NSString* Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface EntityMemberRole : PlayFabBaseModel
+@interface GroupsEntityMemberRole : PlayFabBaseModel
 
 
 /// <summary>
@@ -470,13 +453,13 @@ typedef enum
 /// <summary>
 /// Entity wrapper class that contains the entity key and the entities that make up the lineage of the entity.
 /// </summary>
-@interface EntityWithLineage : PlayFabBaseModel
+@interface GroupsEntityWithLineage : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity key for the specified entity
 /// </summary>
-@property EntityKey* Key; 
+@property GroupsEntityKey* Key; 
 
 /// <summary>
 /// Dictionary of entity keys for related entities. Dictionary key is entity type.
@@ -487,13 +470,13 @@ typedef enum
 @end
 
 
-@interface GetGroupRequest : PlayFabBaseModel
+@interface GroupsGetGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The full name of the group
@@ -504,7 +487,7 @@ typedef enum
 @end
 
 
-@interface GetGroupResponse : PlayFabBaseModel
+@interface GroupsGetGroupResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -520,7 +503,7 @@ typedef enum
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The name of the group.
@@ -552,13 +535,13 @@ typedef enum
 /// <summary>
 /// Describes an application to join a group
 /// </summary>
-@interface GroupApplication : PlayFabBaseModel
+@interface GroupsGroupApplication : PlayFabBaseModel
 
 
 /// <summary>
 /// Type of entity that requested membership
 /// </summary>
-@property EntityWithLineage* Entity; 
+@property GroupsEntityWithLineage* Entity; 
 
 /// <summary>
 /// When the application to join will expire and be deleted
@@ -568,7 +551,7 @@ typedef enum
 /// <summary>
 /// ID of the group that the entity requesting membership to
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -577,18 +560,18 @@ typedef enum
 /// <summary>
 /// Describes an entity that is blocked from joining a group.
 /// </summary>
-@interface GroupBlock : PlayFabBaseModel
+@interface GroupsGroupBlock : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity that is blocked
 /// </summary>
-@property EntityWithLineage* Entity; 
+@property GroupsEntityWithLineage* Entity; 
 
 /// <summary>
 /// ID of the group that the entity is blocked from
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -597,7 +580,7 @@ typedef enum
 /// <summary>
 /// Describes an invitation to a group.
 /// </summary>
-@interface GroupInvitation : PlayFabBaseModel
+@interface GroupsGroupInvitation : PlayFabBaseModel
 
 
 /// <summary>
@@ -608,17 +591,17 @@ typedef enum
 /// <summary>
 /// The group that the entity invited to
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The entity that created the invitation
 /// </summary>
-@property EntityWithLineage* InvitedByEntity; 
+@property GroupsEntityWithLineage* InvitedByEntity; 
 
 /// <summary>
 /// The entity that is invited
 /// </summary>
-@property EntityWithLineage* InvitedEntity; 
+@property GroupsEntityWithLineage* InvitedEntity; 
 
 /// <summary>
 /// ID of the role in the group to assign the user to.
@@ -632,7 +615,7 @@ typedef enum
 /// <summary>
 /// Describes a group role
 /// </summary>
-@interface GroupRole : PlayFabBaseModel
+@interface GroupsGroupRole : PlayFabBaseModel
 
 
 /// <summary>
@@ -652,13 +635,13 @@ typedef enum
 /// <summary>
 /// Describes a group and the roles that it contains
 /// </summary>
-@interface GroupWithRoles : PlayFabBaseModel
+@interface GroupsGroupWithRoles : PlayFabBaseModel
 
 
 /// <summary>
 /// ID for the group
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The name of the group
@@ -679,7 +662,7 @@ typedef enum
 @end
 
 
-@interface InviteToGroupRequest : PlayFabBaseModel
+@interface GroupsInviteToGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -690,12 +673,12 @@ typedef enum
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// Optional. ID of an existing a role in the group to assign the user to. The group's default member role is used if this is not specified. Role IDs must be between 1 and 64 characters long.
@@ -709,7 +692,7 @@ typedef enum
 /// <summary>
 /// Describes an invitation to a group.
 /// </summary>
-@interface InviteToGroupResponse : PlayFabBaseModel
+@interface GroupsInviteToGroupResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -720,17 +703,17 @@ typedef enum
 /// <summary>
 /// The group that the entity invited to
 /// </summary>
-@property EntityKey* Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// The entity that created the invitation
 /// </summary>
-@property EntityWithLineage* InvitedByEntity; 
+@property GroupsEntityWithLineage* InvitedByEntity; 
 
 /// <summary>
 /// The entity that is invited
 /// </summary>
-@property EntityWithLineage* InvitedEntity; 
+@property GroupsEntityWithLineage* InvitedEntity; 
 
 /// <summary>
 /// ID of the role in the group to assign the user to.
@@ -744,18 +727,18 @@ typedef enum
 @end
 
 
-@interface IsMemberRequest : PlayFabBaseModel
+@interface GroupsIsMemberRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// Optional: ID of the role to check membership of. Defaults to any role (that is, check to see if the entity is a member of the group in any capacity) if not specified.
@@ -766,7 +749,7 @@ typedef enum
 @end
 
 
-@interface IsMemberResponse : PlayFabBaseModel
+@interface GroupsIsMemberResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -781,19 +764,19 @@ typedef enum
 @end
 
 
-@interface ListGroupApplicationsRequest : PlayFabBaseModel
+@interface GroupsListGroupApplicationsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListGroupApplicationsResponse : PlayFabBaseModel
+@interface GroupsListGroupApplicationsResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -808,19 +791,19 @@ typedef enum
 @end
 
 
-@interface ListGroupBlocksRequest : PlayFabBaseModel
+@interface GroupsListGroupBlocksRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListGroupBlocksResponse : PlayFabBaseModel
+@interface GroupsListGroupBlocksResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -835,19 +818,19 @@ typedef enum
 @end
 
 
-@interface ListGroupInvitationsRequest : PlayFabBaseModel
+@interface GroupsListGroupInvitationsRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListGroupInvitationsResponse : PlayFabBaseModel
+@interface GroupsListGroupInvitationsResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -862,19 +845,19 @@ typedef enum
 @end
 
 
-@interface ListGroupMembersRequest : PlayFabBaseModel
+@interface GroupsListGroupMembersRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// ID of the group to list the members and roles for
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListGroupMembersResponse : PlayFabBaseModel
+@interface GroupsListGroupMembersResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -889,19 +872,19 @@ typedef enum
 @end
 
 
-@interface ListMembershipOpportunitiesRequest : PlayFabBaseModel
+@interface GroupsListMembershipOpportunitiesRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property GroupsEntityKey* Entity; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListMembershipOpportunitiesResponse : PlayFabBaseModel
+@interface GroupsListMembershipOpportunitiesResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -921,19 +904,19 @@ typedef enum
 @end
 
 
-@interface ListMembershipRequest : PlayFabBaseModel
+@interface GroupsListMembershipRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey* Entity; 
+@property GroupsEntityKey* Entity; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface ListMembershipResponse : PlayFabBaseModel
+@interface GroupsListMembershipResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -948,47 +931,47 @@ typedef enum
 @end
 
 
-@interface RemoveGroupApplicationRequest : PlayFabBaseModel
+@interface GroupsRemoveGroupApplicationRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RemoveGroupInvitationRequest : PlayFabBaseModel
+@interface GroupsRemoveGroupInvitationRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface RemoveMembersRequest : PlayFabBaseModel
+@interface GroupsRemoveMembersRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// List of entities to remove
@@ -1004,24 +987,24 @@ typedef enum
 @end
 
 
-@interface UnblockEntityRequest : PlayFabBaseModel
+@interface GroupsUnblockEntityRequest : PlayFabBaseModel
 
 
 /// <summary>
 /// The entity to perform this action on.
 /// </summary>
-@property EntityKey Entity; 
+@property GroupsEntityKey* Entity; 
 
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
-@interface UpdateGroupRequest : PlayFabBaseModel
+@interface GroupsUpdateGroupRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1037,7 +1020,7 @@ typedef enum
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// Optional: the new name of the group
@@ -1053,7 +1036,7 @@ typedef enum
 @end
 
 
-@interface UpdateGroupResponse : PlayFabBaseModel
+@interface GroupsUpdateGroupResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -1069,7 +1052,7 @@ typedef enum
 /// <summary>
 /// Indicates which operation was completed, either Created, Updated, Deleted or None.
 /// </summary>
-@property OperationTypes SetResult; 
+@property GroupsOperationTypes SetResult; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -1078,7 +1061,7 @@ typedef enum
 @end
 
 
-@interface UpdateGroupRoleRequest : PlayFabBaseModel
+@interface GroupsUpdateGroupRoleRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -1089,7 +1072,7 @@ typedef enum
 /// <summary>
 /// The identifier of the group
 /// </summary>
-@property EntityKey Group; 
+@property GroupsEntityKey* Group; 
 
 /// <summary>
 /// ID of the role to update. Role IDs must be between 1 and 64 characters long.
@@ -1105,7 +1088,7 @@ typedef enum
 @end
 
 
-@interface UpdateGroupRoleResponse : PlayFabBaseModel
+@interface GroupsUpdateGroupRoleResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -1121,7 +1104,7 @@ typedef enum
 /// <summary>
 /// Indicates which operation was completed, either Created, Updated, Deleted or None.
 /// </summary>
-@property OperationTypes SetResult; 
+@property GroupsOperationTypes SetResult; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

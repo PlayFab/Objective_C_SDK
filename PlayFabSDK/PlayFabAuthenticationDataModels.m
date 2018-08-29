@@ -1,7 +1,7 @@
 #import "PlayFabAuthenticationDataModels.h"
 
 
-@implementation EntityKey
+@implementation AuthenticationEntityKey
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -14,15 +14,13 @@
     
     self.Id = [properties valueForKey:@"Id"];
     
-    self.Type = (EntityTypes)[properties valueForKey:@"Type"];
-    
-    self.TypeString = [properties valueForKey:@"TypeString"];
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
 }
 @end
-@implementation GetEntityTokenRequest
+@implementation AuthenticationGetEntityTokenRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -33,13 +31,13 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[AuthenticationEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
 
     return self;
 }
 @end
-@implementation GetEntityTokenResponse
+@implementation AuthenticationGetEntityTokenResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -50,7 +48,7 @@
     }
 
     
-    self.Entity = [[EntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    self.Entity = [[AuthenticationEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.EntityToken = [properties valueForKey:@"EntityToken"];
     
