@@ -1,4 +1,4 @@
 #include "PlayFabVersion.h"
 
-NSString * const sdkVersion = @"0.0.180924";
-NSString * const versionString = @"ObjCSDK-0.0.180924";
+NSString * const sdkVersion = @"0.0.181001";
+NSString * const versionString = @"ObjCSDK-0.0.181001";
