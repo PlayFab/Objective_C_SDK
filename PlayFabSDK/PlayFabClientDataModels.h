@@ -688,6 +688,8 @@ typedef enum
 
 @class ClientEmptyResponse;
 
+@class ClientEmptyResult;
+
 @class ClientEntityKey;
 
 @class ClientEntityTokenResponse;
@@ -844,6 +846,10 @@ typedef enum
 
 @class ClientGetPlayFabIDsFromTwitchIDsResult;
 
+@class ClientGetPlayFabIDsFromXboxLiveIDsRequest;
+
+@class ClientGetPlayFabIDsFromXboxLiveIDsResult;
+
 @class ClientGetPublisherDataRequest;
 
 @class ClientGetPublisherDataResult;
@@ -944,6 +950,8 @@ typedef enum
 
 @class ClientLinkNintendoSwitchDeviceIdResult;
 
+@class ClientLinkOpenIdConnectRequest;
+
 @class ClientLinkSteamAccountRequest;
 
 @class ClientLinkSteamAccountResult;
@@ -987,6 +995,8 @@ typedef enum
 @class ClientLoginWithKongregateRequest;
 
 @class ClientLoginWithNintendoSwitchDeviceIdRequest;
+
+@class ClientLoginWithOpenIdConnectRequest;
 
 @class ClientLoginWithPlayFabRequest;
 
@@ -1123,6 +1133,8 @@ typedef enum
 @class ClientTradeInfo;
 
 @class ClientTwitchPlayFabIdPair;
+
+@class ClientUninkOpenIdConnectRequest;
 
 @class ClientUnlinkAndroidDeviceIDRequest;
 
@@ -1275,6 +1287,8 @@ typedef enum
 @class ClientWriteEventResponse;
 
 @class ClientWriteTitleEventRequest;
+
+@class ClientXboxLiveAccountPlayFabIdPair;
 
 
 
@@ -2169,6 +2183,16 @@ typedef enum
 @end
 
 
+@interface ClientEmptyResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /// Combined entity type and ID structure which uniquely identifies a single entity.
 /// </summary>
@@ -2475,11 +2499,6 @@ typedef enum
 /// duration in seconds this server has been running
 /// </summary>
 @property NSNumber* RunTime; 
-
-/// <summary>
-/// IPV4 address of the server
-/// </summary>
-@property NSString* ServerHostname; 
 
 /// <summary>
 /// IPV4 address of the server
@@ -3882,6 +3901,38 @@ typedef enum
 @end
 
 
+@interface ClientGetPlayFabIDsFromXboxLiveIDsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// The ID of Xbox Live sandbox.
+/// </summary>
+@property NSString* Sandbox; 
+
+/// <summary>
+/// Array of unique Xbox Live account identifiers for which the title needs to get PlayFab identifiers.
+/// </summary>
+@property NSArray* XboxLiveAccountIDs; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientGetPlayFabIDsFromXboxLiveIDsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of PlayStation Network identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientGetPublisherDataRequest : PlayFabBaseModel
 
 
@@ -4809,6 +4860,28 @@ typedef enum
 @end
 
 
+@interface ClientLinkOpenIdConnectRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// A name that identifies which configured OpenID Connect provider relationship to use. Maximum 100 characters.
+/// </summary>
+@property NSString* ConnectionId; 
+
+/// <summary>
+/// If another user is already linked to a specific OpenId Connect user, unlink the other user and re-link.
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/// The JSON Web token (JWT) returned by the identity provider after login. Represented as the id_token field in the identity provider's response. Used to validate the request and find the user ID (OpenID Connect subject) to link with.
+/// </summary>
+@property NSString* IdToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientLinkSteamAccountRequest : PlayFabBaseModel
 
 
@@ -5466,6 +5539,53 @@ typedef enum
 @end
 
 
+@interface ClientLoginWithOpenIdConnectRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// A name that identifies which configured OpenID Connect provider relationship to use. Maximum 100 characters.
+/// </summary>
+@property NSString* ConnectionId; 
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/// The JSON Web token (JWT) returned by the identity provider after login. Represented as the id_token field in the identity provider's response.
+/// </summary>
+@property NSString* IdToken; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
+/// </summary>
+@property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientLoginWithPlayFabRequest : PlayFabBaseModel
 
 
@@ -5739,11 +5859,6 @@ typedef enum
 /// time in milliseconds the application is configured to wait on matchmaking results
 /// </summary>
 @property NSNumber* PollWaitTimeMS; 
-
-/// <summary>
-/// IPV4 address of the server
-/// </summary>
-@property NSString* ServerHostname; 
 
 /// <summary>
 /// IPV4 address of the server
@@ -6909,11 +7024,6 @@ typedef enum
 /// <summary>
 /// server IPV4 address
 /// </summary>
-@property NSString* ServerHostname; 
-
-/// <summary>
-/// server IPV4 address
-/// </summary>
 @property NSString* ServerIPV4Address; 
 
 /// <summary>
@@ -7337,6 +7447,18 @@ typedef enum
 /// Unique Twitch identifier for a user.
 /// </summary>
 @property NSString* TwitchId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUninkOpenIdConnectRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// A name that identifies which configured OpenID Connect provider relationship to use. Maximum 100 characters.
+/// </summary>
+@property NSString* ConnectionId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -8609,6 +8731,23 @@ typedef enum
 /// The time (in UTC) associated with this event. The value dafaults to the current time.
 /// </summary>
 @property NSDate* Timestamp; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientXboxLiveAccountPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+
+/// <summary>
+/// Unique Xbox Live identifier for a user.
+/// </summary>
+@property NSString* XboxLiveAccountId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

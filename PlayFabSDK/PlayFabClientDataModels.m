@@ -1034,6 +1034,21 @@
     return self;
 }
 @end
+@implementation ClientEmptyResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation ClientEntityKey
 
 
@@ -1286,8 +1301,6 @@
     self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
     
     self.RunTime = [properties valueForKey:@"RunTime"];
-    
-    self.ServerHostname = [properties valueForKey:@"ServerHostname"];
     
     self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
     
@@ -3094,6 +3107,58 @@
     return self;
 }
 @end
+@implementation ClientGetPlayFabIDsFromXboxLiveIDsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Sandbox = [properties valueForKey:@"Sandbox"];
+    
+    if ([properties objectForKey:@"XboxLiveAccountIDs"]){
+    NSArray* member_list = [properties objectForKey:@"XboxLiveAccountIDs"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.XboxLiveAccountIDs = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ClientGetPlayFabIDsFromXboxLiveIDsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientXboxLiveAccountPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientGetPublisherDataRequest
 
 
@@ -4182,6 +4247,27 @@
     return self;
 }
 @end
+@implementation ClientLinkOpenIdConnectRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.IdToken = [properties valueForKey:@"IdToken"];
+    
+
+    return self;
+}
+@end
 @implementation ClientLinkSteamAccountRequest
 
 
@@ -4714,6 +4800,37 @@
     return self;
 }
 @end
+@implementation ClientLoginWithOpenIdConnectRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.IdToken = [properties valueForKey:@"IdToken"];
+    
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
 @implementation ClientLoginWithPlayFabRequest
 
 
@@ -4919,8 +5036,6 @@
     self.LobbyID = [properties valueForKey:@"LobbyID"];
     
     self.PollWaitTimeMS = [properties valueForKey:@"PollWaitTimeMS"];
-    
-    self.ServerHostname = [properties valueForKey:@"ServerHostname"];
     
     self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
     
@@ -6067,8 +6182,6 @@
     
     self.Password = [properties valueForKey:@"Password"];
     
-    self.ServerHostname = [properties valueForKey:@"ServerHostname"];
-    
     self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
     
     self.ServerIPV6Address = [properties valueForKey:@"ServerIPV6Address"];
@@ -6505,6 +6618,23 @@
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
     self.TwitchId = [properties valueForKey:@"TwitchId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUninkOpenIdConnectRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
     
 
     return self;
@@ -8023,6 +8153,25 @@
     self.EventName = [properties valueForKey:@"EventName"];
     
     self.Timestamp = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Timestamp"]];
+    
+
+    return self;
+}
+@end
+@implementation ClientXboxLiveAccountPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+    self.XboxLiveAccountId = [properties valueForKey:@"XboxLiveAccountId"];
     
 
     return self;

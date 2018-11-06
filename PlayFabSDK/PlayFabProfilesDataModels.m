@@ -41,6 +41,33 @@
     return self;
 }
 @end
+@implementation ProfilesEntityLineage
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CharacterId = [properties valueForKey:@"CharacterId"];
+    
+    self.GroupId = [properties valueForKey:@"GroupId"];
+    
+    self.MasterPlayerAccountId = [properties valueForKey:@"MasterPlayerAccountId"];
+    
+    self.NamespaceId = [properties valueForKey:@"NamespaceId"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+    self.TitlePlayerAccountId = [properties valueForKey:@"TitlePlayerAccountId"];
+    
+
+    return self;
+}
+@end
 @implementation ProfilesEntityPermissionStatement
 
 
@@ -93,7 +120,11 @@
 }
 
     
+    self.FriendlyName = [properties valueForKey:@"FriendlyName"];
+    
     self.Language = [properties valueForKey:@"Language"];
+    
+    self.Lineage = [[ProfilesEntityLineage new] initWithDictionary:[properties objectForKey:@"Lineage"]];
     
     if ([properties objectForKey:@"Objects"]){
     NSDictionary* member_list = [properties objectForKey:@"Objects"];
