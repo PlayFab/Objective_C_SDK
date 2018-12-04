@@ -385,6 +385,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Creates a multiplayer server build with a custom container and returns information about the build creation request.
+/// </summary>
 @interface MultiplayerCreateBuildWithCustomContainerRequest : PlayFabBaseModel
 
 
@@ -527,6 +530,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Creates a multiplayer server build with a managed container and returns information about the build creation request.
+/// </summary>
 @interface MultiplayerCreateBuildWithManagedContainerRequest : PlayFabBaseModel
 
 
@@ -654,6 +660,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Creates a remote user to log on to a VM for a multiplayer server build in a specific region. Returns user credential information necessary to log on.
+/// </summary>
 @interface MultiplayerCreateRemoteUserRequest : PlayFabBaseModel
 
 
@@ -711,6 +720,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Deletes a multiplayer server game asset for a title.
+/// </summary>
 @interface MultiplayerDeleteAssetRequest : PlayFabBaseModel
 
 
@@ -723,6 +735,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Deletes a multiplayer server build.
+/// </summary>
 @interface MultiplayerDeleteBuildRequest : PlayFabBaseModel
 
 
@@ -735,6 +750,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Deletes a multiplayer server game certificate.
+/// </summary>
 @interface MultiplayerDeleteCertificateRequest : PlayFabBaseModel
 
 
@@ -747,6 +765,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Deletes a remote user to log on to a VM for a multiplayer server build in a specific region. Returns user credential information necessary to log on.
+/// </summary>
 @interface MultiplayerDeleteRemoteUserRequest : PlayFabBaseModel
 
 
@@ -784,6 +805,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Enables the multiplayer server feature for a title and returns the enabled status. The enabled status can be Initializing, Enabled, and Disabled. It can up to 20 minutes or more for the title to be enabled for the feature. On average, it can take up to 20 minutes for the title to be enabled for the feature.
+/// </summary>
 @interface MultiplayerEnableMultiplayerServersForTitleRequest : PlayFabBaseModel
 
 /**/
@@ -840,6 +864,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets the URL to upload assets to.
+/// </summary>
 @interface MultiplayerGetAssetUploadUrlRequest : PlayFabBaseModel
 
 
@@ -872,6 +899,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns the details about a multiplayer server build.
+/// </summary>
 @interface MultiplayerGetBuildRequest : PlayFabBaseModel
 
 
@@ -896,6 +926,11 @@ typedef enum
 /// The build name.
 /// </summary>
 @property NSString* BuildName; 
+
+/// <summary>
+/// The current build status.
+/// </summary>
+@property NSString* BuildStatus; 
 
 /// <summary>
 /// The flavor of container of he build.
@@ -964,6 +999,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets credentials to the container registry where game developers can upload custom container images to before creating a new build.
+/// </summary>
 @interface MultiplayerGetContainerRegistryCredentialsRequest : PlayFabBaseModel
 
 /**/
@@ -996,6 +1034,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets multiplayer server session details for a build in a specific region.
+/// </summary>
 @interface MultiplayerGetMultiplayerServerDetailsRequest : PlayFabBaseModel
 
 
@@ -1025,6 +1066,11 @@ typedef enum
 /// The connected players in the multiplayer server.
 /// </summary>
 @property NSArray* ConnectedPlayers; 
+
+/// <summary>
+/// The fully qualified domain name of the virtual machine that is hosting this multiplayer server.
+/// </summary>
+@property NSString* FQDN; 
 
 /// <summary>
 /// The IPv4 address of the virtual machine that is hosting this multiplayer server.
@@ -1073,6 +1119,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets a remote login endpoint to a VM that is hosting a multiplayer server build in a specific region.
+/// </summary>
 @interface MultiplayerGetRemoteLoginEndpointRequest : PlayFabBaseModel
 
 
@@ -1115,6 +1164,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets the status of whether a title is enabled for the multiplayer server feature. The enabled status can be Initializing, Enabled, and Disabled.
+/// </summary>
 @interface MultiplayerGetTitleEnabledForMultiplayerServersStatusRequest : PlayFabBaseModel
 
 /**/
@@ -1137,6 +1189,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of multiplayer server game asset summaries for a title.
+/// </summary>
 @interface MultiplayerListAssetSummariesRequest : PlayFabBaseModel
 
 
@@ -1179,6 +1234,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of summarized details of all multiplayer server builds for a title.
+/// </summary>
 @interface MultiplayerListBuildSummariesRequest : PlayFabBaseModel
 
 
@@ -1221,6 +1279,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of multiplayer server game certificates for a title.
+/// </summary>
 @interface MultiplayerListCertificateSummariesRequest : PlayFabBaseModel
 
 
@@ -1263,6 +1324,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of the container images that have been uploaded to the container registry for a title.
+/// </summary>
 @interface MultiplayerListContainerImagesRequest : PlayFabBaseModel
 
 
@@ -1305,6 +1369,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of the tags for a particular container image that exists in the container registry for a title.
+/// </summary>
 @interface MultiplayerListContainerImageTagsRequest : PlayFabBaseModel
 
 
@@ -1332,6 +1399,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of multiplayer servers for a build in a specific region.
+/// </summary>
 @interface MultiplayerListMultiplayerServersRequest : PlayFabBaseModel
 
 
@@ -1384,6 +1454,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of quality of service servers.
+/// </summary>
 @interface MultiplayerListQosServersRequest : PlayFabBaseModel
 
 /**/
@@ -1416,6 +1489,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Returns a list of virtual machines for a title.
+/// </summary>
 @interface MultiplayerListVirtualMachineSummariesRequest : PlayFabBaseModel
 
 
@@ -1492,6 +1568,11 @@ typedef enum
 @property NSString* ServerId; 
 
 /// <summary>
+/// The title generated guid string session ID of the multiplayer server.
+/// </summary>
+@property NSString* SessionId; 
+
+/// <summary>
 /// The state of the multiplayer server.
 /// </summary>
 @property NSString* State; 
@@ -1544,6 +1625,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Requests a multiplayer server session from a particular build in any of the given preferred regions.
+/// </summary>
 @interface MultiplayerRequestMultiplayerServerRequest : PlayFabBaseModel
 
 
@@ -1551,6 +1635,11 @@ typedef enum
 /// The guid string build ID of the multiplayer server to request.
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/// Initial list of players (potentially matchmade) allowed to connect to the game. The game server can use this list to validate players connecting to it.
+/// </summary>
+@property NSArray* InitialPlayers; 
 
 /// <summary>
 /// The preferred regions to request a multiplayer server from.
@@ -1578,6 +1667,11 @@ typedef enum
 /// The connected players in the multiplayer server.
 /// </summary>
 @property NSArray* ConnectedPlayers; 
+
+/// <summary>
+/// The fully qualified domain name of the virtual machine that is hosting this multiplayer server.
+/// </summary>
+@property NSString* FQDN; 
 
 /// <summary>
 /// The IPv4 address of the virtual machine that is hosting this multiplayer server.
@@ -1626,6 +1720,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Gets new credentials to the container registry where game developers can upload custom container images to before creating a new build.
+/// </summary>
 @interface MultiplayerRolloverContainerRegistryCredentialsRequest : PlayFabBaseModel
 
 /**/
@@ -1658,6 +1755,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Executes the shutdown callback from the GSDK and terminates the multiplayer server session. The callback in the GSDK will allow for graceful shutdown with a 15 minute timeoutIf graceful shutdown has not been completed before 15 minutes have elapsed, the multiplayer server session will be forcefully terminated on it's own.
+/// </summary>
 @interface MultiplayerShutdownMultiplayerServerRequest : PlayFabBaseModel
 
 
@@ -1680,6 +1780,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Updates a multiplayer server build's regions.
+/// </summary>
 @interface MultiplayerUpdateBuildRegionsRequest : PlayFabBaseModel
 
 
@@ -1697,6 +1800,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Uploads a multiplayer server game certificate.
+/// </summary>
 @interface MultiplayerUploadCertificateRequest : PlayFabBaseModel
 
 

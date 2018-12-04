@@ -804,6 +804,8 @@
     
     self.BuildName = [properties valueForKey:@"BuildName"];
     
+    self.BuildStatus = [properties valueForKey:@"BuildStatus"];
+    
     self.pfContainerFlavor = (MultiplayerContainerFlavor)[properties valueForKey:@"MultiplayerContainerFlavor"];
     
     self.ContainerRunCommand = [properties valueForKey:@"ContainerRunCommand"];
@@ -949,6 +951,8 @@
     self.ConnectedPlayers = [mutable_storage copy];
 }
 
+    
+    self.FQDN = [properties valueForKey:@"FQDN"];
     
     self.IPV4Address = [properties valueForKey:@"IPV4Address"];
     
@@ -1459,6 +1463,8 @@
     
     self.ServerId = [properties valueForKey:@"ServerId"];
     
+    self.SessionId = [properties valueForKey:@"SessionId"];
+    
     self.State = [properties valueForKey:@"State"];
     
     self.VmId = [properties valueForKey:@"VmId"];
@@ -1520,6 +1526,16 @@
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
+    if ([properties objectForKey:@"InitialPlayers"]){
+    NSArray* member_list = [properties objectForKey:@"InitialPlayers"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.InitialPlayers = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"PreferredRegions"]){
     NSArray* member_list = [properties objectForKey:@"PreferredRegions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -1558,6 +1574,8 @@
     self.ConnectedPlayers = [mutable_storage copy];
 }
 
+    
+    self.FQDN = [properties valueForKey:@"FQDN"];
     
     self.IPV4Address = [properties valueForKey:@"IPV4Address"];
     

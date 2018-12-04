@@ -107,6 +107,9 @@ typedef enum
 @end
 
 
+/// <summary>
+/// Executes CloudScript with the entity profile that is defined in the request.
+/// </summary>
 @interface CloudScriptExecuteEntityCloudScriptRequest : PlayFabBaseModel
 
 
