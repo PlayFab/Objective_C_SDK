@@ -32,6 +32,15 @@ typedef enum
     MultiplayerAzureVmSizeStandard_A2_v2,
     MultiplayerAzureVmSizeStandard_A4_v2,
     MultiplayerAzureVmSizeStandard_A8_v2,
+    MultiplayerAzureVmSizeStandard_F1,
+    MultiplayerAzureVmSizeStandard_F2,
+    MultiplayerAzureVmSizeStandard_F4,
+    MultiplayerAzureVmSizeStandard_F8,
+    MultiplayerAzureVmSizeStandard_F16,
+    MultiplayerAzureVmSizeStandard_F2s_v2,
+    MultiplayerAzureVmSizeStandard_F4s_v2,
+    MultiplayerAzureVmSizeStandard_F8s_v2,
+    MultiplayerAzureVmSizeStandard_F16s_v2,
     MultiplayerAzureVmSizeStandard_A1,
     MultiplayerAzureVmSizeStandard_A2,
     MultiplayerAzureVmSizeStandard_A3,
@@ -260,7 +269,7 @@ typedef enum
 @property NSNumber* StandbyServers; 
 
 /// <summary>
-/// The status of multiplayer servers in the build region.
+/// The status of multiplayer servers in the build region. Valid values are - Unknown, Initialized, Deploying, Deployed, Unhealthy.
 /// </summary>
 @property NSString* Status; 
 /**/
@@ -427,7 +436,7 @@ typedef enum
 @property NSArray* GameCertificateReferences; 
 
 /// <summary>
-/// Metadata to tag the build.
+/// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).
 /// </summary>
 @property NSDictionary* Metadata; 
 
@@ -557,7 +566,7 @@ typedef enum
 @property NSArray* GameCertificateReferences; 
 
 /// <summary>
-/// Metadata to tag the build.
+/// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).
 /// </summary>
 @property NSDictionary* Metadata; 
 
@@ -928,7 +937,7 @@ typedef enum
 @property NSString* BuildName; 
 
 /// <summary>
-/// The current build status.
+/// The current build status. Valid values are - Deploying, Deployed, DeletingRegion, Unhealthy.
 /// </summary>
 @property NSString* BuildStatus; 
 
@@ -963,7 +972,7 @@ typedef enum
 @property NSArray* GameCertificateReferences; 
 
 /// <summary>
-/// The metadata of the build.
+/// Metadata of the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).
 /// </summary>
 @property NSDictionary* Metadata; 
 
@@ -1637,17 +1646,17 @@ typedef enum
 @property NSString* BuildId; 
 
 /// <summary>
-/// Initial list of players (potentially matchmade) allowed to connect to the game. The game server can use this list to validate players connecting to it.
+/// Initial list of players (potentially matchmade) allowed to connect to the game. This list is passed to the game server when requested (via GSDK) and can be used to validate players connecting to it.
 /// </summary>
 @property NSArray* InitialPlayers; 
 
 /// <summary>
-/// The preferred regions to request a multiplayer server from.
+/// The preferred regions to request a multiplayer server from. The Multiplayer Service will iterate through the regions in the specified order and allocate a server from the first one that has servers available.
 /// </summary>
 @property NSArray* PreferredRegions; 
 
 /// <summary>
-/// Data encoded as a string that is passed to the game server when requested. This can be used to share a cryptographic secret for servers to authenticate clients or to communicate information such as game mode or map through the request flow.
+/// Data encoded as a string that is passed to the game server when requested. This can be used to to communicate information such as game mode or map through the request flow.
 /// </summary>
 @property NSString* SessionCookie; 
 

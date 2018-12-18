@@ -37,6 +37,8 @@ typedef void(^ConfirmPurchaseCallback)(ClientConfirmPurchaseResult* result, NSOb
 		
 typedef void(^ConsumeItemCallback)(ClientConsumeItemResult* result, NSObject* userData);
 		
+typedef void(^ConsumePSNEntitlementsCallback)(ClientConsumePSNEntitlementsResult* result, NSObject* userData);
+		
 typedef void(^ConsumeXboxEntitlementsCallback)(ClientConsumeXboxEntitlementsResult* result, NSObject* userData);
 		
 typedef void(^CreateSharedGroupCallback)(ClientCreateSharedGroupResult* result, NSObject* userData);
@@ -111,6 +113,8 @@ typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(ClientGetPlayFabIDsFromKon
 		
 typedef void(^GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result, NSObject* userData);
 		
+typedef void(^GetPlayFabIDsFromPSNAccountIDsCallback)(ClientGetPlayFabIDsFromPSNAccountIDsResult* result, NSObject* userData);
+		
 typedef void(^GetPlayFabIDsFromSteamIDsCallback)(ClientGetPlayFabIDsFromSteamIDsResult* result, NSObject* userData);
 		
 typedef void(^GetPlayFabIDsFromTwitchIDsCallback)(ClientGetPlayFabIDsFromTwitchIDsResult* result, NSObject* userData);
@@ -169,6 +173,8 @@ typedef void(^LinkNintendoSwitchDeviceIdCallback)(ClientLinkNintendoSwitchDevice
 		
 typedef void(^LinkOpenIdConnectCallback)(ClientEmptyResult* result, NSObject* userData);
 		
+typedef void(^LinkPSNAccountCallback)(ClientLinkPSNAccountResult* result, NSObject* userData);
+		
 typedef void(^LinkSteamAccountCallback)(ClientLinkSteamAccountResult* result, NSObject* userData);
 		
 typedef void(^LinkTwitchCallback)(ClientLinkTwitchAccountResult* result, NSObject* userData);
@@ -201,6 +207,8 @@ typedef void(^LoginWithOpenIdConnectCallback)(ClientLoginResult* result, NSObjec
 		
 typedef void(^LoginWithPlayFabCallback)(ClientLoginResult* result, NSObject* userData);
 		
+typedef void(^LoginWithPSNCallback)(ClientLoginResult* result, NSObject* userData);
+		
 typedef void(^LoginWithSteamCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithTwitchCallback)(ClientLoginResult* result, NSObject* userData);
@@ -218,6 +226,8 @@ typedef void(^PayForPurchaseCallback)(ClientPayForPurchaseResult* result, NSObje
 typedef void(^PurchaseItemCallback)(ClientPurchaseItemResult* result, NSObject* userData);
 		
 typedef void(^RedeemCouponCallback)(ClientRedeemCouponResult* result, NSObject* userData);
+		
+typedef void(^RefreshPSNAuthTokenCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
 typedef void(^RegisterForIOSPushNotificationCallback)(ClientRegisterForIOSPushNotificationResult* result, NSObject* userData);
 		
@@ -270,6 +280,8 @@ typedef void(^UnlinkKongregateCallback)(ClientUnlinkKongregateAccountResult* res
 typedef void(^UnlinkNintendoSwitchDeviceIdCallback)(ClientUnlinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
 typedef void(^UnlinkOpenIdConnectCallback)(ClientEmptyResponse* result, NSObject* userData);
+		
+typedef void(^UnlinkPSNAccountCallback)(ClientUnlinkPSNAccountResult* result, NSObject* userData);
 		
 typedef void(^UnlinkSteamAccountCallback)(ClientUnlinkSteamAccountResult* result, NSObject* userData);
 		
@@ -343,6 +355,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) ConfirmPurchase:(ClientConfirmPurchaseRequest*)request success:(ConfirmPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ConsumeItem:(ClientConsumeItemRequest*)request success:(ConsumeItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ConsumePSNEntitlements:(ClientConsumePSNEntitlementsRequest*)request success:(ConsumePSNEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ConsumeXboxEntitlements:(ClientConsumeXboxEntitlementsRequest*)request success:(ConsumeXboxEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -418,6 +432,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) GetPlayFabIDsFromNintendoSwitchDeviceIds:(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest*)request success:(GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetPlayFabIDsFromPSNAccountIDs:(ClientGetPlayFabIDsFromPSNAccountIDsRequest*)request success:(GetPlayFabIDsFromPSNAccountIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) GetPlayFabIDsFromSteamIDs:(ClientGetPlayFabIDsFromSteamIDsRequest*)request success:(GetPlayFabIDsFromSteamIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromTwitchIDs:(ClientGetPlayFabIDsFromTwitchIDsRequest*)request success:(GetPlayFabIDsFromTwitchIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -476,6 +492,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) LinkOpenIdConnect:(ClientLinkOpenIdConnectRequest*)request success:(LinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LinkPSNAccount:(ClientLinkPSNAccountRequest*)request success:(LinkPSNAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LinkSteamAccount:(ClientLinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkTwitch:(ClientLinkTwitchAccountRequest*)request success:(LinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -508,6 +526,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) LoginWithPlayFab:(ClientLoginWithPlayFabRequest*)request success:(LoginWithPlayFabCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LoginWithPSN:(ClientLoginWithPSNRequest*)request success:(LoginWithPSNCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LoginWithSteam:(ClientLoginWithSteamRequest*)request success:(LoginWithSteamCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithTwitch:(ClientLoginWithTwitchRequest*)request success:(LoginWithTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -525,6 +545,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) PurchaseItem:(ClientPurchaseItemRequest*)request success:(PurchaseItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RedeemCoupon:(ClientRedeemCouponRequest*)request success:(RedeemCouponCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) RefreshPSNAuthToken:(ClientRefreshPSNAuthTokenRequest*)request success:(RefreshPSNAuthTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RegisterForIOSPushNotification:(ClientRegisterForIOSPushNotificationRequest*)request success:(RegisterForIOSPushNotificationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -577,6 +599,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) UnlinkNintendoSwitchDeviceId:(ClientUnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkOpenIdConnect:(ClientUninkOpenIdConnectRequest*)request success:(UnlinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UnlinkPSNAccount:(UnlinkPSNAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkSteamAccount:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		

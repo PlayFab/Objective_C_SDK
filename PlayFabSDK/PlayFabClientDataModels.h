@@ -668,6 +668,10 @@ typedef enum
 
 @class ClientConsumeItemResult;
 
+@class ClientConsumePSNEntitlementsRequest;
+
+@class ClientConsumePSNEntitlementsResult;
+
 @class ClientConsumeXboxEntitlementsRequest;
 
 @class ClientConsumeXboxEntitlementsResult;
@@ -838,6 +842,10 @@ typedef enum
 
 @class ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult;
 
+@class ClientGetPlayFabIDsFromPSNAccountIDsRequest;
+
+@class ClientGetPlayFabIDsFromPSNAccountIDsResult;
+
 @class ClientGetPlayFabIDsFromSteamIDsRequest;
 
 @class ClientGetPlayFabIDsFromSteamIDsResult;
@@ -952,6 +960,10 @@ typedef enum
 
 @class ClientLinkOpenIdConnectRequest;
 
+@class ClientLinkPSNAccountRequest;
+
+@class ClientLinkPSNAccountResult;
+
 @class ClientLinkSteamAccountRequest;
 
 @class ClientLinkSteamAccountResult;
@@ -1000,6 +1012,8 @@ typedef enum
 
 @class ClientLoginWithPlayFabRequest;
 
+@class ClientLoginWithPSNRequest;
+
 @class ClientLoginWithSteamRequest;
 
 @class ClientLoginWithTwitchRequest;
@@ -1038,6 +1052,8 @@ typedef enum
 
 @class ClientPlayerStatisticVersion;
 
+@class ClientPSNAccountPlayFabIdPair;
+
 @class ClientPurchaseItemRequest;
 
 @class ClientPurchaseItemResult;
@@ -1047,6 +1063,8 @@ typedef enum
 @class ClientRedeemCouponRequest;
 
 @class ClientRedeemCouponResult;
+
+@class ClientRefreshPSNAuthTokenRequest;
 
 @class ClientRegionInfo;
 
@@ -1171,6 +1189,10 @@ typedef enum
 @class ClientUnlinkNintendoSwitchDeviceIdRequest;
 
 @class ClientUnlinkNintendoSwitchDeviceIdResult;
+
+@class ClientUnlinkPSNAccountRequest;
+
+@class ClientUnlinkPSNAccountResult;
 
 @class ClientUnlinkSteamAccountRequest;
 
@@ -2035,6 +2057,38 @@ may mean that the provider hasn't completed some operation required to finalize 
 /// Number of uses remaining on the item.
 /// </summary>
 @property NSNumber* RemainingUses; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumePSNEntitlementsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Which catalog to match granted entitlements against. If null, defaults to title default catalog
+/// </summary>
+@property NSString* CatalogVersion; 
+
+/// <summary>
+/// Id of the PSN service label to consume entitlements from
+/// </summary>
+@property NSNumber* ServiceLabel; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumePSNEntitlementsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Array of items granted to the player as a result of consuming entitlements.
+/// </summary>
+@property NSArray* ItemsGranted; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -3972,6 +4026,41 @@ the title, the recommendation is to not store this data locally.
 @end
 
 
+@interface ClientGetPlayFabIDsFromPSNAccountIDsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// </summary>
+@property NSNumber* IssuerId; 
+
+/// <summary>
+/// Array of unique PlayStation Network identifiers for which the title needs to get PlayFab identifiers.
+/// </summary>
+@property NSArray* PSNAccountIDs; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/// For PlayStation Network identifiers which have not been linked to PlayFab accounts, null will be returned.
+/// </summary>
+@interface ClientGetPlayFabIDsFromPSNAccountIDsResult : PlayFabBaseModel
+
+
+/// <summary>
+/// Mapping of PlayStation Network identifiers to PlayFab identifiers.
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientGetPlayFabIDsFromSteamIDsRequest : PlayFabBaseModel
 
 
@@ -5079,6 +5168,43 @@ Title ID, please be sure to first unlink all accounts from Facebook, or delete a
 @end
 
 
+@interface ClientLinkPSNAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Authentication code provided by the PlayStation Network.
+/// </summary>
+@property NSString* AuthCode; 
+
+/// <summary>
+/// If another user is already linked to the account, unlink the other user and re-link.
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// </summary>
+@property NSNumber* IssuerId; 
+
+/// <summary>
+/// Redirect URI supplied to PSN when requesting an auth code
+/// </summary>
+@property NSString* RedirectUri; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientLinkPSNAccountResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /// Steam authentication is accomplished with the Steam Session Ticket. More information on the Ticket can be
 found in the Steamworks SDK, here: https://partner.steamgames.com/documentation/auth (requires sign-in). NOTE: For Steam authentication
@@ -5914,6 +6040,64 @@ perform this validation locally, so that future updates to the username or passw
 
 
 /// <summary>
+/// If this is the first time a user has signed in with the PlayStation Network account and CreateAccount
+is set to true, a new PlayFab account will be created and linked to the PSN account. In this case, no email or username will be
+associated with the PlayFab account. Otherwise, if no PlayFab account is linked to the PSN account, an error indicating this will
+be returned, so that the title can guide the user through creation of a PlayFab account.
+/// </summary>
+@interface ClientLoginWithPSNRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Auth code provided by the PSN OAuth provider.
+/// </summary>
+@property NSString* AuthCode; 
+
+/// <summary>
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/// Flags for which pieces of info to return for the user.
+/// </summary>
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// </summary>
+@property NSNumber* IssuerId; 
+
+/// <summary>
+/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
+/// </summary>
+@property bool LoginTitlePlayerAccountEntity; 
+
+/// <summary>
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/// Redirect URI supplied to PSN when requesting an auth code
+/// </summary>
+@property NSString* RedirectUri; 
+
+/// <summary>
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
 /// Steam sign-in is accomplished with the Steam Session Ticket. More information on the Ticket can be
 found in the Steamworks SDK, here: https://partner.steamgames.com/documentation/auth (requires sign-in). NOTE: For Steam authentication
 to work, the title must be configured with the Steam Application ID and Web API Key in the PlayFab Game Manager (under Steam in the
@@ -6714,6 +6898,23 @@ be returned, so that the title can guide the user through creation of a PlayFab 
 @end
 
 
+@interface ClientPSNAccountPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the PlayStation Network identifier.
+/// </summary>
+@property NSString* PlayFabId; 
+
+/// <summary>
+/// Unique PlayStation Network identifier for a user.
+/// </summary>
+@property NSString* PSNAccountId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /// Please note that the processing time for inventory grants and purchases increases fractionally
 the more items are in the inventory, and the more items are in the grant/purchase operation (with each item in a bundle being a
@@ -6826,6 +7027,28 @@ consumed code, or a code which has not yet been created in the service, will res
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientRefreshPSNAuthTokenRequest : PlayFabBaseModel
+
+
+/// <summary>
+/// Auth code returned by PSN OAuth system.
+/// </summary>
+@property NSString* AuthCode; 
+
+/// <summary>
+/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// </summary>
+@property NSNumber* IssuerId; 
+
+/// <summary>
+/// Redirect URI supplied to PSN when requesting an auth code
+/// </summary>
+@property NSString* RedirectUri; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -8019,6 +8242,23 @@ in the friends list from a social site integration (such as Facebook or Steam) w
 
 
 @interface ClientUnlinkNintendoSwitchDeviceIdResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlinkPSNAccountRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlinkPSNAccountResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;

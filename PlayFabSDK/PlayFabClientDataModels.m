@@ -816,6 +816,50 @@
     return self;
 }
 @end
+@implementation ClientConsumePSNEntitlementsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    self.ServiceLabel = [properties valueForKey:@"ServiceLabel"];
+    
+
+    return self;
+}
+@end
+@implementation ClientConsumePSNEntitlementsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"ItemsGranted"]){
+    NSArray* member_list = [properties objectForKey:@"ItemsGranted"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.ItemsGranted = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientConsumeXboxEntitlementsRequest
 
 
@@ -3007,6 +3051,58 @@
     return self;
 }
 @end
+@implementation ClientGetPlayFabIDsFromPSNAccountIDsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.IssuerId = [properties valueForKey:@"IssuerId"];
+    
+    if ([properties objectForKey:@"PSNAccountIDs"]){
+    NSArray* member_list = [properties objectForKey:@"PSNAccountIDs"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.PSNAccountIDs = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ClientGetPlayFabIDsFromPSNAccountIDsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPSNAccountPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientGetPlayFabIDsFromSteamIDsRequest
 
 
@@ -4268,6 +4364,44 @@
     return self;
 }
 @end
+@implementation ClientLinkPSNAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AuthCode = [properties valueForKey:@"AuthCode"];
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.IssuerId = [properties valueForKey:@"IssuerId"];
+    
+    self.RedirectUri = [properties valueForKey:@"RedirectUri"];
+    
+
+    return self;
+}
+@end
+@implementation ClientLinkPSNAccountResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation ClientLinkSteamAccountRequest
 
 
@@ -4851,6 +4985,39 @@
     self.TitleId = [properties valueForKey:@"TitleId"];
     
     self.Username = [properties valueForKey:@"Username"];
+    
+
+    return self;
+}
+@end
+@implementation ClientLoginWithPSNRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AuthCode = [properties valueForKey:@"AuthCode"];
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.IssuerId = [properties valueForKey:@"IssuerId"];
+    
+    self.LoginTitlePlayerAccountEntity = [[properties valueForKey:@"LoginTitlePlayerAccountEntity"] boolValue];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.RedirectUri = [properties valueForKey:@"RedirectUri"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
     
 
     return self;
@@ -5511,6 +5678,25 @@
     return self;
 }
 @end
+@implementation ClientPSNAccountPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
+    
+    self.PSNAccountId = [properties valueForKey:@"PSNAccountId"];
+    
+
+    return self;
+}
+@end
 @implementation ClientPurchaseItemRequest
 
 
@@ -5623,6 +5809,27 @@
     self.GrantedItems = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation ClientRefreshPSNAuthTokenRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AuthCode = [properties valueForKey:@"AuthCode"];
+    
+    self.IssuerId = [properties valueForKey:@"IssuerId"];
+    
+    self.RedirectUri = [properties valueForKey:@"RedirectUri"];
     
 
     return self;
@@ -6906,6 +7113,36 @@
 }
 @end
 @implementation ClientUnlinkNintendoSwitchDeviceIdResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlinkPSNAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlinkPSNAccountResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
