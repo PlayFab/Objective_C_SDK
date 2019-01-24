@@ -5480,11 +5480,6 @@ We will be updating to show all linked devices in a future release.
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Specific Operating System version for the user's device.
 /// </summary>
 @property NSString* OS; 
@@ -5535,11 +5530,6 @@ guide the user through creation of a PlayFab account.
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -5570,11 +5560,6 @@ perform this validation locally, so that future updates do not require client up
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Password for the PlayFab account (6-100 characters)
@@ -5612,11 +5597,6 @@ perform this validation locally, so that future updates do not require client up
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
@@ -5668,11 +5648,6 @@ from Facebook, or delete all users in the first Title ID.
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -5713,11 +5688,6 @@ guide the user through creation of a PlayFab account.
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Unique Game Center player id.
@@ -5768,11 +5738,6 @@ found in the Google developer documentation (https://android-developers.googlebl
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
@@ -5834,11 +5799,6 @@ release.
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Specific Operating System version for the user's device.
 /// </summary>
 @property NSString* OS; 
@@ -5895,11 +5855,6 @@ a different PlayFab user linked with this account, then an error will be returne
 @property NSString* KongregateId; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -5930,11 +5885,6 @@ a different PlayFab user linked with this account, then an error will be returne
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Nintendo Switch unique identifier for the user's device.
@@ -5984,11 +5934,6 @@ a different PlayFab user linked with this account, then an error will be returne
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -6014,11 +5959,6 @@ perform this validation locally, so that future updates to the username or passw
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Password for the PlayFab account (6-100 characters)
@@ -6074,11 +6014,6 @@ be returned, so that the title can guide the user through creation of a PlayFab 
 @property NSNumber* IssuerId; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -6124,11 +6059,6 @@ can guide the user through creation of a PlayFab account.
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
@@ -6182,11 +6112,6 @@ a different PlayFab user linked with this account, then an error will be returne
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
@@ -6215,11 +6140,6 @@ a different PlayFab user linked with this account, then an error will be returne
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// SHA256 hash of the PublicKey generated by Windows Hello.
@@ -6258,11 +6178,6 @@ be returned, so that the title can guide the user through creation of a PlayFab 
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).
@@ -7140,11 +7055,6 @@ https://api.playfab.com/docs/pushCrashCourse/
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
-
-/// <summary>
 /// Password for the PlayFab account (6-100 characters)
 /// </summary>
 @property NSString* Password; 
@@ -7233,11 +7143,6 @@ network lists and achievements systems.
 /// Flags for which pieces of info to return for the user.
 /// </summary>
 @property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/// Formerly triggered an Entity login with a normal client login. This is now automatic, and always-on.
-/// </summary>
-@property bool LoginTitlePlayerAccountEntity; 
 
 /// <summary>
 /// Player secret that is used to verify API request signatures (Enterprise Only).

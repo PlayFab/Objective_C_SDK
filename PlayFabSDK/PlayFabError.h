@@ -416,6 +416,7 @@
         PlayFabErrorPushNotificationTemplateMissingDefaultVersion = 1418,
         PlayFabErrorPushNotificationTemplateInvalidSyntax = 1419,
         PlayFabErrorPushNotificationTemplateNoCustomPayloadForV1 = 1420,
+        PlayFabErrorNoLeaderboardForStatistic = 1421,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingCreateRequestMissing = 2003,

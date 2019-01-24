@@ -18,7 +18,9 @@ typedef enum
     MultiplayerAzureRegionSouthCentralUs,
     MultiplayerAzureRegionSoutheastAsia,
     MultiplayerAzureRegionWestEurope,
-    MultiplayerAzureRegionWestUs
+    MultiplayerAzureRegionWestUs,
+    MultiplayerAzureRegionChinaEast2,
+    MultiplayerAzureRegionChinaNorth2
 } MultiplayerAzureRegion;
 
 typedef enum
@@ -100,6 +102,8 @@ typedef enum
 @class MultiplayerCreateRemoteUserRequest;
 
 @class MultiplayerCreateRemoteUserResponse;
+
+@class MultiplayerCurrentServerStats;
 
 @class MultiplayerDeleteAssetRequest;
 
@@ -220,7 +224,7 @@ typedef enum
 
 
 /// <summary>
-/// The asset's file name. This must be a filename with the .zip, .tar, or .tar.gz extension.
+/// The asset's file name.
 /// </summary>
 @property NSString* FileName; 
 
@@ -252,6 +256,11 @@ typedef enum
 
 @interface MultiplayerBuildRegion : PlayFabBaseModel
 
+
+/// <summary>
+/// The current multiplayer server stats for the region.
+/// </summary>
+@property MultiplayerCurrentServerStats* pfCurrentServerStats; 
 
 /// <summary>
 /// The maximum number of multiplayer servers for the region.
@@ -729,6 +738,33 @@ typedef enum
 @end
 
 
+@interface MultiplayerCurrentServerStats : PlayFabBaseModel
+
+
+/// <summary>
+/// The number of active multiplayer servers.
+/// </summary>
+@property NSNumber* Active; 
+
+/// <summary>
+/// The number of multiplayer servers still downloading game resources (such as assets).
+/// </summary>
+@property NSNumber* Propping; 
+
+/// <summary>
+/// The number of standingby multiplayer servers.
+/// </summary>
+@property NSNumber* StandingBy; 
+
+/// <summary>
+/// The total number of multiplayer servers.
+/// </summary>
+@property NSNumber* Total; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /// Deletes a multiplayer server game asset for a title.
 /// </summary>
@@ -736,7 +772,7 @@ typedef enum
 
 
 /// <summary>
-/// The filename of the asset to delete. This must be a filename with the .zip, .tar, or .tar.gz extension.
+/// The filename of the asset to delete.
 /// </summary>
 @property NSString* FileName; 
 /**/
@@ -880,7 +916,7 @@ typedef enum
 
 
 /// <summary>
-/// The asset's file name to get the upload URL for. This must be a filename with the .zip, .tar, or .tar.gz extension.
+/// The asset's file name to get the upload URL for.
 /// </summary>
 @property NSString* FileName; 
 /**/
@@ -897,7 +933,7 @@ typedef enum
 @property NSString* AssetUploadUrl; 
 
 /// <summary>
-/// The asset's file name to get the upload URL for. This must be a filename will be a file with the .zip, .tar, or .tar.gz extension.
+/// The asset's file name to get the upload URL for.
 /// </summary>
 @property NSString* FileName; 
 /*

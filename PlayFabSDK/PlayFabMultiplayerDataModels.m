@@ -77,6 +77,8 @@
     }
 
     
+    self.pfCurrentServerStats = [[MultiplayerCurrentServerStats new] initWithDictionary:[properties objectForKey:@"CurrentServerStats"]];
+    
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
     self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
@@ -572,6 +574,29 @@
     self.Password = [properties valueForKey:@"Password"];
     
     self.Username = [properties valueForKey:@"Username"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCurrentServerStats
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Active = [properties valueForKey:@"Active"];
+    
+    self.Propping = [properties valueForKey:@"Propping"];
+    
+    self.StandingBy = [properties valueForKey:@"StandingBy"];
+    
+    self.Total = [properties valueForKey:@"Total"];
     
 
     return self;
