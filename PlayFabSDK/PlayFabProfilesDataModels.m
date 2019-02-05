@@ -106,6 +106,8 @@
     }
 
     
+    self.DisplayName = [properties valueForKey:@"DisplayName"];
+    
     self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.EntityChain = [properties valueForKey:@"EntityChain"];
@@ -119,8 +121,6 @@
     self.Files = [mutable_storage copy];
 }
 
-    
-    self.FriendlyName = [properties valueForKey:@"FriendlyName"];
     
     self.Language = [properties valueForKey:@"Language"];
     

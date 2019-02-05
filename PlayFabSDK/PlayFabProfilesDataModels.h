@@ -179,6 +179,11 @@ typedef enum
 
 
 /// <summary>
+/// The display name of the entity. This field may serve different purposes for different entity types. i.e.: for a title player account it could represent the display name of the player, whereas on a character it could be character's name.
+/// </summary>
+@property NSString* DisplayName; 
+
+/// <summary>
 /// The entity id and type.
 /// </summary>
 @property ProfilesEntityKey* Entity; 
@@ -192,11 +197,6 @@ typedef enum
 /// The files on this profile.
 /// </summary>
 @property NSDictionary* Files; 
-
-/// <summary>
-/// The friendly name of the entity. This field may serve different purposes for different entity types. i.e.: for a title player account it could represent the display name of the player, whereas on a character it could be character's name.
-/// </summary>
-@property NSString* FriendlyName; 
 
 /// <summary>
 /// The language on this profile.

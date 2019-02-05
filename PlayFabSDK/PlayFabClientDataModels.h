@@ -2468,7 +2468,7 @@ return an error if it is already in use. If no SharedGroupId is specified, a ran
 
 
 /// <summary>
-/// Unique lobby identifier of the Game Server Instance to which this player is currently connected.
+/// This field is not populated.
 /// </summary>
 @property NSString* CurrentMatchmakerLobbyId; 
 
@@ -7864,7 +7864,7 @@ in the friends list from a social site integration (such as Facebook or Steam) w
 @property NSString* NewsId; 
 
 /// <summary>
-/// Date and time when the news items was posted.
+/// Date and time when the news item was posted.
 /// </summary>
 @property NSDate* Timestamp; 
 
