@@ -5005,6 +5005,26 @@ Title ID, please be sure to first unlink all accounts from Facebook, or delete a
 /// Game Center identifier for the player account to be linked.
 /// </summary>
 @property NSString* GameCenterId; 
+
+/// <summary>
+/// The URL for the public encryption key that will be used to verify the signature.
+/// </summary>
+@property NSString* PublicKeyUrl; 
+
+/// <summary>
+/// A random value used to compute the hash and keep it randomized.
+/// </summary>
+@property NSString* Salt; 
+
+/// <summary>
+/// The verification signature of the authentication payload.
+/// </summary>
+@property NSString* Signature; 
+
+/// <summary>
+/// The integer representation of date and time that the signature was created on. PlayFab will reject authentication signatures not within 10 minutes of the server's current time.
+/// </summary>
+@property NSString* Timestamp; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -5698,6 +5718,26 @@ guide the user through creation of a PlayFab account.
 /// Player secret that is used to verify API request signatures (Enterprise Only).
 /// </summary>
 @property NSString* PlayerSecret; 
+
+/// <summary>
+/// The URL for the public encryption key that will be used to verify the signature.
+/// </summary>
+@property NSString* PublicKeyUrl; 
+
+/// <summary>
+/// A random value used to compute the hash and keep it randomized.
+/// </summary>
+@property NSString* Salt; 
+
+/// <summary>
+/// The verification signature of the authentication payload.
+/// </summary>
+@property NSString* Signature; 
+
+/// <summary>
+/// The integer representation of date and time that the signature was created on. PlayFab will reject authentication signatures not within 10 minutes of the server's current time.
+/// </summary>
+@property NSString* Timestamp; 
 
 /// <summary>
 /// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.

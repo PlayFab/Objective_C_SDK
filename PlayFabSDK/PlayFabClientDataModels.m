@@ -4182,6 +4182,14 @@
     
     self.GameCenterId = [properties valueForKey:@"GameCenterId"];
     
+    self.PublicKeyUrl = [properties valueForKey:@"PublicKeyUrl"];
+    
+    self.Salt = [properties valueForKey:@"Salt"];
+    
+    self.Signature = [properties valueForKey:@"Signature"];
+    
+    self.Timestamp = [properties valueForKey:@"Timestamp"];
+    
 
     return self;
 }
@@ -4793,6 +4801,14 @@
     self.PlayerId = [properties valueForKey:@"PlayerId"];
     
     self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.PublicKeyUrl = [properties valueForKey:@"PublicKeyUrl"];
+    
+    self.Salt = [properties valueForKey:@"Salt"];
+    
+    self.Signature = [properties valueForKey:@"Signature"];
+    
+    self.Timestamp = [properties valueForKey:@"Timestamp"];
     
     self.TitleId = [properties valueForKey:@"TitleId"];
     
