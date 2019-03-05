@@ -106,6 +106,8 @@
     }
 
     
+    self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
+    
     self.DisplayName = [properties valueForKey:@"DisplayName"];
     
     self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
