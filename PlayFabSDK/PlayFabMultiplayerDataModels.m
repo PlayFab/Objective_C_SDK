@@ -143,6 +143,74 @@
     return self;
 }
 @end
+@implementation MultiplayerCancelAllMatchmakingTicketsForPlayerRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelAllMatchmakingTicketsForPlayerResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelMatchmakingTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelMatchmakingTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCertificate
 
 
@@ -533,6 +601,54 @@
     return self;
 }
 @end
+@implementation MultiplayerCreateMatchmakingTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Creator = [[MultiplayerMatchmakingPlayer new] initWithDictionary:[properties objectForKey:@"Creator"]];
+    
+    self.GiveUpAfterSeconds = [properties valueForKey:@"GiveUpAfterSeconds"];
+    
+    if ([properties objectForKey:@"MembersToMatchWith"]){
+    NSArray* member_list = [properties objectForKey:@"MembersToMatchWith"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.MembersToMatchWith = [mutable_storage copy];
+}
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateMatchmakingTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCreateRemoteUserRequest
 
 
@@ -574,6 +690,35 @@
     self.Password = [properties valueForKey:@"Password"];
     
     self.Username = [properties valueForKey:@"Username"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateServerMatchmakingTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.GiveUpAfterSeconds = [properties valueForKey:@"GiveUpAfterSeconds"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingPlayer new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
     
 
     return self;
@@ -718,6 +863,25 @@
 
     
     self.Status = (MultiplayerTitleMultiplayerServerEnabledStatus)[properties valueForKey:@"MultiplayerStatus"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerEntityKey
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+    self.Type = [properties valueForKey:@"Type"];
     
 
     return self;
@@ -935,6 +1099,174 @@
     return self;
 }
 @end
+@implementation MultiplayerGetMatchmakingQueueRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMatchmakingQueueResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.MatchmakingQueue = [[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[properties objectForKey:@"MatchmakingQueue"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMatchmakingTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.EscapeObject = [[properties valueForKey:@"EscapeObject"] boolValue];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMatchmakingTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfCancellationReason = (MultiplayerCancellationReason)[properties valueForKey:@"MultiplayerCancellationReason"];
+    
+    self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
+    
+    self.Creator = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Creator"]];
+    
+    self.GiveUpAfterSeconds = [properties valueForKey:@"GiveUpAfterSeconds"];
+    
+    self.MatchId = [properties valueForKey:@"MatchId"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingPlayer new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"MembersToMatchWith"]){
+    NSArray* member_list = [properties objectForKey:@"MembersToMatchWith"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.MembersToMatchWith = [mutable_storage copy];
+}
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.Status = [properties valueForKey:@"Status"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMatchRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.EscapeObject = [[properties valueForKey:@"EscapeObject"] boolValue];
+    
+    self.MatchId = [properties valueForKey:@"MatchId"];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.ReturnMemberAttributes = [[properties valueForKey:@"ReturnMemberAttributes"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMatchResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.MatchId = [properties valueForKey:@"MatchId"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingPlayerWithTeamAssignment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"RegionPreferences"]){
+    NSArray* member_list = [properties objectForKey:@"RegionPreferences"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.RegionPreferences = [mutable_storage copy];
+}
+
+    
+    self.pfServerDetails = [[MultiplayerServerDetails new] initWithDictionary:[properties objectForKey:@"ServerDetails"]];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerGetMultiplayerServerDetailsRequest
 
 
@@ -1007,6 +1339,42 @@
     return self;
 }
 @end
+@implementation MultiplayerGetQueueStatisticsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetQueueStatisticsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NumberOfPlayersMatching = [properties valueForKey:@"NumberOfPlayersMatching"];
+    
+    self.TimeToMatchStatisticsInSeconds = [[MultiplayerStatistics new] initWithDictionary:[properties objectForKey:@"TimeToMatchStatisticsInSeconds"]];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerGetRemoteLoginEndpointRequest
 
 
@@ -1074,6 +1442,42 @@
 
     
     self.Status = (MultiplayerTitleMultiplayerServerEnabledStatus)[properties valueForKey:@"MultiplayerStatus"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerJoinMatchmakingTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Member = [[MultiplayerMatchmakingPlayer new] initWithDictionary:[properties objectForKey:@"Member"]];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerJoinMatchmakingTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
     
 
     return self;
@@ -1313,6 +1717,90 @@
     return self;
 }
 @end
+@implementation MultiplayerListMatchmakingQueuesRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListMatchmakingQueuesResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"MatchMakingQueues"]){
+    NSArray* member_list = [properties objectForKey:@"MatchMakingQueues"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.MatchMakingQueues = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListMatchmakingTicketsForPlayerRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListMatchmakingTicketsForPlayerResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"TicketIds"]){
+    NSArray* member_list = [properties objectForKey:@"TicketIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.TicketIds = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerListMultiplayerServersRequest
 
 
@@ -1461,6 +1949,154 @@
     return self;
 }
 @end
+@implementation MultiplayerMatchmakingPlayer
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Attributes = [[MultiplayerMatchmakingPlayerAttributes new] initWithDictionary:[properties objectForKey:@"Attributes"]];
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMatchmakingPlayerAttributes
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.DataObject = [properties valueForKey:@"DataObject"];
+    
+    self.EscapedDataObject = [properties valueForKey:@"EscapedDataObject"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMatchmakingPlayerWithTeamAssignment
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Attributes = [[MultiplayerMatchmakingPlayerAttributes new] initWithDictionary:[properties objectForKey:@"Attributes"]];
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+    self.TeamId = [properties valueForKey:@"TeamId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMatchmakingQueueConfig
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.BuildId = [properties valueForKey:@"BuildId"];
+    
+    self.MaxMatchSize = [properties valueForKey:@"MaxMatchSize"];
+    
+    self.MinMatchSize = [properties valueForKey:@"MinMatchSize"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+    if ([properties objectForKey:@"Rules"]){
+    NSArray* member_list = [properties objectForKey:@"Rules"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingQueueRule new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Rules = [mutable_storage copy];
+}
+
+    
+    self.ServerAllocationEnabled = [[properties valueForKey:@"ServerAllocationEnabled"] boolValue];
+    
+    self.pfStatisticsVisibilityToPlayers = [[MultiplayerStatisticsVisibilityToPlayers new] initWithDictionary:[properties objectForKey:@"StatisticsVisibilityToPlayers"]];
+    
+    if ([properties objectForKey:@"Teams"]){
+    NSArray* member_list = [properties objectForKey:@"Teams"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingQueueTeam new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Teams = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMatchmakingQueueRule
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+    self.SecondsUntilOptional = [properties valueForKey:@"SecondsUntilOptional"];
+    
+    self.Type = (MultiplayerRuleType)[properties valueForKey:@"MultiplayerType"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMatchmakingQueueTeam
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.MaxTeamSize = [properties valueForKey:@"MaxTeamSize"];
+    
+    self.MinTeamSize = [properties valueForKey:@"MinTeamSize"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerMultiplayerServerSummary
 
 
@@ -1533,6 +2169,38 @@
     self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
     
     self.ServerUrl = [properties valueForKey:@"ServerUrl"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerRemoveMatchmakingQueueRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerRemoveMatchmakingQueueResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
     
 
     return self;
@@ -1666,6 +2334,65 @@
     return self;
 }
 @end
+@implementation MultiplayerServerDetails
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.IPV4Address = [properties valueForKey:@"IPV4Address"];
+    
+    if ([properties objectForKey:@"Ports"]){
+    NSArray* member_list = [properties objectForKey:@"Ports"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerPort new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Ports = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerSetMatchmakingQueueRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.MatchmakingQueue = [[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[properties objectForKey:@"MatchmakingQueue"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerSetMatchmakingQueueResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerShutdownMultiplayerServerRequest
 
 
@@ -1682,6 +2409,48 @@
     self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
     
     self.SessionId = [properties valueForKey:@"SessionId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerStatistics
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Average = [properties valueForKey:@"Average"];
+    
+    self.Percentile50 = [properties valueForKey:@"Percentile50"];
+    
+    self.Percentile90 = [properties valueForKey:@"Percentile90"];
+    
+    self.Percentile99 = [properties valueForKey:@"Percentile99"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerStatisticsVisibilityToPlayers
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ShowNumberOfPlayersMatching = [[properties valueForKey:@"ShowNumberOfPlayersMatching"] boolValue];
+    
+    self.ShowTimeToMatch = [[properties valueForKey:@"ShowTimeToMatch"] boolValue];
     
 
     return self;
