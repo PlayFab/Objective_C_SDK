@@ -21,7 +21,9 @@
 
 
 /// <summary>
+/*
 /// The list of allowed languages, in BCP47 two-letter format
+*/
 /// </summary>
 @property NSArray* LanguageList; 
 /*
