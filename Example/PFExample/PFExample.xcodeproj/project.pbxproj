@@ -1,0 +1,773 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3335BC2225678180051F8CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BC1225678180051F8CE /* AppDelegate.m */; };
+		D3335BC5225678180051F8CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BC4225678180051F8CE /* ViewController.m */; };
+		D3335BC8225678180051F8CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3335BC6225678180051F8CE /* Main.storyboard */; };
+		D3335BCB225678180051F8CE /* PFExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3335BC9225678180051F8CE /* PFExample.xcdatamodeld */; };
+		D3335BCD225678180051F8CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3335BCC225678180051F8CE /* Assets.xcassets */; };
+		D3335BD0225678180051F8CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3335BCE225678180051F8CE /* LaunchScreen.storyboard */; };
+		D3335BD3225678180051F8CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BD2225678180051F8CE /* main.m */; };
+		D3335BDD225678180051F8CE /* PFExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BDC225678180051F8CE /* PFExampleTests.m */; };
+		D3335BE8225678180051F8CE /* PFExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BE7225678180051F8CE /* PFExampleUITests.m */; };
+		D3335C2B2256784B0051F8CE /* PlayFabAuthenticationDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BF62256784B0051F8CE /* PlayFabAuthenticationDataModels.m */; };
+		D3335C2C2256784B0051F8CE /* JAGPropertyFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BF92256784B0051F8CE /* JAGPropertyFinder.m */; };
+		D3335C2D2256784B0051F8CE /* JAGProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BFA2256784B0051F8CE /* JAGProperty.m */; };
+		D3335C2E2256784B0051F8CE /* JAGPropertyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335BFC2256784B0051F8CE /* JAGPropertyConverter.m */; };
+		D3335C2F2256784B0051F8CE /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3335BFE2256784B0051F8CE /* license.txt */; };
+		D3335C302256784B0051F8CE /* PlayFabLocalizationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C002256784B0051F8CE /* PlayFabLocalizationAPI.m */; };
+		D3335C312256784B0051F8CE /* PlayFabGroupsDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C022256784B0051F8CE /* PlayFabGroupsDataModels.m */; };
+		D3335C322256784B0051F8CE /* PlayFabDataAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C052256784B0051F8CE /* PlayFabDataAPI.m */; };
+		D3335C332256784B0051F8CE /* PlayFabBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C062256784B0051F8CE /* PlayFabBaseModel.m */; };
+		D3335C342256784B0051F8CE /* PlayFabGroupsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C072256784B0051F8CE /* PlayFabGroupsAPI.m */; };
+		D3335C352256784B0051F8CE /* PlayFabMultiplayerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C092256784B0051F8CE /* PlayFabMultiplayerAPI.m */; };
+		D3335C362256784B0051F8CE /* PlayFabSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C0A2256784B0051F8CE /* PlayFabSettings.m */; };
+		D3335C372256784B0051F8CE /* PlayFabClientAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C0F2256784B0051F8CE /* PlayFabClientAPI.m */; };
+		D3335C382256784B0051F8CE /* PlayFabAuthenticationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C142256784B0051F8CE /* PlayFabAuthenticationAPI.m */; };
+		D3335C392256784B0051F8CE /* PlayFabClientDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C152256784B0051F8CE /* PlayFabClientDataModels.m */; };
+		D3335C3A2256784B0051F8CE /* PlayFabLocalizationDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C182256784B0051F8CE /* PlayFabLocalizationDataModels.m */; };
+		D3335C3B2256784B0051F8CE /* PlayFabConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C1C2256784B0051F8CE /* PlayFabConnection.m */; };
+		D3335C3C2256784B0051F8CE /* PlayFabDataDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C1E2256784B0051F8CE /* PlayFabDataDataModels.m */; };
+		D3335C3D2256784B0051F8CE /* PlayFabMultiplayerDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C1F2256784B0051F8CE /* PlayFabMultiplayerDataModels.m */; };
+		D3335C3E2256784B0051F8CE /* PlayFabCloudScriptAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C202256784B0051F8CE /* PlayFabCloudScriptAPI.m */; };
+		D3335C3F2256784B0051F8CE /* PlayFabProfilesAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C242256784B0051F8CE /* PlayFabProfilesAPI.m */; };
+		D3335C402256784B0051F8CE /* PlayFabCloudScriptDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C252256784B0051F8CE /* PlayFabCloudScriptDataModels.m */; };
+		D3335C412256784B0051F8CE /* PlayFabSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C262256784B0051F8CE /* PlayFabSDK.m */; };
+		D3335C422256784B0051F8CE /* PlayFabProfilesDataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C272256784B0051F8CE /* PlayFabProfilesDataModels.m */; };
+		D3335C432256784B0051F8CE /* PlayFabError.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C292256784B0051F8CE /* PlayFabError.m */; };
+		D3335C442256784B0051F8CE /* PlayFabVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = D3335C2A2256784B0051F8CE /* PlayFabVersion.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3335BD9225678180051F8CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3335BB5225678180051F8CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3335BBC225678180051F8CE;
+			remoteInfo = PFExample;
+		};
+		D3335BE4225678180051F8CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3335BB5225678180051F8CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3335BBC225678180051F8CE;
+			remoteInfo = PFExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D3335BBD225678180051F8CE /* PFExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3335BC0225678180051F8CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D3335BC1225678180051F8CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D3335BC3225678180051F8CE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D3335BC4225678180051F8CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D3335BC7225678180051F8CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D3335BCA225678180051F8CE /* PFExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PFExample.xcdatamodel; sourceTree = "<group>"; };
+		D3335BCC225678180051F8CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3335BCF225678180051F8CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3335BD1225678180051F8CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3335BD2225678180051F8CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D3335BD8225678180051F8CE /* PFExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3335BDC225678180051F8CE /* PFExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFExampleTests.m; sourceTree = "<group>"; };
+		D3335BDE225678180051F8CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3335BE3225678180051F8CE /* PFExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3335BE7225678180051F8CE /* PFExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFExampleUITests.m; sourceTree = "<group>"; };
+		D3335BE9225678180051F8CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3335BF62256784B0051F8CE /* PlayFabAuthenticationDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabAuthenticationDataModels.m; sourceTree = "<group>"; };
+		D3335BF82256784B0051F8CE /* JAGPropertyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyConverter.h; sourceTree = "<group>"; };
+		D3335BF92256784B0051F8CE /* JAGPropertyFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyFinder.m; sourceTree = "<group>"; };
+		D3335BFA2256784B0051F8CE /* JAGProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGProperty.m; sourceTree = "<group>"; };
+		D3335BFB2256784B0051F8CE /* JAGPropertyConverter-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JAGPropertyConverter-Prefix.pch"; sourceTree = "<group>"; };
+		D3335BFC2256784B0051F8CE /* JAGPropertyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGPropertyConverter.m; sourceTree = "<group>"; };
+		D3335BFD2256784B0051F8CE /* JAGPropertyFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGPropertyFinder.h; sourceTree = "<group>"; };
+		D3335BFE2256784B0051F8CE /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		D3335BFF2256784B0051F8CE /* JAGProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGProperty.h; sourceTree = "<group>"; };
+		D3335C002256784B0051F8CE /* PlayFabLocalizationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabLocalizationAPI.m; sourceTree = "<group>"; };
+		D3335C012256784B0051F8CE /* PlayFabClientDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientDataModels.h; sourceTree = "<group>"; };
+		D3335C022256784B0051F8CE /* PlayFabGroupsDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabGroupsDataModels.m; sourceTree = "<group>"; };
+		D3335C032256784B0051F8CE /* PlayFabDataDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabDataDataModels.h; sourceTree = "<group>"; };
+		D3335C042256784B0051F8CE /* PlayFabConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabConnection.h; sourceTree = "<group>"; };
+		D3335C052256784B0051F8CE /* PlayFabDataAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabDataAPI.m; sourceTree = "<group>"; };
+		D3335C062256784B0051F8CE /* PlayFabBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabBaseModel.m; sourceTree = "<group>"; };
+		D3335C072256784B0051F8CE /* PlayFabGroupsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabGroupsAPI.m; sourceTree = "<group>"; };
+		D3335C082256784B0051F8CE /* PlayFabLocalizationDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabLocalizationDataModels.h; sourceTree = "<group>"; };
+		D3335C092256784B0051F8CE /* PlayFabMultiplayerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabMultiplayerAPI.m; sourceTree = "<group>"; };
+		D3335C0A2256784B0051F8CE /* PlayFabSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSettings.m; sourceTree = "<group>"; };
+		D3335C0B2256784B0051F8CE /* PlayFabCloudScriptAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabCloudScriptAPI.h; sourceTree = "<group>"; };
+		D3335C0C2256784B0051F8CE /* PlayFabMultiplayerDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabMultiplayerDataModels.h; sourceTree = "<group>"; };
+		D3335C0D2256784B0051F8CE /* PlayFabError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabError.h; sourceTree = "<group>"; };
+		D3335C0E2256784B0051F8CE /* PlayFabVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabVersion.h; sourceTree = "<group>"; };
+		D3335C0F2256784B0051F8CE /* PlayFabClientAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientAPI.m; sourceTree = "<group>"; };
+		D3335C102256784B0051F8CE /* PlayFabProfilesDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabProfilesDataModels.h; sourceTree = "<group>"; };
+		D3335C112256784B0051F8CE /* PlayFabSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSDK.h; sourceTree = "<group>"; };
+		D3335C122256784B0051F8CE /* PlayFabCloudScriptDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabCloudScriptDataModels.h; sourceTree = "<group>"; };
+		D3335C132256784B0051F8CE /* PlayFabProfilesAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabProfilesAPI.h; sourceTree = "<group>"; };
+		D3335C142256784B0051F8CE /* PlayFabAuthenticationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabAuthenticationAPI.m; sourceTree = "<group>"; };
+		D3335C152256784B0051F8CE /* PlayFabClientDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabClientDataModels.m; sourceTree = "<group>"; };
+		D3335C162256784B0051F8CE /* PlayFabLocalizationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabLocalizationAPI.h; sourceTree = "<group>"; };
+		D3335C172256784B0051F8CE /* PlayFabAuthenticationDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabAuthenticationDataModels.h; sourceTree = "<group>"; };
+		D3335C182256784B0051F8CE /* PlayFabLocalizationDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabLocalizationDataModels.m; sourceTree = "<group>"; };
+		D3335C192256784B0051F8CE /* PlayFabGroupsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabGroupsAPI.h; sourceTree = "<group>"; };
+		D3335C1A2256784B0051F8CE /* PlayFabDataAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabDataAPI.h; sourceTree = "<group>"; };
+		D3335C1B2256784B0051F8CE /* PlayFabBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabBaseModel.h; sourceTree = "<group>"; };
+		D3335C1C2256784B0051F8CE /* PlayFabConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabConnection.m; sourceTree = "<group>"; };
+		D3335C1D2256784B0051F8CE /* PlayFabGroupsDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabGroupsDataModels.h; sourceTree = "<group>"; };
+		D3335C1E2256784B0051F8CE /* PlayFabDataDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabDataDataModels.m; sourceTree = "<group>"; };
+		D3335C1F2256784B0051F8CE /* PlayFabMultiplayerDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabMultiplayerDataModels.m; sourceTree = "<group>"; };
+		D3335C202256784B0051F8CE /* PlayFabCloudScriptAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabCloudScriptAPI.m; sourceTree = "<group>"; };
+		D3335C212256784B0051F8CE /* PlayFabSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabSettings.h; sourceTree = "<group>"; };
+		D3335C222256784B0051F8CE /* PlayFabMultiplayerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabMultiplayerAPI.h; sourceTree = "<group>"; };
+		D3335C232256784B0051F8CE /* PlayFabAuthenticationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabAuthenticationAPI.h; sourceTree = "<group>"; };
+		D3335C242256784B0051F8CE /* PlayFabProfilesAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabProfilesAPI.m; sourceTree = "<group>"; };
+		D3335C252256784B0051F8CE /* PlayFabCloudScriptDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabCloudScriptDataModels.m; sourceTree = "<group>"; };
+		D3335C262256784B0051F8CE /* PlayFabSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabSDK.m; sourceTree = "<group>"; };
+		D3335C272256784B0051F8CE /* PlayFabProfilesDataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabProfilesDataModels.m; sourceTree = "<group>"; };
+		D3335C282256784B0051F8CE /* PlayFabClientAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFabClientAPI.h; sourceTree = "<group>"; };
+		D3335C292256784B0051F8CE /* PlayFabError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabError.m; sourceTree = "<group>"; };
+		D3335C2A2256784B0051F8CE /* PlayFabVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFabVersion.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3335BBA225678180051F8CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BD5225678180051F8CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BE0225678180051F8CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3335BB4225678180051F8CE = {
+			isa = PBXGroup;
+			children = (
+				D3335BBF225678180051F8CE /* PFExample */,
+				D3335BDB225678180051F8CE /* PFExampleTests */,
+				D3335BE6225678180051F8CE /* PFExampleUITests */,
+				D3335BBE225678180051F8CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3335BBE225678180051F8CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BBD225678180051F8CE /* PFExample.app */,
+				D3335BD8225678180051F8CE /* PFExampleTests.xctest */,
+				D3335BE3225678180051F8CE /* PFExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3335BBF225678180051F8CE /* PFExample */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BF52256784B0051F8CE /* PlayFabSDK */,
+				D3335BC0225678180051F8CE /* AppDelegate.h */,
+				D3335BC1225678180051F8CE /* AppDelegate.m */,
+				D3335BC3225678180051F8CE /* ViewController.h */,
+				D3335BC4225678180051F8CE /* ViewController.m */,
+				D3335BC6225678180051F8CE /* Main.storyboard */,
+				D3335BCC225678180051F8CE /* Assets.xcassets */,
+				D3335BCE225678180051F8CE /* LaunchScreen.storyboard */,
+				D3335BD1225678180051F8CE /* Info.plist */,
+				D3335BD2225678180051F8CE /* main.m */,
+				D3335BC9225678180051F8CE /* PFExample.xcdatamodeld */,
+			);
+			path = PFExample;
+			sourceTree = "<group>";
+		};
+		D3335BDB225678180051F8CE /* PFExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BDC225678180051F8CE /* PFExampleTests.m */,
+				D3335BDE225678180051F8CE /* Info.plist */,
+			);
+			path = PFExampleTests;
+			sourceTree = "<group>";
+		};
+		D3335BE6225678180051F8CE /* PFExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BE7225678180051F8CE /* PFExampleUITests.m */,
+				D3335BE9225678180051F8CE /* Info.plist */,
+			);
+			path = PFExampleUITests;
+			sourceTree = "<group>";
+		};
+		D3335BF52256784B0051F8CE /* PlayFabSDK */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BF62256784B0051F8CE /* PlayFabAuthenticationDataModels.m */,
+				D3335BF72256784B0051F8CE /* JAGPropertyConverter */,
+				D3335C002256784B0051F8CE /* PlayFabLocalizationAPI.m */,
+				D3335C012256784B0051F8CE /* PlayFabClientDataModels.h */,
+				D3335C022256784B0051F8CE /* PlayFabGroupsDataModels.m */,
+				D3335C032256784B0051F8CE /* PlayFabDataDataModels.h */,
+				D3335C042256784B0051F8CE /* PlayFabConnection.h */,
+				D3335C052256784B0051F8CE /* PlayFabDataAPI.m */,
+				D3335C062256784B0051F8CE /* PlayFabBaseModel.m */,
+				D3335C072256784B0051F8CE /* PlayFabGroupsAPI.m */,
+				D3335C082256784B0051F8CE /* PlayFabLocalizationDataModels.h */,
+				D3335C092256784B0051F8CE /* PlayFabMultiplayerAPI.m */,
+				D3335C0A2256784B0051F8CE /* PlayFabSettings.m */,
+				D3335C0B2256784B0051F8CE /* PlayFabCloudScriptAPI.h */,
+				D3335C0C2256784B0051F8CE /* PlayFabMultiplayerDataModels.h */,
+				D3335C0D2256784B0051F8CE /* PlayFabError.h */,
+				D3335C0E2256784B0051F8CE /* PlayFabVersion.h */,
+				D3335C0F2256784B0051F8CE /* PlayFabClientAPI.m */,
+				D3335C102256784B0051F8CE /* PlayFabProfilesDataModels.h */,
+				D3335C112256784B0051F8CE /* PlayFabSDK.h */,
+				D3335C122256784B0051F8CE /* PlayFabCloudScriptDataModels.h */,
+				D3335C132256784B0051F8CE /* PlayFabProfilesAPI.h */,
+				D3335C142256784B0051F8CE /* PlayFabAuthenticationAPI.m */,
+				D3335C152256784B0051F8CE /* PlayFabClientDataModels.m */,
+				D3335C162256784B0051F8CE /* PlayFabLocalizationAPI.h */,
+				D3335C172256784B0051F8CE /* PlayFabAuthenticationDataModels.h */,
+				D3335C182256784B0051F8CE /* PlayFabLocalizationDataModels.m */,
+				D3335C192256784B0051F8CE /* PlayFabGroupsAPI.h */,
+				D3335C1A2256784B0051F8CE /* PlayFabDataAPI.h */,
+				D3335C1B2256784B0051F8CE /* PlayFabBaseModel.h */,
+				D3335C1C2256784B0051F8CE /* PlayFabConnection.m */,
+				D3335C1D2256784B0051F8CE /* PlayFabGroupsDataModels.h */,
+				D3335C1E2256784B0051F8CE /* PlayFabDataDataModels.m */,
+				D3335C1F2256784B0051F8CE /* PlayFabMultiplayerDataModels.m */,
+				D3335C202256784B0051F8CE /* PlayFabCloudScriptAPI.m */,
+				D3335C212256784B0051F8CE /* PlayFabSettings.h */,
+				D3335C222256784B0051F8CE /* PlayFabMultiplayerAPI.h */,
+				D3335C232256784B0051F8CE /* PlayFabAuthenticationAPI.h */,
+				D3335C242256784B0051F8CE /* PlayFabProfilesAPI.m */,
+				D3335C252256784B0051F8CE /* PlayFabCloudScriptDataModels.m */,
+				D3335C262256784B0051F8CE /* PlayFabSDK.m */,
+				D3335C272256784B0051F8CE /* PlayFabProfilesDataModels.m */,
+				D3335C282256784B0051F8CE /* PlayFabClientAPI.h */,
+				D3335C292256784B0051F8CE /* PlayFabError.m */,
+				D3335C2A2256784B0051F8CE /* PlayFabVersion.m */,
+			);
+			path = PlayFabSDK;
+			sourceTree = "<group>";
+		};
+		D3335BF72256784B0051F8CE /* JAGPropertyConverter */ = {
+			isa = PBXGroup;
+			children = (
+				D3335BF82256784B0051F8CE /* JAGPropertyConverter.h */,
+				D3335BF92256784B0051F8CE /* JAGPropertyFinder.m */,
+				D3335BFA2256784B0051F8CE /* JAGProperty.m */,
+				D3335BFB2256784B0051F8CE /* JAGPropertyConverter-Prefix.pch */,
+				D3335BFC2256784B0051F8CE /* JAGPropertyConverter.m */,
+				D3335BFD2256784B0051F8CE /* JAGPropertyFinder.h */,
+				D3335BFE2256784B0051F8CE /* license.txt */,
+				D3335BFF2256784B0051F8CE /* JAGProperty.h */,
+			);
+			path = JAGPropertyConverter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3335BBC225678180051F8CE /* PFExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3335BEC225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExample" */;
+			buildPhases = (
+				D3335BB9225678180051F8CE /* Sources */,
+				D3335BBA225678180051F8CE /* Frameworks */,
+				D3335BBB225678180051F8CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PFExample;
+			productName = PFExample;
+			productReference = D3335BBD225678180051F8CE /* PFExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3335BD7225678180051F8CE /* PFExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3335BEF225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExampleTests" */;
+			buildPhases = (
+				D3335BD4225678180051F8CE /* Sources */,
+				D3335BD5225678180051F8CE /* Frameworks */,
+				D3335BD6225678180051F8CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3335BDA225678180051F8CE /* PBXTargetDependency */,
+			);
+			name = PFExampleTests;
+			productName = PFExampleTests;
+			productReference = D3335BD8225678180051F8CE /* PFExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D3335BE2225678180051F8CE /* PFExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3335BF2225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExampleUITests" */;
+			buildPhases = (
+				D3335BDF225678180051F8CE /* Sources */,
+				D3335BE0225678180051F8CE /* Frameworks */,
+				D3335BE1225678180051F8CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3335BE5225678180051F8CE /* PBXTargetDependency */,
+			);
+			name = PFExampleUITests;
+			productName = PFExampleUITests;
+			productReference = D3335BE3225678180051F8CE /* PFExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3335BB5225678180051F8CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = PlayFab;
+				TargetAttributes = {
+					D3335BBC225678180051F8CE = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					D3335BD7225678180051F8CE = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = D3335BBC225678180051F8CE;
+					};
+					D3335BE2225678180051F8CE = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = D3335BBC225678180051F8CE;
+					};
+				};
+			};
+			buildConfigurationList = D3335BB8225678180051F8CE /* Build configuration list for PBXProject "PFExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D3335BB4225678180051F8CE;
+			productRefGroup = D3335BBE225678180051F8CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3335BBC225678180051F8CE /* PFExample */,
+				D3335BD7225678180051F8CE /* PFExampleTests */,
+				D3335BE2225678180051F8CE /* PFExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3335BBB225678180051F8CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3335C2F2256784B0051F8CE /* license.txt in Resources */,
+				D3335BD0225678180051F8CE /* LaunchScreen.storyboard in Resources */,
+				D3335BCD225678180051F8CE /* Assets.xcassets in Resources */,
+				D3335BC8225678180051F8CE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BD6225678180051F8CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BE1225678180051F8CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3335BB9225678180051F8CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3335C2E2256784B0051F8CE /* JAGPropertyConverter.m in Sources */,
+				D3335C3B2256784B0051F8CE /* PlayFabConnection.m in Sources */,
+				D3335C3D2256784B0051F8CE /* PlayFabMultiplayerDataModels.m in Sources */,
+				D3335C2B2256784B0051F8CE /* PlayFabAuthenticationDataModels.m in Sources */,
+				D3335C402256784B0051F8CE /* PlayFabCloudScriptDataModels.m in Sources */,
+				D3335C3C2256784B0051F8CE /* PlayFabDataDataModels.m in Sources */,
+				D3335C412256784B0051F8CE /* PlayFabSDK.m in Sources */,
+				D3335C342256784B0051F8CE /* PlayFabGroupsAPI.m in Sources */,
+				D3335BCB225678180051F8CE /* PFExample.xcdatamodeld in Sources */,
+				D3335C302256784B0051F8CE /* PlayFabLocalizationAPI.m in Sources */,
+				D3335C382256784B0051F8CE /* PlayFabAuthenticationAPI.m in Sources */,
+				D3335C442256784B0051F8CE /* PlayFabVersion.m in Sources */,
+				D3335C392256784B0051F8CE /* PlayFabClientDataModels.m in Sources */,
+				D3335C372256784B0051F8CE /* PlayFabClientAPI.m in Sources */,
+				D3335C3A2256784B0051F8CE /* PlayFabLocalizationDataModels.m in Sources */,
+				D3335C422256784B0051F8CE /* PlayFabProfilesDataModels.m in Sources */,
+				D3335BC5225678180051F8CE /* ViewController.m in Sources */,
+				D3335C312256784B0051F8CE /* PlayFabGroupsDataModels.m in Sources */,
+				D3335C322256784B0051F8CE /* PlayFabDataAPI.m in Sources */,
+				D3335C432256784B0051F8CE /* PlayFabError.m in Sources */,
+				D3335C2C2256784B0051F8CE /* JAGPropertyFinder.m in Sources */,
+				D3335C3E2256784B0051F8CE /* PlayFabCloudScriptAPI.m in Sources */,
+				D3335C352256784B0051F8CE /* PlayFabMultiplayerAPI.m in Sources */,
+				D3335C332256784B0051F8CE /* PlayFabBaseModel.m in Sources */,
+				D3335C362256784B0051F8CE /* PlayFabSettings.m in Sources */,
+				D3335C3F2256784B0051F8CE /* PlayFabProfilesAPI.m in Sources */,
+				D3335BD3225678180051F8CE /* main.m in Sources */,
+				D3335BC2225678180051F8CE /* AppDelegate.m in Sources */,
+				D3335C2D2256784B0051F8CE /* JAGProperty.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BD4225678180051F8CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3335BDD225678180051F8CE /* PFExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3335BDF225678180051F8CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3335BE8225678180051F8CE /* PFExampleUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3335BDA225678180051F8CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3335BBC225678180051F8CE /* PFExample */;
+			targetProxy = D3335BD9225678180051F8CE /* PBXContainerItemProxy */;
+		};
+		D3335BE5225678180051F8CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3335BBC225678180051F8CE /* PFExample */;
+			targetProxy = D3335BE4225678180051F8CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3335BC6225678180051F8CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3335BC7225678180051F8CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D3335BCE225678180051F8CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3335BCF225678180051F8CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3335BEA225678180051F8CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D3335BEB225678180051F8CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3335BED225678180051F8CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D3335BEE225678180051F8CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D3335BF0225678180051F8CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PFExample.app/PFExample";
+			};
+			name = Debug;
+		};
+		D3335BF1225678180051F8CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PFExample.app/PFExample";
+			};
+			name = Release;
+		};
+		D3335BF3225678180051F8CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PFExample;
+			};
+			name = Debug;
+		};
+		D3335BF4225678180051F8CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4WDRRT4SG;
+				INFOPLIST_FILE = PFExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.PFExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PFExample;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3335BB8225678180051F8CE /* Build configuration list for PBXProject "PFExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3335BEA225678180051F8CE /* Debug */,
+				D3335BEB225678180051F8CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3335BEC225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3335BED225678180051F8CE /* Debug */,
+				D3335BEE225678180051F8CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3335BEF225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3335BF0225678180051F8CE /* Debug */,
+				D3335BF1225678180051F8CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3335BF2225678180051F8CE /* Build configuration list for PBXNativeTarget "PFExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3335BF3225678180051F8CE /* Debug */,
+				D3335BF4225678180051F8CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3335BC9225678180051F8CE /* PFExample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3335BCA225678180051F8CE /* PFExample.xcdatamodel */,
+			);
+			currentVersion = D3335BCA225678180051F8CE /* PFExample.xcdatamodel */;
+			path = PFExample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D3335BB5225678180051F8CE /* Project object */;
+}
