@@ -68,3 +68,4 @@ iOSInjectionProject/
 **/*[Tt]estTitleData.json*
 
 *.DS_Store*
+*.xcuserstate*
