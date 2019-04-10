@@ -1254,8 +1254,6 @@
     }
 
     
-    self.CurrentMatchmakerLobbyId = [properties valueForKey:@"CurrentMatchmakerLobbyId"];
-    
     self.FacebookInfo = [[ClientUserFacebookInfo new] initWithDictionary:[properties objectForKey:@"FacebookInfo"]];
     
     self.FriendPlayFabId = [properties valueForKey:@"FriendPlayFabId"];
@@ -7829,6 +7827,8 @@
     
     self.GoogleLocale = [properties valueForKey:@"GoogleLocale"];
     
+    self.GoogleName = [properties valueForKey:@"GoogleName"];
+    
 
     return self;
 }
@@ -7982,6 +7982,8 @@
     self.SteamCurrency = (ClientCurrency)[properties valueForKey:@"ClientSteamCurrency"];
     
     self.SteamId = [properties valueForKey:@"SteamId"];
+    
+    self.SteamName = [properties valueForKey:@"SteamName"];
     
 
     return self;

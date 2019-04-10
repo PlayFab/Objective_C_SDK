@@ -30,6 +30,10 @@ typedef enum
 
 @class ProfilesEntityProfileFileMetadata;
 
+@class ProfilesEntityStatisticChildValue;
+
+@class ProfilesEntityStatisticValue;
+
 @class ProfilesGetEntityProfileRequest;
 
 @class ProfilesGetEntityProfileResponse;
@@ -281,6 +285,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The statistics on this profile.
+*/
+/// </summary>
+@property NSDictionary* Statistics; 
+
+/// <summary>
+/*
 /// The version number of the profile in persistent storage at the time of the read. Used for optional optimistic concurrency during update.
 */
 /// </summary>
@@ -325,6 +336,76 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* Size; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ProfilesEntityStatisticChildValue : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Child name value, if child statistic
+*/
+/// </summary>
+@property NSString* ChildName; 
+
+/// <summary>
+/*
+/// Child statistic metadata
+*/
+/// </summary>
+@property NSString* Metadata; 
+
+/// <summary>
+/*
+/// Child statistic value
+*/
+/// </summary>
+@property NSNumber* Value; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ProfilesEntityStatisticValue : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Child statistic values
+*/
+/// </summary>
+@property NSDictionary* ChildStatistics; 
+
+/// <summary>
+/*
+/// Statistic metadata
+*/
+/// </summary>
+@property NSString* Metadata; 
+
+/// <summary>
+/*
+/// Statistic name
+*/
+/// </summary>
+@property NSString* Name; 
+
+/// <summary>
+/*
+/// Statistic value
+*/
+/// </summary>
+@property NSNumber* Value; 
+
+/// <summary>
+/*
+/// Statistic version
+*/
+/// </summary>
+@property NSNumber* Version; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

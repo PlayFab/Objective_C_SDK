@@ -148,6 +148,16 @@
 }
 
     
+    if ([properties objectForKey:@"Statistics"]){
+    NSDictionary* member_list = [properties objectForKey:@"Statistics"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[[ProfilesEntityStatisticValue new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+    }
+    self.Statistics = [mutable_storage copy];
+}
+
+    
     self.VersionNumber = [properties valueForKey:@"VersionNumber"];
     
 
@@ -172,6 +182,60 @@
     self.LastModified = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastModified"]];
     
     self.Size = [properties valueForKey:@"Size"];
+    
+
+    return self;
+}
+@end
+@implementation ProfilesEntityStatisticChildValue
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ChildName = [properties valueForKey:@"ChildName"];
+    
+    self.Metadata = [properties valueForKey:@"Metadata"];
+    
+    self.Value = [properties valueForKey:@"Value"];
+    
+
+    return self;
+}
+@end
+@implementation ProfilesEntityStatisticValue
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"ChildStatistics"]){
+    NSDictionary* member_list = [properties objectForKey:@"ChildStatistics"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[[ProfilesEntityStatisticChildValue new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+    }
+    self.ChildStatistics = [mutable_storage copy];
+}
+
+    
+    self.Metadata = [properties valueForKey:@"Metadata"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+    self.Value = [properties valueForKey:@"Value"];
+    
+    self.Version = [properties valueForKey:@"Version"];
     
 
     return self;
