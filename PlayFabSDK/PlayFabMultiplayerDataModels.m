@@ -139,6 +139,16 @@
 }
 
     
+    if ([properties objectForKey:@"RegionConfigurations"]){
+    NSArray* member_list = [properties objectForKey:@"RegionConfigurations"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerBuildRegion new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.RegionConfigurations = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
