@@ -43,8 +43,6 @@ typedef void(^GetContainerRegistryCredentialsCallback)(MultiplayerGetContainerRe
 		
 typedef void(^GetMatchCallback)(MultiplayerGetMatchResult* result, NSObject* userData);
 		
-typedef void(^GetMatchmakingQueueCallback)(MultiplayerGetMatchmakingQueueResult* result, NSObject* userData);
-		
 typedef void(^GetMatchmakingTicketCallback)(MultiplayerGetMatchmakingTicketResult* result, NSObject* userData);
 		
 typedef void(^GetMultiplayerServerDetailsCallback)(MultiplayerGetMultiplayerServerDetailsResponse* result, NSObject* userData);
@@ -54,6 +52,8 @@ typedef void(^GetQueueStatisticsCallback)(MultiplayerGetQueueStatisticsResult* r
 typedef void(^GetRemoteLoginEndpointCallback)(MultiplayerGetRemoteLoginEndpointResponse* result, NSObject* userData);
 		
 typedef void(^GetTitleEnabledForMultiplayerServersStatusCallback)(MultiplayerGetTitleEnabledForMultiplayerServersStatusResponse* result, NSObject* userData);
+		
+typedef void(^GetTitleMultiplayerServersQuotasCallback)(MultiplayerGetTitleMultiplayerServersQuotasResponse* result, NSObject* userData);
 		
 typedef void(^JoinMatchmakingTicketCallback)(MultiplayerJoinMatchmakingTicketResult* result, NSObject* userData);
 		
@@ -69,8 +69,6 @@ typedef void(^ListContainerImagesCallback)(MultiplayerListContainerImagesRespons
 		
 typedef void(^ListContainerImageTagsCallback)(MultiplayerListContainerImageTagsResponse* result, NSObject* userData);
 		
-typedef void(^ListMatchmakingQueuesCallback)(MultiplayerListMatchmakingQueuesResult* result, NSObject* userData);
-		
 typedef void(^ListMatchmakingTicketsForPlayerCallback)(MultiplayerListMatchmakingTicketsForPlayerResult* result, NSObject* userData);
 		
 typedef void(^ListMultiplayerServersCallback)(MultiplayerListMultiplayerServersResponse* result, NSObject* userData);
@@ -79,13 +77,9 @@ typedef void(^ListQosServersCallback)(MultiplayerListQosServersResponse* result,
 		
 typedef void(^ListVirtualMachineSummariesCallback)(MultiplayerListVirtualMachineSummariesResponse* result, NSObject* userData);
 		
-typedef void(^RemoveMatchmakingQueueCallback)(MultiplayerRemoveMatchmakingQueueResult* result, NSObject* userData);
-		
 typedef void(^RequestMultiplayerServerCallback)(MultiplayerRequestMultiplayerServerResponse* result, NSObject* userData);
 		
 typedef void(^RolloverContainerRegistryCredentialsCallback)(MultiplayerRolloverContainerRegistryCredentialsResponse* result, NSObject* userData);
-		
-typedef void(^SetMatchmakingQueueCallback)(MultiplayerSetMatchmakingQueueResult* result, NSObject* userData);
 		
 typedef void(^ShutdownMultiplayerServerCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
@@ -132,8 +126,6 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) GetMatch:(MultiplayerGetMatchRequest*)request success:(GetMatchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetMatchmakingQueue:(MultiplayerGetMatchmakingQueueRequest*)request success:(GetMatchmakingQueueCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
 -(void) GetMatchmakingTicket:(MultiplayerGetMatchmakingTicketRequest*)request success:(GetMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetMultiplayerServerDetails:(MultiplayerGetMultiplayerServerDetailsRequest*)request success:(GetMultiplayerServerDetailsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -143,6 +135,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) GetRemoteLoginEndpoint:(MultiplayerGetRemoteLoginEndpointRequest*)request success:(GetRemoteLoginEndpointCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetTitleEnabledForMultiplayerServersStatus:(GetTitleEnabledForMultiplayerServersStatusCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
+-(void) GetTitleMultiplayerServersQuotas:(GetTitleMultiplayerServersQuotasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) JoinMatchmakingTicket:(MultiplayerJoinMatchmakingTicketRequest*)request success:(JoinMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -158,8 +152,6 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) ListContainerImageTags:(MultiplayerListContainerImageTagsRequest*)request success:(ListContainerImageTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListMatchmakingQueues:(ListMatchmakingQueuesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
-		
 -(void) ListMatchmakingTicketsForPlayer:(MultiplayerListMatchmakingTicketsForPlayerRequest*)request success:(ListMatchmakingTicketsForPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListMultiplayerServers:(MultiplayerListMultiplayerServersRequest*)request success:(ListMultiplayerServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -168,13 +160,9 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) ListVirtualMachineSummaries:(MultiplayerListVirtualMachineSummariesRequest*)request success:(ListVirtualMachineSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) RemoveMatchmakingQueue:(MultiplayerRemoveMatchmakingQueueRequest*)request success:(RemoveMatchmakingQueueCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
 -(void) RequestMultiplayerServer:(MultiplayerRequestMultiplayerServerRequest*)request success:(RequestMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RolloverContainerRegistryCredentials:(RolloverContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
-		
--(void) SetMatchmakingQueue:(MultiplayerSetMatchmakingQueueRequest*)request success:(SetMatchmakingQueueCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ShutdownMultiplayerServer:(MultiplayerShutdownMultiplayerServerRequest*)request success:(ShutdownMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

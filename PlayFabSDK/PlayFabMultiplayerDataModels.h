@@ -25,6 +25,15 @@ typedef enum
 
 typedef enum
 {
+    MultiplayerAzureVmFamilyA,
+    MultiplayerAzureVmFamilyAv2,
+    MultiplayerAzureVmFamilyDv2,
+    MultiplayerAzureVmFamilyF,
+    MultiplayerAzureVmFamilyFsv2
+} MultiplayerAzureVmFamily;
+
+typedef enum
+{
     MultiplayerAzureVmSizeStandard_D1_v2,
     MultiplayerAzureVmSizeStandard_D2_v2,
     MultiplayerAzureVmSizeStandard_D3_v2,
@@ -76,19 +85,6 @@ typedef enum
     MultiplayerTitleMultiplayerServerEnabledStatusDisabled
 } MultiplayerTitleMultiplayerServerEnabledStatus;
 
-typedef enum
-{
-    MultiplayerRuleTypeUnknown,
-    MultiplayerRuleTypeDifferenceRule,
-    MultiplayerRuleTypeStringEqualityRule,
-    MultiplayerRuleTypeMatchTotalRule,
-    MultiplayerRuleTypeSetIntersectionRule,
-    MultiplayerRuleTypeTeamSizeBalanceRule,
-    MultiplayerRuleTypeRegionSelectionRule,
-    MultiplayerRuleTypeTeamDifferenceRule,
-    MultiplayerRuleTypeTeamTicketSizeSimilarityRule
-} MultiplayerRuleType;
-
 //predeclare all non-enum classes
 
 @class MultiplayerAssetReference;
@@ -118,6 +114,8 @@ typedef enum
 @class MultiplayerConnectedPlayer;
 
 @class MultiplayerContainerImageReference;
+
+@class MultiplayerCoreCapacity;
 
 @class MultiplayerCreateBuildWithCustomContainerRequest;
 
@@ -171,10 +169,6 @@ typedef enum
 
 @class MultiplayerGetContainerRegistryCredentialsResponse;
 
-@class MultiplayerGetMatchmakingQueueRequest;
-
-@class MultiplayerGetMatchmakingQueueResult;
-
 @class MultiplayerGetMatchmakingTicketRequest;
 
 @class MultiplayerGetMatchmakingTicketResult;
@@ -198,6 +192,10 @@ typedef enum
 @class MultiplayerGetTitleEnabledForMultiplayerServersStatusRequest;
 
 @class MultiplayerGetTitleEnabledForMultiplayerServersStatusResponse;
+
+@class MultiplayerGetTitleMultiplayerServersQuotasRequest;
+
+@class MultiplayerGetTitleMultiplayerServersQuotasResponse;
 
 @class MultiplayerJoinMatchmakingTicketRequest;
 
@@ -223,10 +221,6 @@ typedef enum
 
 @class MultiplayerListContainerImageTagsResponse;
 
-@class MultiplayerListMatchmakingQueuesRequest;
-
-@class MultiplayerListMatchmakingQueuesResult;
-
 @class MultiplayerListMatchmakingTicketsForPlayerRequest;
 
 @class MultiplayerListMatchmakingTicketsForPlayerResult;
@@ -249,21 +243,11 @@ typedef enum
 
 @class MultiplayerMatchmakingPlayerWithTeamAssignment;
 
-@class MultiplayerMatchmakingQueueConfig;
-
-@class MultiplayerMatchmakingQueueRule;
-
-@class MultiplayerMatchmakingQueueTeam;
-
 @class MultiplayerMultiplayerServerSummary;
 
 @class MultiplayerPort;
 
 @class MultiplayerQosServer;
-
-@class MultiplayerRemoveMatchmakingQueueRequest;
-
-@class MultiplayerRemoveMatchmakingQueueResult;
 
 @class MultiplayerRequestMultiplayerServerRequest;
 
@@ -275,15 +259,11 @@ typedef enum
 
 @class MultiplayerServerDetails;
 
-@class MultiplayerSetMatchmakingQueueRequest;
-
-@class MultiplayerSetMatchmakingQueueResult;
-
 @class MultiplayerShutdownMultiplayerServerRequest;
 
 @class MultiplayerStatistics;
 
-@class MultiplayerStatisticsVisibilityToPlayers;
+@class MultiplayerTitleMultiplayerServersQuotas;
 
 @class MultiplayerUpdateBuildRegionsRequest;
 
@@ -485,7 +465,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue from which a player's tickets should be canceled.
+/// The name of the queue from which a player's tickets should be canceled.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -506,7 +486,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Only servers and ticket members can cancel a ticket. The ticket can be in four different states when it is cancelled. 1: the ticket is waiting for members to join it, and it has not started matching. If the ticket is cancelled at this stage, it will never match. 2: the ticket is matching. If the ticket is cancelled, it will stop matching. 3: the ticket is matched. A matched ticket cannot be cancelled. 4: the ticket is already cancelled and nothing happens. There may be race conditions between the ticket getting matched and the client making a cancellation request. The client must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket because players must consent to enter matchmaking again. Create a new ticket instead.
+/// Only servers and ticket members can cancel a ticket. The ticket can be in five different states when it is cancelled. 1: the ticket is waiting for members to join it, and it has not started matching. If the ticket is cancelled at this stage, it will never match. 2: the ticket is matching. If the ticket is cancelled, it will stop matching. 3: the ticket is matched. A matched ticket cannot be cancelled. 4: the ticket is already cancelled and nothing happens. 5: the ticket is waiting for a server. If the ticket is cancelled, server allocation will be stopped. A server may still be allocated due to a race condition, but that will not be reflected in the ticket. There may be race conditions between the ticket getting matched and the client making a cancellation request. The client must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket because players must consent to enter matchmaking again. Create a new ticket instead.
 */
 /// </summary>
 @interface MultiplayerCancelMatchmakingTicketRequest : PlayFabBaseModel
@@ -514,7 +494,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue to join.
+/// The name of the queue the ticket is in.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -624,6 +604,41 @@ typedef enum
 @end
 
 
+@interface MultiplayerCoreCapacity : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The available core capacity for the (Region, VmFamily)
+*/
+/// </summary>
+@property NSNumber* Available; 
+
+/// <summary>
+/*
+/// The AzureRegion
+*/
+/// </summary>
+@property MultiplayerAzureRegion Region; 
+
+/// <summary>
+/*
+/// The total core capacity for the (Region, VmFamily)
+*/
+/// </summary>
+@property NSNumber* Total; 
+
+/// <summary>
+/*
+/// The AzureVmFamily
+*/
+/// </summary>
+@property MultiplayerAzureVmFamily VmFamily; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// Creates a multiplayer server build with a custom container and returns information about the build creation request.
@@ -645,6 +660,13 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerContainerFlavor pfContainerFlavor; 
+
+/// <summary>
+/*
+/// The container reference, consisting of the image name and tag.
+*/
+/// </summary>
+@property MultiplayerContainerImageReference* pfContainerImageReference; 
 
 /// <summary>
 /*
@@ -1626,42 +1648,6 @@ typedef enum
 
 /// <summary>
 /*
-/// Gets the current configuration for a queue.
-*/
-/// </summary>
-@interface MultiplayerGetMatchmakingQueueRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The Id of the matchmaking queue to retrieve.
-*/
-/// </summary>
-@property NSString* QueueName; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerGetMatchmakingQueueResult : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The matchmaking queue config.
-*/
-/// </summary>
-@property MultiplayerMatchmakingQueueConfig* MatchmakingQueue; 
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
 /// The ticket includes the invited players, their attributes if they have joined, the ticket status, the match Id when applicable, etc. Only servers, the ticket creator and the invited players can get the ticket.
 */
 /// </summary>
@@ -1677,7 +1663,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue to find a match for.
+/// The name of the queue to find a match for.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -1797,7 +1783,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue to join.
+/// The name of the queue to join.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -2095,6 +2081,35 @@ typedef enum
 
 /// <summary>
 /*
+/// Gets the quotas for a title in relation to multiplayer servers.
+*/
+/// </summary>
+@interface MultiplayerGetTitleMultiplayerServersQuotasRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetTitleMultiplayerServersQuotasResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The various quotas for multiplayer servers for the title.
+*/
+/// </summary>
+@property MultiplayerTitleMultiplayerServersQuotas* Quotas; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Add the player to a matchmaking ticket and specify all of its matchmaking attributes. Players can join a ticket if and only if their EntityKeys are already listed in the ticket's Members list. The matchmaking service automatically starts matching the ticket against other matchmaking tickets once all players have joined the ticket. It is not possible to join a ticket once it has started matching.
 */
 /// </summary>
@@ -2110,7 +2125,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue to join.
+/// The name of the queue to join.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -2402,35 +2417,6 @@ typedef enum
 
 /// <summary>
 /*
-/// Gets a list of all the matchmaking queue configurations for the title.
-*/
-/// </summary>
-@interface MultiplayerListMatchmakingQueuesRequest : PlayFabBaseModel
-
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerListMatchmakingQueuesResult : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The list of matchmaking queue configs for this title.
-*/
-/// </summary>
-@property NSArray* MatchMakingQueues; 
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
 /// If the caller is a title, the EntityKey in the request is required. If the caller is a player, then it is optional. If it is provided it must match the caller's entity.
 */
 /// </summary>
@@ -2446,7 +2432,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the queue to find a match for.
+/// The name of the queue to find a match for.
 */
 /// </summary>
 @property NSString* QueueName; 
@@ -2733,129 +2719,10 @@ typedef enum
 
 /// <summary>
 /*
-/// The Id of the team the User has been assigned to by matchmaking.
+/// The Id of the team the User is assigned to.
 */
 /// </summary>
 @property NSString* TeamId; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerMatchmakingQueueConfig : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// This is the buildId that will be used to allocate the multiplayer server for the match.
-*/
-/// </summary>
-@property NSString* BuildId; 
-
-/// <summary>
-/*
-/// Maximum number of players in a match.
-*/
-/// </summary>
-@property NSNumber* MaxMatchSize; 
-
-/// <summary>
-/*
-/// Minimum number of players in a match.
-*/
-/// </summary>
-@property NSNumber* MinMatchSize; 
-
-/// <summary>
-/*
-/// Unique identifier for a Queue. Chosen by the developer.
-*/
-/// </summary>
-@property NSString* Name; 
-
-/// <summary>
-/*
-/// List of rules used to find an optimal match.
-*/
-/// </summary>
-@property NSArray* Rules; 
-
-/// <summary>
-/*
-/// Boolean flag to enable server allocation for the queue.
-*/
-/// </summary>
-@property bool ServerAllocationEnabled; 
-
-/// <summary>
-/*
-/// Controls which statistics are visible to players.
-*/
-/// </summary>
-@property MultiplayerStatisticsVisibilityToPlayers* pfStatisticsVisibilityToPlayers; 
-
-/// <summary>
-/*
-/// The team configuration for a match. This may be null if there are no teams.
-*/
-/// </summary>
-@property NSArray* Teams; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerMatchmakingQueueRule : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// Friendly name chosen by developer.
-*/
-/// </summary>
-@property NSString* Name; 
-
-/// <summary>
-/*
-/// How many seconds before this rule is no longer enforced (but tickets that comply with this rule will still be prioritized over those that don't). Leave blank if this rule is always enforced.
-*/
-/// </summary>
-@property NSNumber* SecondsUntilOptional; 
-
-/// <summary>
-/*
-/// Type of rule being described.
-*/
-/// </summary>
-@property MultiplayerRuleType Type; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerMatchmakingQueueTeam : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The maximum number of players required for the team.
-*/
-/// </summary>
-@property NSNumber* MaxTeamSize; 
-
-/// <summary>
-/*
-/// The minimum number of players required for the team.
-*/
-/// </summary>
-@property NSNumber* MinTeamSize; 
-
-/// <summary>
-/*
-/// A name to identify the team. This is case insensitive.
-*/
-/// </summary>
-@property NSString* Name; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2962,35 +2829,6 @@ typedef enum
 /// </summary>
 @property NSString* ServerUrl; 
 /**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// Deletes the configuration for a queue. This will permanently delete the configuration and players will no longer be able to match in the queue. All outstanding matchmaking tickets will be cancelled.
-*/
-/// </summary>
-@interface MultiplayerRemoveMatchmakingQueueRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The Id of the matchmaking queue to remove.
-*/
-/// </summary>
-@property NSString* QueueName; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerRemoveMatchmakingQueueResult : PlayFabBaseModel
-
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -3181,36 +3019,14 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Ports; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
 
 /// <summary>
 /*
-/// Use this API to create or update matchmaking queue configurations. The queue configuration defines the matchmaking rules. The matchmaking service will match tickets together according to the configured rules. Queue resources are not spun up by calling this API. Queues are created when the first ticket is submitted.
+/// The server's region.
 */
 /// </summary>
-@interface MultiplayerSetMatchmakingQueueRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The matchmaking queue config.
-*/
-/// </summary>
-@property MultiplayerMatchmakingQueueConfig* MatchmakingQueue; 
+@property NSString* Region; 
 /**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerSetMatchmakingQueueResult : PlayFabBaseModel
-
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -3283,22 +3099,15 @@ typedef enum
 @end
 
 
-@interface MultiplayerStatisticsVisibilityToPlayers : PlayFabBaseModel
+@interface MultiplayerTitleMultiplayerServersQuotas : PlayFabBaseModel
 
 
 /// <summary>
 /*
-/// Whether to allow players to view the current number of players in the matchmaking queue.
+/// The core capacity for the various regions and VM Family
 */
 /// </summary>
-@property bool ShowNumberOfPlayersMatching; 
-
-/// <summary>
-/*
-/// Whether to allow players to view statistics representing the time it takes for tickets to find a match.
-*/
-/// </summary>
-@property bool ShowTimeToMatch; 
+@property NSArray* CoreCapacities; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

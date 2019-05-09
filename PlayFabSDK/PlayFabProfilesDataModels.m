@@ -106,6 +106,8 @@
     }
 
     
+    self.AvatarUrl = [properties valueForKey:@"AvatarUrl"];
+    
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
     self.DisplayName = [properties valueForKey:@"DisplayName"];

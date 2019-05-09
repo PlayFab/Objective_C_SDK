@@ -222,6 +222,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Avatar URL for the entity.
+*/
+/// </summary>
+@property NSString* AvatarUrl; 
+
+/// <summary>
+/*
 /// The creation time of this profile in UTC.
 */
 /// </summary>
@@ -600,7 +607,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Given an entity profile, will update its language to the one passed in if the profile's version is at least the one passed in.
+/// Given an entity profile, will update its language to the one passed in if the profile's version is equal to the one passed in.
 */
 /// </summary>
 @interface ProfilesSetProfileLanguageRequest : PlayFabBaseModel

@@ -297,6 +297,29 @@
     return self;
 }
 @end
+@implementation MultiplayerCoreCapacity
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Available = [properties valueForKey:@"Available"];
+    
+    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    
+    self.Total = [properties valueForKey:@"Total"];
+    
+    self.VmFamily = (MultiplayerAzureVmFamily)[properties valueForKey:@"MultiplayerVmFamily"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCreateBuildWithCustomContainerRequest
 
 
@@ -311,6 +334,8 @@
     self.BuildName = [properties valueForKey:@"BuildName"];
     
     self.pfContainerFlavor = (MultiplayerContainerFlavor)[properties valueForKey:@"MultiplayerContainerFlavor"];
+    
+    self.pfContainerImageReference = [[MultiplayerContainerImageReference new] initWithDictionary:[properties objectForKey:@"ContainerImageReference"]];
     
     self.ContainerRepositoryName = [properties valueForKey:@"ContainerRepositoryName"];
     
@@ -1109,40 +1134,6 @@
     return self;
 }
 @end
-@implementation MultiplayerGetMatchmakingQueueRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.QueueName = [properties valueForKey:@"QueueName"];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerGetMatchmakingQueueResult
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.MatchmakingQueue = [[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[properties objectForKey:@"MatchmakingQueue"]];
-    
-
-    return self;
-}
-@end
 @implementation MultiplayerGetMatchmakingTicketRequest
 
 
@@ -1457,6 +1448,38 @@
     return self;
 }
 @end
+@implementation MultiplayerGetTitleMultiplayerServersQuotasRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetTitleMultiplayerServersQuotasResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Quotas = [[MultiplayerTitleMultiplayerServersQuotas new] initWithDictionary:[properties objectForKey:@"Quotas"]];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerJoinMatchmakingTicketRequest
 
 
@@ -1727,46 +1750,6 @@
     return self;
 }
 @end
-@implementation MultiplayerListMatchmakingQueuesRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerListMatchmakingQueuesResult
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    if ([properties objectForKey:@"MatchMakingQueues"]){
-    NSArray* member_list = [properties objectForKey:@"MatchMakingQueues"];
-    NSMutableArray* mutable_storage = [NSMutableArray new];
-    for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[member_list objectAtIndex:i]]];
-    }
-    self.MatchMakingQueues = [mutable_storage copy];
-}
-
-    
-
-    return self;
-}
-@end
 @implementation MultiplayerListMatchmakingTicketsForPlayerRequest
 
 
@@ -2018,95 +2001,6 @@
     return self;
 }
 @end
-@implementation MultiplayerMatchmakingQueueConfig
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.BuildId = [properties valueForKey:@"BuildId"];
-    
-    self.MaxMatchSize = [properties valueForKey:@"MaxMatchSize"];
-    
-    self.MinMatchSize = [properties valueForKey:@"MinMatchSize"];
-    
-    self.Name = [properties valueForKey:@"Name"];
-    
-    if ([properties objectForKey:@"Rules"]){
-    NSArray* member_list = [properties objectForKey:@"Rules"];
-    NSMutableArray* mutable_storage = [NSMutableArray new];
-    for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[MultiplayerMatchmakingQueueRule new] initWithDictionary:[member_list objectAtIndex:i]]];
-    }
-    self.Rules = [mutable_storage copy];
-}
-
-    
-    self.ServerAllocationEnabled = [[properties valueForKey:@"ServerAllocationEnabled"] boolValue];
-    
-    self.pfStatisticsVisibilityToPlayers = [[MultiplayerStatisticsVisibilityToPlayers new] initWithDictionary:[properties objectForKey:@"StatisticsVisibilityToPlayers"]];
-    
-    if ([properties objectForKey:@"Teams"]){
-    NSArray* member_list = [properties objectForKey:@"Teams"];
-    NSMutableArray* mutable_storage = [NSMutableArray new];
-    for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[MultiplayerMatchmakingQueueTeam new] initWithDictionary:[member_list objectAtIndex:i]]];
-    }
-    self.Teams = [mutable_storage copy];
-}
-
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerMatchmakingQueueRule
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.Name = [properties valueForKey:@"Name"];
-    
-    self.SecondsUntilOptional = [properties valueForKey:@"SecondsUntilOptional"];
-    
-    self.Type = (MultiplayerRuleType)[properties valueForKey:@"MultiplayerType"];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerMatchmakingQueueTeam
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.MaxTeamSize = [properties valueForKey:@"MaxTeamSize"];
-    
-    self.MinTeamSize = [properties valueForKey:@"MinTeamSize"];
-    
-    self.Name = [properties valueForKey:@"Name"];
-    
-
-    return self;
-}
-@end
 @implementation MultiplayerMultiplayerServerSummary
 
 
@@ -2179,38 +2073,6 @@
     self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
     
     self.ServerUrl = [properties valueForKey:@"ServerUrl"];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerRemoveMatchmakingQueueRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.QueueName = [properties valueForKey:@"QueueName"];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerRemoveMatchmakingQueueResult
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
     
 
     return self;
@@ -2367,37 +2229,7 @@
 }
 
     
-
-    return self;
-}
-@end
-@implementation MultiplayerSetMatchmakingQueueRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.MatchmakingQueue = [[MultiplayerMatchmakingQueueConfig new] initWithDictionary:[properties objectForKey:@"MatchmakingQueue"]];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerSetMatchmakingQueueResult
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
+    self.Region = [properties valueForKey:@"Region"];
     
 
     return self;
@@ -2447,7 +2279,7 @@
     return self;
 }
 @end
-@implementation MultiplayerStatisticsVisibilityToPlayers
+@implementation MultiplayerTitleMultiplayerServersQuotas
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2458,9 +2290,15 @@
     }
 
     
-    self.ShowNumberOfPlayersMatching = [[properties valueForKey:@"ShowNumberOfPlayersMatching"] boolValue];
-    
-    self.ShowTimeToMatch = [[properties valueForKey:@"ShowTimeToMatch"] boolValue];
+    if ([properties objectForKey:@"CoreCapacities"]){
+    NSArray* member_list = [properties objectForKey:@"CoreCapacities"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerCoreCapacity new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.CoreCapacities = [mutable_storage copy];
+}
+
     
 
     return self;
