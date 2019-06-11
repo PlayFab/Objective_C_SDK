@@ -20,7 +20,8 @@ typedef enum
     MultiplayerAzureRegionWestEurope,
     MultiplayerAzureRegionWestUs,
     MultiplayerAzureRegionChinaEast2,
-    MultiplayerAzureRegionChinaNorth2
+    MultiplayerAzureRegionChinaNorth2,
+    MultiplayerAzureRegionSouthAfricaNorth
 } MultiplayerAzureRegion;
 
 typedef enum
@@ -62,7 +63,8 @@ typedef enum
 {
     MultiplayerCancellationReasonRequested,
     MultiplayerCancellationReasonInternal,
-    MultiplayerCancellationReasonTimeout
+    MultiplayerCancellationReasonTimeout,
+    MultiplayerCancellationReasonServerAllocationFailed
 } MultiplayerCancellationReason;
 
 typedef enum

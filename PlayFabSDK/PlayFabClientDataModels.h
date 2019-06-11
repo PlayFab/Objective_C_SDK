@@ -10152,7 +10152,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Statistics to be updated with the provided values.
+/// Statistics to be updated with the provided values, in the Key(string), Value(int) pattern.
 */
 /// </summary>
 @property NSDictionary* CharacterStatistics; 

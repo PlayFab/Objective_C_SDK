@@ -13,6 +13,8 @@
 		
 typedef void(^GetEntityTokenCallback)(AuthenticationGetEntityTokenResponse* result, NSObject* userData);
 		
+typedef void(^ValidateEntityTokenCallback)(AuthenticationValidateEntityTokenResponse* result, NSObject* userData);
+		
 
 + (PlayFabClientAPI*) GetInstance;
 
@@ -21,6 +23,8 @@ typedef void(^GetEntityTokenCallback)(AuthenticationGetEntityTokenResponse* resu
 // ------------ Generated API calls
 		
 -(void) GetEntityToken:(AuthenticationGetEntityTokenRequest*)request success:(GetEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ValidateEntityToken:(AuthenticationValidateEntityTokenRequest*)request success:(ValidateEntityTokenCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 
 @end

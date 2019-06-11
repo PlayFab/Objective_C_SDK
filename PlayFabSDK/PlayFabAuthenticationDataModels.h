@@ -6,9 +6,15 @@
 
 @class AuthenticationEntityKey;
 
+@class AuthenticationEntityLineage;
+
 @class AuthenticationGetEntityTokenRequest;
 
 @class AuthenticationGetEntityTokenResponse;
+
+@class AuthenticationValidateEntityTokenRequest;
+
+@class AuthenticationValidateEntityTokenResponse;
 
 
 
@@ -33,6 +39,55 @@
 */
 /// </summary>
 @property NSString* Type; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface AuthenticationEntityLineage : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The Character Id of the associated entity.
+*/
+/// </summary>
+@property NSString* CharacterId; 
+
+/// <summary>
+/*
+/// The Group Id of the associated entity.
+*/
+/// </summary>
+@property NSString* GroupId; 
+
+/// <summary>
+/*
+/// The Master Player Account Id of the associated entity.
+*/
+/// </summary>
+@property NSString* MasterPlayerAccountId; 
+
+/// <summary>
+/*
+/// The Namespace Id of the associated entity.
+*/
+/// </summary>
+@property NSString* NamespaceId; 
+
+/// <summary>
+/*
+/// The Title Id of the associated entity.
+*/
+/// </summary>
+@property NSString* TitleId; 
+
+/// <summary>
+/*
+/// The Title Player Account Id of the associated entity.
+*/
+/// </summary>
+@property NSString* TitlePlayerAccountId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -80,6 +135,49 @@
 */
 /// </summary>
 @property NSDate* TokenExpiration; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Given an entity token, validates that it hasn't exipired or been revoked and will return details of the owner.
+*/
+/// </summary>
+@interface AuthenticationValidateEntityTokenRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Client EntityToken
+*/
+/// </summary>
+@property NSString* EntityToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface AuthenticationValidateEntityTokenResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The entity id and type.
+*/
+/// </summary>
+@property AuthenticationEntityKey* Entity; 
+
+/// <summary>
+/*
+/// The lineage of this profile.
+*/
+/// </summary>
+@property AuthenticationEntityLineage* Lineage; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
