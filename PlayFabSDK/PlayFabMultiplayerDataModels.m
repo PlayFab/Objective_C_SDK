@@ -2105,7 +2105,7 @@
     NSArray* member_list = [properties objectForKey:@"PreferredRegions"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
     for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:(MultiplayerAzureRegion)[member_list objectAtIndex:i]];
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
     }
     self.PreferredRegions = [mutable_storage copy];
 }
