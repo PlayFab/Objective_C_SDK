@@ -46,6 +46,10 @@ typedef enum
 
 @class ProfilesGetGlobalPolicyResponse;
 
+@class ProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest;
+
+@class ProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse;
+
 @class ProfilesSetEntityProfilePolicyRequest;
 
 @class ProfilesSetEntityProfilePolicyResponse;
@@ -268,6 +272,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* Language; 
+
+/// <summary>
+/*
+/// Leaderboard metadata for the entity.
+*/
+/// </summary>
+@property NSString* LeaderboardMetadata; 
 
 /// <summary>
 /*
@@ -525,6 +536,49 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Permissions; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Given a master player account id (PlayFab ID), returns all title player accounts associated with it.
+*/
+/// </summary>
+@interface ProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Master player account ids.
+*/
+/// </summary>
+@property NSArray* MasterPlayerAccountIds; 
+
+/// <summary>
+/*
+/// Id of title to get players from.
+*/
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Dictionary of master player ids mapped to title player entity keys and id pairs
+*/
+/// </summary>
+@property NSDictionary* TitlePlayerAccounts; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

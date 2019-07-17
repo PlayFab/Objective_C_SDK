@@ -63,8 +63,7 @@ typedef enum
 {
     MultiplayerCancellationReasonRequested,
     MultiplayerCancellationReasonInternal,
-    MultiplayerCancellationReasonTimeout,
-    MultiplayerCancellationReasonServerAllocationFailed
+    MultiplayerCancellationReasonTimeout
 } MultiplayerCancellationReason;
 
 typedef enum
@@ -672,24 +671,10 @@ typedef enum
 
 /// <summary>
 /*
-/// The name of the container repository.
-*/
-/// </summary>
-@property NSString* ContainerRepositoryName; 
-
-/// <summary>
-/*
 /// The container command to run when the multiplayer server has been allocated, including any arguments.
 */
 /// </summary>
 @property NSString* ContainerRunCommand; 
-
-/// <summary>
-/*
-/// The tag for the container.
-*/
-/// </summary>
-@property NSString* ContainerTag; 
 
 /// <summary>
 /*
@@ -1690,6 +1675,13 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerCancellationReason pfCancellationReason; 
+
+/// <summary>
+/*
+/// The reason why the current ticket was canceled. This field is only set if the ticket is in canceled state.
+*/
+/// </summary>
+@property NSString* CancellationReasonString; 
 
 /// <summary>
 /*

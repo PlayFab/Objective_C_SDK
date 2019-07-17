@@ -17,6 +17,8 @@ typedef void(^GetProfileCallback)(ProfilesGetEntityProfileResponse* result, NSOb
 		
 typedef void(^GetProfilesCallback)(ProfilesGetEntityProfilesResponse* result, NSObject* userData);
 		
+typedef void(^GetTitlePlayersFromMasterPlayerAccountIdsCallback)(ProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse* result, NSObject* userData);
+		
 typedef void(^SetGlobalPolicyCallback)(ProfilesSetGlobalPolicyResponse* result, NSObject* userData);
 		
 typedef void(^SetProfileLanguageCallback)(ProfilesSetProfileLanguageResponse* result, NSObject* userData);
@@ -35,6 +37,8 @@ typedef void(^SetProfilePolicyCallback)(ProfilesSetEntityProfilePolicyResponse* 
 -(void) GetProfile:(ProfilesGetEntityProfileRequest*)request success:(GetProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetProfiles:(ProfilesGetEntityProfilesRequest*)request success:(GetProfilesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetTitlePlayersFromMasterPlayerAccountIds:(ProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest*)request success:(GetTitlePlayersFromMasterPlayerAccountIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) SetGlobalPolicy:(ProfilesSetGlobalPolicyRequest*)request success:(SetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

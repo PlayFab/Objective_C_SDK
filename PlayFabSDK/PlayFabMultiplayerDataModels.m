@@ -337,11 +337,7 @@
     
     self.pfContainerImageReference = [[MultiplayerContainerImageReference new] initWithDictionary:[properties objectForKey:@"ContainerImageReference"]];
     
-    self.ContainerRepositoryName = [properties valueForKey:@"ContainerRepositoryName"];
-    
     self.ContainerRunCommand = [properties valueForKey:@"ContainerRunCommand"];
-    
-    self.ContainerTag = [properties valueForKey:@"ContainerTag"];
     
     if ([properties objectForKey:@"GameAssetReferences"]){
     NSArray* member_list = [properties objectForKey:@"GameAssetReferences"];
@@ -1167,6 +1163,8 @@
 
     
     self.pfCancellationReason = (MultiplayerCancellationReason)[properties valueForKey:@"MultiplayerCancellationReason"];
+    
+    self.CancellationReasonString = [properties valueForKey:@"CancellationReasonString"];
     
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     

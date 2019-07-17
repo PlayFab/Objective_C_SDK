@@ -128,6 +128,8 @@
     
     self.Language = [properties valueForKey:@"Language"];
     
+    self.LeaderboardMetadata = [properties valueForKey:@"LeaderboardMetadata"];
+    
     self.Lineage = [[ProfilesEntityLineage new] initWithDictionary:[properties objectForKey:@"Lineage"]];
     
     if ([properties objectForKey:@"Objects"]){
@@ -364,6 +366,58 @@
         [mutable_storage addObject:[[ProfilesEntityPermissionStatement new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Permissions = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"MasterPlayerAccountIds"]){
+    NSArray* member_list = [properties objectForKey:@"MasterPlayerAccountIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.MasterPlayerAccountIds = [mutable_storage copy];
+}
+
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
+@implementation ProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"TitlePlayerAccounts"]){
+    NSDictionary* member_list = [properties objectForKey:@"TitlePlayerAccounts"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[[ProfilesEntityKey new] initWithDictionary:[member_list objectForKey:key]] forKey:key];
+    }
+    self.TitlePlayerAccounts = [mutable_storage copy];
 }
 
     
