@@ -230,6 +230,10 @@ typedef enum
 
 @class MultiplayerListMultiplayerServersResponse;
 
+@class MultiplayerListPartyQosServersRequest;
+
+@class MultiplayerListPartyQosServersResponse;
+
 @class MultiplayerListQosServersRequest;
 
 @class MultiplayerListQosServersResponse;
@@ -359,7 +363,7 @@ typedef enum
 /// The build region.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -394,7 +398,7 @@ typedef enum
 /// The build region.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -620,7 +624,7 @@ typedef enum
 /// The AzureRegion
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -1090,7 +1094,7 @@ typedef enum
 /// The region of virtual machine to create the remote user for.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -1286,7 +1290,7 @@ typedef enum
 /// The region of the multiplayer server where the remote user is to delete.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -1851,7 +1855,7 @@ typedef enum
 /// The region the multiplayer server is located in to get details for.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -1907,7 +1911,7 @@ typedef enum
 /// The region the multiplayer server is located in.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2007,7 +2011,7 @@ typedef enum
 /// The region of the multiplayer server to get remote login information for.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2479,7 +2483,7 @@ typedef enum
 /// The region the multiplayer servers to list.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2508,6 +2512,56 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The skip token for the paged response.
+*/
+/// </summary>
+@property NSString* SkipToken; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Returns a list of quality of service servers for party.
+*/
+/// </summary>
+@interface MultiplayerListPartyQosServersRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Qos servers version
+*/
+/// </summary>
+@property NSString* Version; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerListPartyQosServersResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The page size on the response.
+*/
+/// </summary>
+@property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The list of QoS servers.
+*/
+/// </summary>
+@property NSArray* QosServers; 
 
 /// <summary>
 /*
@@ -2593,7 +2647,7 @@ typedef enum
 /// The region of the virtual machines to list.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2744,7 +2798,7 @@ typedef enum
 /// The region the multiplayer server is located in.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2814,7 +2868,7 @@ typedef enum
 /// The region the QoS server is located in.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -2917,7 +2971,7 @@ typedef enum
 /// The region the multiplayer server is located in.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*
@@ -3045,7 +3099,7 @@ typedef enum
 /// The region of the multiplayer server to shut down.
 */
 /// </summary>
-@property MultiplayerAzureRegion Region; 
+@property NSString* Region; 
 
 /// <summary>
 /*

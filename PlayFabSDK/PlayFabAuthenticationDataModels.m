@@ -115,6 +115,8 @@
     
     self.Entity = [[AuthenticationEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
+    self.IdentityProvider = (AuthenticationLoginIdentityProvider)[properties valueForKey:@"AuthenticationIdentityProvider"];
+    
     self.Lineage = [[AuthenticationEntityLineage new] initWithDictionary:[properties objectForKey:@"Lineage"]];
     
 

@@ -5729,6 +5729,37 @@
     return self;
 }
 @end
+@implementation ClientPurchaseReceiptFulfillment
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"FulfilledItems"]){
+    NSArray* member_list = [properties objectForKey:@"FulfilledItems"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.FulfilledItems = [mutable_storage copy];
+}
+
+    
+    self.RecordedPriceSource = [properties valueForKey:@"RecordedPriceSource"];
+    
+    self.RecordedTransactionCurrency = [properties valueForKey:@"RecordedTransactionCurrency"];
+    
+    self.RecordedTransactionTotal = [properties valueForKey:@"RecordedTransactionTotal"];
+    
+
+    return self;
+}
+@end
 @implementation ClientPushNotificationRegistrationModel
 
 
@@ -6144,6 +6175,8 @@
     }
 
     
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
     self.ReceiptData = [properties valueForKey:@"ReceiptData"];
     
 
@@ -6159,6 +6192,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"Fulfillments"]){
+    NSArray* member_list = [properties objectForKey:@"Fulfillments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPurchaseReceiptFulfillment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Fulfillments = [mutable_storage copy];
+}
 
     
 
@@ -8111,6 +8154,16 @@
     }
 
     
+    if ([properties objectForKey:@"Fulfillments"]){
+    NSArray* member_list = [properties objectForKey:@"Fulfillments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPurchaseReceiptFulfillment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Fulfillments = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -8125,6 +8178,8 @@
         return nil;
     }
 
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
     
@@ -8149,6 +8204,16 @@
     }
 
     
+    if ([properties objectForKey:@"Fulfillments"]){
+    NSArray* member_list = [properties objectForKey:@"Fulfillments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPurchaseReceiptFulfillment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Fulfillments = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -8163,6 +8228,8 @@
         return nil;
     }
 
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
     
@@ -8183,6 +8250,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"Fulfillments"]){
+    NSArray* member_list = [properties objectForKey:@"Fulfillments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPurchaseReceiptFulfillment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Fulfillments = [mutable_storage copy];
+}
 
     
 
@@ -8221,6 +8298,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"Fulfillments"]){
+    NSArray* member_list = [properties objectForKey:@"Fulfillments"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientPurchaseReceiptFulfillment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Fulfillments = [mutable_storage copy];
+}
 
     
 

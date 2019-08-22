@@ -2,6 +2,29 @@
 #import "PlayFabBaseModel.h"
 
 
+typedef enum
+{
+    AuthenticationLoginIdentityProviderUnknown,
+    AuthenticationLoginIdentityProviderPlayFab,
+    AuthenticationLoginIdentityProviderCustom,
+    AuthenticationLoginIdentityProviderGameCenter,
+    AuthenticationLoginIdentityProviderGooglePlay,
+    AuthenticationLoginIdentityProviderSteam,
+    AuthenticationLoginIdentityProviderXBoxLive,
+    AuthenticationLoginIdentityProviderPSN,
+    AuthenticationLoginIdentityProviderKongregate,
+    AuthenticationLoginIdentityProviderFacebook,
+    AuthenticationLoginIdentityProviderIOSDevice,
+    AuthenticationLoginIdentityProviderAndroidDevice,
+    AuthenticationLoginIdentityProviderTwitch,
+    AuthenticationLoginIdentityProviderWindowsHello,
+    AuthenticationLoginIdentityProviderGameServer,
+    AuthenticationLoginIdentityProviderCustomServer,
+    AuthenticationLoginIdentityProviderNintendoSwitch,
+    AuthenticationLoginIdentityProviderFacebookInstantGames,
+    AuthenticationLoginIdentityProviderOpenIdConnect
+} AuthenticationLoginIdentityProvider;
+
 //predeclare all non-enum classes
 
 @class AuthenticationEntityKey;
@@ -171,6 +194,13 @@
 */
 /// </summary>
 @property AuthenticationEntityKey* Entity; 
+
+/// <summary>
+/*
+/// The identity provider for this entity, for the given login
+*/
+/// </summary>
+@property AuthenticationLoginIdentityProvider IdentityProvider; 
 
 /// <summary>
 /*

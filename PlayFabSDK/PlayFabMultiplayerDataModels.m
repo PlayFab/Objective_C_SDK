@@ -81,7 +81,7 @@
     
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
     
@@ -104,7 +104,7 @@
     
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
     
@@ -310,7 +310,7 @@
     
     self.Available = [properties valueForKey:@"Available"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.Total = [properties valueForKey:@"Total"];
     
@@ -695,7 +695,7 @@
     
     self.ExpirationTime = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"ExpirationTime"]];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.Username = [properties valueForKey:@"Username"];
     
@@ -842,7 +842,7 @@
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.Username = [properties valueForKey:@"Username"];
     
@@ -1279,7 +1279,7 @@
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.SessionId = [properties valueForKey:@"SessionId"];
     
@@ -1324,7 +1324,7 @@
 }
 
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.ServerId = [properties valueForKey:@"ServerId"];
     
@@ -1387,7 +1387,7 @@
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.VmId = [properties valueForKey:@"VmId"];
     
@@ -1807,7 +1807,7 @@
     
     self.PageSize = [properties valueForKey:@"PageSize"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.SkipToken = [properties valueForKey:@"SkipToken"];
     
@@ -1837,6 +1837,52 @@
 
     
     self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    self.SkipToken = [properties valueForKey:@"SkipToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListPartyQosServersRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Version = [properties valueForKey:@"Version"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListPartyQosServersResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    if ([properties objectForKey:@"QosServers"]){
+    NSArray* member_list = [properties objectForKey:@"QosServers"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerQosServer new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.QosServers = [mutable_storage copy];
+}
+
     
     self.SkipToken = [properties valueForKey:@"SkipToken"];
     
@@ -1903,7 +1949,7 @@
     
     self.PageSize = [properties valueForKey:@"PageSize"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.SkipToken = [properties valueForKey:@"SkipToken"];
     
@@ -2022,7 +2068,7 @@
     
     self.LastStateTransitionTime = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastStateTransitionTime"]];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.ServerId = [properties valueForKey:@"ServerId"];
     
@@ -2068,7 +2114,7 @@
     }
 
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.ServerUrl = [properties valueForKey:@"ServerUrl"];
     
@@ -2154,7 +2200,7 @@
 }
 
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.ServerId = [properties valueForKey:@"ServerId"];
     
@@ -2246,7 +2292,7 @@
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
-    self.Region = (MultiplayerAzureRegion)[properties valueForKey:@"MultiplayerRegion"];
+    self.Region = [properties valueForKey:@"Region"];
     
     self.SessionId = [properties valueForKey:@"SessionId"];
     
