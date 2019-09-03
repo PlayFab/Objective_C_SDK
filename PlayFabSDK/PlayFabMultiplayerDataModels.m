@@ -513,6 +513,8 @@
 }
 
     
+    self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
+    
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -591,6 +593,8 @@
     self.GameCertificateReferences = [mutable_storage copy];
 }
 
+    
+    self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
@@ -1054,6 +1058,8 @@
 }
 
     
+    self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
+    
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -1478,6 +1484,31 @@
     return self;
 }
 @end
+@implementation MultiplayerInstrumentationConfiguration
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"ProcessesToMonitor"]){
+    NSArray* member_list = [properties objectForKey:@"ProcessesToMonitor"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.ProcessesToMonitor = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerJoinMatchmakingTicketRequest
 
 
@@ -1862,6 +1893,50 @@
 }
 @end
 @implementation MultiplayerListPartyQosServersResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    if ([properties objectForKey:@"QosServers"]){
+    NSArray* member_list = [properties objectForKey:@"QosServers"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerQosServer new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.QosServers = [mutable_storage copy];
+}
+
+    
+    self.SkipToken = [properties valueForKey:@"SkipToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListQosServersForTitleRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListQosServersForTitleResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

@@ -5042,7 +5042,7 @@ typedef enum
 
 /// <summary>
 /*
-/// catalog version to store items from. Use default catalog version if null
+/// Catalog version to store items from. Use default catalog version if null
 */
 /// </summary>
 @property NSString* CatalogVersion; 

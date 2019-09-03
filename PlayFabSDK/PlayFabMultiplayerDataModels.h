@@ -198,6 +198,8 @@ typedef enum
 
 @class MultiplayerGetTitleMultiplayerServersQuotasResponse;
 
+@class MultiplayerInstrumentationConfiguration;
+
 @class MultiplayerJoinMatchmakingTicketRequest;
 
 @class MultiplayerJoinMatchmakingTicketResult;
@@ -233,6 +235,10 @@ typedef enum
 @class MultiplayerListPartyQosServersRequest;
 
 @class MultiplayerListPartyQosServersResponse;
+
+@class MultiplayerListQosServersForTitleRequest;
+
+@class MultiplayerListQosServersForTitleResponse;
 
 @class MultiplayerListQosServersRequest;
 
@@ -872,6 +878,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The instrumentation configuration for the build.
+*/
+/// </summary>
+@property MultiplayerInstrumentationConfiguration* pfInstrumentationConfiguration; 
+
+/// <summary>
+/*
 /// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).
 */
 /// </summary>
@@ -960,6 +973,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* GameCertificateReferences; 
+
+/// <summary>
+/*
+/// The instrumentation configuration for this build.
+*/
+/// </summary>
+@property MultiplayerInstrumentationConfiguration* pfInstrumentationConfiguration; 
 
 /// <summary>
 /*
@@ -1547,6 +1567,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The instrumentation configuration of the build.
+*/
+/// </summary>
+@property MultiplayerInstrumentationConfiguration* pfInstrumentationConfiguration; 
+
+/// <summary>
+/*
 /// Metadata of the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).
 */
 /// </summary>
@@ -2106,6 +2133,20 @@ typedef enum
 @end
 
 
+@interface MultiplayerInstrumentationConfiguration : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The list of processes to be monitored on a VM for this build. Providing processes will turn on performance metrics collection for this build. Process names should not include extensions. If the game server process is: GameServer.exe; then, ProcessesToMonitor = [ GameServer ] 
+*/
+/// </summary>
+@property NSArray* ProcessesToMonitor; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// Add the player to a matchmaking ticket and specify all of its matchmaking attributes. Players can join a ticket if and only if their EntityKeys are already listed in the ticket's Members list. The matchmaking service automatically starts matching the ticket against other matchmaking tickets once all players have joined the ticket. It is not possible to join a ticket once it has started matching.
@@ -2547,6 +2588,49 @@ typedef enum
 
 
 @interface MultiplayerListPartyQosServersResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The page size on the response.
+*/
+/// </summary>
+@property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The list of QoS servers.
+*/
+/// </summary>
+@property NSArray* QosServers; 
+
+/// <summary>
+/*
+/// The skip token for the paged response.
+*/
+/// </summary>
+@property NSString* SkipToken; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Returns a list of quality of service servers for a title.
+*/
+/// </summary>
+@interface MultiplayerListQosServersForTitleRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerListQosServersForTitleResponse : PlayFabBaseModel
 
 
 /// <summary>
