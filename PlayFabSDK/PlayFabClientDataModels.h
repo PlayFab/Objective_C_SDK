@@ -2537,7 +2537,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes
+/// Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types
 */
 /// </summary>
 @property NSString* Type; 
