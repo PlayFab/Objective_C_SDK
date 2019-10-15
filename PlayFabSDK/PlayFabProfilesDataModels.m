@@ -116,6 +116,16 @@
     
     self.EntityChain = [properties valueForKey:@"EntityChain"];
     
+    if ([properties objectForKey:@"ExperimentVariants"]){
+    NSArray* member_list = [properties objectForKey:@"ExperimentVariants"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.ExperimentVariants = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"Files"]){
     NSDictionary* member_list = [properties objectForKey:@"Files"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];

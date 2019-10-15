@@ -15,6 +15,8 @@ typedef void(^CancelAllMatchmakingTicketsForPlayerCallback)(MultiplayerCancelAll
 		
 typedef void(^CancelMatchmakingTicketCallback)(MultiplayerCancelMatchmakingTicketResult* result, NSObject* userData);
 		
+typedef void(^CreateBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
+		
 typedef void(^CreateBuildWithCustomContainerCallback)(MultiplayerCreateBuildWithCustomContainerResponse* result, NSObject* userData);
 		
 typedef void(^CreateBuildWithManagedContainerCallback)(MultiplayerCreateBuildWithManagedContainerResponse* result, NSObject* userData);
@@ -29,6 +31,8 @@ typedef void(^DeleteAssetCallback)(MultiplayerEmptyResponse* result, NSObject* u
 		
 typedef void(^DeleteBuildCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
+typedef void(^DeleteBuildAliasCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
+		
 typedef void(^DeleteCertificateCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^DeleteRemoteUserCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
@@ -38,6 +42,8 @@ typedef void(^EnableMultiplayerServersForTitleCallback)(MultiplayerEnableMultipl
 typedef void(^GetAssetUploadUrlCallback)(MultiplayerGetAssetUploadUrlResponse* result, NSObject* userData);
 		
 typedef void(^GetBuildCallback)(MultiplayerGetBuildResponse* result, NSObject* userData);
+		
+typedef void(^GetBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
 		
 typedef void(^GetContainerRegistryCredentialsCallback)(MultiplayerGetContainerRegistryCredentialsResponse* result, NSObject* userData);
 		
@@ -60,6 +66,8 @@ typedef void(^JoinMatchmakingTicketCallback)(MultiplayerJoinMatchmakingTicketRes
 typedef void(^ListArchivedMultiplayerServersCallback)(MultiplayerListMultiplayerServersResponse* result, NSObject* userData);
 		
 typedef void(^ListAssetSummariesCallback)(MultiplayerListAssetSummariesResponse* result, NSObject* userData);
+		
+typedef void(^ListBuildAliasesCallback)(MultiplayerListBuildAliasesForTitleResponse* result, NSObject* userData);
 		
 typedef void(^ListBuildSummariesCallback)(MultiplayerListBuildSummariesResponse* result, NSObject* userData);
 		
@@ -87,6 +95,8 @@ typedef void(^RolloverContainerRegistryCredentialsCallback)(MultiplayerRolloverC
 		
 typedef void(^ShutdownMultiplayerServerCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
+typedef void(^UpdateBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
+		
 typedef void(^UpdateBuildRegionsCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
@@ -102,6 +112,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) CancelMatchmakingTicket:(MultiplayerCancelMatchmakingTicketRequest*)request success:(CancelMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) CreateBuildAlias:(MultiplayerCreateBuildAliasRequest*)request success:(CreateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) CreateBuildWithCustomContainer:(MultiplayerCreateBuildWithCustomContainerRequest*)request success:(CreateBuildWithCustomContainerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) CreateBuildWithManagedContainer:(MultiplayerCreateBuildWithManagedContainerRequest*)request success:(CreateBuildWithManagedContainerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -116,6 +128,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) DeleteBuild:(MultiplayerDeleteBuildRequest*)request success:(DeleteBuildCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) DeleteBuildAlias:(MultiplayerDeleteBuildAliasRequest*)request success:(DeleteBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) DeleteCertificate:(MultiplayerDeleteCertificateRequest*)request success:(DeleteCertificateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) DeleteRemoteUser:(MultiplayerDeleteRemoteUserRequest*)request success:(DeleteRemoteUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -125,6 +139,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) GetAssetUploadUrl:(MultiplayerGetAssetUploadUrlRequest*)request success:(GetAssetUploadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetBuild:(MultiplayerGetBuildRequest*)request success:(GetBuildCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetBuildAlias:(MultiplayerGetBuildAliasRequest*)request success:(GetBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetContainerRegistryCredentials:(GetContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
@@ -147,6 +163,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) ListArchivedMultiplayerServers:(MultiplayerListMultiplayerServersRequest*)request success:(ListArchivedMultiplayerServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListAssetSummaries:(MultiplayerListAssetSummariesRequest*)request success:(ListAssetSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ListBuildAliases:(ListBuildAliasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) ListBuildSummaries:(MultiplayerListBuildSummariesRequest*)request success:(ListBuildSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -173,6 +191,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) RolloverContainerRegistryCredentials:(RolloverContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) ShutdownMultiplayerServer:(MultiplayerShutdownMultiplayerServerRequest*)request success:(ShutdownMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UpdateBuildAlias:(MultiplayerUpdateBuildAliasRequest*)request success:(UpdateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UpdateBuildRegions:(MultiplayerUpdateBuildRegionsRequest*)request success:(UpdateBuildRegionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

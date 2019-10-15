@@ -94,9 +94,15 @@ typedef enum
 
 @class MultiplayerAssetSummary;
 
+@class MultiplayerBuildAliasDetailsResponse;
+
+@class MultiplayerBuildAliasParams;
+
 @class MultiplayerBuildRegion;
 
 @class MultiplayerBuildRegionParams;
+
+@class MultiplayerBuildSelectionCriterion;
 
 @class MultiplayerBuildSummary;
 
@@ -117,6 +123,8 @@ typedef enum
 @class MultiplayerContainerImageReference;
 
 @class MultiplayerCoreCapacity;
+
+@class MultiplayerCreateBuildAliasRequest;
 
 @class MultiplayerCreateBuildWithCustomContainerRequest;
 
@@ -140,6 +148,8 @@ typedef enum
 
 @class MultiplayerDeleteAssetRequest;
 
+@class MultiplayerDeleteBuildAliasRequest;
+
 @class MultiplayerDeleteBuildRequest;
 
 @class MultiplayerDeleteCertificateRequest;
@@ -161,6 +171,8 @@ typedef enum
 @class MultiplayerGetAssetUploadUrlRequest;
 
 @class MultiplayerGetAssetUploadUrlResponse;
+
+@class MultiplayerGetBuildAliasRequest;
 
 @class MultiplayerGetBuildRequest;
 
@@ -208,6 +220,8 @@ typedef enum
 
 @class MultiplayerListAssetSummariesResponse;
 
+@class MultiplayerListBuildAliasesForTitleResponse;
+
 @class MultiplayerListBuildSummariesRequest;
 
 @class MultiplayerListBuildSummariesResponse;
@@ -254,6 +268,8 @@ typedef enum
 
 @class MultiplayerMatchmakingPlayerWithTeamAssignment;
 
+@class MultiplayerMultiplayerEmptyRequest;
+
 @class MultiplayerMultiplayerServerSummary;
 
 @class MultiplayerPort;
@@ -275,6 +291,8 @@ typedef enum
 @class MultiplayerStatistics;
 
 @class MultiplayerTitleMultiplayerServersQuotas;
+
+@class MultiplayerUpdateBuildAliasRequest;
 
 @class MultiplayerUpdateBuildRegionsRequest;
 
@@ -347,6 +365,65 @@ typedef enum
 @end
 
 
+@interface MultiplayerBuildAliasDetailsResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string alias Id of the alias to be created or updated.
+*/
+/// </summary>
+@property NSString* AliasId; 
+
+/// <summary>
+/*
+/// The alias name.
+*/
+/// </summary>
+@property NSString* AliasName; 
+
+/// <summary>
+/*
+/// Array of build selection criteria.
+*/
+/// </summary>
+@property NSArray* BuildSelectionCriteria; 
+
+/// <summary>
+/*
+/// The page size on the response.
+*/
+/// </summary>
+@property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The skip token for the paged response.
+*/
+/// </summary>
+@property NSString* SkipToken; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerBuildAliasParams : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string alias ID to use for the request.
+*/
+/// </summary>
+@property NSString* AliasId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface MultiplayerBuildRegion : PlayFabBaseModel
 
 
@@ -412,6 +489,20 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* StandbyServers; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerBuildSelectionCriterion : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Dictionary of build ids and their respective weights for distribution of allocation requests.
+*/
+/// </summary>
+@property NSDictionary* BuildWeightDistribution; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -645,6 +736,32 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerAzureVmFamily VmFamily; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Creates a multiplayer server build alias and returns the created alias.
+*/
+/// </summary>
+@interface MultiplayerCreateBuildAliasRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The alias name.
+*/
+/// </summary>
+@property NSString* AliasName; 
+
+/// <summary>
+/*
+/// Array of build selection criteria.
+*/
+/// </summary>
+@property NSArray* BuildSelectionCriteria; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1254,6 +1371,25 @@ typedef enum
 
 /// <summary>
 /*
+/// Deletes a multiplayer server build alias.
+*/
+/// </summary>
+@interface MultiplayerDeleteBuildAliasRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string alias ID of the alias to perform the action on.
+*/
+/// </summary>
+@property NSString* AliasId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Deletes a multiplayer server build.
 */
 /// </summary>
@@ -1476,6 +1612,25 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Returns the details about a multiplayer server build alias.
+*/
+/// </summary>
+@interface MultiplayerGetBuildAliasRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string alias ID of the alias to perform the action on.
+*/
+/// </summary>
+@property NSString* AliasId; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -2247,6 +2402,23 @@ typedef enum
 @end
 
 
+@interface MultiplayerListBuildAliasesForTitleResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The list of build aliases for the title
+*/
+/// </summary>
+@property NSArray* BuildAliases; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// Returns a list of summarized details of all multiplayer server builds for a title.
@@ -2860,6 +3032,18 @@ typedef enum
 @end
 
 
+/// <summary>
+/*
+/// Returns a list of summarized details of all multiplayer server builds for a title.
+*/
+/// </summary>
+@interface MultiplayerMultiplayerEmptyRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface MultiplayerMultiplayerServerSummary : PlayFabBaseModel
 
 
@@ -2972,6 +3156,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerRequestMultiplayerServerRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The identifiers of the build alias to use for the request.
+*/
+/// </summary>
+@property MultiplayerBuildAliasParams* pfBuildAliasParams; 
 
 /// <summary>
 /*
@@ -3240,6 +3431,39 @@ typedef enum
 */
 /// </summary>
 @property NSArray* CoreCapacities; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Creates a multiplayer server build alias and returns the created alias.
+*/
+/// </summary>
+@interface MultiplayerUpdateBuildAliasRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string alias Id of the alias to be updated.
+*/
+/// </summary>
+@property NSString* AliasId; 
+
+/// <summary>
+/*
+/// The alias name.
+*/
+/// </summary>
+@property NSString* AliasName; 
+
+/// <summary>
+/*
+/// Array of build selection criteria.
+*/
+/// </summary>
+@property NSArray* BuildSelectionCriteria; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

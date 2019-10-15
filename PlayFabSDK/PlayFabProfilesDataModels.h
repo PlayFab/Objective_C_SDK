@@ -261,6 +261,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The experiment variants of this profile.
+*/
+/// </summary>
+@property NSArray* ExperimentVariants; 
+
+/// <summary>
+/*
 /// The files on this profile.
 */
 /// </summary>

@@ -66,6 +66,56 @@
     return self;
 }
 @end
+@implementation MultiplayerBuildAliasDetailsResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasId = [properties valueForKey:@"AliasId"];
+    
+    self.AliasName = [properties valueForKey:@"AliasName"];
+    
+    if ([properties objectForKey:@"BuildSelectionCriteria"]){
+    NSArray* member_list = [properties objectForKey:@"BuildSelectionCriteria"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerBuildSelectionCriterion new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.BuildSelectionCriteria = [mutable_storage copy];
+}
+
+    
+    self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    self.SkipToken = [properties valueForKey:@"SkipToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerBuildAliasParams
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasId = [properties valueForKey:@"AliasId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerBuildRegion
 
 
@@ -107,6 +157,31 @@
     self.Region = [properties valueForKey:@"Region"];
     
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerBuildSelectionCriterion
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"BuildWeightDistribution"]){
+    NSDictionary* member_list = [properties objectForKey:@"BuildWeightDistribution"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.BuildWeightDistribution = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -315,6 +390,33 @@
     self.Total = [properties valueForKey:@"Total"];
     
     self.VmFamily = (MultiplayerAzureVmFamily)[properties valueForKey:@"MultiplayerVmFamily"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateBuildAliasRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasName = [properties valueForKey:@"AliasName"];
+    
+    if ([properties objectForKey:@"BuildSelectionCriteria"]){
+    NSArray* member_list = [properties objectForKey:@"BuildSelectionCriteria"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerBuildSelectionCriterion new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.BuildSelectionCriteria = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -799,6 +901,23 @@
     return self;
 }
 @end
+@implementation MultiplayerDeleteBuildAliasRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasId = [properties valueForKey:@"AliasId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerDeleteBuildRequest
 
 
@@ -991,6 +1110,23 @@
     self.AssetUploadUrl = [properties valueForKey:@"AssetUploadUrl"];
     
     self.FileName = [properties valueForKey:@"FileName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetBuildAliasRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasId = [properties valueForKey:@"AliasId"];
     
 
     return self;
@@ -1593,6 +1729,31 @@
     return self;
 }
 @end
+@implementation MultiplayerListBuildAliasesForTitleResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"BuildAliases"]){
+    NSArray* member_list = [properties objectForKey:@"BuildAliases"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerBuildAliasDetailsResponse new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.BuildAliases = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerListBuildSummariesRequest
 
 
@@ -2120,6 +2281,21 @@
     return self;
 }
 @end
+@implementation MultiplayerMultiplayerEmptyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerMultiplayerServerSummary
 
 
@@ -2207,6 +2383,8 @@
         return nil;
     }
 
+    
+    self.pfBuildAliasParams = [[MultiplayerBuildAliasParams new] initWithDictionary:[properties objectForKey:@"BuildAliasParams"]];
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
@@ -2416,6 +2594,35 @@
         [mutable_storage addObject:[[MultiplayerCoreCapacity new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.CoreCapacities = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUpdateBuildAliasRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AliasId = [properties valueForKey:@"AliasId"];
+    
+    self.AliasName = [properties valueForKey:@"AliasName"];
+    
+    if ([properties objectForKey:@"BuildSelectionCriteria"]){
+    NSArray* member_list = [properties objectForKey:@"BuildSelectionCriteria"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerBuildSelectionCriterion new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.BuildSelectionCriteria = [mutable_storage copy];
 }
 
     

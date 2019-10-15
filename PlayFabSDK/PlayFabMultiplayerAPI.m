@@ -118,6 +118,49 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Match/CancelMatchmakingTicket"] body:jsonString authType:nil authKey:nil];
 }
+-(void) CreateBuildAlias:(MultiplayerCreateBuildAliasRequest*)request success:(CreateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[MultiplayerCreateBuildAliasRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                MultiplayerBuildAliasDetailsResponse *model = [[MultiplayerBuildAliasDetailsResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/CreateBuildAlias"] body:jsonString authType:nil authKey:nil];
+}
 -(void) CreateBuildWithCustomContainer:(MultiplayerCreateBuildWithCustomContainerRequest*)request success:(CreateBuildWithCustomContainerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -419,6 +462,49 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/DeleteBuild"] body:jsonString authType:nil authKey:nil];
 }
+-(void) DeleteBuildAlias:(MultiplayerDeleteBuildAliasRequest*)request success:(DeleteBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[MultiplayerDeleteBuildAliasRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                MultiplayerEmptyResponse *model = [[MultiplayerEmptyResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/DeleteBuildAlias"] body:jsonString authType:nil authKey:nil];
+}
 -(void) DeleteCertificate:(MultiplayerDeleteCertificateRequest*)request success:(DeleteCertificateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -633,6 +719,49 @@ return deviceModel;
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/GetBuild"] body:jsonString authType:nil authKey:nil];
+}
+-(void) GetBuildAlias:(MultiplayerGetBuildAliasRequest*)request success:(GetBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[MultiplayerGetBuildAliasRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                MultiplayerBuildAliasDetailsResponse *model = [[MultiplayerBuildAliasDetailsResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/GetBuildAlias"] body:jsonString authType:nil authKey:nil];
 }
 -(void) GetContainerRegistryCredentials:(GetContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
 {
@@ -1106,6 +1235,49 @@ return deviceModel;
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/ListAssetSummaries"] body:jsonString authType:nil authKey:nil];
+}
+-(void) ListBuildAliases:(ListBuildAliasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+{
+    
+    
+    NSString *jsonString = @"{}";
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                MultiplayerListBuildAliasesForTitleResponse *model = [[MultiplayerListBuildAliasesForTitleResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/ListBuildAliases"] body:jsonString authType:nil authKey:nil];
 }
 -(void) ListBuildSummaries:(MultiplayerListBuildSummariesRequest*)request success:(ListBuildSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -1665,6 +1837,49 @@ return deviceModel;
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/ShutdownMultiplayerServer"] body:jsonString authType:nil authKey:nil];
+}
+-(void) UpdateBuildAlias:(MultiplayerUpdateBuildAliasRequest*)request success:(UpdateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[MultiplayerUpdateBuildAliasRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                MultiplayerBuildAliasDetailsResponse *model = [[MultiplayerBuildAliasDetailsResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/MultiplayerServer/UpdateBuildAlias"] body:jsonString authType:nil authKey:nil];
 }
 -(void) UpdateBuildRegions:(MultiplayerUpdateBuildRegionsRequest*)request success:(UpdateBuildRegionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
