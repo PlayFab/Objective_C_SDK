@@ -582,6 +582,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Optional id of title to get players from, required if calling using a master_player_account.
+*/
+/// </summary>
+@property NSString* TitleId; 
+
+/// <summary>
+/*
 /// Dictionary of master player ids mapped to title player entity keys and id pairs
 */
 /// </summary>

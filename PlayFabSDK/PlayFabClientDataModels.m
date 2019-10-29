@@ -4640,6 +4640,8 @@
     
     self.SettingsForUser = [[ClientUserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
     
+    self.pfTreatmentAssignment = [[ClientTreatmentAssignment new] initWithDictionary:[properties objectForKey:@"TreatmentAssignment"]];
+    
 
     return self;
 }
@@ -5498,6 +5500,16 @@
     
     self.DisplayName = [properties valueForKey:@"DisplayName"];
     
+    if ([properties objectForKey:@"ExperimentVariants"]){
+    NSArray* member_list = [properties objectForKey:@"ExperimentVariants"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.ExperimentVariants = [mutable_storage copy];
+}
+
+    
     self.LastLogin = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"LastLogin"]];
     
     if ([properties objectForKey:@"LinkedAccounts"]){
@@ -5606,6 +5618,8 @@
     self.ShowCreated = [[properties valueForKey:@"ShowCreated"] boolValue];
     
     self.ShowDisplayName = [[properties valueForKey:@"ShowDisplayName"] boolValue];
+    
+    self.ShowExperimentVariants = [[properties valueForKey:@"ShowExperimentVariants"] boolValue];
     
     self.ShowLastLogin = [[properties valueForKey:@"ShowLastLogin"] boolValue];
     
@@ -6825,6 +6839,41 @@
     self.Status = (ClientTradeStatus)[properties valueForKey:@"ClientStatus"];
     
     self.TradeId = [properties valueForKey:@"TradeId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientTreatmentAssignment
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Variables"]){
+    NSArray* member_list = [properties objectForKey:@"Variables"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientVariable new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Variables = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"Variants"]){
+    NSArray* member_list = [properties objectForKey:@"Variants"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.Variants = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -8330,6 +8379,25 @@
     self.TotalValue = [properties valueForKey:@"TotalValue"];
     
     self.TotalValueAsDecimal = [properties valueForKey:@"TotalValueAsDecimal"];
+    
+
+    return self;
+}
+@end
+@implementation ClientVariable
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+    self.Value = [properties valueForKey:@"Value"];
     
 
     return self;

@@ -1152,6 +1152,8 @@ typedef enum
 
 @class ClientTradeInfo;
 
+@class ClientTreatmentAssignment;
+
 @class ClientTwitchPlayFabIdPair;
 
 @class ClientUninkOpenIdConnectRequest;
@@ -1301,6 +1303,8 @@ typedef enum
 @class ClientValidateWindowsReceiptResult;
 
 @class ClientValueToDateModel;
+
+@class ClientVariable;
 
 @class ClientVirtualCurrencyRechargeTime;
 
@@ -6423,6 +6427,13 @@ typedef enum
 */
 /// </summary>
 @property ClientUserSettings* SettingsForUser; 
+
+/// <summary>
+/*
+/// The experimentation treatments for this user at the time of login.
+*/
+/// </summary>
+@property ClientTreatmentAssignment* pfTreatmentAssignment; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -7930,6 +7941,13 @@ typedef enum
 
 /// <summary>
 /*
+/// List of experiment variants for the player.
+*/
+/// </summary>
+@property NSArray* ExperimentVariants; 
+
+/// <summary>
+/*
 /// UTC time when the player most recently logged in to the title
 */
 /// </summary>
@@ -8067,6 +8085,13 @@ typedef enum
 */
 /// </summary>
 @property bool ShowDisplayName; 
+
+/// <summary>
+/*
+/// Whether to show player's experiment variants. Defaults to false
+*/
+/// </summary>
+@property bool ShowExperimentVariants; 
 
 /// <summary>
 /*
@@ -9672,6 +9697,27 @@ typedef enum
 @end
 
 
+@interface ClientTreatmentAssignment : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// List of the experiment variables.
+*/
+/// </summary>
+@property NSArray* Variables; 
+
+/// <summary>
+/*
+/// List of the experiment variants.
+*/
+/// </summary>
+@property NSArray* Variants; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientTwitchPlayFabIdPair : PlayFabBaseModel
 
 
@@ -11257,6 +11303,27 @@ typedef enum
 */
 /// </summary>
 @property NSString* TotalValueAsDecimal; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientVariable : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Name of the variable.
+*/
+/// </summary>
+@property NSString* Name; 
+
+/// <summary>
+/*
+/// Value of the variable.
+*/
+/// </summary>
+@property NSString* Value; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

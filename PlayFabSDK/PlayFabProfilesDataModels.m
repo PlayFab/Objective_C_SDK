@@ -421,6 +421,8 @@
     }
 
     
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
     if ([properties objectForKey:@"TitlePlayerAccounts"]){
     NSDictionary* member_list = [properties objectForKey:@"TitlePlayerAccounts"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
