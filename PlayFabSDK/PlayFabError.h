@@ -485,6 +485,10 @@
         PlayFabErrorInsightsManagementGetOperationStatusInvalidParameter = 1488,
         PlayFabErrorDuplicatePurchaseTransactionId = 1489,
         PlayFabErrorEvaluationModePlayerCountExceeded = 1490,
+        PlayFabErrorGetPlayersInSegmentRateLimitExceeded = 1491,
+        PlayFabErrorCloudScriptFunctionNameSizeExceeded = 1492,
+        PlayFabErrorInsightsManagementTitleInEvaluationMode = 1493,
+        PlayFabErrorCloudScriptAzureFunctionsQueueRequestError = 1494,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingQueueNotFound = 2016,
@@ -537,6 +541,7 @@
         PlayFabErrorExportCantEditPendingExport = 5014,
         PlayFabErrorExportLimitExports = 5015,
         PlayFabErrorExportLimitEvents = 5016,
+        PlayFabErrorExportInvalidPartitionStatusModification = 5017,
         PlayFabErrorTitleNotEnabledForParty = 6000,
         PlayFabErrorPartyVersionNotFound = 6001,
         PlayFabErrorMultiplayerServerBuildReferencedByMatchmakingQueue = 6002,
@@ -550,6 +555,8 @@
         PlayFabErrorExperimentationExceededMaxVariantLength = 7007,
         PlayFabErrorExperimentInvalidId = 7008,
         PlayFabErrorExperimentationNoScorecard = 7009,
+        PlayFabErrorExperimentationTreatmentAssignmentFailed = 7010,
+        PlayFabErrorExperimentationTreatmentAssignmentDisabled = 7011,
         PlayFabErrorMaxActionDepthExceeded = 8000,
         PlayFabErrorSnapshotNotFound = 11000
     } PlayFabErrorCode;
