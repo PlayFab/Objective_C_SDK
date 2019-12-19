@@ -156,6 +156,10 @@ typedef enum
 
 @class MultiplayerDeleteRemoteUserRequest;
 
+@class MultiplayerDynamicStandbySettings;
+
+@class MultiplayerDynamicStandbyThreshold;
+
 @class MultiplayerEmptyResponse;
 
 @class MultiplayerEnableMultiplayerServersForTitleRequest;
@@ -193,6 +197,10 @@ typedef enum
 @class MultiplayerGetMultiplayerServerDetailsRequest;
 
 @class MultiplayerGetMultiplayerServerDetailsResponse;
+
+@class MultiplayerGetMultiplayerServerLogsRequest;
+
+@class MultiplayerGetMultiplayerServerLogsResponse;
 
 @class MultiplayerGetQueueStatisticsRequest;
 
@@ -291,6 +299,8 @@ typedef enum
 @class MultiplayerStatistics;
 
 @class MultiplayerTitleMultiplayerServersQuotas;
+
+@class MultiplayerUntagContainerImageRequest;
 
 @class MultiplayerUpdateBuildAliasRequest;
 
@@ -436,6 +446,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Optional settings to control dynamic adjustment of standby target
+*/
+/// </summary>
+@property MultiplayerDynamicStandbySettings* pfDynamicStandbySettings; 
+
+/// <summary>
+/*
 /// The maximum number of multiplayer servers for the region.
 */
 /// </summary>
@@ -450,7 +467,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The number of standby multiplayer servers for the region.
+/// The target number of standby multiplayer servers for the region.
 */
 /// </summary>
 @property NSNumber* StandbyServers; 
@@ -468,6 +485,13 @@ typedef enum
 
 @interface MultiplayerBuildRegionParams : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// Optional settings to control dynamic adjustment of standby target. If not specified, dynamic standby is disabled
+*/
+/// </summary>
+@property MultiplayerDynamicStandbySettings* pfDynamicStandbySettings; 
 
 /// <summary>
 /*
@@ -1466,6 +1490,55 @@ typedef enum
 @end
 
 
+@interface MultiplayerDynamicStandbySettings : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// List of auto standing by trigger values and corresponding standing by multiplier. Defaults to 1.5X at 50%, 3X at 25%, and 4X at 5%
+*/
+/// </summary>
+@property NSArray* DynamicFloorMultiplierThresholds; 
+
+/// <summary>
+/*
+/// When true, dynamic standby will be enabled
+*/
+/// </summary>
+@property bool IsEnabled; 
+
+/// <summary>
+/*
+/// The time it takes to reduce target standing by to configured floor value after an increase. Defaults to 30 minutes
+*/
+/// </summary>
+@property NSNumber* RampDownSeconds; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerDynamicStandbyThreshold : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// When the trigger threshold is reached, multiply by this value
+*/
+/// </summary>
+@property NSNumber* Multiplier; 
+
+/// <summary>
+/*
+/// The multiplier will be applied when the actual standby divided by target standby floor is less than this value
+*/
+/// </summary>
+@property NSNumber* TriggerThresholdPercentage; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface MultiplayerEmptyResponse : PlayFabBaseModel
 
 /*
@@ -2122,6 +2195,49 @@ typedef enum
 */
 /// </summary>
 @property NSString* VmId; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Gets multiplayer server logs for a specific server id in a region. The logs are available only after a server has terminated.
+*/
+/// </summary>
+@interface MultiplayerGetMultiplayerServerLogsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The region of the multiplayer server to get logs for.
+*/
+/// </summary>
+@property NSString* Region; 
+
+/// <summary>
+/*
+/// The server ID of multiplayer server to get logs for.
+*/
+/// </summary>
+@property NSString* ServerId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetMultiplayerServerLogsResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// URL for logs download.
+*/
+/// </summary>
+@property NSString* LogDownloadUrl; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -3431,6 +3547,32 @@ typedef enum
 */
 /// </summary>
 @property NSArray* CoreCapacities; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Removes the specified tag from the image. After this operation, a 'docker pull' will fail for the specified image and tag combination. Morever, ListContainerImageTags will not return the specified tag.
+*/
+/// </summary>
+@interface MultiplayerUntagContainerImageRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The container image which tag we want to remove.
+*/
+/// </summary>
+@property NSString* ImageName; 
+
+/// <summary>
+/*
+/// The tag we want to remove.
+*/
+/// </summary>
+@property NSString* Tag; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

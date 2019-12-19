@@ -129,6 +129,8 @@
     
     self.pfCurrentServerStats = [[MultiplayerCurrentServerStats new] initWithDictionary:[properties objectForKey:@"CurrentServerStats"]];
     
+    self.pfDynamicStandbySettings = [[MultiplayerDynamicStandbySettings new] initWithDictionary:[properties objectForKey:@"DynamicStandbySettings"]];
+    
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
     self.Region = [properties valueForKey:@"Region"];
@@ -151,6 +153,8 @@
         return nil;
     }
 
+    
+    self.pfDynamicStandbySettings = [[MultiplayerDynamicStandbySettings new] initWithDictionary:[properties objectForKey:@"DynamicStandbySettings"]];
     
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
@@ -975,6 +979,54 @@
     return self;
 }
 @end
+@implementation MultiplayerDynamicStandbySettings
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"DynamicFloorMultiplierThresholds"]){
+    NSArray* member_list = [properties objectForKey:@"DynamicFloorMultiplierThresholds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerDynamicStandbyThreshold new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.DynamicFloorMultiplierThresholds = [mutable_storage copy];
+}
+
+    
+    self.IsEnabled = [[properties valueForKey:@"IsEnabled"] boolValue];
+    
+    self.RampDownSeconds = [properties valueForKey:@"RampDownSeconds"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerDynamicStandbyThreshold
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Multiplier = [properties valueForKey:@"Multiplier"];
+    
+    self.TriggerThresholdPercentage = [properties valueForKey:@"TriggerThresholdPercentage"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerEmptyResponse
 
 
@@ -1475,6 +1527,42 @@
     self.State = [properties valueForKey:@"State"];
     
     self.VmId = [properties valueForKey:@"VmId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMultiplayerServerLogsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Region = [properties valueForKey:@"Region"];
+    
+    self.ServerId = [properties valueForKey:@"ServerId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetMultiplayerServerLogsResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.LogDownloadUrl = [properties valueForKey:@"LogDownloadUrl"];
     
 
     return self;
@@ -2596,6 +2684,25 @@
     self.CoreCapacities = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUntagContainerImageRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ImageName = [properties valueForKey:@"ImageName"];
+    
+    self.Tag = [properties valueForKey:@"Tag"];
     
 
     return self;

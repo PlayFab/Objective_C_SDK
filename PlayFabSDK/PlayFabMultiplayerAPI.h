@@ -53,6 +53,8 @@ typedef void(^GetMatchmakingTicketCallback)(MultiplayerGetMatchmakingTicketResul
 		
 typedef void(^GetMultiplayerServerDetailsCallback)(MultiplayerGetMultiplayerServerDetailsResponse* result, NSObject* userData);
 		
+typedef void(^GetMultiplayerServerLogsCallback)(MultiplayerGetMultiplayerServerLogsResponse* result, NSObject* userData);
+		
 typedef void(^GetQueueStatisticsCallback)(MultiplayerGetQueueStatisticsResult* result, NSObject* userData);
 		
 typedef void(^GetRemoteLoginEndpointCallback)(MultiplayerGetRemoteLoginEndpointResponse* result, NSObject* userData);
@@ -94,6 +96,8 @@ typedef void(^RequestMultiplayerServerCallback)(MultiplayerRequestMultiplayerSer
 typedef void(^RolloverContainerRegistryCredentialsCallback)(MultiplayerRolloverContainerRegistryCredentialsResponse* result, NSObject* userData);
 		
 typedef void(^ShutdownMultiplayerServerCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
+		
+typedef void(^UntagContainerImageCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UpdateBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
 		
@@ -150,6 +154,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) GetMultiplayerServerDetails:(MultiplayerGetMultiplayerServerDetailsRequest*)request success:(GetMultiplayerServerDetailsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetMultiplayerServerLogs:(MultiplayerGetMultiplayerServerLogsRequest*)request success:(GetMultiplayerServerLogsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) GetQueueStatistics:(MultiplayerGetQueueStatisticsRequest*)request success:(GetQueueStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetRemoteLoginEndpoint:(MultiplayerGetRemoteLoginEndpointRequest*)request success:(GetRemoteLoginEndpointCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -191,6 +197,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) RolloverContainerRegistryCredentials:(RolloverContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) ShutdownMultiplayerServer:(MultiplayerShutdownMultiplayerServerRequest*)request success:(ShutdownMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UntagContainerImage:(MultiplayerUntagContainerImageRequest*)request success:(UntagContainerImageCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UpdateBuildAlias:(MultiplayerUpdateBuildAliasRequest*)request success:(UpdateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
