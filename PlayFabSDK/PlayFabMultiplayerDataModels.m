@@ -266,6 +266,40 @@
     return self;
 }
 @end
+@implementation MultiplayerCancelAllServerBackfillTicketsForPlayerRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelAllServerBackfillTicketsForPlayerResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCancelMatchmakingTicketRequest
 
 
@@ -286,6 +320,40 @@
 }
 @end
 @implementation MultiplayerCancelMatchmakingTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelServerBackfillTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCancelServerBackfillTicketResult
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -836,6 +904,54 @@
     return self;
 }
 @end
+@implementation MultiplayerCreateServerBackfillTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.GiveUpAfterSeconds = [properties valueForKey:@"GiveUpAfterSeconds"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingPlayerWithTeamAssignment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.pfServerDetails = [[MultiplayerServerDetails new] initWithDictionary:[properties objectForKey:@"ServerDetails"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateServerBackfillTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCreateServerMatchmakingTicketRequest
 
 
@@ -1356,8 +1472,6 @@
     }
 
     
-    self.pfCancellationReason = (MultiplayerCancellationReason)[properties valueForKey:@"MultiplayerCancellationReason"];
-    
     self.CancellationReasonString = [properties valueForKey:@"CancellationReasonString"];
     
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
@@ -1639,6 +1753,68 @@
     self.IPV4Address = [properties valueForKey:@"IPV4Address"];
     
     self.Port = [properties valueForKey:@"Port"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetServerBackfillTicketRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.EscapeObject = [[properties valueForKey:@"EscapeObject"] boolValue];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetServerBackfillTicketResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CancellationReasonString = [properties valueForKey:@"CancellationReasonString"];
+    
+    self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
+    
+    self.GiveUpAfterSeconds = [properties valueForKey:@"GiveUpAfterSeconds"];
+    
+    self.MatchId = [properties valueForKey:@"MatchId"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMatchmakingPlayerWithTeamAssignment new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.pfServerDetails = [[MultiplayerServerDetails new] initWithDictionary:[properties objectForKey:@"ServerDetails"]];
+    
+    self.Status = [properties valueForKey:@"Status"];
+    
+    self.TicketId = [properties valueForKey:@"TicketId"];
     
 
     return self;
@@ -2253,6 +2429,50 @@
 
     
     self.SkipToken = [properties valueForKey:@"SkipToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListServerBackfillTicketsForPlayerRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListServerBackfillTicketsForPlayerResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"TicketIds"]){
+    NSArray* member_list = [properties objectForKey:@"TicketIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.TicketIds = [mutable_storage copy];
+}
+
     
 
     return self;

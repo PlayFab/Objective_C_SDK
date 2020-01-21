@@ -110,9 +110,17 @@ typedef enum
 
 @class MultiplayerCancelAllMatchmakingTicketsForPlayerResult;
 
+@class MultiplayerCancelAllServerBackfillTicketsForPlayerRequest;
+
+@class MultiplayerCancelAllServerBackfillTicketsForPlayerResult;
+
 @class MultiplayerCancelMatchmakingTicketRequest;
 
 @class MultiplayerCancelMatchmakingTicketResult;
+
+@class MultiplayerCancelServerBackfillTicketRequest;
+
+@class MultiplayerCancelServerBackfillTicketResult;
 
 @class MultiplayerCertificate;
 
@@ -141,6 +149,10 @@ typedef enum
 @class MultiplayerCreateRemoteUserRequest;
 
 @class MultiplayerCreateRemoteUserResponse;
+
+@class MultiplayerCreateServerBackfillTicketRequest;
+
+@class MultiplayerCreateServerBackfillTicketResult;
 
 @class MultiplayerCreateServerMatchmakingTicketRequest;
 
@@ -210,6 +222,10 @@ typedef enum
 
 @class MultiplayerGetRemoteLoginEndpointResponse;
 
+@class MultiplayerGetServerBackfillTicketRequest;
+
+@class MultiplayerGetServerBackfillTicketResult;
+
 @class MultiplayerGetTitleEnabledForMultiplayerServersStatusRequest;
 
 @class MultiplayerGetTitleEnabledForMultiplayerServersStatusResponse;
@@ -265,6 +281,10 @@ typedef enum
 @class MultiplayerListQosServersRequest;
 
 @class MultiplayerListQosServersResponse;
+
+@class MultiplayerListServerBackfillTicketsForPlayerRequest;
+
+@class MultiplayerListServerBackfillTicketsForPlayerResult;
 
 @class MultiplayerListVirtualMachineSummariesRequest;
 
@@ -612,6 +632,42 @@ typedef enum
 
 /// <summary>
 /*
+/// Cancels all backfill tickets of which the player is a member in a given queue that are not cancelled or matched. This API is useful if you lose track of what tickets the player is a member of (if the server crashes for instance) and want to "reset".
+*/
+/// </summary>
+@interface MultiplayerCancelAllServerBackfillTicketsForPlayerRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The entity key of the player whose backfill tickets should be canceled.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Entity; 
+
+/// <summary>
+/*
+/// The name of the queue from which a player's backfill tickets should be canceled.
+*/
+/// </summary>
+@property NSString* QueueName; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCancelAllServerBackfillTicketsForPlayerResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Only servers and ticket members can cancel a ticket. The ticket can be in five different states when it is cancelled. 1: the ticket is waiting for members to join it, and it has not started matching. If the ticket is cancelled at this stage, it will never match. 2: the ticket is matching. If the ticket is cancelled, it will stop matching. 3: the ticket is matched. A matched ticket cannot be cancelled. 4: the ticket is already cancelled and nothing happens. 5: the ticket is waiting for a server. If the ticket is cancelled, server allocation will be stopped. A server may still be allocated due to a race condition, but that will not be reflected in the ticket. There may be race conditions between the ticket getting matched and the client making a cancellation request. The client must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket because players must consent to enter matchmaking again. Create a new ticket instead.
 */
 /// </summary>
@@ -637,6 +693,42 @@ typedef enum
 
 
 @interface MultiplayerCancelMatchmakingTicketResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Only servers can cancel a backfill ticket. The ticket can be in three different states when it is cancelled. 1: the ticket is matching. If the ticket is cancelled, it will stop matching. 2: the ticket is matched. A matched ticket cannot be cancelled. 3: the ticket is already cancelled and nothing happens. There may be race conditions between the ticket getting matched and the server making a cancellation request. The server must handle the possibility that the cancel request fails if a match is found before the cancellation request is processed. We do not allow resubmitting a cancelled ticket. Create a new ticket instead.
+*/
+/// </summary>
+@interface MultiplayerCancelServerBackfillTicketRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The name of the queue the ticket is in.
+*/
+/// </summary>
+@property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The Id of the ticket to find a match for.
+*/
+/// </summary>
+@property NSString* TicketId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCancelServerBackfillTicketResult : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -1308,6 +1400,63 @@ typedef enum
 
 /// <summary>
 /*
+/// The server specifies all the members, their teams and their attributes, and the server details if applicable.
+*/
+/// </summary>
+@interface MultiplayerCreateServerBackfillTicketRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// How long to attempt matching this ticket in seconds.
+*/
+/// </summary>
+@property NSNumber* GiveUpAfterSeconds; 
+
+/// <summary>
+/*
+/// The users who will be part of this ticket, along with their team assignments.
+*/
+/// </summary>
+@property NSArray* Members; 
+
+/// <summary>
+/*
+/// The Id of a match queue.
+*/
+/// </summary>
+@property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The details of the server the members are connected to.
+*/
+/// </summary>
+@property MultiplayerServerDetails* pfServerDetails; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCreateServerBackfillTicketResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The Id of the ticket to find a match for.
+*/
+/// </summary>
+@property NSString* TicketId; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// The server specifies all the members and their attributes.
 */
 /// </summary>
@@ -1933,13 +2082,6 @@ typedef enum
 /// The reason why the current ticket was canceled. This field is only set if the ticket is in canceled state.
 */
 /// </summary>
-@property MultiplayerCancellationReason pfCancellationReason; 
-
-/// <summary>
-/*
-/// The reason why the current ticket was canceled. This field is only set if the ticket is in canceled state.
-*/
-/// </summary>
 @property NSString* CancellationReasonString; 
 
 /// <summary>
@@ -2338,6 +2480,112 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* Port; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// The ticket includes the players, their attributes, their teams, the ticket status, the match Id and the server details when applicable, etc. Only servers can get the ticket.
+*/
+/// </summary>
+@interface MultiplayerGetServerBackfillTicketRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Determines whether the matchmaking attributes will be returned as an escaped JSON string or as an un-escaped JSON object.
+*/
+/// </summary>
+@property bool EscapeObject; 
+
+/// <summary>
+/*
+/// The name of the queue to find a match for.
+*/
+/// </summary>
+@property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The Id of the ticket to find a match for.
+*/
+/// </summary>
+@property NSString* TicketId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetServerBackfillTicketResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The reason why the current ticket was canceled. This field is only set if the ticket is in canceled state.
+*/
+/// </summary>
+@property NSString* CancellationReasonString; 
+
+/// <summary>
+/*
+/// The server date and time at which ticket was created.
+*/
+/// </summary>
+@property NSDate* Created; 
+
+/// <summary>
+/*
+/// How long to attempt matching this ticket in seconds.
+*/
+/// </summary>
+@property NSNumber* GiveUpAfterSeconds; 
+
+/// <summary>
+/*
+/// The Id of a match.
+*/
+/// </summary>
+@property NSString* MatchId; 
+
+/// <summary>
+/*
+/// A list of Users that are part of this ticket, along with their team assignments.
+*/
+/// </summary>
+@property NSArray* Members; 
+
+/// <summary>
+/*
+/// The Id of a match queue.
+*/
+/// </summary>
+@property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The details of the server the members are connected to.
+*/
+/// </summary>
+@property MultiplayerServerDetails* pfServerDetails; 
+
+/// <summary>
+/*
+/// The current ticket status. Possible values are: WaitingForMatch, Canceled and Matched.
+*/
+/// </summary>
+@property NSString* Status; 
+
+/// <summary>
+/*
+/// The Id of the ticket to find a match for.
+*/
+/// </summary>
+@property NSString* TicketId; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -2984,6 +3232,49 @@ typedef enum
 */
 /// </summary>
 @property NSString* SkipToken; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// List all server backfill ticket Ids the user is a member of.
+*/
+/// </summary>
+@interface MultiplayerListServerBackfillTicketsForPlayerRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The entity key for which to find the ticket Ids.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Entity; 
+
+/// <summary>
+/*
+/// The name of the queue the tickets are in.
+*/
+/// </summary>
+@property NSString* QueueName; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerListServerBackfillTicketsForPlayerResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The list of backfill ticket Ids the user is a member of.
+*/
+/// </summary>
+@property NSArray* TicketIds; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;

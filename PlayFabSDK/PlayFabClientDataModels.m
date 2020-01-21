@@ -8447,16 +8447,6 @@
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
-    if ([properties objectForKey:@"EventCustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"EventCustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.EventCustomTags = [mutable_storage copy];
-}
-
-    
     self.EventName = [properties valueForKey:@"EventName"];
     
     self.Timestamp = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Timestamp"]];
@@ -8483,16 +8473,6 @@
         [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
     }
     self.Body = [mutable_storage copy];
-}
-
-    
-    if ([properties objectForKey:@"EventCustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"EventCustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.EventCustomTags = [mutable_storage copy];
 }
 
     
@@ -8539,16 +8519,6 @@
         [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
     }
     self.Body = [mutable_storage copy];
-}
-
-    
-    if ([properties objectForKey:@"EventCustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"EventCustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.EventCustomTags = [mutable_storage copy];
 }
 
     
