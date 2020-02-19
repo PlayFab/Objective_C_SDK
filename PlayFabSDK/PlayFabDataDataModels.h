@@ -295,7 +295,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Returns URLs that may be used to download the files for a profile for a limited length of time. Only returns files that have been successfully uploaded, files that are still pending will either return the old value, if it exists, or nothing. 
+/// Returns URLs that may be used to download the files for a profile for a limited length of time. Only returns files that have been successfully uploaded, files that are still pending will either return the old value, if it exists, or nothing.
 */
 /// </summary>
 @interface DataGetFilesRequest : PlayFabBaseModel

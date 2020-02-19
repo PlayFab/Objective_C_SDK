@@ -1682,6 +1682,23 @@
     return self;
 }
 @end
+@implementation MultiplayerGetMultiplayerSessionLogsBySessionIdRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.SessionId = [properties valueForKey:@"SessionId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerGetQueueStatisticsRequest
 
 

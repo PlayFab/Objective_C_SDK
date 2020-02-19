@@ -61,6 +61,8 @@ typedef void(^GetMultiplayerServerDetailsCallback)(MultiplayerGetMultiplayerServ
 		
 typedef void(^GetMultiplayerServerLogsCallback)(MultiplayerGetMultiplayerServerLogsResponse* result, NSObject* userData);
 		
+typedef void(^GetMultiplayerSessionLogsBySessionIdCallback)(MultiplayerGetMultiplayerServerLogsResponse* result, NSObject* userData);
+		
 typedef void(^GetQueueStatisticsCallback)(MultiplayerGetQueueStatisticsResult* result, NSObject* userData);
 		
 typedef void(^GetRemoteLoginEndpointCallback)(MultiplayerGetRemoteLoginEndpointResponse* result, NSObject* userData);
@@ -171,6 +173,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) GetMultiplayerServerDetails:(MultiplayerGetMultiplayerServerDetailsRequest*)request success:(GetMultiplayerServerDetailsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetMultiplayerServerLogs:(MultiplayerGetMultiplayerServerLogsRequest*)request success:(GetMultiplayerServerLogsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetMultiplayerSessionLogsBySessionId:(MultiplayerGetMultiplayerSessionLogsBySessionIdRequest*)request success:(GetMultiplayerSessionLogsBySessionIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetQueueStatistics:(MultiplayerGetQueueStatisticsRequest*)request success:(GetQueueStatisticsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

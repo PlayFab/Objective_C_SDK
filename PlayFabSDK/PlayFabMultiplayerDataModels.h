@@ -214,6 +214,8 @@ typedef enum
 
 @class MultiplayerGetMultiplayerServerLogsResponse;
 
+@class MultiplayerGetMultiplayerSessionLogsBySessionIdRequest;
+
 @class MultiplayerGetQueueStatisticsRequest;
 
 @class MultiplayerGetQueueStatisticsResult;
@@ -2384,6 +2386,25 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Gets multiplayer server logs for a specific server id in a region. The logs are available only after a server has terminated.
+*/
+/// </summary>
+@interface MultiplayerGetMultiplayerSessionLogsBySessionIdRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The server ID of multiplayer server to get logs for.
+*/
+/// </summary>
+@property NSString* SessionId; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
