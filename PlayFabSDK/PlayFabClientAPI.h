@@ -155,6 +155,8 @@ typedef void(^GrantCharacterToUserCallback)(ClientGrantCharacterToUserResult* re
 		
 typedef void(^LinkAndroidDeviceIDCallback)(ClientLinkAndroidDeviceIDResult* result, NSObject* userData);
 		
+typedef void(^LinkAppleCallback)(ClientEmptyResult* result, NSObject* userData);
+		
 typedef void(^LinkCustomIDCallback)(ClientLinkCustomIDResult* result, NSObject* userData);
 		
 typedef void(^LinkFacebookAccountCallback)(ClientLinkFacebookAccountResult* result, NSObject* userData);
@@ -184,6 +186,8 @@ typedef void(^LinkWindowsHelloCallback)(ClientLinkWindowsHelloAccountResponse* r
 typedef void(^LinkXboxAccountCallback)(ClientLinkXboxAccountResult* result, NSObject* userData);
 		
 typedef void(^LoginWithAndroidDeviceIDCallback)(ClientLoginResult* result, NSObject* userData);
+		
+typedef void(^LoginWithAppleCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithCustomIDCallback)(ClientLoginResult* result, NSObject* userData);
 		
@@ -262,6 +266,8 @@ typedef void(^StartPurchaseCallback)(ClientStartPurchaseResult* result, NSObject
 typedef void(^SubtractUserVirtualCurrencyCallback)(ClientModifyUserVirtualCurrencyResult* result, NSObject* userData);
 		
 typedef void(^UnlinkAndroidDeviceIDCallback)(ClientUnlinkAndroidDeviceIDResult* result, NSObject* userData);
+		
+typedef void(^UnlinkAppleCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UnlinkCustomIDCallback)(ClientUnlinkCustomIDResult* result, NSObject* userData);
 		
@@ -474,6 +480,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) LinkAndroidDeviceID:(ClientLinkAndroidDeviceIDRequest*)request success:(LinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LinkApple:(ClientLinkAppleRequest*)request success:(LinkAppleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LinkCustomID:(ClientLinkCustomIDRequest*)request success:(LinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkFacebookAccount:(ClientLinkFacebookAccountRequest*)request success:(LinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -503,6 +511,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) LinkXboxAccount:(ClientLinkXboxAccountRequest*)request success:(LinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithAndroidDeviceID:(ClientLoginWithAndroidDeviceIDRequest*)request success:(LoginWithAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LoginWithApple:(ClientLoginWithAppleRequest*)request success:(LoginWithAppleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithCustomID:(ClientLoginWithCustomIDRequest*)request success:(LoginWithCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -581,6 +591,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) SubtractUserVirtualCurrency:(ClientSubtractUserVirtualCurrencyRequest*)request success:(SubtractUserVirtualCurrencyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkAndroidDeviceID:(ClientUnlinkAndroidDeviceIDRequest*)request success:(UnlinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UnlinkApple:(UnlinkAppleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
 -(void) UnlinkCustomID:(ClientUnlinkCustomIDRequest*)request success:(UnlinkCustomIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

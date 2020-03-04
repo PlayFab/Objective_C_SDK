@@ -4040,6 +4040,25 @@
     return self;
 }
 @end
+@implementation ClientLinkAppleRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.IdentityToken = [properties valueForKey:@"IdentityToken"];
+    
+
+    return self;
+}
+@end
 @implementation ClientLinkCustomIDRequest
 
 
@@ -4668,6 +4687,33 @@
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.OS = [properties valueForKey:@"OS"];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientLoginWithAppleRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.IdentityToken = [properties valueForKey:@"IdentityToken"];
+    
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
     
@@ -6933,6 +6979,21 @@
 }
 @end
 @implementation ClientUnlinkAndroidDeviceIDResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlinkAppleRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

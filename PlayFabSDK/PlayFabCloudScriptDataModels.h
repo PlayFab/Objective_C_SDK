@@ -300,7 +300,8 @@ typedef enum
     CloudScriptLoginIdentityProviderCustomServer,
     CloudScriptLoginIdentityProviderNintendoSwitch,
     CloudScriptLoginIdentityProviderFacebookInstantGames,
-    CloudScriptLoginIdentityProviderOpenIdConnect
+    CloudScriptLoginIdentityProviderOpenIdConnect,
+    CloudScriptLoginIdentityProviderApple
 } CloudScriptLoginIdentityProvider;
 
 typedef enum

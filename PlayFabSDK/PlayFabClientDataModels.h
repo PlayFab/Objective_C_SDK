@@ -494,7 +494,8 @@ typedef enum
     ClientLoginIdentityProviderCustomServer,
     ClientLoginIdentityProviderNintendoSwitch,
     ClientLoginIdentityProviderFacebookInstantGames,
-    ClientLoginIdentityProviderOpenIdConnect
+    ClientLoginIdentityProviderOpenIdConnect,
+    ClientLoginIdentityProviderApple
 } ClientLoginIdentityProvider;
 
 typedef enum
@@ -924,6 +925,8 @@ typedef enum
 
 @class ClientLinkAndroidDeviceIDResult;
 
+@class ClientLinkAppleRequest;
+
 @class ClientLinkCustomIDRequest;
 
 @class ClientLinkCustomIDResult;
@@ -989,6 +992,8 @@ typedef enum
 @class ClientLoginResult;
 
 @class ClientLoginWithAndroidDeviceIDRequest;
+
+@class ClientLoginWithAppleRequest;
 
 @class ClientLoginWithCustomIDRequest;
 
@@ -1161,6 +1166,8 @@ typedef enum
 @class ClientUnlinkAndroidDeviceIDRequest;
 
 @class ClientUnlinkAndroidDeviceIDResult;
+
+@class ClientUnlinkAppleRequest;
 
 @class ClientUnlinkCustomIDRequest;
 
@@ -5735,6 +5742,27 @@ typedef enum
 @end
 
 
+@interface ClientLinkAppleRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// If another user is already linked to a specific Apple account, unlink the other user and re-link.
+*/
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/*
+/// The JSON Web token (JWT) returned by Apple after login. Represented as the identityToken field in the authorization credential payload. Used to validate the request and find the user ID (Apple subject) to link with.
+*/
+/// </summary>
+@property NSString* IdentityToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientLinkCustomIDRequest : PlayFabBaseModel
 
 
@@ -6491,6 +6519,55 @@ typedef enum
 */
 /// </summary>
 @property NSString* OS; 
+
+/// <summary>
+/*
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+*/
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/*
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+*/
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientLoginWithAppleRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+*/
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/*
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+*/
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/*
+/// The JSON Web token (JWT) returned by Apple after login. Represented as the identityToken field in the authorization credential payload.
+*/
+/// </summary>
+@property NSString* IdentityToken; 
+
+/// <summary>
+/*
+/// Flags for which pieces of info to return for the user.
+*/
+/// </summary>
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
 
 /// <summary>
 /*
@@ -9773,6 +9850,13 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlinkAppleRequest : PlayFabBaseModel
+
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
