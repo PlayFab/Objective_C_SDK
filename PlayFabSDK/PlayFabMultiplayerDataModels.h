@@ -70,7 +70,8 @@ typedef enum
 {
     MultiplayerContainerFlavorManagedWindowsServerCore,
     MultiplayerContainerFlavorCustomLinux,
-    MultiplayerContainerFlavorManagedWindowsServerCorePreview
+    MultiplayerContainerFlavorManagedWindowsServerCorePreview,
+    MultiplayerContainerFlavorInvalid
 } MultiplayerContainerFlavor;
 
 typedef enum
@@ -85,6 +86,18 @@ typedef enum
     MultiplayerTitleMultiplayerServerEnabledStatusEnabled,
     MultiplayerTitleMultiplayerServerEnabledStatusDisabled
 } MultiplayerTitleMultiplayerServerEnabledStatus;
+
+typedef enum
+{
+    MultiplayerOsPlatformWindows,
+    MultiplayerOsPlatformLinux
+} MultiplayerOsPlatform;
+
+typedef enum
+{
+    MultiplayerServerTypeContainer,
+    MultiplayerServerTypeProcess
+} MultiplayerServerType;
 
 //predeclare all non-enum classes
 
@@ -161,6 +174,8 @@ typedef enum
 @class MultiplayerDeleteAssetRequest;
 
 @class MultiplayerDeleteBuildAliasRequest;
+
+@class MultiplayerDeleteBuildRegionRequest;
 
 @class MultiplayerDeleteBuildRequest;
 
@@ -325,6 +340,8 @@ typedef enum
 @class MultiplayerUntagContainerImageRequest;
 
 @class MultiplayerUpdateBuildAliasRequest;
+
+@class MultiplayerUpdateBuildRegionRequest;
 
 @class MultiplayerUpdateBuildRegionsRequest;
 
@@ -496,7 +513,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The status of multiplayer servers in the build region. Valid values are - Unknown, Initialized, Deploying, Deployed, Unhealthy.
+/// The status of multiplayer servers in the build region. Valid values are - Unknown, Initialized, Deploying, Deployed, Unhealthy, Deleting, Deleted.
 */
 /// </summary>
 @property NSString* Status; 
@@ -1049,6 +1066,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The OS platform used for running the game process.
+*/
+/// </summary>
+@property NSString* OsPlatform; 
+
+/// <summary>
+/*
 /// The ports the build is mapped on.
 */
 /// </summary>
@@ -1060,6 +1084,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* RegionConfigurations; 
+
+/// <summary>
+/*
+/// The type of game server being hosted.
+*/
+/// </summary>
+@property NSString* ServerType; 
 
 /// <summary>
 /*
@@ -1110,6 +1141,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* GameCertificateReferences; 
+
+/// <summary>
+/*
+/// The directory containing the game executable. This would be the start path of the game assets that contain the main game server executable. If not provided, a best effort will be made to extract it from the start game command.
+*/
+/// </summary>
+@property NSString* GameWorkingDirectory; 
 
 /// <summary>
 /*
@@ -1211,6 +1249,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The directory containing the game executable. This would be the start path of the game assets that contain the main game server executable. If not provided, a best effort will be made to extract it from the start game command.
+*/
+/// </summary>
+@property NSString* GameWorkingDirectory; 
+
+/// <summary>
+/*
 /// The instrumentation configuration for this build.
 */
 /// </summary>
@@ -1232,6 +1277,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The OS platform used for running the game process.
+*/
+/// </summary>
+@property NSString* OsPlatform; 
+
+/// <summary>
+/*
 /// The ports the build is mapped on.
 */
 /// </summary>
@@ -1243,6 +1295,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* RegionConfigurations; 
+
+/// <summary>
+/*
+/// The type of game server being hosted.
+*/
+/// </summary>
+@property NSString* ServerType; 
 
 /// <summary>
 /*
@@ -1558,6 +1617,32 @@ typedef enum
 */
 /// </summary>
 @property NSString* AliasId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Removes a multiplayer server build's region.
+*/
+/// </summary>
+@interface MultiplayerDeleteBuildRegionRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string ID of the build we want to update regions for.
+*/
+/// </summary>
+@property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The build region to delete.
+*/
+/// </summary>
+@property NSString* Region; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1967,6 +2052,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The OS platform used for running the game process.
+*/
+/// </summary>
+@property NSString* OsPlatform; 
+
+/// <summary>
+/*
 /// The ports the build is mapped on.
 */
 /// </summary>
@@ -1978,6 +2070,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* RegionConfigurations; 
+
+/// <summary>
+/*
+/// The type of game server being hosted.
+*/
+/// </summary>
+@property NSString* ServerType; 
 
 /// <summary>
 /*
@@ -2354,13 +2453,6 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetMultiplayerServerLogsRequest : PlayFabBaseModel
 
-
-/// <summary>
-/*
-/// The region of the multiplayer server to get logs for.
-*/
-/// </summary>
-@property NSString* Region; 
 
 /// <summary>
 /*
@@ -3918,6 +4010,32 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildSelectionCriteria; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Updates a multiplayer server build's region.
+*/
+/// </summary>
+@interface MultiplayerUpdateBuildRegionRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string ID of the build we want to update regions for.
+*/
+/// </summary>
+@property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The updated region configuration that should be applied to the specified build.
+*/
+/// </summary>
+@property MultiplayerBuildRegionParams* BuildRegion; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

@@ -626,6 +626,8 @@
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
+    self.OsPlatform = [properties valueForKey:@"OsPlatform"];
+    
     if ([properties objectForKey:@"Ports"]){
     NSArray* member_list = [properties objectForKey:@"Ports"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -645,6 +647,8 @@
     self.RegionConfigurations = [mutable_storage copy];
 }
 
+    
+    self.ServerType = [properties valueForKey:@"ServerType"];
     
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
@@ -686,6 +690,8 @@
     self.GameCertificateReferences = [mutable_storage copy];
 }
 
+    
+    self.GameWorkingDirectory = [properties valueForKey:@"GameWorkingDirectory"];
     
     self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
     
@@ -768,6 +774,8 @@
 }
 
     
+    self.GameWorkingDirectory = [properties valueForKey:@"GameWorkingDirectory"];
+    
     self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
     
     if ([properties objectForKey:@"Metadata"]){
@@ -781,6 +789,8 @@
 
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
+    
+    self.OsPlatform = [properties valueForKey:@"OsPlatform"];
     
     if ([properties objectForKey:@"Ports"]){
     NSArray* member_list = [properties objectForKey:@"Ports"];
@@ -801,6 +811,8 @@
     self.RegionConfigurations = [mutable_storage copy];
 }
 
+    
+    self.ServerType = [properties valueForKey:@"ServerType"];
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
     
@@ -1033,6 +1045,25 @@
 
     
     self.AliasId = [properties valueForKey:@"AliasId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerDeleteBuildRegionRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.BuildId = [properties valueForKey:@"BuildId"];
+    
+    self.Region = [properties valueForKey:@"Region"];
     
 
     return self;
@@ -1376,6 +1407,8 @@
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
+    self.OsPlatform = [properties valueForKey:@"OsPlatform"];
+    
     if ([properties objectForKey:@"Ports"]){
     NSArray* member_list = [properties objectForKey:@"Ports"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -1395,6 +1428,8 @@
     self.RegionConfigurations = [mutable_storage copy];
 }
 
+    
+    self.ServerType = [properties valueForKey:@"ServerType"];
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
     
@@ -1656,8 +1691,6 @@
         return nil;
     }
 
-    
-    self.Region = [properties valueForKey:@"Region"];
     
     self.ServerId = [properties valueForKey:@"ServerId"];
     
@@ -2969,6 +3002,25 @@
     self.BuildSelectionCriteria = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUpdateBuildRegionRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.BuildId = [properties valueForKey:@"BuildId"];
+    
+    self.BuildRegion = [[MultiplayerBuildRegionParams new] initWithDictionary:[properties objectForKey:@"BuildRegion"]];
     
 
     return self;

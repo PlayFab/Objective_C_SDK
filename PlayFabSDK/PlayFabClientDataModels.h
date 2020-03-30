@@ -495,7 +495,8 @@ typedef enum
     ClientLoginIdentityProviderNintendoSwitch,
     ClientLoginIdentityProviderFacebookInstantGames,
     ClientLoginIdentityProviderOpenIdConnect,
-    ClientLoginIdentityProviderApple
+    ClientLoginIdentityProviderApple,
+    ClientLoginIdentityProviderNintendoSwitchAccount
 } ClientLoginIdentityProvider;
 
 typedef enum
@@ -548,7 +549,9 @@ typedef enum
     ClientUserOriginationServerCustomId,
     ClientUserOriginationNintendoSwitchDeviceId,
     ClientUserOriginationFacebookInstantGamesId,
-    ClientUserOriginationOpenIdConnect
+    ClientUserOriginationOpenIdConnect,
+    ClientUserOriginationApple,
+    ClientUserOriginationNintendoSwitchAccount
 } ClientUserOrigination;
 
 typedef enum
@@ -1257,6 +1260,8 @@ typedef enum
 
 @class ClientUserAndroidDeviceInfo;
 
+@class ClientUserAppleIdInfo;
+
 @class ClientUserCustomIdInfo;
 
 @class ClientUserDataRecord;
@@ -1272,6 +1277,8 @@ typedef enum
 @class ClientUserIosDeviceInfo;
 
 @class ClientUserKongregateInfo;
+
+@class ClientUserNintendoSwitchAccountIdInfo;
 
 @class ClientUserNintendoSwitchDeviceIdInfo;
 
@@ -3484,7 +3491,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Note: When calling 'GetLeaderboardAround...' APIs, the position of the user defaults to 0 when the user does not have the corresponding statistic.If Facebook friends are included, make sure the access token from previous LoginWithFacebook call is still valid and not expired.
+/// Note: When calling 'GetLeaderboardAround...' APIs, the position of the user defaults to 0 when the user does not have the corresponding statistic.If Facebook friends are included, make sure the access token from previous LoginWithFacebook call is still valid and not expired. If Xbox Live friends are included, make sure the access token from the previous LoginWithXbox call is still valid and not expired. 
 */
 /// </summary>
 @interface ClientGetFriendLeaderboardAroundPlayerResult : PlayFabBaseModel
@@ -3618,7 +3625,7 @@ typedef enum
 
 /// <summary>
 /*
-/// If any additional services are queried for the user's friends, those friends who also have a PlayFab account registered for the title will be returned in the results. For Facebook, user has to have logged into the title's Facebook app recently, and only friends who also plays this game will be included.
+/// If any additional services are queried for the user's friends, those friends who also have a PlayFab account registered for the title will be returned in the results. For Facebook, user has to have logged into the title's Facebook app recently, and only friends who also plays this game will be included. For Xbox Live, user has to have logged into the Xbox Live recently, and only friends who also play this game will be included.
 */
 /// </summary>
 @interface ClientGetFriendsListResult : PlayFabBaseModel
@@ -10529,6 +10536,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Sign in with Apple account information, if an Apple account has been linked
+*/
+/// </summary>
+@property ClientUserAppleIdInfo* AppleAccountInfo; 
+
+/// <summary>
+/*
 /// Timestamp indicating when the user account was created
 */
 /// </summary>
@@ -10586,6 +10600,13 @@ typedef enum
 /// <summary>
 /*
 /// Nintendo Switch account information, if a Nintendo Switch account has been linked
+*/
+/// </summary>
+@property ClientUserNintendoSwitchAccountIdInfo* NintendoSwitchAccountInfo; 
+
+/// <summary>
+/*
+/// Nintendo Switch device information, if a Nintendo Switch device has been linked
 */
 /// </summary>
 @property ClientUserNintendoSwitchDeviceIdInfo* NintendoSwitchDeviceIdInfo; 
@@ -10673,6 +10694,20 @@ typedef enum
 */
 /// </summary>
 @property NSString* AndroidDeviceId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserAppleIdInfo : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Apple subject ID
+*/
+/// </summary>
+@property NSString* AppleSubjectId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -10841,6 +10876,20 @@ typedef enum
 */
 /// </summary>
 @property NSString* KongregateName; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUserNintendoSwitchAccountIdInfo : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Nintendo Switch account subject ID
+*/
+/// </summary>
+@property NSString* NintendoSwitchAccountSubjectId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

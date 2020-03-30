@@ -23,7 +23,8 @@ typedef enum
     AuthenticationLoginIdentityProviderNintendoSwitch,
     AuthenticationLoginIdentityProviderFacebookInstantGames,
     AuthenticationLoginIdentityProviderOpenIdConnect,
-    AuthenticationLoginIdentityProviderApple
+    AuthenticationLoginIdentityProviderApple,
+    AuthenticationLoginIdentityProviderNintendoSwitchAccount
 } AuthenticationLoginIdentityProvider;
 
 //predeclare all non-enum classes

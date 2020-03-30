@@ -7803,6 +7803,8 @@
     
     self.AndroidDeviceInfo = [[ClientUserAndroidDeviceInfo new] initWithDictionary:[properties objectForKey:@"AndroidDeviceInfo"]];
     
+    self.AppleAccountInfo = [[ClientUserAppleIdInfo new] initWithDictionary:[properties objectForKey:@"AppleAccountInfo"]];
+    
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
     self.CustomIdInfo = [[ClientUserCustomIdInfo new] initWithDictionary:[properties objectForKey:@"CustomIdInfo"]];
@@ -7818,6 +7820,8 @@
     self.IosDeviceInfo = [[ClientUserIosDeviceInfo new] initWithDictionary:[properties objectForKey:@"IosDeviceInfo"]];
     
     self.KongregateInfo = [[ClientUserKongregateInfo new] initWithDictionary:[properties objectForKey:@"KongregateInfo"]];
+    
+    self.NintendoSwitchAccountInfo = [[ClientUserNintendoSwitchAccountIdInfo new] initWithDictionary:[properties objectForKey:@"NintendoSwitchAccountInfo"]];
     
     self.NintendoSwitchDeviceIdInfo = [[ClientUserNintendoSwitchDeviceIdInfo new] initWithDictionary:[properties objectForKey:@"NintendoSwitchDeviceIdInfo"]];
     
@@ -7865,6 +7869,23 @@
 
     
     self.AndroidDeviceId = [properties valueForKey:@"AndroidDeviceId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserAppleIdInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AppleSubjectId = [properties valueForKey:@"AppleSubjectId"];
     
 
     return self;
@@ -8017,6 +8038,23 @@
     self.KongregateId = [properties valueForKey:@"KongregateId"];
     
     self.KongregateName = [properties valueForKey:@"KongregateName"];
+    
+
+    return self;
+}
+@end
+@implementation ClientUserNintendoSwitchAccountIdInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NintendoSwitchAccountSubjectId = [properties valueForKey:@"NintendoSwitchAccountSubjectId"];
     
 
     return self;
