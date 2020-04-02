@@ -562,6 +562,7 @@
         PlayFabErrorExportQuerySchemaMissingRequiredColumns = 5023,
         PlayFabErrorExportCannotParseQuery = 5024,
         PlayFabErrorExportControlCommandsNotAllowed = 5025,
+        PlayFabErrorExportQueryMissingTableReference = 5026,
         PlayFabErrorTitleNotEnabledForParty = 6000,
         PlayFabErrorPartyVersionNotFound = 6001,
         PlayFabErrorMultiplayerServerBuildReferencedByMatchmakingQueue = 6002,
@@ -579,6 +580,7 @@
         PlayFabErrorExperimentationTreatmentAssignmentDisabled = 7011,
         PlayFabErrorExperimentationInvalidDuration = 7012,
         PlayFabErrorExperimentationMaxExperimentsReached = 7013,
+        PlayFabErrorExperimentationExperimentSchedulingInProgress = 7014,
         PlayFabErrorMaxActionDepthExceeded = 8000,
         PlayFabErrorTitleNotOnUpdatedPricingPlan = 9000,
         PlayFabErrorSnapshotNotFound = 11000
