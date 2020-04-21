@@ -43,6 +43,8 @@ typedef void(^DeleteBuildRegionCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 typedef void(^DeleteCertificateCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
+typedef void(^DeleteContainerImageRepositoryCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
+		
 typedef void(^DeleteRemoteUserCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^EnableMultiplayerServersForTitleCallback)(MultiplayerEnableMultiplayerServersForTitleResponse* result, NSObject* userData);
@@ -159,6 +161,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) DeleteBuildRegion:(MultiplayerDeleteBuildRegionRequest*)request success:(DeleteBuildRegionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) DeleteCertificate:(MultiplayerDeleteCertificateRequest*)request success:(DeleteCertificateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) DeleteContainerImageRepository:(MultiplayerDeleteContainerImageRequest*)request success:(DeleteContainerImageRepositoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) DeleteRemoteUser:(MultiplayerDeleteRemoteUserRequest*)request success:(DeleteRemoteUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

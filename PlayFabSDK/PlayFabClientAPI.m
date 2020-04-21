@@ -787,6 +787,49 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetAccountInfo"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
+-(void) GetAdPlacements:(ClientGetAdPlacementsRequest*)request success:(GetAdPlacementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientGetAdPlacementsRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientGetAdPlacementsResult *model = [[ClientGetAdPlacementsResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetAdPlacements"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
 -(void) GetAllUsersCharacters:(ClientListUsersCharactersRequest*)request success:(GetAllUsersCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -3453,6 +3496,49 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkKongregate"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
+-(void) LinkNintendoSwitchAccount:(ClientLinkNintendoSwitchAccountRequest*)request success:(LinkNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientLinkNintendoSwitchAccountRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientEmptyResult *model = [[ClientEmptyResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkNintendoSwitchAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
 -(void) LinkNintendoSwitchDeviceId:(ClientLinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -4268,6 +4354,57 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithKongregate"] body:jsonString authType:nil authKey:nil];
+}
+-(void) LoginWithNintendoSwitchAccount:(ClientLoginWithNintendoSwitchAccountRequest*)request success:(LoginWithNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    if ([PlayFabSettings.TitleId length] > 0)
+        request.TitleId = PlayFabSettings.TitleId;
+
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientLoginWithNintendoSwitchAccountRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
+                if ([class_data valueForKey:@"SessionTicket"])
+            self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
+#ifdef USE_IDFA
+if(model.SettingsForUser.NeedsAttribution)
+    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
+#endif
+
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithNintendoSwitchAccount"] body:jsonString authType:nil authKey:nil];
 }
 -(void) LoginWithNintendoSwitchDeviceId:(ClientLoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -5252,6 +5389,49 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RemoveSharedGroupMembers"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
+-(void) ReportAdActivity:(ClientReportAdActivityRequest*)request success:(ReportAdActivityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientReportAdActivityRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientReportAdActivityResult *model = [[ClientReportAdActivityResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/ReportAdActivity"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
 -(void) ReportDeviceInfo:(ClientDeviceInfoRequest*)request success:(ReportDeviceInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -5380,6 +5560,49 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RestoreIOSPurchases"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
+-(void) RewardAdActivity:(ClientRewardAdActivityRequest*)request success:(RewardAdActivityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientRewardAdActivityRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientRewardAdActivityResult *model = [[ClientRewardAdActivityResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RewardAdActivity"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) SendAccountRecoveryEmail:(ClientSendAccountRecoveryEmailRequest*)request success:(SendAccountRecoveryEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -6026,6 +6249,49 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkKongregate"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
+-(void) UnlinkNintendoSwitchAccount:(UnlinkNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+{
+    
+    
+    NSString *jsonString = @"{}";
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientEmptyResponse *model = [[ClientEmptyResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkNintendoSwitchAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
 -(void) UnlinkNintendoSwitchDeviceId:(ClientUnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -6069,11 +6335,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkNintendoSwitchDeviceId"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkOpenIdConnect:(ClientUninkOpenIdConnectRequest*)request success:(UnlinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) UnlinkOpenIdConnect:(ClientUnlinkOpenIdConnectRequest*)request success:(UnlinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ClientUninkOpenIdConnectRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkOpenIdConnectRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

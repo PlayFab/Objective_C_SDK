@@ -15,6 +15,14 @@ typedef enum
 
 typedef enum
 {
+    ClientAdActivityOpened,
+    ClientAdActivityClosed,
+    ClientAdActivityStart,
+    ClientAdActivityEnd
+} ClientAdActivity;
+
+typedef enum
+{
     ClientCloudScriptRevisionOptionLive,
     ClientCloudScriptRevisionOptionLatest,
     ClientCloudScriptRevisionOptionSpecific
@@ -634,6 +642,12 @@ typedef enum
 
 @class ClientAddUserVirtualCurrencyRequest;
 
+@class ClientAdPlacementDetails;
+
+@class ClientAdRewardItemGranted;
+
+@class ClientAdRewardResults;
+
 @class ClientAndroidDevicePushNotificationRegistrationRequest;
 
 @class ClientAndroidDevicePushNotificationRegistrationResult;
@@ -727,6 +741,10 @@ typedef enum
 @class ClientGetAccountInfoRequest;
 
 @class ClientGetAccountInfoResult;
+
+@class ClientGetAdPlacementsRequest;
+
+@class ClientGetAdPlacementsResult;
 
 @class ClientGetCatalogItemsRequest;
 
@@ -960,6 +978,8 @@ typedef enum
 
 @class ClientLinkKongregateAccountResult;
 
+@class ClientLinkNintendoSwitchAccountRequest;
+
 @class ClientLinkNintendoSwitchDeviceIdRequest;
 
 @class ClientLinkNintendoSwitchDeviceIdResult;
@@ -1014,6 +1034,8 @@ typedef enum
 
 @class ClientLoginWithKongregateRequest;
 
+@class ClientLoginWithNintendoSwitchAccountRequest;
+
 @class ClientLoginWithNintendoSwitchDeviceIdRequest;
 
 @class ClientLoginWithOpenIdConnectRequest;
@@ -1039,6 +1061,8 @@ typedef enum
 @class ClientMembershipModel;
 
 @class ClientModifyUserVirtualCurrencyResult;
+
+@class ClientNameIdentifier;
 
 @class ClientNintendoSwitchPlayFabIdPair;
 
@@ -1104,6 +1128,10 @@ typedef enum
 
 @class ClientRemoveSharedGroupMembersResult;
 
+@class ClientReportAdActivityRequest;
+
+@class ClientReportAdActivityResult;
+
 @class ClientReportPlayerClientRequest;
 
 @class ClientReportPlayerClientResult;
@@ -1111,6 +1139,10 @@ typedef enum
 @class ClientRestoreIOSPurchasesRequest;
 
 @class ClientRestoreIOSPurchasesResult;
+
+@class ClientRewardAdActivityRequest;
+
+@class ClientRewardAdActivityResult;
 
 @class ClientScriptExecutionError;
 
@@ -1164,8 +1196,6 @@ typedef enum
 
 @class ClientTwitchPlayFabIdPair;
 
-@class ClientUninkOpenIdConnectRequest;
-
 @class ClientUnlinkAndroidDeviceIDRequest;
 
 @class ClientUnlinkAndroidDeviceIDResult;
@@ -1200,9 +1230,13 @@ typedef enum
 
 @class ClientUnlinkKongregateAccountResult;
 
+@class ClientUnlinkNintendoSwitchAccountRequest;
+
 @class ClientUnlinkNintendoSwitchDeviceIdRequest;
 
 @class ClientUnlinkNintendoSwitchDeviceIdResult;
+
+@class ClientUnlinkOpenIdConnectRequest;
 
 @class ClientUnlinkPSNAccountRequest;
 
@@ -1615,6 +1649,150 @@ typedef enum
 /// </summary>
 @property NSString* VirtualCurrency; 
 /**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// A single ad placement details including placement and reward information
+*/
+/// </summary>
+@interface ClientAdPlacementDetails : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Placement unique ID
+*/
+/// </summary>
+@property NSString* PlacementId; 
+
+/// <summary>
+/*
+/// Placement name
+*/
+/// </summary>
+@property NSString* PlacementName; 
+
+/// <summary>
+/*
+/// If placement has viewing limits indicates how many views are left
+*/
+/// </summary>
+@property NSNumber* PlacementViewsRemaining; 
+
+/// <summary>
+/*
+/// If placement has viewing limits indicates when they will next reset
+*/
+/// </summary>
+@property NSNumber* PlacementViewsResetMinutes; 
+
+/// <summary>
+/*
+/// Optional URL to a reward asset
+*/
+/// </summary>
+@property NSString* RewardAssetUrl; 
+
+/// <summary>
+/*
+/// Reward description
+*/
+/// </summary>
+@property NSString* RewardDescription; 
+
+/// <summary>
+/*
+/// Reward unique ID
+*/
+/// </summary>
+@property NSString* RewardId; 
+
+/// <summary>
+/*
+/// Reward name
+*/
+/// </summary>
+@property NSString* RewardName; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Details for each item granted
+*/
+/// </summary>
+@interface ClientAdRewardItemGranted : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Catalog ID
+*/
+/// </summary>
+@property NSString* CatalogId; 
+
+/// <summary>
+/*
+/// Catalog item display name
+*/
+/// </summary>
+@property NSString* DisplayName; 
+
+/// <summary>
+/*
+/// Inventory instance ID
+*/
+/// </summary>
+@property NSString* InstanceId; 
+
+/// <summary>
+/*
+/// Item ID
+*/
+/// </summary>
+@property NSString* ItemId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Details on what was granted to the player
+*/
+/// </summary>
+@interface ClientAdRewardResults : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Array of the items granted to the player
+*/
+/// </summary>
+@property NSArray* GrantedItems; 
+
+/// <summary>
+/*
+/// Dictionary of virtual currencies that were granted to the player
+*/
+/// </summary>
+@property NSDictionary* GrantedVirtualCurrencies; 
+
+/// <summary>
+/*
+/// Dictionary of statistics that were modified for the player
+*/
+/// </summary>
+@property NSDictionary* IncrementedStatistics; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -3109,6 +3287,54 @@ typedef enum
 */
 /// </summary>
 @property ClientUserAccountInfo* AccountInfo; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Using an AppId to return a list of valid ad placements for a player.
+*/
+/// </summary>
+@interface ClientGetAdPlacementsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The current AppId to use
+*/
+/// </summary>
+@property NSString* AppId; 
+
+/// <summary>
+/*
+/// Using the name or unique identifier, filter the result for get a specific placement.
+*/
+/// </summary>
+@property ClientNameIdentifier* Identifier; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Array of AdPlacementDetails
+*/
+/// </summary>
+@interface ClientGetAdPlacementsResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Array of results
+*/
+/// </summary>
+@property NSArray* AdPlacements; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -6081,6 +6307,34 @@ typedef enum
 @end
 
 
+@interface ClientLinkNintendoSwitchAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// ID of the Nintendo Switch environment. If null, defaults to the production environment.
+*/
+/// </summary>
+@property NSString* EnvironmentId; 
+
+/// <summary>
+/*
+/// If another user is already linked to a specific Nintendo Switch account, unlink the other user and re-link.
+*/
+/// </summary>
+@property bool ForceLink; 
+
+/// <summary>
+/*
+/// The JSON Web token (JWT) returned by Nintendo after login. Used to validate the request and find the user ID (Nintendo Switch subject) to link with.
+*/
+/// </summary>
+@property NSString* IdentityToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientLinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
@@ -7056,6 +7310,62 @@ typedef enum
 @end
 
 
+@interface ClientLoginWithNintendoSwitchAccountRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Automatically create a PlayFab account if one is not currently linked to this ID.
+*/
+/// </summary>
+@property bool CreateAccount; 
+
+/// <summary>
+/*
+/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+*/
+/// </summary>
+@property NSString* EncryptedRequest; 
+
+/// <summary>
+/*
+/// ID of the Nintendo Switch environment. If null, defaults to the production environment.
+*/
+/// </summary>
+@property NSString* EnvironmentId; 
+
+/// <summary>
+/*
+/// The JSON Web token (JWT) returned by Nintendo after login.
+*/
+/// </summary>
+@property NSString* IdentityToken; 
+
+/// <summary>
+/*
+/// Flags for which pieces of info to return for the user.
+*/
+/// </summary>
+@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
+
+/// <summary>
+/*
+/// Player secret that is used to verify API request signatures (Enterprise Only).
+*/
+/// </summary>
+@property NSString* PlayerSecret; 
+
+/// <summary>
+/*
+/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+*/
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientLoginWithNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
@@ -7706,6 +8016,32 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Identifier by either name or ID. Note that a name may change due to renaming, or reused after being deleted. ID is immutable and unique.
+*/
+/// </summary>
+@interface ClientNameIdentifier : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Id Identifier, if present
+*/
+/// </summary>
+@property NSString* Id; 
+
+/// <summary>
+/*
+/// Name Identifier, if present
+*/
+/// </summary>
+@property NSString* Name; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -8886,6 +9222,54 @@ typedef enum
 @end
 
 
+/// <summary>
+/*
+/// Report ad activity
+*/
+/// </summary>
+@interface ClientReportAdActivityRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Type of activity, may be Opened, Closed, Start or End
+*/
+/// </summary>
+@property ClientAdActivity Activity; 
+
+/// <summary>
+/*
+/// Unique ID of the placement to report for
+*/
+/// </summary>
+@property NSString* PlacementId; 
+
+/// <summary>
+/*
+/// Unique ID of the reward the player was offered
+*/
+/// </summary>
+@property NSString* RewardId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Report ad activity response has no body
+*/
+/// </summary>
+@interface ClientReportAdActivityResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientReportPlayerClientRequest : PlayFabBaseModel
 
 
@@ -8969,6 +9353,96 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Fulfillments; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Details on which placement and reward to perform a grant on
+*/
+/// </summary>
+@interface ClientRewardAdActivityRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Placement unique ID
+*/
+/// </summary>
+@property NSString* PlacementId; 
+
+/// <summary>
+/*
+/// Reward unique ID
+*/
+/// </summary>
+@property NSString* RewardId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Result for rewarding an ad activity
+*/
+/// </summary>
+@interface ClientRewardAdActivityResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// PlayStream Event ID that was generated by this reward (all subsequent events are associated with this event identifier)
+*/
+/// </summary>
+@property NSString* AdActivityEventId; 
+
+/// <summary>
+/*
+/// Debug results from the grants
+*/
+/// </summary>
+@property NSArray* DebugResults; 
+
+/// <summary>
+/*
+/// Id of the placement the reward was for
+*/
+/// </summary>
+@property NSString* PlacementId; 
+
+/// <summary>
+/*
+/// Name of the placement the reward was for
+*/
+/// </summary>
+@property NSString* PlacementName; 
+
+/// <summary>
+/*
+/// If placement has viewing limits indicates how many views are left
+*/
+/// </summary>
+@property NSNumber* PlacementViewsRemaining; 
+
+/// <summary>
+/*
+/// If placement has viewing limits indicates when they will next reset
+*/
+/// </summary>
+@property NSNumber* PlacementViewsResetMinutes; 
+
+/// <summary>
+/*
+/// Reward results
+*/
+/// </summary>
+@property ClientAdRewardResults* RewardResults; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -9823,20 +10297,6 @@ typedef enum
 @end
 
 
-@interface ClientUninkOpenIdConnectRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// A name that identifies which configured OpenID Connect provider relationship to use. Maximum 100 characters.
-*/
-/// </summary>
-@property NSString* ConnectionId; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
 @interface ClientUnlinkAndroidDeviceIDRequest : PlayFabBaseModel
 
 
@@ -10008,6 +10468,13 @@ typedef enum
 @end
 
 
+@interface ClientUnlinkNintendoSwitchAccountRequest : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientUnlinkNintendoSwitchDeviceIdRequest : PlayFabBaseModel
 
 
@@ -10028,6 +10495,20 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientUnlinkOpenIdConnectRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A name that identifies which configured OpenID Connect provider relationship to use. Maximum 100 characters.
+*/
+/// </summary>
+@property NSString* ConnectionId; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 

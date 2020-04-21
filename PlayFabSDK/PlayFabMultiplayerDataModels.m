@@ -1103,6 +1103,23 @@
     return self;
 }
 @end
+@implementation MultiplayerDeleteContainerImageRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ImageName = [properties valueForKey:@"ImageName"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerDeleteRemoteUserRequest
 
 

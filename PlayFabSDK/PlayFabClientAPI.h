@@ -47,6 +47,8 @@ typedef void(^ExecuteCloudScriptCallback)(ClientExecuteCloudScriptResult* result
 		
 typedef void(^GetAccountInfoCallback)(ClientGetAccountInfoResult* result, NSObject* userData);
 		
+typedef void(^GetAdPlacementsCallback)(ClientGetAdPlacementsResult* result, NSObject* userData);
+		
 typedef void(^GetAllUsersCharactersCallback)(ClientListUsersCharactersResult* result, NSObject* userData);
 		
 typedef void(^GetCatalogItemsCallback)(ClientGetCatalogItemsResult* result, NSObject* userData);
@@ -171,6 +173,8 @@ typedef void(^LinkIOSDeviceIDCallback)(ClientLinkIOSDeviceIDResult* result, NSOb
 		
 typedef void(^LinkKongregateCallback)(ClientLinkKongregateAccountResult* result, NSObject* userData);
 		
+typedef void(^LinkNintendoSwitchAccountCallback)(ClientEmptyResult* result, NSObject* userData);
+		
 typedef void(^LinkNintendoSwitchDeviceIdCallback)(ClientLinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
 typedef void(^LinkOpenIdConnectCallback)(ClientEmptyResult* result, NSObject* userData);
@@ -204,6 +208,8 @@ typedef void(^LoginWithGoogleAccountCallback)(ClientLoginResult* result, NSObjec
 typedef void(^LoginWithIOSDeviceIDCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithKongregateCallback)(ClientLoginResult* result, NSObject* userData);
+		
+typedef void(^LoginWithNintendoSwitchAccountCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^LoginWithNintendoSwitchDeviceIdCallback)(ClientLoginResult* result, NSObject* userData);
 		
@@ -247,11 +253,15 @@ typedef void(^RemoveGenericIDCallback)(ClientRemoveGenericIDResult* result, NSOb
 		
 typedef void(^RemoveSharedGroupMembersCallback)(ClientRemoveSharedGroupMembersResult* result, NSObject* userData);
 		
+typedef void(^ReportAdActivityCallback)(ClientReportAdActivityResult* result, NSObject* userData);
+		
 typedef void(^ReportDeviceInfoCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
 typedef void(^ReportPlayerCallback)(ClientReportPlayerClientResult* result, NSObject* userData);
 		
 typedef void(^RestoreIOSPurchasesCallback)(ClientRestoreIOSPurchasesResult* result, NSObject* userData);
+		
+typedef void(^RewardAdActivityCallback)(ClientRewardAdActivityResult* result, NSObject* userData);
 		
 typedef void(^SendAccountRecoveryEmailCallback)(ClientSendAccountRecoveryEmailResult* result, NSObject* userData);
 		
@@ -282,6 +292,8 @@ typedef void(^UnlinkGoogleAccountCallback)(ClientUnlinkGoogleAccountResult* resu
 typedef void(^UnlinkIOSDeviceIDCallback)(ClientUnlinkIOSDeviceIDResult* result, NSObject* userData);
 		
 typedef void(^UnlinkKongregateCallback)(ClientUnlinkKongregateAccountResult* result, NSObject* userData);
+		
+typedef void(^UnlinkNintendoSwitchAccountCallback)(ClientEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UnlinkNintendoSwitchDeviceIdCallback)(ClientUnlinkNintendoSwitchDeviceIdResult* result, NSObject* userData);
 		
@@ -371,6 +383,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) ExecuteCloudScript:(ClientExecuteCloudScriptRequest*)request success:(ExecuteCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetAccountInfo:(ClientGetAccountInfoRequest*)request success:(GetAccountInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetAdPlacements:(ClientGetAdPlacementsRequest*)request success:(GetAdPlacementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetAllUsersCharacters:(ClientListUsersCharactersRequest*)request success:(GetAllUsersCharactersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -496,6 +510,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) LinkKongregate:(ClientLinkKongregateAccountRequest*)request success:(LinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) LinkNintendoSwitchAccount:(ClientLinkNintendoSwitchAccountRequest*)request success:(LinkNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) LinkNintendoSwitchDeviceId:(ClientLinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkOpenIdConnect:(ClientLinkOpenIdConnectRequest*)request success:(LinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -529,6 +545,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) LoginWithIOSDeviceID:(ClientLoginWithIOSDeviceIDRequest*)request success:(LoginWithIOSDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithKongregate:(ClientLoginWithKongregateRequest*)request success:(LoginWithKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LoginWithNintendoSwitchAccount:(ClientLoginWithNintendoSwitchAccountRequest*)request success:(LoginWithNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LoginWithNintendoSwitchDeviceId:(ClientLoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -572,11 +590,15 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) RemoveSharedGroupMembers:(ClientRemoveSharedGroupMembersRequest*)request success:(RemoveSharedGroupMembersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) ReportAdActivity:(ClientReportAdActivityRequest*)request success:(ReportAdActivityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) ReportDeviceInfo:(ClientDeviceInfoRequest*)request success:(ReportDeviceInfoCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ReportPlayer:(ClientReportPlayerClientRequest*)request success:(ReportPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RestoreIOSPurchases:(ClientRestoreIOSPurchasesRequest*)request success:(RestoreIOSPurchasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) RewardAdActivity:(ClientRewardAdActivityRequest*)request success:(RewardAdActivityCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) SendAccountRecoveryEmail:(ClientSendAccountRecoveryEmailRequest*)request success:(SendAccountRecoveryEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -608,9 +630,11 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) UnlinkKongregate:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		
+-(void) UnlinkNintendoSwitchAccount:(UnlinkNintendoSwitchAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+		
 -(void) UnlinkNintendoSwitchDeviceId:(ClientUnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) UnlinkOpenIdConnect:(ClientUninkOpenIdConnectRequest*)request success:(UnlinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) UnlinkOpenIdConnect:(ClientUnlinkOpenIdConnectRequest*)request success:(UnlinkOpenIdConnectCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkPSNAccount:(UnlinkPSNAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
 		

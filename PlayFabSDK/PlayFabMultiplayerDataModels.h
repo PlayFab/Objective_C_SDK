@@ -181,6 +181,8 @@ typedef enum
 
 @class MultiplayerDeleteCertificateRequest;
 
+@class MultiplayerDeleteContainerImageRequest;
+
 @class MultiplayerDeleteRemoteUserRequest;
 
 @class MultiplayerDynamicStandbySettings;
@@ -1681,6 +1683,25 @@ typedef enum
 */
 /// </summary>
 @property NSString* Name; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Removes the specified container image repository. After this operation, a 'docker pull' will fail for all the tags of the specified image. Morever, ListContainerImages will not return the specified image.
+*/
+/// </summary>
+@interface MultiplayerDeleteContainerImageRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The container image repository we want to delete.
+*/
+/// </summary>
+@property NSString* ImageName; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

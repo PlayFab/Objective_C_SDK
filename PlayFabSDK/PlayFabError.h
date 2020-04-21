@@ -501,6 +501,7 @@
         PlayFabErrorPartyRequestsThrottledFromRateLimiter = 1504,
         PlayFabErrorXboxServiceTooManyRequests = 1505,
         PlayFabErrorNintendoSwitchNotEnabledForTitle = 1506,
+        PlayFabErrorRequestMultiplayerServersThrottledFromRateLimiter = 1507,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingQueueNotFound = 2016,

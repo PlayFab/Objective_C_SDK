@@ -271,6 +271,105 @@
     return self;
 }
 @end
+@implementation ClientAdPlacementDetails
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlacementId = [properties valueForKey:@"PlacementId"];
+    
+    self.PlacementName = [properties valueForKey:@"PlacementName"];
+    
+    self.PlacementViewsRemaining = [properties valueForKey:@"PlacementViewsRemaining"];
+    
+    self.PlacementViewsResetMinutes = [properties valueForKey:@"PlacementViewsResetMinutes"];
+    
+    self.RewardAssetUrl = [properties valueForKey:@"RewardAssetUrl"];
+    
+    self.RewardDescription = [properties valueForKey:@"RewardDescription"];
+    
+    self.RewardId = [properties valueForKey:@"RewardId"];
+    
+    self.RewardName = [properties valueForKey:@"RewardName"];
+    
+
+    return self;
+}
+@end
+@implementation ClientAdRewardItemGranted
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CatalogId = [properties valueForKey:@"CatalogId"];
+    
+    self.DisplayName = [properties valueForKey:@"DisplayName"];
+    
+    self.InstanceId = [properties valueForKey:@"InstanceId"];
+    
+    self.ItemId = [properties valueForKey:@"ItemId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientAdRewardResults
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"GrantedItems"]){
+    NSArray* member_list = [properties objectForKey:@"GrantedItems"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientAdRewardItemGranted new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.GrantedItems = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"GrantedVirtualCurrencies"]){
+    NSDictionary* member_list = [properties objectForKey:@"GrantedVirtualCurrencies"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.GrantedVirtualCurrencies = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"IncrementedStatistics"]){
+    NSDictionary* member_list = [properties objectForKey:@"IncrementedStatistics"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.IncrementedStatistics = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientAndroidDevicePushNotificationRegistrationRequest
 
 
@@ -1485,6 +1584,50 @@
 
     
     self.AccountInfo = [[ClientUserAccountInfo new] initWithDictionary:[properties objectForKey:@"AccountInfo"]];
+    
+
+    return self;
+}
+@end
+@implementation ClientGetAdPlacementsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AppId = [properties valueForKey:@"AppId"];
+    
+    self.Identifier = [[ClientNameIdentifier new] initWithDictionary:[properties objectForKey:@"Identifier"]];
+    
+
+    return self;
+}
+@end
+@implementation ClientGetAdPlacementsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"AdPlacements"]){
+    NSArray* member_list = [properties objectForKey:@"AdPlacements"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientAdPlacementDetails new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.AdPlacements = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -4334,6 +4477,27 @@
     return self;
 }
 @end
+@implementation ClientLinkNintendoSwitchAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.EnvironmentId = [properties valueForKey:@"EnvironmentId"];
+    
+    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
+    
+    self.IdentityToken = [properties valueForKey:@"IdentityToken"];
+    
+
+    return self;
+}
+@end
 @implementation ClientLinkNintendoSwitchDeviceIdRequest
 
 
@@ -4949,6 +5113,35 @@
     return self;
 }
 @end
+@implementation ClientLoginWithNintendoSwitchAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
+    
+    self.EnvironmentId = [properties valueForKey:@"EnvironmentId"];
+    
+    self.IdentityToken = [properties valueForKey:@"IdentityToken"];
+    
+    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
+    
+    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
 @implementation ClientLoginWithNintendoSwitchDeviceIdRequest
 
 
@@ -5299,6 +5492,25 @@
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
     self.VirtualCurrency = [properties valueForKey:@"VirtualCurrency"];
+    
+
+    return self;
+}
+@end
+@implementation ClientNameIdentifier
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+    self.Name = [properties valueForKey:@"Name"];
     
 
     return self;
@@ -6188,6 +6400,42 @@
     return self;
 }
 @end
+@implementation ClientReportAdActivityRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Activity = (ClientAdActivity)[properties valueForKey:@"ClientActivity"];
+    
+    self.PlacementId = [properties valueForKey:@"PlacementId"];
+    
+    self.RewardId = [properties valueForKey:@"RewardId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientReportAdActivityResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation ClientReportPlayerClientRequest
 
 
@@ -6263,6 +6511,62 @@
     self.Fulfillments = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation ClientRewardAdActivityRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.PlacementId = [properties valueForKey:@"PlacementId"];
+    
+    self.RewardId = [properties valueForKey:@"RewardId"];
+    
+
+    return self;
+}
+@end
+@implementation ClientRewardAdActivityResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AdActivityEventId = [properties valueForKey:@"AdActivityEventId"];
+    
+    if ([properties objectForKey:@"DebugResults"]){
+    NSArray* member_list = [properties objectForKey:@"DebugResults"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.DebugResults = [mutable_storage copy];
+}
+
+    
+    self.PlacementId = [properties valueForKey:@"PlacementId"];
+    
+    self.PlacementName = [properties valueForKey:@"PlacementName"];
+    
+    self.PlacementViewsRemaining = [properties valueForKey:@"PlacementViewsRemaining"];
+    
+    self.PlacementViewsResetMinutes = [properties valueForKey:@"PlacementViewsResetMinutes"];
+    
+    self.RewardResults = [[ClientAdRewardResults new] initWithDictionary:[properties objectForKey:@"RewardResults"]];
     
 
     return self;
@@ -6944,23 +7248,6 @@
     return self;
 }
 @end
-@implementation ClientUninkOpenIdConnectRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
-    
-
-    return self;
-}
-@end
 @implementation ClientUnlinkAndroidDeviceIDRequest
 
 
@@ -7224,6 +7511,21 @@
     return self;
 }
 @end
+@implementation ClientUnlinkNintendoSwitchAccountRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation ClientUnlinkNintendoSwitchDeviceIdRequest
 
 
@@ -7251,6 +7553,23 @@
         return nil;
     }
 
+    
+
+    return self;
+}
+@end
+@implementation ClientUnlinkOpenIdConnectRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionId = [properties valueForKey:@"ConnectionId"];
     
 
     return self;
