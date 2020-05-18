@@ -7646,6 +7646,8 @@
     }
 
     
+    self.AccessToken = [properties valueForKey:@"AccessToken"];
+    
 
     return self;
 }

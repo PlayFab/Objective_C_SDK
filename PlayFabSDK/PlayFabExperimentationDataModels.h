@@ -775,6 +775,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Id of the TitleDataOverrideGroup to use with this variant.
+*/
+/// </summary>
+@property NSString* TitleDataOverrideId; 
+
+/// <summary>
+/*
 /// Percentage of target audience traffic that will see this variant.
 */
 /// </summary>

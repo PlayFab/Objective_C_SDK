@@ -542,6 +542,8 @@
     
     self.Name = [properties valueForKey:@"Name"];
     
+    self.TitleDataOverrideId = [properties valueForKey:@"TitleDataOverrideId"];
+    
     self.TrafficPercentage = [properties valueForKey:@"TrafficPercentage"];
     
     if ([properties objectForKey:@"Variables"]){

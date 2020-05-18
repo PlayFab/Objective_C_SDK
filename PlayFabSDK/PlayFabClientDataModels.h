@@ -10549,6 +10549,13 @@ typedef enum
 
 @interface ClientUnlinkTwitchAccountRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// Valid token issued by Twitch. Used to specify which twitch account to unlink from the profile. By default it uses the one that is present on the profile.
+*/
+/// </summary>
+@property NSString* AccessToken; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

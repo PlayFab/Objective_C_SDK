@@ -6464,11 +6464,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkSteamAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkTwitch:(UnlinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkTwitch:(ClientUnlinkTwitchAccountRequest*)request success:(UnlinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkTwitchAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

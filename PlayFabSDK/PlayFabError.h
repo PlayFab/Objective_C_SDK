@@ -502,6 +502,8 @@
         PlayFabErrorXboxServiceTooManyRequests = 1505,
         PlayFabErrorNintendoSwitchNotEnabledForTitle = 1506,
         PlayFabErrorRequestMultiplayerServersThrottledFromRateLimiter = 1507,
+        PlayFabErrorTitleDataInstanceNotFound = 1508,
+        PlayFabErrorDuplicateTitleDataOverrideInstanceName = 1509,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingQueueNotFound = 2016,
@@ -582,6 +584,7 @@
         PlayFabErrorExperimentationInvalidDuration = 7012,
         PlayFabErrorExperimentationMaxExperimentsReached = 7013,
         PlayFabErrorExperimentationExperimentSchedulingInProgress = 7014,
+        PlayFabErrorExperimentationExistingCodelessScheduled = 7015,
         PlayFabErrorMaxActionDepthExceeded = 8000,
         PlayFabErrorTitleNotOnUpdatedPricingPlan = 9000,
         PlayFabErrorSnapshotNotFound = 11000

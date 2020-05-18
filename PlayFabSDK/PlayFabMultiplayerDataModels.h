@@ -35,15 +35,23 @@ typedef enum
 
 typedef enum
 {
+    MultiplayerAzureVmSizeStandard_A1,
+    MultiplayerAzureVmSizeStandard_A2,
+    MultiplayerAzureVmSizeStandard_A3,
+    MultiplayerAzureVmSizeStandard_A4,
+    MultiplayerAzureVmSizeStandard_A1_v2,
+    MultiplayerAzureVmSizeStandard_A2_v2,
+    MultiplayerAzureVmSizeStandard_A4_v2,
+    MultiplayerAzureVmSizeStandard_A8_v2,
     MultiplayerAzureVmSizeStandard_D1_v2,
     MultiplayerAzureVmSizeStandard_D2_v2,
     MultiplayerAzureVmSizeStandard_D3_v2,
     MultiplayerAzureVmSizeStandard_D4_v2,
     MultiplayerAzureVmSizeStandard_D5_v2,
-    MultiplayerAzureVmSizeStandard_A1_v2,
-    MultiplayerAzureVmSizeStandard_A2_v2,
-    MultiplayerAzureVmSizeStandard_A4_v2,
-    MultiplayerAzureVmSizeStandard_A8_v2,
+    MultiplayerAzureVmSizeStandard_D2_v3,
+    MultiplayerAzureVmSizeStandard_D4_v3,
+    MultiplayerAzureVmSizeStandard_D8_v3,
+    MultiplayerAzureVmSizeStandard_D16_v3,
     MultiplayerAzureVmSizeStandard_F1,
     MultiplayerAzureVmSizeStandard_F2,
     MultiplayerAzureVmSizeStandard_F4,
@@ -52,11 +60,7 @@ typedef enum
     MultiplayerAzureVmSizeStandard_F2s_v2,
     MultiplayerAzureVmSizeStandard_F4s_v2,
     MultiplayerAzureVmSizeStandard_F8s_v2,
-    MultiplayerAzureVmSizeStandard_F16s_v2,
-    MultiplayerAzureVmSizeStandard_A1,
-    MultiplayerAzureVmSizeStandard_A2,
-    MultiplayerAzureVmSizeStandard_A3,
-    MultiplayerAzureVmSizeStandard_A4
+    MultiplayerAzureVmSizeStandard_F16s_v2
 } MultiplayerAzureVmSize;
 
 typedef enum
