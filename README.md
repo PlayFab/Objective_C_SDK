@@ -29,7 +29,7 @@ Set your PlayFab TitleId in PlayFabSettings.m, on the line:
 //EXAMPLE: Login with custom id request:
 
 //Build the Request object:
-  LoginWithCustomIDRequest* login_request = [LoginWithCustomIDRequest new];
+  ClientLoginWithCustomIDRequest* login_request = [ClientLoginWithCustomIDRequest new];
   login_request.CustomId = [[[UIDevice currentDevice] identifierForVendor] UUIDString]; //use the identifier for vendor as our custom ID.
   login_request.CreateAccount = true; //creates a new account if no existing one
     
