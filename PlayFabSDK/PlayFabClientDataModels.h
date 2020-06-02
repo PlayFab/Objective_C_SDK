@@ -978,7 +978,7 @@ typedef enum
 
 @class ClientLinkKongregateAccountResult;
 
-@class ClientLinkNintendoSwitchAccountRequest;
+@class ClientLinkNintendoAccountRequest;
 
 @class ClientLinkNintendoSwitchDeviceIdRequest;
 
@@ -1034,7 +1034,7 @@ typedef enum
 
 @class ClientLoginWithKongregateRequest;
 
-@class ClientLoginWithNintendoSwitchAccountRequest;
+@class ClientLoginWithNintendoAccountRequest;
 
 @class ClientLoginWithNintendoSwitchDeviceIdRequest;
 
@@ -1230,7 +1230,7 @@ typedef enum
 
 @class ClientUnlinkKongregateAccountResult;
 
-@class ClientUnlinkNintendoSwitchAccountRequest;
+@class ClientUnlinkNintendoAccountRequest;
 
 @class ClientUnlinkNintendoSwitchDeviceIdRequest;
 
@@ -5100,7 +5100,7 @@ typedef enum
 
 /// <summary>
 /*
-/// This API is designed to return publisher-specific values which can be read, but not written to, by the client. This data is shared across all titles assigned to a particular publisher, and can be used for cross-game coordination. Only titles assigned to a publisher can use this API. For more information email devrel@playfab.com. Note that there may up to a minute delay in between updating title data and this API call returning the newest value.
+/// This API is designed to return publisher-specific values which can be read, but not written to, by the client. This data is shared across all titles assigned to a particular publisher, and can be used for cross-game coordination. Only titles assigned to a publisher can use this API. For more information email helloplayfab@microsoft.com. Note that there may up to a minute delay in between updating title data and this API call returning the newest value.
 */
 /// </summary>
 @interface ClientGetPublisherDataRequest : PlayFabBaseModel
@@ -6307,15 +6307,8 @@ typedef enum
 @end
 
 
-@interface ClientLinkNintendoSwitchAccountRequest : PlayFabBaseModel
+@interface ClientLinkNintendoAccountRequest : PlayFabBaseModel
 
-
-/// <summary>
-/*
-/// ID of the Nintendo Switch environment. If null, defaults to the production environment.
-*/
-/// </summary>
-@property NSString* EnvironmentId; 
 
 /// <summary>
 /*
@@ -7310,7 +7303,7 @@ typedef enum
 @end
 
 
-@interface ClientLoginWithNintendoSwitchAccountRequest : PlayFabBaseModel
+@interface ClientLoginWithNintendoAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7326,13 +7319,6 @@ typedef enum
 */
 /// </summary>
 @property NSString* EncryptedRequest; 
-
-/// <summary>
-/*
-/// ID of the Nintendo Switch environment. If null, defaults to the production environment.
-*/
-/// </summary>
-@property NSString* EnvironmentId; 
 
 /// <summary>
 /*
@@ -10468,7 +10454,7 @@ typedef enum
 @end
 
 
-@interface ClientUnlinkNintendoSwitchAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkNintendoAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;

@@ -29,8 +29,10 @@ typedef enum
     MultiplayerAzureVmFamilyA,
     MultiplayerAzureVmFamilyAv2,
     MultiplayerAzureVmFamilyDv2,
+    MultiplayerAzureVmFamilyDv3,
     MultiplayerAzureVmFamilyF,
-    MultiplayerAzureVmFamilyFsv2
+    MultiplayerAzureVmFamilyFsv2,
+    MultiplayerAzureVmFamilyDasv4
 } MultiplayerAzureVmFamily;
 
 typedef enum
@@ -60,7 +62,11 @@ typedef enum
     MultiplayerAzureVmSizeStandard_F2s_v2,
     MultiplayerAzureVmSizeStandard_F4s_v2,
     MultiplayerAzureVmSizeStandard_F8s_v2,
-    MultiplayerAzureVmSizeStandard_F16s_v2
+    MultiplayerAzureVmSizeStandard_F16s_v2,
+    MultiplayerAzureVmSizeStandard_D2as_v4,
+    MultiplayerAzureVmSizeStandard_D4as_v4,
+    MultiplayerAzureVmSizeStandard_D8as_v4,
+    MultiplayerAzureVmSizeStandard_D16as_v4
 } MultiplayerAzureVmSize;
 
 typedef enum

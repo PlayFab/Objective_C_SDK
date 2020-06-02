@@ -4477,7 +4477,7 @@
     return self;
 }
 @end
-@implementation ClientLinkNintendoSwitchAccountRequest
+@implementation ClientLinkNintendoAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -4487,8 +4487,6 @@
         return nil;
     }
 
-    
-    self.EnvironmentId = [properties valueForKey:@"EnvironmentId"];
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
@@ -5113,7 +5111,7 @@
     return self;
 }
 @end
-@implementation ClientLoginWithNintendoSwitchAccountRequest
+@implementation ClientLoginWithNintendoAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5127,8 +5125,6 @@
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
-    
-    self.EnvironmentId = [properties valueForKey:@"EnvironmentId"];
     
     self.IdentityToken = [properties valueForKey:@"IdentityToken"];
     
@@ -7511,7 +7507,7 @@
     return self;
 }
 @end
-@implementation ClientUnlinkNintendoSwitchAccountRequest
+@implementation ClientUnlinkNintendoAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
