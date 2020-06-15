@@ -5395,6 +5395,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Keys; 
+
+/// <summary>
+/*
+/// Name of the override.
+*/
+/// </summary>
+@property NSString* OverrideLabel; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

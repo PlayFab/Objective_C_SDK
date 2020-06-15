@@ -505,6 +505,8 @@
     }
 
     
+    self.AreAssetsReadonly = [[properties valueForKey:@"AreAssetsReadonly"] boolValue];
+    
     self.BuildName = [properties valueForKey:@"BuildName"];
     
     self.pfContainerFlavor = (MultiplayerContainerFlavor)[properties valueForKey:@"MultiplayerContainerFlavor"];
@@ -565,6 +567,8 @@
 }
 
     
+    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
+    
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
@@ -581,6 +585,8 @@
         return nil;
     }
 
+    
+    self.AreAssetsReadonly = [[properties valueForKey:@"AreAssetsReadonly"] boolValue];
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
@@ -650,6 +656,8 @@
     
     self.ServerType = [properties valueForKey:@"ServerType"];
     
+    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
+    
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
@@ -666,6 +674,8 @@
         return nil;
     }
 
+    
+    self.AreAssetsReadonly = [[properties valueForKey:@"AreAssetsReadonly"] boolValue];
     
     self.BuildName = [properties valueForKey:@"BuildName"];
     
@@ -729,6 +739,8 @@
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
     
+    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
+    
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
@@ -745,6 +757,8 @@
         return nil;
     }
 
+    
+    self.AreAssetsReadonly = [[properties valueForKey:@"AreAssetsReadonly"] boolValue];
     
     self.BuildId = [properties valueForKey:@"BuildId"];
     
@@ -815,6 +829,8 @@
     self.ServerType = [properties valueForKey:@"ServerType"];
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
+    
+    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
     
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
@@ -1376,6 +1392,8 @@
     }
 
     
+    self.AreAssetsReadonly = [[properties valueForKey:@"AreAssetsReadonly"] boolValue];
+    
     self.BuildId = [properties valueForKey:@"BuildId"];
     
     self.BuildName = [properties valueForKey:@"BuildName"];
@@ -1449,6 +1467,8 @@
     self.ServerType = [properties valueForKey:@"ServerType"];
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
+    
+    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
     
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     

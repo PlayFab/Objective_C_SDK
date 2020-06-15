@@ -3678,6 +3678,8 @@
 }
 
     
+    self.OverrideLabel = [properties valueForKey:@"OverrideLabel"];
+    
 
     return self;
 }

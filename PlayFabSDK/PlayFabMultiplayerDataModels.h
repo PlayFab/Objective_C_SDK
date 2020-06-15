@@ -924,6 +924,13 @@ typedef enum
 
 /// <summary>
 /*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
+
+/// <summary>
+/*
 /// The build name.
 */
 /// </summary>
@@ -994,6 +1001,13 @@ typedef enum
 
 /// <summary>
 /*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
+
+/// <summary>
+/*
 /// The VM size to create the build on.
 */
 /// </summary>
@@ -1005,6 +1019,13 @@ typedef enum
 
 @interface MultiplayerCreateBuildWithCustomContainerResponse : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
 
 /// <summary>
 /*
@@ -1106,6 +1127,13 @@ typedef enum
 
 /// <summary>
 /*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
+
+/// <summary>
+/*
 /// The VM size the build was created on.
 */
 /// </summary>
@@ -1125,6 +1153,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerCreateBuildWithManagedContainerRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
 
 /// <summary>
 /*
@@ -1205,6 +1240,13 @@ typedef enum
 
 /// <summary>
 /*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
+
+/// <summary>
+/*
 /// The VM size to create the build on.
 */
 /// </summary>
@@ -1216,6 +1258,13 @@ typedef enum
 
 @interface MultiplayerCreateBuildWithManagedContainerResponse : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
 
 /// <summary>
 /*
@@ -1321,6 +1370,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* StartMultiplayerServerCommand; 
+
+/// <summary>
+/*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
 
 /// <summary>
 /*
@@ -1999,6 +2055,13 @@ typedef enum
 
 /// <summary>
 /*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
+
+/// <summary>
+/*
 /// The guid string build ID of the build.
 */
 /// </summary>
@@ -2115,6 +2178,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* StartMultiplayerServerCommand; 
+
+/// <summary>
+/*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
 
 /// <summary>
 /*
