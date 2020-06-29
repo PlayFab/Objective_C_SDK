@@ -978,7 +978,7 @@ typedef enum
 
 @class ClientLinkKongregateAccountResult;
 
-@class ClientLinkNintendoAccountRequest;
+@class ClientLinkNintendoServiceAccountRequest;
 
 @class ClientLinkNintendoSwitchDeviceIdRequest;
 
@@ -1034,7 +1034,7 @@ typedef enum
 
 @class ClientLoginWithKongregateRequest;
 
-@class ClientLoginWithNintendoAccountRequest;
+@class ClientLoginWithNintendoServiceAccountRequest;
 
 @class ClientLoginWithNintendoSwitchDeviceIdRequest;
 
@@ -1230,7 +1230,7 @@ typedef enum
 
 @class ClientUnlinkKongregateAccountResult;
 
-@class ClientUnlinkNintendoAccountRequest;
+@class ClientUnlinkNintendoServiceAccountRequest;
 
 @class ClientUnlinkNintendoSwitchDeviceIdRequest;
 
@@ -6314,7 +6314,7 @@ typedef enum
 @end
 
 
-@interface ClientLinkNintendoAccountRequest : PlayFabBaseModel
+@interface ClientLinkNintendoServiceAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -7310,7 +7310,7 @@ typedef enum
 @end
 
 
-@interface ClientLoginWithNintendoAccountRequest : PlayFabBaseModel
+@interface ClientLoginWithNintendoServiceAccountRequest : PlayFabBaseModel
 
 
 /// <summary>
@@ -10461,7 +10461,7 @@ typedef enum
 @end
 
 
-@interface ClientUnlinkNintendoAccountRequest : PlayFabBaseModel
+@interface ClientUnlinkNintendoServiceAccountRequest : PlayFabBaseModel
 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
@@ -10595,13 +10595,6 @@ typedef enum
 
 @interface ClientUnlinkXboxAccountRequest : PlayFabBaseModel
 
-
-/// <summary>
-/*
-/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
-*/
-/// </summary>
-@property NSString* XboxToken; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

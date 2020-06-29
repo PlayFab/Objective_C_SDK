@@ -3496,11 +3496,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkKongregate"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) LinkNintendoAccount:(ClientLinkNintendoAccountRequest*)request success:(LinkNintendoAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) LinkNintendoServiceAccount:(ClientLinkNintendoServiceAccountRequest*)request success:(LinkNintendoServiceAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ClientLinkNintendoAccountRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ClientLinkNintendoServiceAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -3537,7 +3537,7 @@ return deviceModel;
         }
     }];
 
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkNintendoAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkNintendoServiceAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) LinkNintendoSwitchDeviceId:(ClientLinkNintendoSwitchDeviceIdRequest*)request success:(LinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -4355,13 +4355,13 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithKongregate"] body:jsonString authType:nil authKey:nil];
 }
--(void) LoginWithNintendoAccount:(ClientLoginWithNintendoAccountRequest*)request success:(LoginWithNintendoAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) LoginWithNintendoServiceAccount:(ClientLoginWithNintendoServiceAccountRequest*)request success:(LoginWithNintendoServiceAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     if ([PlayFabSettings.TitleId length] > 0)
         request.TitleId = PlayFabSettings.TitleId;
 
     
-    NSString *jsonString = [request JSONStringWithClass:[ClientLoginWithNintendoAccountRequest class]];
+    NSString *jsonString = [request JSONStringWithClass:[ClientLoginWithNintendoServiceAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -4404,7 +4404,7 @@ if(model.SettingsForUser.NeedsAttribution)
         }
     }];
 
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithNintendoAccount"] body:jsonString authType:nil authKey:nil];
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithNintendoServiceAccount"] body:jsonString authType:nil authKey:nil];
 }
 -(void) LoginWithNintendoSwitchDeviceId:(ClientLoginWithNintendoSwitchDeviceIdRequest*)request success:(LoginWithNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -6249,7 +6249,7 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkKongregate"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkNintendoAccount:(UnlinkNintendoAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkNintendoServiceAccount:(UnlinkNintendoServiceAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
 {
     
     
@@ -6290,7 +6290,7 @@ if(model.SettingsForUser.NeedsAttribution)
         }
     }];
 
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkNintendoAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkNintendoServiceAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) UnlinkNintendoSwitchDeviceId:(ClientUnlinkNintendoSwitchDeviceIdRequest*)request success:(UnlinkNintendoSwitchDeviceIdCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -6550,11 +6550,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkWindowsHello"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkXboxAccount:(ClientUnlinkXboxAccountRequest*)request success:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+-(void) UnlinkXboxAccount:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
 {
     
     
-    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkXboxAccountRequest class]];
+    NSString *jsonString = @"{}";
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

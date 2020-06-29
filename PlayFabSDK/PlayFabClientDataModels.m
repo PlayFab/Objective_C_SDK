@@ -4479,7 +4479,7 @@
     return self;
 }
 @end
-@implementation ClientLinkNintendoAccountRequest
+@implementation ClientLinkNintendoServiceAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -5113,7 +5113,7 @@
     return self;
 }
 @end
-@implementation ClientLoginWithNintendoAccountRequest
+@implementation ClientLoginWithNintendoServiceAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7509,7 +7509,7 @@
     return self;
 }
 @end
-@implementation ClientUnlinkNintendoAccountRequest
+@implementation ClientUnlinkNintendoServiceAccountRequest
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -7707,8 +7707,6 @@
         return nil;
     }
 
-    
-    self.XboxToken = [properties valueForKey:@"XboxToken"];
     
 
     return self;
