@@ -30,6 +30,13 @@
 
 @interface InsightsInsightsEmptyRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -142,6 +149,13 @@
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Id of the Insights operation.
 */
 /// </summary>
@@ -224,6 +238,13 @@
 /// </summary>
 @interface InsightsInsightsGetPendingOperationsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -357,6 +378,13 @@
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The Insights performance level to apply to the title.
 */
 /// </summary>
@@ -373,6 +401,13 @@
 /// </summary>
 @interface InsightsInsightsSetStorageRetentionRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

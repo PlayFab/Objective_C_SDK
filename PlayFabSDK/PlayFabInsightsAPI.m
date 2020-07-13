@@ -32,11 +32,11 @@ free(model);
 return deviceModel;
 }
 
--(void) GetDetails:(GetDetailsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) GetDetails:(InsightsInsightsEmptyRequest*)request success:(GetDetailsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[InsightsInsightsEmptyRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -75,11 +75,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Insights/GetDetails"] body:jsonString authType:nil authKey:nil];
 }
--(void) GetLimits:(GetLimitsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) GetLimits:(InsightsInsightsEmptyRequest*)request success:(GetLimitsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[InsightsInsightsEmptyRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

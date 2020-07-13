@@ -446,6 +446,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Determines whether the objects will be returned as an escaped JSON string or as a un-escaped JSON object. Default is JSON string.
 */
 /// </summary>
@@ -489,6 +496,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Determines whether the objects will be returned as an escaped JSON string or as a un-escaped JSON object. Default is JSON string.
 */
 /// </summary>
@@ -529,6 +543,13 @@ typedef enum
 /// </summary>
 @interface ProfilesGetGlobalPolicyRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -558,6 +579,13 @@ typedef enum
 /// </summary>
 @interface ProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -611,6 +639,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -654,6 +689,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The permissions that govern access to all entities under this title or namespace.
 */
 /// </summary>
@@ -680,6 +722,13 @@ typedef enum
 /// </summary>
 @interface ProfilesSetProfileLanguageRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

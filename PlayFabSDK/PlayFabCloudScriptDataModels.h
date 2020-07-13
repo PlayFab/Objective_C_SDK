@@ -591,6 +591,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -642,6 +649,13 @@ typedef enum
 /// </summary>
 @interface CloudScriptExecuteFunctionRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -839,6 +853,13 @@ typedef enum
 /// </summary>
 @interface CloudScriptListFunctionsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1229,6 +1250,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -1253,6 +1281,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -1274,6 +1309,13 @@ typedef enum
 
 @interface CloudScriptPostFunctionResultForPlayerTriggeredActionRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1312,6 +1354,13 @@ typedef enum
 
 @interface CloudScriptPostFunctionResultForScheduledTaskRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1395,6 +1444,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The name of the function to register
 */
 /// </summary>
@@ -1425,6 +1481,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1572,6 +1635,13 @@ typedef enum
 
 @interface CloudScriptUnregisterFunctionRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

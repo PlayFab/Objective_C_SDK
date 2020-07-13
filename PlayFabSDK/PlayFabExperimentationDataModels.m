@@ -12,6 +12,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.Description = [properties valueForKey:@"Description"];
     
     self.Duration = [properties valueForKey:@"Duration"];
@@ -74,6 +84,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ExperimentId = [properties valueForKey:@"ExperimentId"];
@@ -178,6 +198,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -218,6 +248,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ExperimentId = [properties valueForKey:@"ExperimentId"];
     
 
@@ -250,6 +290,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Entity = [[ExperimentationEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
@@ -397,6 +447,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ExperimentId = [properties valueForKey:@"ExperimentId"];
     
 
@@ -412,6 +472,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ExperimentId = [properties valueForKey:@"ExperimentId"];
@@ -464,6 +534,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Description = [properties valueForKey:@"Description"];
@@ -542,7 +622,7 @@
     
     self.Name = [properties valueForKey:@"Name"];
     
-    self.TitleDataOverrideId = [properties valueForKey:@"TitleDataOverrideId"];
+    self.TitleDataOverrideLabel = [properties valueForKey:@"TitleDataOverrideLabel"];
     
     self.TrafficPercentage = [properties valueForKey:@"TrafficPercentage"];
     

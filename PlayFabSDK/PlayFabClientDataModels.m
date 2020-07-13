@@ -151,6 +151,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EmailAddress = [properties valueForKey:@"EmailAddress"];
     
 
@@ -225,6 +235,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.Email = [properties valueForKey:@"Email"];
     
     self.Password = [properties valueForKey:@"Password"];
@@ -264,6 +284,16 @@
 
     
     self.Amount = [properties valueForKey:@"Amount"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.VirtualCurrency = [properties valueForKey:@"VirtualCurrency"];
     
@@ -840,6 +870,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.OrderId = [properties valueForKey:@"OrderId"];
     
 
@@ -890,6 +930,16 @@
     
     self.ConsumeCount = [properties valueForKey:@"ConsumeCount"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ItemInstanceId = [properties valueForKey:@"ItemInstanceId"];
     
 
@@ -927,6 +977,16 @@
 
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.ServiceLabel = [properties valueForKey:@"ServiceLabel"];
     
@@ -971,6 +1031,16 @@
 
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.XboxToken = [properties valueForKey:@"XboxToken"];
     
@@ -1241,6 +1311,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];
@@ -1750,6 +1830,16 @@
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -1940,6 +2030,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.IncludeFacebookFriends = [[properties valueForKey:@"IncludeFacebookFriends"] boolValue];
     
     self.IncludeSteamFriends = [[properties valueForKey:@"IncludeSteamFriends"] boolValue];
@@ -2000,6 +2100,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.IncludeFacebookFriends = [[properties valueForKey:@"IncludeFacebookFriends"] boolValue];
     
     self.IncludeSteamFriends = [[properties valueForKey:@"IncludeSteamFriends"] boolValue];
@@ -2029,6 +2139,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.IncludeFacebookFriends = [[properties valueForKey:@"IncludeFacebookFriends"] boolValue];
@@ -2127,6 +2247,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.MaxResultsCount = [properties valueForKey:@"MaxResultsCount"];
     
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
@@ -2223,6 +2353,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.MaxResultsCount = [properties valueForKey:@"MaxResultsCount"];
@@ -2347,6 +2487,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -2577,6 +2727,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
     self.ProfileConstraints = [[ClientPlayerProfileViewConstraints new] initWithDictionary:[properties objectForKey:@"ProfileConstraints"]];
@@ -2653,6 +2813,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"StatisticNames"]){
     NSArray* member_list = [properties objectForKey:@"StatisticNames"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -2713,6 +2883,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
 
@@ -2753,6 +2933,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Namespace = [properties valueForKey:@"Namespace"];
@@ -3890,6 +4080,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -4008,6 +4208,16 @@
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
     self.CharacterName = [properties valueForKey:@"CharacterName"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.ItemId = [properties valueForKey:@"ItemId"];
     
@@ -4162,6 +4372,16 @@
     
     self.AndroidDeviceId = [properties valueForKey:@"AndroidDeviceId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.OS = [properties valueForKey:@"OS"];
@@ -4196,6 +4416,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.IdentityToken = [properties valueForKey:@"IdentityToken"];
@@ -4216,6 +4446,16 @@
 
     
     self.CustomId = [properties valueForKey:@"CustomId"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
@@ -4274,6 +4514,16 @@
     
     self.AccessToken = [properties valueForKey:@"AccessToken"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
 
@@ -4304,6 +4554,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.FacebookInstantGamesSignature = [properties valueForKey:@"FacebookInstantGamesSignature"];
@@ -4338,6 +4598,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
@@ -4382,6 +4652,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.ServerAuthCode = [properties valueForKey:@"ServerAuthCode"];
@@ -4414,6 +4694,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.DeviceId = [properties valueForKey:@"DeviceId"];
@@ -4456,6 +4746,16 @@
     
     self.AuthTicket = [properties valueForKey:@"AuthTicket"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.KongregateId = [properties valueForKey:@"KongregateId"];
@@ -4490,6 +4790,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.IdentityToken = [properties valueForKey:@"IdentityToken"];
@@ -4507,6 +4817,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
@@ -4545,6 +4865,16 @@
     
     self.ConnectionId = [properties valueForKey:@"ConnectionId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
     self.IdToken = [properties valueForKey:@"IdToken"];
@@ -4565,6 +4895,16 @@
 
     
     self.AuthCode = [properties valueForKey:@"AuthCode"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
@@ -4600,6 +4940,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
@@ -4638,6 +4988,16 @@
     
     self.AccessToken = [properties valueForKey:@"AccessToken"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
     
 
@@ -4668,6 +5028,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.DeviceName = [properties valueForKey:@"DeviceName"];
@@ -4706,6 +5076,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
@@ -4846,6 +5226,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -4872,6 +5262,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -4902,6 +5302,16 @@
     
     self.CustomId = [properties valueForKey:@"CustomId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -4923,6 +5333,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Email = [properties valueForKey:@"Email"];
@@ -4949,6 +5369,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -4979,6 +5409,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5003,6 +5443,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -5039,6 +5489,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5065,6 +5525,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.DeviceId = [properties valueForKey:@"DeviceId"];
     
@@ -5099,6 +5569,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5126,6 +5606,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.IdentityToken = [properties valueForKey:@"IdentityToken"];
@@ -5152,6 +5642,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -5182,6 +5682,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.IdToken = [properties valueForKey:@"IdToken"];
@@ -5205,6 +5715,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5233,6 +5753,16 @@
     self.AuthCode = [properties valueForKey:@"AuthCode"];
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -5263,6 +5793,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5292,6 +5832,16 @@
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
@@ -5317,6 +5867,16 @@
     
     self.ChallengeSignature = [properties valueForKey:@"ChallengeSignature"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
     
     self.PublicKeyHint = [properties valueForKey:@"PublicKeyHint"];
@@ -5339,6 +5899,16 @@
 
     
     self.CreateAccount = [[properties valueForKey:@"CreateAccount"] boolValue];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
     
@@ -5389,6 +5959,16 @@
     self.BuildVersion = [properties valueForKey:@"BuildVersion"];
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.GameMode = [properties valueForKey:@"GameMode"];
     
@@ -5607,6 +6187,16 @@
 
     
     self.Currency = [properties valueForKey:@"Currency"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.OrderId = [properties valueForKey:@"OrderId"];
     
@@ -5962,6 +6552,16 @@
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ItemId = [properties valueForKey:@"ItemId"];
     
     self.Price = [properties valueForKey:@"Price"];
@@ -6065,6 +6665,16 @@
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
     self.CouponCode = [properties valueForKey:@"CouponCode"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -6186,6 +6796,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.DisplayName = [properties valueForKey:@"DisplayName"];
     
     self.Email = [properties valueForKey:@"Email"];
@@ -6244,6 +6864,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.DeviceName = [properties valueForKey:@"DeviceName"];
     
     self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
@@ -6271,6 +6901,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
 
@@ -6411,6 +7051,16 @@
     
     self.Activity = (ClientAdActivity)[properties valueForKey:@"ClientActivity"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.PlacementId = [properties valueForKey:@"PlacementId"];
     
     self.RewardId = [properties valueForKey:@"RewardId"];
@@ -6447,6 +7097,16 @@
     
     self.Comment = [properties valueForKey:@"Comment"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.ReporteeId = [properties valueForKey:@"ReporteeId"];
     
 
@@ -6482,6 +7142,16 @@
 
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.ReceiptData = [properties valueForKey:@"ReceiptData"];
     
@@ -6523,6 +7193,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.PlacementId = [properties valueForKey:@"PlacementId"];
@@ -6600,6 +7280,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Email = [properties valueForKey:@"Email"];
@@ -6743,6 +7433,16 @@
     
     self.CustomCommandLineData = [properties valueForKey:@"CustomCommandLineData"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.GameMode = [properties valueForKey:@"GameMode"];
     
     self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
@@ -6796,6 +7496,16 @@
 
     
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     if ([properties objectForKey:@"Items"]){
     NSArray* member_list = [properties objectForKey:@"Items"];
@@ -7065,6 +7775,16 @@
     
     self.Amount = [properties valueForKey:@"Amount"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.VirtualCurrency = [properties valueForKey:@"VirtualCurrency"];
     
 
@@ -7259,6 +7979,16 @@
     
     self.AndroidDeviceId = [properties valueForKey:@"AndroidDeviceId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7289,6 +8019,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7305,6 +8045,16 @@
 
     
     self.CustomId = [properties valueForKey:@"CustomId"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -7336,6 +8086,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7364,6 +8124,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.FacebookInstantGamesId = [properties valueForKey:@"FacebookInstantGamesId"];
@@ -7398,6 +8168,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7428,6 +8208,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7456,6 +8246,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.DeviceId = [properties valueForKey:@"DeviceId"];
@@ -7490,6 +8290,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7520,6 +8330,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7533,6 +8353,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.NintendoSwitchDeviceId = [properties valueForKey:@"NintendoSwitchDeviceId"];
@@ -7569,6 +8399,16 @@
     
     self.ConnectionId = [properties valueForKey:@"ConnectionId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7582,6 +8422,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
 
@@ -7612,6 +8462,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
 
@@ -7646,6 +8506,16 @@
     
     self.AccessToken = [properties valueForKey:@"AccessToken"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7674,6 +8544,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.PublicKeyHint = [properties valueForKey:@"PublicKeyHint"];
@@ -7706,6 +8586,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
 
@@ -7744,6 +8634,16 @@
     
     self.ContainerItemInstanceId = [properties valueForKey:@"ContainerItemInstanceId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.KeyItemInstanceId = [properties valueForKey:@"KeyItemInstanceId"];
     
 
@@ -7766,6 +8666,16 @@
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
     self.ContainerItemId = [properties valueForKey:@"ContainerItemId"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -7840,6 +8750,16 @@
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"Data"]){
     NSDictionary* member_list = [properties objectForKey:@"Data"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -7906,6 +8826,16 @@
 }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
 
     return self;
 }
@@ -7934,6 +8864,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     if ([properties objectForKey:@"Statistics"]){
@@ -7974,6 +8914,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     if ([properties objectForKey:@"Data"]){
@@ -8030,6 +8980,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"Data"]){
     NSDictionary* member_list = [properties objectForKey:@"Data"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -8082,6 +9042,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.DisplayName = [properties valueForKey:@"DisplayName"];
@@ -8598,6 +9568,16 @@
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.PurchasePrice = [properties valueForKey:@"PurchasePrice"];
     
     self.ReceiptId = [properties valueForKey:@"ReceiptId"];
@@ -8647,6 +9627,16 @@
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.PurchasePrice = [properties valueForKey:@"PurchasePrice"];
     
@@ -8698,6 +9688,16 @@
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.PurchasePrice = [properties valueForKey:@"PurchasePrice"];
     
     self.ReceiptData = [properties valueForKey:@"ReceiptData"];
@@ -8745,6 +9745,16 @@
     self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
     
     self.CurrencyCode = [properties valueForKey:@"CurrencyCode"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.PurchasePrice = [properties valueForKey:@"PurchasePrice"];
     
@@ -8863,6 +9873,16 @@
     
     self.CharacterId = [properties valueForKey:@"CharacterId"];
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.EventName = [properties valueForKey:@"EventName"];
     
     self.Timestamp = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Timestamp"]];
@@ -8889,6 +9909,16 @@
         [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
     }
     self.Body = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
 }
 
     
@@ -8935,6 +9965,16 @@
         [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
     }
     self.Body = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
 }
 
     

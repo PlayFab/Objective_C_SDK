@@ -38,7 +38,7 @@ typedef void(^UpdateExperimentCallback)(ExperimentationEmptyResponse* result, NS
 		
 -(void) DeleteExperiment:(ExperimentationDeleteExperimentRequest*)request success:(DeleteExperimentCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetExperiments:(GetExperimentsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+-(void) GetExperiments:(ExperimentationGetExperimentsRequest*)request success:(GetExperimentsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetLatestScorecard:(ExperimentationGetLatestScorecardRequest*)request success:(GetLatestScorecardCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

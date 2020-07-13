@@ -118,11 +118,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/CloudScript/ExecuteFunction"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListFunctions:(ListFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) ListFunctions:(CloudScriptListFunctionsRequest*)request success:(ListFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[CloudScriptListFunctionsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -161,11 +161,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/CloudScript/ListFunctions"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListHttpFunctions:(ListHttpFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) ListHttpFunctions:(CloudScriptListFunctionsRequest*)request success:(ListHttpFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[CloudScriptListFunctionsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -204,11 +204,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/CloudScript/ListHttpFunctions"] body:jsonString authType:nil authKey:nil];
 }
--(void) ListQueuedFunctions:(ListQueuedFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) ListQueuedFunctions:(CloudScriptListFunctionsRequest*)request success:(ListQueuedFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[CloudScriptListFunctionsRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

@@ -32,7 +32,7 @@ typedef void(^SetProfilePolicyCallback)(ProfilesSetEntityProfilePolicyResponse* 
 
 // ------------ Generated API calls
 		
--(void) GetGlobalPolicy:(GetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+-(void) GetGlobalPolicy:(ProfilesGetGlobalPolicyRequest*)request success:(GetGlobalPolicyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetProfile:(ProfilesGetEntityProfileRequest*)request success:(GetProfileCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

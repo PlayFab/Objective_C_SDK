@@ -64,6 +64,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -118,6 +125,13 @@ typedef enum
 /// </summary>
 @interface DataDeleteFilesRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -201,6 +215,13 @@ typedef enum
 /// </summary>
 @interface DataFinalizeFileUploadsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -303,6 +324,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -350,6 +378,13 @@ typedef enum
 /// </summary>
 @interface DataGetObjectsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -428,6 +463,13 @@ typedef enum
 /// </summary>
 @interface DataInitiateFileUploadsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -586,6 +628,13 @@ typedef enum
 /// </summary>
 @interface DataSetObjectsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

@@ -135,6 +135,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];
@@ -160,6 +170,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
@@ -292,6 +312,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
 
@@ -644,6 +674,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.FunctionResult = [[CloudScriptExecuteFunctionResult new] initWithDictionary:[properties objectForKey:@"FunctionResult"]];
@@ -663,6 +703,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.FunctionResult = [[CloudScriptExecuteFunctionResult new] initWithDictionary:[properties objectForKey:@"FunctionResult"]];
@@ -680,6 +730,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
@@ -703,6 +763,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.Entity = [[CloudScriptEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
@@ -766,6 +836,16 @@
     }
 
     
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
     self.FunctionName = [properties valueForKey:@"FunctionName"];
     
     self.FunctionUrl = [properties valueForKey:@"FunctionUrl"];
@@ -786,6 +866,16 @@
 
     
     self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];
     
@@ -892,6 +982,16 @@
     if (!self) {
         return nil;
     }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
 
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];

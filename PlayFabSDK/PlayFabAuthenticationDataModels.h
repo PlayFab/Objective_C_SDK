@@ -128,6 +128,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity to perform this action on.
 */
 /// </summary>
@@ -175,6 +182,13 @@ typedef enum
 /// </summary>
 @interface AuthenticationValidateEntityTokenRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

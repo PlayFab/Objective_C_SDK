@@ -83,6 +83,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Description of the experiment.
 */
 /// </summary>
@@ -165,6 +172,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationDeleteExperimentRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -297,6 +311,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationGetExperimentsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -326,6 +347,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationGetLatestScorecardRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -362,6 +390,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationGetTreatmentAssignmentRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -597,6 +632,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The ID of the experiment to start.
 */
 /// </summary>
@@ -613,6 +655,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationStopExperimentRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -653,6 +702,13 @@ typedef enum
 /// </summary>
 @interface ExperimentationUpdateExperimentRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -775,10 +831,10 @@ typedef enum
 
 /// <summary>
 /*
-/// Id of the TitleDataOverrideGroup to use with this variant.
+/// Id of the TitleDataOverride to use with this variant.
 */
 /// </summary>
-@property NSString* TitleDataOverrideId; 
+@property NSString* TitleDataOverrideLabel; 
 
 /// <summary>
 /*

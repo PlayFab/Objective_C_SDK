@@ -46,11 +46,11 @@ typedef void(^UnregisterFunctionCallback)(CloudScriptEmptyResult* result, NSObje
 		
 -(void) ExecuteFunction:(CloudScriptExecuteFunctionRequest*)request success:(ExecuteFunctionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListFunctions:(ListFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+-(void) ListFunctions:(CloudScriptListFunctionsRequest*)request success:(ListFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListHttpFunctions:(ListHttpFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+-(void) ListHttpFunctions:(CloudScriptListFunctionsRequest*)request success:(ListHttpFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListQueuedFunctions:(ListQueuedFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData;
+-(void) ListQueuedFunctions:(CloudScriptListFunctionsRequest*)request success:(ListQueuedFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) PostFunctionResultForEntityTriggeredAction:(CloudScriptPostFunctionResultForEntityTriggeredActionRequest*)request success:(PostFunctionResultForEntityTriggeredActionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

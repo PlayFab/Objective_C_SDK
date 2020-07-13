@@ -12,6 +12,13 @@
 
 @interface LocalizationGetLanguageListRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

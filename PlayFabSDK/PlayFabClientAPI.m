@@ -2851,11 +2851,11 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetUserData"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) GetUserInventory:(GetUserInventoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) GetUserInventory:(ClientGetUserInventoryRequest*)request success:(GetUserInventoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientGetUserInventoryRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -5217,11 +5217,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RegisterWithWindowsHello"] body:jsonString authType:nil authKey:nil];
 }
--(void) RemoveContactEmail:(RemoveContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) RemoveContactEmail:(ClientRemoveContactEmailRequest*)request success:(RemoveContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientRemoveContactEmailRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -5905,11 +5905,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkAndroidDeviceID"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkApple:(UnlinkAppleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkApple:(ClientUnlinkAppleRequest*)request success:(UnlinkAppleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkAppleRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -5991,11 +5991,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkCustomID"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkFacebookAccount:(UnlinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkFacebookAccount:(ClientUnlinkFacebookAccountRequest*)request success:(UnlinkFacebookAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkFacebookAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6077,11 +6077,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkFacebookInstantGamesId"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkGameCenterAccount:(UnlinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkGameCenterAccount:(ClientUnlinkGameCenterAccountRequest*)request success:(UnlinkGameCenterAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkGameCenterAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6120,11 +6120,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkGameCenterAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkGoogleAccount:(UnlinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkGoogleAccount:(ClientUnlinkGoogleAccountRequest*)request success:(UnlinkGoogleAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkGoogleAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6206,11 +6206,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkIOSDeviceID"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkKongregate:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkKongregate:(ClientUnlinkKongregateAccountRequest*)request success:(UnlinkKongregateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkKongregateAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6249,11 +6249,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkKongregate"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkNintendoServiceAccount:(UnlinkNintendoServiceAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkNintendoServiceAccount:(ClientUnlinkNintendoServiceAccountRequest*)request success:(UnlinkNintendoServiceAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkNintendoServiceAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6378,11 +6378,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkOpenIdConnect"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkPSNAccount:(UnlinkPSNAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkPSNAccount:(ClientUnlinkPSNAccountRequest*)request success:(UnlinkPSNAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkPSNAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6421,11 +6421,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkPSNAccount"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkSteamAccount:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkSteamAccount:(ClientUnlinkSteamAccountRequest*)request success:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkSteamAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {
@@ -6550,11 +6550,11 @@ if(model.SettingsForUser.NeedsAttribution)
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkWindowsHello"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) UnlinkXboxAccount:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) UnlinkXboxAccount:(ClientUnlinkXboxAccountRequest*)request success:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkXboxAccountRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

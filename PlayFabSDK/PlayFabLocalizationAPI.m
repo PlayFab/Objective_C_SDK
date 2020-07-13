@@ -32,11 +32,11 @@ free(model);
 return deviceModel;
 }
 
--(void) GetLanguageList:(GetLanguageListCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*) userData
+-(void) GetLanguageList:(LocalizationGetLanguageListRequest*)request success:(GetLanguageListCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
     
-    NSString *jsonString = @"{}";
+    NSString *jsonString = [request JSONStringWithClass:[LocalizationGetLanguageListRequest class]];
     
     PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
     [connection setCompletionBlock:^(id obj, NSError *err) {

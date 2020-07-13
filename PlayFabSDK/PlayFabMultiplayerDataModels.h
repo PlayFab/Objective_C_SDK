@@ -165,6 +165,10 @@ typedef enum
 
 @class MultiplayerCreateBuildWithManagedContainerResponse;
 
+@class MultiplayerCreateBuildWithProcessBasedServerRequest;
+
+@class MultiplayerCreateBuildWithProcessBasedServerResponse;
+
 @class MultiplayerCreateMatchmakingTicketRequest;
 
 @class MultiplayerCreateMatchmakingTicketResult;
@@ -635,6 +639,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The entity key of the player whose tickets should be canceled.
 */
 /// </summary>
@@ -668,6 +679,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerCancelAllServerBackfillTicketsForPlayerRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -707,6 +725,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The name of the queue the ticket is in.
 */
 /// </summary>
@@ -740,6 +765,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerCancelServerBackfillTicketRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -909,6 +941,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildSelectionCriteria; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -956,6 +995,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* ContainerRunCommand; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1177,6 +1223,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The list of game assets related to the build.
 */
 /// </summary>
@@ -1394,6 +1447,245 @@ typedef enum
 
 /// <summary>
 /*
+/// Creates a multiplayer server build with the game server running as a process and returns information about the build creation request.
+*/
+/// </summary>
+@interface MultiplayerCreateBuildWithProcessBasedServerRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
+
+/// <summary>
+/*
+/// The build name.
+*/
+/// </summary>
+@property NSString* BuildName; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The list of game assets related to the build.
+*/
+/// </summary>
+@property NSArray* GameAssetReferences; 
+
+/// <summary>
+/*
+/// The game certificates for the build.
+*/
+/// </summary>
+@property NSArray* GameCertificateReferences; 
+
+/// <summary>
+/*
+/// The working directory for the game process. If this is not provided, the working directory will be set based on the mount path of the game server executable.
+*/
+/// </summary>
+@property NSString* GameWorkingDirectory; 
+
+/// <summary>
+/*
+/// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).Constraints: Maximum number of keys: 30, Maximum key length: 50, Maximum value length: 100
+*/
+/// </summary>
+@property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The number of multiplayer servers to host on a single VM.
+*/
+/// </summary>
+@property NSNumber* MultiplayerServerCountPerVm; 
+
+/// <summary>
+/*
+/// The OS platform used for running the game process.
+*/
+/// </summary>
+@property NSString* OsPlatform; 
+
+/// <summary>
+/*
+/// The ports to map the build on.
+*/
+/// </summary>
+@property NSArray* Ports; 
+
+/// <summary>
+/*
+/// The region configurations for the build.
+*/
+/// </summary>
+@property NSArray* RegionConfigurations; 
+
+/// <summary>
+/*
+/// The command to run when the multiplayer server is started, including any arguments. The path to any executable should be relative to the root asset folder when unzipped.
+*/
+/// </summary>
+@property NSString* StartMultiplayerServerCommand; 
+
+/// <summary>
+/*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
+
+/// <summary>
+/*
+/// The VM size to create the build on.
+*/
+/// </summary>
+@property MultiplayerAzureVmSize VmSize; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCreateBuildWithProcessBasedServerResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// When true, assets will not be copied for each server inside the VM. All serverswill run from the same set of assets, or will have the same assets mounted in the container.
+*/
+/// </summary>
+@property bool AreAssetsReadonly; 
+
+/// <summary>
+/*
+/// The guid string build ID. Must be unique for every build.
+*/
+/// </summary>
+@property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The build name.
+*/
+/// </summary>
+@property NSString* BuildName; 
+
+/// <summary>
+/*
+/// The flavor of container of the build.
+*/
+/// </summary>
+@property MultiplayerContainerFlavor pfContainerFlavor; 
+
+/// <summary>
+/*
+/// The time the build was created in UTC.
+*/
+/// </summary>
+@property NSDate* CreationTime; 
+
+/// <summary>
+/*
+/// The game assets for the build.
+*/
+/// </summary>
+@property NSArray* GameAssetReferences; 
+
+/// <summary>
+/*
+/// The game certificates for the build.
+*/
+/// </summary>
+@property NSArray* GameCertificateReferences; 
+
+/// <summary>
+/*
+/// The working directory for the game process. If this is not provided, the working directory will be set based on the mount path of the game server executable.
+*/
+/// </summary>
+@property NSString* GameWorkingDirectory; 
+
+/// <summary>
+/*
+/// The metadata of the build.
+*/
+/// </summary>
+@property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The number of multiplayer servers to host on a single VM of the build.
+*/
+/// </summary>
+@property NSNumber* MultiplayerServerCountPerVm; 
+
+/// <summary>
+/*
+/// The OS platform used for running the game process.
+*/
+/// </summary>
+@property NSString* OsPlatform; 
+
+/// <summary>
+/*
+/// The ports the build is mapped on.
+*/
+/// </summary>
+@property NSArray* Ports; 
+
+/// <summary>
+/*
+/// The region configuration for the build.
+*/
+/// </summary>
+@property NSArray* RegionConfigurations; 
+
+/// <summary>
+/*
+/// The type of game server being hosted.
+*/
+/// </summary>
+@property NSString* ServerType; 
+
+/// <summary>
+/*
+/// The command to run when the multiplayer server is started, including any arguments. The path to any executable is relative to the root asset folder when unzipped.
+*/
+/// </summary>
+@property NSString* StartMultiplayerServerCommand; 
+
+/// <summary>
+/*
+/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
+*/
+/// </summary>
+@property bool UseStreamingForAssetDownloads; 
+
+/// <summary>
+/*
+/// The VM size the build was created on.
+*/
+/// </summary>
+@property MultiplayerAzureVmSize VmSize; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// The client specifies the creator's attributes and optionally a list of other users to match with.
 */
 /// </summary>
@@ -1406,6 +1698,13 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerMatchmakingPlayer* Creator; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1463,6 +1762,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1537,6 +1843,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// How long to attempt matching this ticket in seconds.
 */
 /// </summary>
@@ -1591,6 +1904,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerCreateServerMatchmakingTicketRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1662,6 +1982,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The filename of the asset to delete.
 */
 /// </summary>
@@ -1685,6 +2012,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* AliasId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1704,6 +2038,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1730,6 +2071,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1742,6 +2090,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerDeleteCertificateRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1761,6 +2116,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerDeleteContainerImageRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1787,6 +2149,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -1879,6 +2248,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerEnableMultiplayerServersForTitleRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1979,6 +2355,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The asset's file name to get the upload URL for.
 */
 /// </summary>
@@ -2026,6 +2409,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* AliasId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2045,6 +2435,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2207,6 +2604,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetContainerRegistryCredentialsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2250,6 +2654,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetMatchmakingTicketRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -2366,6 +2777,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Determines whether the matchmaking attributes will be returned as an escaped JSON string or as an un-escaped JSON object.
 */
 /// </summary>
@@ -2448,6 +2866,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -2557,6 +2982,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The server ID of multiplayer server to get logs for.
 */
 /// </summary>
@@ -2593,6 +3025,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The server ID of multiplayer server to get logs for.
 */
 /// </summary>
@@ -2609,6 +3048,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetQueueStatisticsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -2662,6 +3108,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The region of the multiplayer server to get remote login information for.
 */
 /// </summary>
@@ -2709,6 +3162,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetServerBackfillTicketRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -2815,6 +3275,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetTitleEnabledForMultiplayerServersStatusRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2844,6 +3311,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerGetTitleMultiplayerServersQuotasRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -2890,6 +3364,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The User who wants to join the ticket. Their Id must be listed in PlayFabIdsToMatchWith.
 */
 /// </summary>
@@ -2930,6 +3411,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListAssetSummariesRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3007,6 +3495,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The page size for the request.
 */
 /// </summary>
@@ -3061,6 +3556,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListCertificateSummariesRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3121,6 +3623,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The page size for the request.
 */
 /// </summary>
@@ -3178,6 +3687,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The container images we want to list tags for.
 */
 /// </summary>
@@ -3211,6 +3727,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListMatchmakingTicketsForPlayerRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3261,6 +3784,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3328,6 +3858,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Qos servers version
 */
 /// </summary>
@@ -3375,6 +3912,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListQosServersForTitleRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3418,6 +3962,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListQosServersRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3461,6 +4012,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerListServerBackfillTicketsForPlayerRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3511,6 +4069,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*
@@ -3660,6 +4225,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerMultiplayerEmptyRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3794,6 +4366,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// Initial list of players (potentially matchmade) allowed to connect to the game. This list is passed to the game server when requested (via GSDK) and can be used to validate players connecting to it.
 */
 /// </summary>
@@ -3911,6 +4490,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerRolloverContainerRegistryCredentialsRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3992,6 +4578,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The region of the multiplayer server to shut down.
 */
 /// </summary>
@@ -4067,6 +4660,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
 /// The container image which tag we want to remove.
 */
 /// </summary>
@@ -4111,6 +4711,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildSelectionCriteria; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4137,6 +4744,13 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerBuildRegionParams* BuildRegion; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4163,6 +4777,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildRegions; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4175,6 +4796,13 @@ typedef enum
 /// </summary>
 @interface MultiplayerUploadCertificateRequest : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
 
 /// <summary>
 /*

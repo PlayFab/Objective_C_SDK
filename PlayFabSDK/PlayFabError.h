@@ -504,6 +504,7 @@
         PlayFabErrorRequestMultiplayerServersThrottledFromRateLimiter = 1507,
         PlayFabErrorTitleDataOverrideNotFound = 1508,
         PlayFabErrorDuplicateKeys = 1509,
+        PlayFabErrorWasNotCreatedWithCloudRoot = 1510,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingQueueNotFound = 2016,
