@@ -21,7 +21,8 @@ typedef enum
     MultiplayerAzureRegionWestUs,
     MultiplayerAzureRegionChinaEast2,
     MultiplayerAzureRegionChinaNorth2,
-    MultiplayerAzureRegionSouthAfricaNorth
+    MultiplayerAzureRegionSouthAfricaNorth,
+    MultiplayerAzureRegionCentralUsEuap
 } MultiplayerAzureRegion;
 
 typedef enum
@@ -272,6 +273,8 @@ typedef enum
 @class MultiplayerJoinMatchmakingTicketRequest;
 
 @class MultiplayerJoinMatchmakingTicketResult;
+
+@class MultiplayerLinuxInstrumentationConfiguration;
 
 @class MultiplayerListAssetSummariesRequest;
 
@@ -1019,6 +1022,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The Linux instrumentation configuration for the build.
+*/
+/// </summary>
+@property MultiplayerLinuxInstrumentationConfiguration* pfLinuxInstrumentationConfiguration; 
+
+/// <summary>
+/*
 /// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).Constraints: Maximum number of keys: 30, Maximum key length: 50, Maximum value length: 100
 */
 /// </summary>
@@ -1128,6 +1138,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* GameCertificateReferences; 
+
+/// <summary>
+/*
+/// The Linux instrumentation configuration for this build.
+*/
+/// </summary>
+@property MultiplayerLinuxInstrumentationConfiguration* pfLinuxInstrumentationConfiguration; 
 
 /// <summary>
 /*
@@ -1497,6 +1514,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The instrumentation configuration for the build.
+*/
+/// </summary>
+@property MultiplayerInstrumentationConfiguration* pfInstrumentationConfiguration; 
+
+/// <summary>
+/*
 /// Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through Game Server SDK (GSDK).Constraints: Maximum number of keys: 30, Maximum key length: 50, Maximum value length: 100
 */
 /// </summary>
@@ -1613,6 +1637,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* GameWorkingDirectory; 
+
+/// <summary>
+/*
+/// The instrumentation configuration for this build.
+*/
+/// </summary>
+@property MultiplayerInstrumentationConfiguration* pfInstrumentationConfiguration; 
 
 /// <summary>
 /*
@@ -3400,6 +3431,20 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerLinuxInstrumentationConfiguration : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Designates whether Linux instrumentation configuration will be enabled for this Build
+*/
+/// </summary>
+@property bool IsEnabled; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 

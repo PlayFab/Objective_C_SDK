@@ -595,6 +595,8 @@
 }
 
     
+    self.pfLinuxInstrumentationConfiguration = [[MultiplayerLinuxInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"LinuxInstrumentationConfiguration"]];
+    
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -679,6 +681,8 @@
     self.GameCertificateReferences = [mutable_storage copy];
 }
 
+    
+    self.pfLinuxInstrumentationConfiguration = [[MultiplayerLinuxInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"LinuxInstrumentationConfiguration"]];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
@@ -955,6 +959,8 @@
     
     self.GameWorkingDirectory = [properties valueForKey:@"GameWorkingDirectory"];
     
+    self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
+    
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -1041,6 +1047,8 @@
 
     
     self.GameWorkingDirectory = [properties valueForKey:@"GameWorkingDirectory"];
+    
+    self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
@@ -2547,6 +2555,23 @@
         return nil;
     }
 
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerLinuxInstrumentationConfiguration
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.IsEnabled = [[properties valueForKey:@"IsEnabled"] boolValue];
     
 
     return self;
