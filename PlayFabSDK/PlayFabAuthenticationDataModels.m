@@ -135,6 +135,8 @@
     
     self.Entity = [[AuthenticationEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
+    self.pfIdentifiedDeviceType = (AuthenticationIdentifiedDeviceType)[properties valueForKey:@"AuthenticationIdentifiedDeviceType"];
+    
     self.IdentityProvider = (AuthenticationLoginIdentityProvider)[properties valueForKey:@"AuthenticationIdentityProvider"];
     
     self.Lineage = [[AuthenticationEntityLineage new] initWithDictionary:[properties objectForKey:@"Lineage"]];

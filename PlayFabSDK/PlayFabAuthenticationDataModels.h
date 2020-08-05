@@ -4,6 +4,13 @@
 
 typedef enum
 {
+    AuthenticationIdentifiedDeviceTypeUnknown,
+    AuthenticationIdentifiedDeviceTypeXboxOne,
+    AuthenticationIdentifiedDeviceTypeScarlett
+} AuthenticationIdentifiedDeviceType;
+
+typedef enum
+{
     AuthenticationLoginIdentityProviderUnknown,
     AuthenticationLoginIdentityProviderPlayFab,
     AuthenticationLoginIdentityProviderCustom,
@@ -177,7 +184,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Given an entity token, validates that it hasn't exipired or been revoked and will return details of the owner.
+/// Given an entity token, validates that it hasn't expired or been revoked and will return details of the owner.
 */
 /// </summary>
 @interface AuthenticationValidateEntityTokenRequest : PlayFabBaseModel
@@ -210,6 +217,13 @@ typedef enum
 */
 /// </summary>
 @property AuthenticationEntityKey* Entity; 
+
+/// <summary>
+/*
+/// The authenticated device for this entity, for the given login
+*/
+/// </summary>
+@property AuthenticationIdentifiedDeviceType pfIdentifiedDeviceType; 
 
 /// <summary>
 /*
