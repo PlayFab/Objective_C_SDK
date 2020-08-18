@@ -22,7 +22,8 @@ typedef enum
     MultiplayerAzureRegionChinaEast2,
     MultiplayerAzureRegionChinaNorth2,
     MultiplayerAzureRegionSouthAfricaNorth,
-    MultiplayerAzureRegionCentralUsEuap
+    MultiplayerAzureRegionCentralUsEuap,
+    MultiplayerAzureRegionWestCentralUs
 } MultiplayerAzureRegion;
 
 typedef enum
@@ -313,10 +314,6 @@ typedef enum
 @class MultiplayerListQosServersForTitleRequest;
 
 @class MultiplayerListQosServersForTitleResponse;
-
-@class MultiplayerListQosServersRequest;
-
-@class MultiplayerListQosServersResponse;
 
 @class MultiplayerListServerBackfillTicketsForPlayerRequest;
 
@@ -3907,13 +3904,6 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// Qos servers version
-*/
-/// </summary>
-@property NSString* Version; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3964,62 +3954,19 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Indicates that the response should contain Qos servers for all regions, including those where there are no builds deployed for the title.
+*/
+/// </summary>
+@property bool IncludeAllRegions; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
 
 @interface MultiplayerListQosServersForTitleResponse : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The page size on the response.
-*/
-/// </summary>
-@property NSNumber* PageSize; 
-
-/// <summary>
-/*
-/// The list of QoS servers.
-*/
-/// </summary>
-@property NSArray* QosServers; 
-
-/// <summary>
-/*
-/// The skip token for the paged response.
-*/
-/// </summary>
-@property NSString* SkipToken; 
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// Returns a list of quality of service servers.
-*/
-/// </summary>
-@interface MultiplayerListQosServersRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface MultiplayerListQosServersResponse : PlayFabBaseModel
 
 
 /// <summary>

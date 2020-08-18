@@ -101,8 +101,6 @@ typedef void(^ListMultiplayerServersCallback)(MultiplayerListMultiplayerServersR
 		
 typedef void(^ListPartyQosServersCallback)(MultiplayerListPartyQosServersResponse* result, NSObject* userData);
 		
-typedef void(^ListQosServersCallback)(MultiplayerListQosServersResponse* result, NSObject* userData);
-		
 typedef void(^ListQosServersForTitleCallback)(MultiplayerListQosServersForTitleResponse* result, NSObject* userData);
 		
 typedef void(^ListServerBackfillTicketsForPlayerCallback)(MultiplayerListServerBackfillTicketsForPlayerResult* result, NSObject* userData);
@@ -221,8 +219,6 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) ListMultiplayerServers:(MultiplayerListMultiplayerServersRequest*)request success:(ListMultiplayerServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListPartyQosServers:(MultiplayerListPartyQosServersRequest*)request success:(ListPartyQosServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
--(void) ListQosServers:(MultiplayerListQosServersRequest*)request success:(ListQosServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListQosServersForTitle:(MultiplayerListQosServersForTitleRequest*)request success:(ListQosServersForTitleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

@@ -3023,8 +3023,6 @@
 }
 
     
-    self.Version = [properties valueForKey:@"Version"];
-    
 
     return self;
 }
@@ -3079,65 +3077,13 @@
 }
 
     
+    self.IncludeAllRegions = [[properties valueForKey:@"IncludeAllRegions"] boolValue];
+    
 
     return self;
 }
 @end
 @implementation MultiplayerListQosServersForTitleResponse
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.PageSize = [properties valueForKey:@"PageSize"];
-    
-    if ([properties objectForKey:@"QosServers"]){
-    NSArray* member_list = [properties objectForKey:@"QosServers"];
-    NSMutableArray* mutable_storage = [NSMutableArray new];
-    for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[MultiplayerQosServer new] initWithDictionary:[member_list objectAtIndex:i]]];
-    }
-    self.QosServers = [mutable_storage copy];
-}
-
-    
-    self.SkipToken = [properties valueForKey:@"SkipToken"];
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerListQosServersRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-
-    return self;
-}
-@end
-@implementation MultiplayerListQosServersResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
