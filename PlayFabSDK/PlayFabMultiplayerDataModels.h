@@ -345,6 +345,10 @@ typedef enum
 
 @class MultiplayerRolloverContainerRegistryCredentialsResponse;
 
+@class MultiplayerSchedule;
+
+@class MultiplayerScheduledStandbySettings;
+
 @class MultiplayerServerDetails;
 
 @class MultiplayerShutdownMultiplayerServerRequest;
@@ -522,6 +526,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Optional settings to set the standby target to specified values during the supplied schedules
+*/
+/// </summary>
+@property MultiplayerScheduledStandbySettings* pfScheduledStandbySettings; 
+
+/// <summary>
+/*
 /// The target number of standby multiplayer servers for the region.
 */
 /// </summary>
@@ -561,6 +572,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* Region; 
+
+/// <summary>
+/*
+/// Optional settings to set the standby target to specified values during the supplied schedules
+*/
+/// </summary>
+@property MultiplayerScheduledStandbySettings* pfScheduledStandbySettings; 
 
 /// <summary>
 /*
@@ -4521,6 +4539,76 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerSchedule : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A short description about this schedule. For example, "Game launch on July 15th".
+*/
+/// </summary>
+@property NSString* Description; 
+
+/// <summary>
+/*
+/// The date and time in UTC at which the schedule ends. If IsRecurringWeekly is true, this schedule will keep renewing for future weeks until disabled or removed.
+*/
+/// </summary>
+@property NSDate* EndTime; 
+
+/// <summary>
+/*
+/// Disables the schedule.
+*/
+/// </summary>
+@property bool IsDisabled; 
+
+/// <summary>
+/*
+/// If true, the StartTime and EndTime will get renewed every week.
+*/
+/// </summary>
+@property bool IsRecurringWeekly; 
+
+/// <summary>
+/*
+/// The date and time in UTC at which the schedule starts.
+*/
+/// </summary>
+@property NSDate* StartTime; 
+
+/// <summary>
+/*
+/// The standby target to maintain for the duration of the schedule.
+*/
+/// </summary>
+@property NSNumber* TargetStandby; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerScheduledStandbySettings : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// When true, scheduled standby will be enabled
+*/
+/// </summary>
+@property bool IsEnabled; 
+
+/// <summary>
+/*
+/// A list of non-overlapping schedules
+*/
+/// </summary>
+@property NSArray* ScheduleList; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 

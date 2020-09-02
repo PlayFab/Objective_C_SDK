@@ -135,6 +135,8 @@
     
     self.Region = [properties valueForKey:@"Region"];
     
+    self.pfScheduledStandbySettings = [[MultiplayerScheduledStandbySettings new] initWithDictionary:[properties objectForKey:@"ScheduledStandbySettings"]];
+    
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
     
     self.Status = [properties valueForKey:@"Status"];
@@ -159,6 +161,8 @@
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
     self.Region = [properties valueForKey:@"Region"];
+    
+    self.pfScheduledStandbySettings = [[MultiplayerScheduledStandbySettings new] initWithDictionary:[properties objectForKey:@"ScheduledStandbySettings"]];
     
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
     
@@ -3534,6 +3538,60 @@
     self.Password = [properties valueForKey:@"Password"];
     
     self.Username = [properties valueForKey:@"Username"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerSchedule
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Description = [properties valueForKey:@"Description"];
+    
+    self.EndTime = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndTime"]];
+    
+    self.IsDisabled = [[properties valueForKey:@"IsDisabled"] boolValue];
+    
+    self.IsRecurringWeekly = [[properties valueForKey:@"IsRecurringWeekly"] boolValue];
+    
+    self.StartTime = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"StartTime"]];
+    
+    self.TargetStandby = [properties valueForKey:@"TargetStandby"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerScheduledStandbySettings
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.IsEnabled = [[properties valueForKey:@"IsEnabled"] boolValue];
+    
+    if ([properties objectForKey:@"ScheduleList"]){
+    NSArray* member_list = [properties objectForKey:@"ScheduleList"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerSchedule new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.ScheduleList = [mutable_storage copy];
+}
+
     
 
     return self;
