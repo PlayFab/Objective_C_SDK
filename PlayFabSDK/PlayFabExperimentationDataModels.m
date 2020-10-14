@@ -1,6 +1,52 @@
 #import "PlayFabExperimentationDataModels.h"
 
 
+@implementation ExperimentationCreateExclusionGroupRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.Description = [properties valueForKey:@"Description"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationCreateExclusionGroupResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+
+    return self;
+}
+@end
 @implementation ExperimentationCreateExperimentRequest
 
 
@@ -25,6 +71,12 @@
     self.Description = [properties valueForKey:@"Description"];
     
     self.Duration = [properties valueForKey:@"Duration"];
+    
+    self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+    self.ExclusionGroupTrafficAllocation = [properties valueForKey:@"ExclusionGroupTrafficAllocation"];
     
     self.pfExperimentType = (ExperimentationExperimentType)[properties valueForKey:@"ExperimentationExperimentType"];
     
@@ -70,6 +122,33 @@
 
     
     self.ExperimentId = [properties valueForKey:@"ExperimentId"];
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationDeleteExclusionGroupRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
     
 
     return self;
@@ -136,6 +215,25 @@
     return self;
 }
 @end
+@implementation ExperimentationExclusionGroupTrafficAllocation
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ExperimentId = [properties valueForKey:@"ExperimentId"];
+    
+    self.TrafficAllocation = [properties valueForKey:@"TrafficAllocation"];
+    
+
+    return self;
+}
+@end
 @implementation ExperimentationExperiment
 
 
@@ -150,6 +248,12 @@
     self.Description = [properties valueForKey:@"Description"];
     
     self.Duration = [properties valueForKey:@"Duration"];
+    
+    self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+    self.ExclusionGroupTrafficAllocation = [properties valueForKey:@"ExclusionGroupTrafficAllocation"];
     
     self.pfExperimentType = (ExperimentationExperimentType)[properties valueForKey:@"ExperimentationExperimentType"];
     
@@ -180,6 +284,129 @@
         [mutable_storage addObject:[[ExperimentationVariant new] initWithDictionary:[member_list objectAtIndex:i]]];
     }
     self.Variants = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationExperimentExclusionGroup
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Description = [properties valueForKey:@"Description"];
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationGetExclusionGroupsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationGetExclusionGroupsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"ExclusionGroups"]){
+    NSArray* member_list = [properties objectForKey:@"ExclusionGroups"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ExperimentationExperimentExclusionGroup new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.ExclusionGroups = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationGetExclusionGroupTrafficRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+
+    return self;
+}
+@end
+@implementation ExperimentationGetExclusionGroupTrafficResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"TrafficAllocations"]){
+    NSArray* member_list = [properties objectForKey:@"TrafficAllocations"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ExperimentationExclusionGroupTrafficAllocation new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.TrafficAllocations = [mutable_storage copy];
 }
 
     
@@ -525,6 +752,37 @@
     return self;
 }
 @end
+@implementation ExperimentationUpdateExclusionGroupRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.Description = [properties valueForKey:@"Description"];
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+    self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
 @implementation ExperimentationUpdateExperimentRequest
 
 
@@ -549,6 +807,12 @@
     self.Description = [properties valueForKey:@"Description"];
     
     self.Duration = [properties valueForKey:@"Duration"];
+    
+    self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
+    
+    self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
+    
+    self.ExclusionGroupTrafficAllocation = [properties valueForKey:@"ExclusionGroupTrafficAllocation"];
     
     self.pfExperimentType = (ExperimentationExperimentType)[properties valueForKey:@"ExperimentationExperimentType"];
     

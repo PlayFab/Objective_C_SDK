@@ -236,6 +236,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* FileNames; 
+
+/// <summary>
+/*
+/// The current version of the profile, can be used for concurrency control during updates.
+*/
+/// </summary>
+@property NSNumber* ProfileVersion; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

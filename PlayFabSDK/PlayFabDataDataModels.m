@@ -169,6 +169,8 @@
 }
 
     
+    self.ProfileVersion = [properties valueForKey:@"ProfileVersion"];
+    
 
     return self;
 }

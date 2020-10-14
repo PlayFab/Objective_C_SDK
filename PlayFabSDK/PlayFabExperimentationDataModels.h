@@ -29,9 +29,15 @@ typedef enum
 
 //predeclare all non-enum classes
 
+@class ExperimentationCreateExclusionGroupRequest;
+
+@class ExperimentationCreateExclusionGroupResult;
+
 @class ExperimentationCreateExperimentRequest;
 
 @class ExperimentationCreateExperimentResult;
+
+@class ExperimentationDeleteExclusionGroupRequest;
 
 @class ExperimentationDeleteExperimentRequest;
 
@@ -39,7 +45,19 @@ typedef enum
 
 @class ExperimentationEntityKey;
 
+@class ExperimentationExclusionGroupTrafficAllocation;
+
 @class ExperimentationExperiment;
+
+@class ExperimentationExperimentExclusionGroup;
+
+@class ExperimentationGetExclusionGroupsRequest;
+
+@class ExperimentationGetExclusionGroupsResult;
+
+@class ExperimentationGetExclusionGroupTrafficRequest;
+
+@class ExperimentationGetExclusionGroupTrafficResult;
 
 @class ExperimentationGetExperimentsRequest;
 
@@ -65,12 +83,64 @@ typedef enum
 
 @class ExperimentationTreatmentAssignment;
 
+@class ExperimentationUpdateExclusionGroupRequest;
+
 @class ExperimentationUpdateExperimentRequest;
 
 @class ExperimentationVariable;
 
 @class ExperimentationVariant;
 
+
+
+/// <summary>
+/*
+/// Given a title entity token and exclusion group details, will create a new exclusion group for the title.
+*/
+/// </summary>
+@interface ExperimentationCreateExclusionGroupRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Description of the exclusion group.
+*/
+/// </summary>
+@property NSString* Description; 
+
+/// <summary>
+/*
+/// Friendly name of the exclusion group.
+*/
+/// </summary>
+@property NSString* Name; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExperimentationCreateExclusionGroupResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Identifier of the exclusion group.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
 
 
 /// <summary>
@@ -101,6 +171,27 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* Duration; 
+
+/// <summary>
+/*
+/// When experiment should end.
+*/
+/// </summary>
+@property NSDate* EndDate; 
+
+/// <summary>
+/*
+/// Id of the exclusion group.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+
+/// <summary>
+/*
+/// Percentage of exclusion group traffic that will see this experiment.
+*/
+/// </summary>
+@property NSNumber* ExclusionGroupTrafficAllocation; 
 
 /// <summary>
 /*
@@ -167,6 +258,32 @@ typedef enum
 
 /// <summary>
 /*
+/// Given an entity token and an exclusion group ID this API deletes the exclusion group.
+*/
+/// </summary>
+@interface ExperimentationDeleteExclusionGroupRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The ID of the exclusion group to delete.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Given an entity token and an experiment ID this API deletes the experiment. A running experiment must be stopped before it can be deleted.
 */
 /// </summary>
@@ -227,6 +344,27 @@ typedef enum
 @end
 
 
+@interface ExperimentationExclusionGroupTrafficAllocation : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Id of the experiment.
+*/
+/// </summary>
+@property NSString* ExperimentId; 
+
+/// <summary>
+/*
+/// Percentage of exclusion group traffic that will see this experiment.
+*/
+/// </summary>
+@property NSNumber* TrafficAllocation; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ExperimentationExperiment : PlayFabBaseModel
 
 
@@ -243,6 +381,27 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* Duration; 
+
+/// <summary>
+/*
+/// When experiment should end/was ended.
+*/
+/// </summary>
+@property NSDate* EndDate; 
+
+/// <summary>
+/*
+/// Id of the exclusion group for this experiment.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+
+/// <summary>
+/*
+/// Percentage of exclusion group traffic that will see this experiment.
+*/
+/// </summary>
+@property NSNumber* ExclusionGroupTrafficAllocation; 
 
 /// <summary>
 /*
@@ -300,6 +459,113 @@ typedef enum
 /// </summary>
 @property NSArray* Variants; 
 /**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExperimentationExperimentExclusionGroup : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Description of the exclusion group.
+*/
+/// </summary>
+@property NSString* Description; 
+
+/// <summary>
+/*
+/// Id of the exclusion group.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+
+/// <summary>
+/*
+/// Friendly name of the exclusion group.
+*/
+/// </summary>
+@property NSString* Name; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Given a title entity token will return the list of all exclusion groups for a title.
+*/
+/// </summary>
+@interface ExperimentationGetExclusionGroupsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExperimentationGetExclusionGroupsResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// List of exclusion groups for the title.
+*/
+/// </summary>
+@property NSArray* ExclusionGroups; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Given a title entity token and an exclusion group ID, will return the list of traffic allocations for the exclusion group.
+*/
+/// </summary>
+@interface ExperimentationGetExclusionGroupTrafficRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The ID of the exclusion group.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ExperimentationGetExclusionGroupTrafficResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// List of traffic allocations for the exclusion group.
+*/
+/// </summary>
+@property NSArray* TrafficAllocations; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -697,6 +963,46 @@ typedef enum
 
 /// <summary>
 /*
+/// Given an entity token and exclusion group details this API updates the exclusion group.
+*/
+/// </summary>
+@interface ExperimentationUpdateExclusionGroupRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Description of the exclusion group.
+*/
+/// </summary>
+@property NSString* Description; 
+
+/// <summary>
+/*
+/// The ID of the exclusion group to update.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+
+/// <summary>
+/*
+/// Friendly name of the exclusion group.
+*/
+/// </summary>
+@property NSString* Name; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Given a title entity token and experiment details, this API updates the experiment. If an experiment is already running, only the description and duration properties can be updated.
 */
 /// </summary>
@@ -723,6 +1029,27 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* Duration; 
+
+/// <summary>
+/*
+/// When experiment should end.
+*/
+/// </summary>
+@property NSDate* EndDate; 
+
+/// <summary>
+/*
+/// Id of the exclusion group.
+*/
+/// </summary>
+@property NSString* ExclusionGroupId; 
+
+/// <summary>
+/*
+/// Percentage of exclusion group traffic that will see this experiment.
+*/
+/// </summary>
+@property NSNumber* ExclusionGroupTrafficAllocation; 
 
 /// <summary>
 /*

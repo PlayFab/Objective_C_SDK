@@ -965,6 +965,8 @@
     
     self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
     
+    self.IsOSPreview = [[properties valueForKey:@"IsOSPreview"] boolValue];
+    
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -1053,6 +1055,8 @@
     self.GameWorkingDirectory = [properties valueForKey:@"GameWorkingDirectory"];
     
     self.pfInstrumentationConfiguration = [[MultiplayerInstrumentationConfiguration new] initWithDictionary:[properties objectForKey:@"InstrumentationConfiguration"]];
+    
+    self.IsOSPreview = [[properties valueForKey:@"IsOSPreview"] boolValue];
     
     if ([properties objectForKey:@"Metadata"]){
     NSDictionary* member_list = [properties objectForKey:@"Metadata"];
