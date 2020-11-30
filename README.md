@@ -9,10 +9,10 @@ Please follow the Apache 2 license guidelines for reproduction and modification,
 Thank you for your support and happy coding.
 
 
-## 2. Usage Instructions:	
+## 2. Usage Instructions:
 
-There are two ways to get started:	
-  1. Start with and add to our [example implemnetation project](/Example/)	
+There are two ways to get started:
+  1. Start with and add to our [example implemnetation project](/Example/)
   2. Import [our SDK](/PlayFabSDK) into an existing XCode project
 
 
