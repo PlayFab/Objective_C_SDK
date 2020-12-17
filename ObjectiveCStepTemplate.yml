@@ -65,7 +65,8 @@ steps:
     # Hack attempt to get WORKSPACE into a sub-environment
     export WORKSPACE="$WORKSPACE"
      
-    . "$WORKSPACE/JenkinsSdkSetupScripts/JenkinsScripts/Pipeline/testInit.sh"
+    echo === there seems to be an app center login issue that occurs in testInit on macs === 
+    echo . "$WORKSPACE/JenkinsSdkSetupScripts/JenkinsScripts/Pipeline/testInit.sh"
     cd "$WORKSPACE/SDKGenerator/SDKBuildScripts"
     . ./shared_build.sh
     
