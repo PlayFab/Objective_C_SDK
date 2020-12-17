@@ -1,5 +1,5 @@
 # STEPS LEVEL TEMPLATE:
-# Used to build Python
+# Used to build Objective-C
 # Reusable
 # Used to "hide" the additional variables specific to this SDK which shouldn't be set from a higher level, or
 #   shared from a multi-build pipeline like a publish
@@ -82,4 +82,4 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '*.xml'
-    testRunTitle: PythonTemplate
+    testRunTitle: ObjectiveCTemplate
