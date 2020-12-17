@@ -73,7 +73,7 @@ steps:
     echo === Build the Objective C Project ===
     cd $WORKSPACE/sdks/$SdkName/Example/PFExample/
 
-    xcodebuild -workspace project.xcworkspace build
+    xcodebuild -workspace project.xcworkspace -scheme -list build
 
     if [ "$isVersioned" = "true" ]; then
         echo === TODO: consider publishing to homebrew ===
