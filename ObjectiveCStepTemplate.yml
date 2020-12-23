@@ -74,7 +74,7 @@ steps:
     cd $WORKSPACE/sdks/$SdkName/Example/PFExample/
     pwd
     ls
-    xcodebuild -project PFExample.xcodeproj -list
+    xcodebuild -project PFExample.xcodeproj -scheme PFExample
 
     if [ "$isVersioned" = "true" ]; then
         echo === TODO: consider publishing to homebrew ===
