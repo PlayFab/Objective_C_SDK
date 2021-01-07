@@ -64,22 +64,15 @@ steps:
     WORKSPACE=$(pwd)
     # Hack attempt to get WORKSPACE into a sub-environment
     export WORKSPACE="$WORKSPACE"
-     
-    echo === there seems to be an app center login issue that occurs in testInit on macs === 
-    echo . "$WORKSPACE/JenkinsSdkSetupScripts/JenkinsScripts/Pipeline/testInit.sh"
+
     cd "$WORKSPACE/SDKGenerator/SDKBuildScripts"
     . ./shared_build.sh
-    
+
     echo === Build the Objective C Project ===
     cd $WORKSPACE/sdks/$SdkName/Example/PFExample/
-    pwd
-    ls
-    echo TODO: apply apple dev profile before building
-    echo xcodebuild -project PFExample.xcodeproj -scheme PFExample
+    # TODO: apply apple dev profile before building
+    # xcodebuild -project PFExample.xcodeproj -scheme PFExample
 
-    if [ "$isVersioned" = "true" ]; then
-        echo === TODO: consider publishing to homebrew ===
-    fi
   displayName: 'Build/Test/Report'
 - task: PublishTestResults@2
   inputs:
