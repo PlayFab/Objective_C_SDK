@@ -91,10 +91,6 @@
 }
 
     
-    self.PageSize = [properties valueForKey:@"PageSize"];
-    
-    self.SkipToken = [properties valueForKey:@"SkipToken"];
-    
 
     return self;
 }
@@ -131,7 +127,11 @@
     
     self.pfDynamicStandbySettings = [[MultiplayerDynamicStandbySettings new] initWithDictionary:[properties objectForKey:@"DynamicStandbySettings"]];
     
+    self.IsAssetReplicationComplete = [[properties valueForKey:@"IsAssetReplicationComplete"] boolValue];
+    
     self.MaxServers = [properties valueForKey:@"MaxServers"];
+    
+    self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
     self.Region = [properties valueForKey:@"Region"];
     
@@ -140,6 +140,8 @@
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
     
     self.Status = [properties valueForKey:@"Status"];
+    
+    self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
     return self;
@@ -160,11 +162,15 @@
     
     self.MaxServers = [properties valueForKey:@"MaxServers"];
     
+    self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
+    
     self.Region = [properties valueForKey:@"Region"];
     
     self.pfScheduledStandbySettings = [[MultiplayerScheduledStandbySettings new] initWithDictionary:[properties objectForKey:@"ScheduledStandbySettings"]];
     
     self.StandbyServers = [properties valueForKey:@"StandbyServers"];
+    
+    self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
     return self;
@@ -511,6 +517,27 @@
     return self;
 }
 @end
+@implementation MultiplayerCoreCapacityChange
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NewCoreLimit = [properties valueForKey:@"NewCoreLimit"];
+    
+    self.Region = [properties valueForKey:@"Region"];
+    
+    self.VmFamily = (MultiplayerAzureVmFamily)[properties valueForKey:@"MultiplayerVmFamily"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCreateBuildAliasRequest
 
 
@@ -611,6 +638,8 @@
 }
 
     
+    self.MonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfigurationParams new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
+    
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
     if ([properties objectForKey:@"Ports"]){
@@ -697,6 +726,8 @@
     self.Metadata = [mutable_storage copy];
 }
 
+    
+    self.pfMonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfiguration new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
@@ -793,6 +824,8 @@
 }
 
     
+    self.MonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfigurationParams new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
+    
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
     if ([properties objectForKey:@"Ports"]){
@@ -820,6 +853,8 @@
     self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
     
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
+    
+    self.pfWindowsCrashDumpConfiguration = [[MultiplayerWindowsCrashDumpConfiguration new] initWithDictionary:[properties objectForKey:@"WindowsCrashDumpConfiguration"]];
     
 
     return self;
@@ -879,6 +914,8 @@
     self.Metadata = [mutable_storage copy];
 }
 
+    
+    self.pfMonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfiguration new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
@@ -977,6 +1014,8 @@
 }
 
     
+    self.MonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfigurationParams new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
+    
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
     self.OsPlatform = [properties valueForKey:@"OsPlatform"];
@@ -1067,6 +1106,8 @@
     self.Metadata = [mutable_storage copy];
 }
 
+    
+    self.pfMonitoringApplicationConfiguration = [[MultiplayerMonitoringApplicationConfiguration new] initWithDictionary:[properties objectForKey:@"MonitoringApplicationConfiguration"]];
     
     self.MultiplayerServerCountPerVm = [properties valueForKey:@"MultiplayerServerCountPerVm"];
     
@@ -1310,6 +1351,68 @@
 
     
     self.QueueName = [properties valueForKey:@"QueueName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateTitleMultiplayerServersQuotaChangeRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ChangeDescription = [properties valueForKey:@"ChangeDescription"];
+    
+    if ([properties objectForKey:@"Changes"]){
+    NSArray* member_list = [properties objectForKey:@"Changes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerCoreCapacityChange new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Changes = [mutable_storage copy];
+}
+
+    
+    self.ContactEmail = [properties valueForKey:@"ContactEmail"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.Notes = [properties valueForKey:@"Notes"];
+    
+    self.StartDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"StartDate"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateTitleMultiplayerServersQuotaChangeResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.RequestId = [properties valueForKey:@"RequestId"];
+    
+    self.WasApproved = [[properties valueForKey:@"WasApproved"] boolValue];
     
 
     return self;
@@ -1692,6 +1795,52 @@
     self.GsdkAlias = [properties valueForKey:@"GsdkAlias"];
     
     self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetAssetDownloadUrlRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.FileName = [properties valueForKey:@"FileName"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetAssetDownloadUrlResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AssetDownloadUrl = [properties valueForKey:@"AssetDownloadUrl"];
+    
+    self.FileName = [properties valueForKey:@"FileName"];
     
 
     return self;
@@ -2134,6 +2283,8 @@
     }
 
     
+    self.BuildId = [properties valueForKey:@"BuildId"];
+    
     if ([properties objectForKey:@"ConnectedPlayers"]){
     NSArray* member_list = [properties objectForKey:@"ConnectedPlayers"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -2455,6 +2606,50 @@
     return self;
 }
 @end
+@implementation MultiplayerGetTitleMultiplayerServersQuotaChangeRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.RequestId = [properties valueForKey:@"RequestId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetTitleMultiplayerServersQuotaChangeResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Change = [[MultiplayerQuotaChange new] initWithDictionary:[properties objectForKey:@"Change"]];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerGetTitleMultiplayerServersQuotasRequest
 
 
@@ -2507,6 +2702,8 @@
         return nil;
     }
 
+    
+    self.IsEnabled = [[properties valueForKey:@"IsEnabled"] boolValue];
     
     if ([properties objectForKey:@"ProcessesToMonitor"]){
     NSArray* member_list = [properties objectForKey:@"ProcessesToMonitor"];
@@ -2643,7 +2840,36 @@
     return self;
 }
 @end
-@implementation MultiplayerListBuildAliasesForTitleResponse
+@implementation MultiplayerListBuildAliasesRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    self.SkipToken = [properties valueForKey:@"SkipToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListBuildAliasesResponse
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -2663,6 +2889,10 @@
     self.BuildAliases = [mutable_storage copy];
 }
 
+    
+    self.PageSize = [properties valueForKey:@"PageSize"];
+    
+    self.SkipToken = [properties valueForKey:@"SkipToken"];
     
 
     return self;
@@ -3174,6 +3404,56 @@
     return self;
 }
 @end
+@implementation MultiplayerListTitleMultiplayerServersQuotaChangesRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerListTitleMultiplayerServersQuotaChangesResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Changes"]){
+    NSArray* member_list = [properties objectForKey:@"Changes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerQuotaChange new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Changes = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerListVirtualMachineSummariesRequest
 
 
@@ -3295,7 +3575,7 @@
     return self;
 }
 @end
-@implementation MultiplayerMultiplayerEmptyRequest
+@implementation MultiplayerMonitoringApplicationConfiguration
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -3306,15 +3586,36 @@
     }
 
     
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
+    self.pfAssetReference = [[MultiplayerAssetReference new] initWithDictionary:[properties objectForKey:@"AssetReference"]];
+    
+    self.ExecutionScriptName = [properties valueForKey:@"ExecutionScriptName"];
+    
+    self.InstallationScriptName = [properties valueForKey:@"InstallationScriptName"];
+    
+    self.OnStartRuntimeInMinutes = [properties valueForKey:@"OnStartRuntimeInMinutes"];
+    
 
+    return self;
+}
+@end
+@implementation MultiplayerMonitoringApplicationConfigurationParams
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AssetReference = [[MultiplayerAssetReferenceParams new] initWithDictionary:[properties objectForKey:@"AssetReference"]];
+    
+    self.ExecutionScriptName = [properties valueForKey:@"ExecutionScriptName"];
+    
+    self.InstallationScriptName = [properties valueForKey:@"InstallationScriptName"];
+    
+    self.OnStartRuntimeInMinutes = [properties valueForKey:@"OnStartRuntimeInMinutes"];
     
 
     return self;
@@ -3397,6 +3698,43 @@
     return self;
 }
 @end
+@implementation MultiplayerQuotaChange
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ChangeDescription = [properties valueForKey:@"ChangeDescription"];
+    
+    if ([properties objectForKey:@"Changes"]){
+    NSArray* member_list = [properties objectForKey:@"Changes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerCoreCapacityChange new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Changes = [mutable_storage copy];
+}
+
+    
+    self.IsPendingReview = [[properties valueForKey:@"IsPendingReview"] boolValue];
+    
+    self.Notes = [properties valueForKey:@"Notes"];
+    
+    self.RequestId = [properties valueForKey:@"RequestId"];
+    
+    self.ReviewComments = [properties valueForKey:@"ReviewComments"];
+    
+    self.WasApproved = [[properties valueForKey:@"WasApproved"] boolValue];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerRequestMultiplayerServerRequest
 
 
@@ -3460,6 +3798,8 @@
         return nil;
     }
 
+    
+    self.BuildId = [properties valueForKey:@"BuildId"];
     
     if ([properties objectForKey:@"ConnectedPlayers"]){
     NSArray* member_list = [properties objectForKey:@"ConnectedPlayers"];
@@ -3612,6 +3952,8 @@
     }
 
     
+    self.Fqdn = [properties valueForKey:@"Fqdn"];
+    
     self.IPV4Address = [properties valueForKey:@"IPV4Address"];
     
     if ([properties objectForKey:@"Ports"]){
@@ -3641,8 +3983,6 @@
     }
 
     
-    self.BuildId = [properties valueForKey:@"BuildId"];
-    
     if ([properties objectForKey:@"CustomTags"]){
     NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
     NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
@@ -3652,8 +3992,6 @@
     self.CustomTags = [mutable_storage copy];
 }
 
-    
-    self.Region = [properties valueForKey:@"Region"];
     
     self.SessionId = [properties valueForKey:@"SessionId"];
     
@@ -3762,6 +4100,35 @@
     self.BuildSelectionCriteria = [mutable_storage copy];
 }
 
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUpdateBuildNameRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.BuildId = [properties valueForKey:@"BuildId"];
+    
+    self.BuildName = [properties valueForKey:@"BuildName"];
     
     if ([properties objectForKey:@"CustomTags"]){
     NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
@@ -3886,6 +4253,27 @@
     self.State = [properties valueForKey:@"State"];
     
     self.VmId = [properties valueForKey:@"VmId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerWindowsCrashDumpConfiguration
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CustomDumpFlags = [properties valueForKey:@"CustomDumpFlags"];
+    
+    self.DumpType = [properties valueForKey:@"DumpType"];
+    
+    self.IsEnabled = [[properties valueForKey:@"IsEnabled"] boolValue];
     
 
     return self;

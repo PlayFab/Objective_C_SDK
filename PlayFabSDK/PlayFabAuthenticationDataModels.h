@@ -234,6 +234,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The ID issued by the identity provider, e.g. a XUID on Xbox Live
+*/
+/// </summary>
+@property NSString* IdentityProviderIssuedId; 
+
+/// <summary>
+/*
 /// The lineage of this profile.
 */
 /// </summary>

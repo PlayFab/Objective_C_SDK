@@ -965,6 +965,114 @@
     return self;
 }
 @end
+@implementation ClientConsumeMicrosoftStoreEntitlementsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.MarketplaceSpecificData = [[ClientMicrosoftStorePayload new] initWithDictionary:[properties objectForKey:@"MarketplaceSpecificData"]];
+    
+
+    return self;
+}
+@end
+@implementation ClientConsumeMicrosoftStoreEntitlementsResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Items"]){
+    NSArray* member_list = [properties objectForKey:@"Items"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Items = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ClientConsumePS5EntitlementsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CatalogVersion = [properties valueForKey:@"CatalogVersion"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.MarketplaceSpecificData = [[ClientPlayStation5Payload new] initWithDictionary:[properties objectForKey:@"MarketplaceSpecificData"]];
+    
+
+    return self;
+}
+@end
+@implementation ClientConsumePS5EntitlementsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Items"]){
+    NSArray* member_list = [properties objectForKey:@"Items"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientItemInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Items = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientConsumePSNEntitlementsRequest
 
 
@@ -2310,8 +2418,6 @@
         return nil;
     }
 
-    
-    self.MaxResultsCount = [properties valueForKey:@"MaxResultsCount"];
     
     self.StatisticName = [properties valueForKey:@"StatisticName"];
     
@@ -4139,42 +4245,6 @@
     return self;
 }
 @end
-@implementation ClientGetWindowsHelloChallengeRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.PublicKeyHint = [properties valueForKey:@"PublicKeyHint"];
-    
-    self.TitleId = [properties valueForKey:@"TitleId"];
-    
-
-    return self;
-}
-@end
-@implementation ClientGetWindowsHelloChallengeResponse
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.Challenge = [properties valueForKey:@"Challenge"];
-    
-
-    return self;
-}
-@end
 @implementation ClientGooglePlayFabIdPair
 
 
@@ -5019,54 +5089,6 @@
     return self;
 }
 @end
-@implementation ClientLinkWindowsHelloAccountRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-    self.DeviceName = [properties valueForKey:@"DeviceName"];
-    
-    self.ForceLink = [[properties valueForKey:@"ForceLink"] boolValue];
-    
-    self.PublicKey = [properties valueForKey:@"PublicKey"];
-    
-    self.UserName = [properties valueForKey:@"UserName"];
-    
-
-    return self;
-}
-@end
-@implementation ClientLinkWindowsHelloAccountResponse
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-
-    return self;
-}
-@end
 @implementation ClientLinkXboxAccountRequest
 
 
@@ -5854,39 +5876,6 @@
     return self;
 }
 @end
-@implementation ClientLoginWithWindowsHelloRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.ChallengeSignature = [properties valueForKey:@"ChallengeSignature"];
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
-    
-    self.PublicKeyHint = [properties valueForKey:@"PublicKeyHint"];
-    
-    self.TitleId = [properties valueForKey:@"TitleId"];
-    
-
-    return self;
-}
-@end
 @implementation ClientLoginWithXboxRequest
 
 
@@ -6047,6 +6036,27 @@
     self.Subscriptions = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation ClientMicrosoftStorePayload
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.CollectionsMsIdKey = [properties valueForKey:@"CollectionsMsIdKey"];
+    
+    self.UserId = [properties valueForKey:@"UserId"];
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
     
 
     return self;
@@ -6518,6 +6528,33 @@
     return self;
 }
 @end
+@implementation ClientPlayStation5Payload
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Ids"]){
+    NSArray* member_list = [properties objectForKey:@"Ids"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.Ids = [mutable_storage copy];
+}
+
+    
+    self.ServiceLabel = [properties valueForKey:@"ServiceLabel"];
+    
+
+    return self;
+}
+@end
 @implementation ClientPSNAccountPlayFabIdPair
 
 
@@ -6848,45 +6885,6 @@
     self.SettingsForUser = [[ClientUserSettings new] initWithDictionary:[properties objectForKey:@"SettingsForUser"]];
     
     self.Username = [properties valueForKey:@"Username"];
-    
-
-    return self;
-}
-@end
-@implementation ClientRegisterWithWindowsHelloRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-    self.DeviceName = [properties valueForKey:@"DeviceName"];
-    
-    self.EncryptedRequest = [properties valueForKey:@"EncryptedRequest"];
-    
-    self.InfoRequestParameters = [[ClientGetPlayerCombinedInfoRequestParams new] initWithDictionary:[properties objectForKey:@"InfoRequestParameters"]];
-    
-    self.PlayerSecret = [properties valueForKey:@"PlayerSecret"];
-    
-    self.PublicKey = [properties valueForKey:@"PublicKey"];
-    
-    self.TitleId = [properties valueForKey:@"TitleId"];
-    
-    self.UserName = [properties valueForKey:@"UserName"];
     
 
     return self;
@@ -7411,74 +7409,6 @@
     self.Permission = (ClientUserDataPermission)[properties valueForKey:@"ClientPermission"];
     
     self.Value = [properties valueForKey:@"Value"];
-    
-
-    return self;
-}
-@end
-@implementation ClientStartGameRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.BuildVersion = [properties valueForKey:@"BuildVersion"];
-    
-    self.CharacterId = [properties valueForKey:@"CharacterId"];
-    
-    self.CustomCommandLineData = [properties valueForKey:@"CustomCommandLineData"];
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-    self.GameMode = [properties valueForKey:@"GameMode"];
-    
-    self.pfRegion = (ClientRegion)[properties valueForKey:@"ClientRegion"];
-    
-    self.StatisticName = [properties valueForKey:@"StatisticName"];
-    
-
-    return self;
-}
-@end
-@implementation ClientStartGameResult
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.Expires = [properties valueForKey:@"Expires"];
-    
-    self.LobbyID = [properties valueForKey:@"LobbyID"];
-    
-    self.Password = [properties valueForKey:@"Password"];
-    
-    self.ServerIPV4Address = [properties valueForKey:@"ServerIPV4Address"];
-    
-    self.ServerIPV6Address = [properties valueForKey:@"ServerIPV6Address"];
-    
-    self.ServerPort = [properties valueForKey:@"ServerPort"];
-    
-    self.ServerPublicDNSName = [properties valueForKey:@"ServerPublicDNSName"];
-    
-    self.Ticket = [properties valueForKey:@"Ticket"];
     
 
     return self;
@@ -8535,48 +8465,6 @@
     return self;
 }
 @end
-@implementation ClientUnlinkWindowsHelloAccountRequest
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    if ([properties objectForKey:@"CustomTags"]){
-    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
-    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
-    for(NSString* key in member_list){
-        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
-    }
-    self.CustomTags = [mutable_storage copy];
-}
-
-    
-    self.PublicKeyHint = [properties valueForKey:@"PublicKeyHint"];
-    
-
-    return self;
-}
-@end
-@implementation ClientUnlinkWindowsHelloAccountResponse
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-
-    return self;
-}
-@end
 @implementation ClientUnlinkXboxAccountRequest
 
 
@@ -9136,8 +9024,6 @@
     
     self.Username = [properties valueForKey:@"Username"];
     
-    self.WindowsHelloInfo = [[ClientUserWindowsHelloInfo new] initWithDictionary:[properties objectForKey:@"WindowsHelloInfo"]];
-    
     self.XboxInfo = [[ClientUserXboxInfo new] initWithDictionary:[properties objectForKey:@"XboxInfo"]];
     
 
@@ -9512,25 +9398,6 @@
     self.TwitchId = [properties valueForKey:@"TwitchId"];
     
     self.TwitchUserName = [properties valueForKey:@"TwitchUserName"];
-    
-
-    return self;
-}
-@end
-@implementation ClientUserWindowsHelloInfo
-
-
--(id)initWithDictionary:(NSDictionary*)properties
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    
-    self.WindowsHelloDeviceName = [properties valueForKey:@"WindowsHelloDeviceName"];
-    
-    self.WindowsHelloPublicKeyHash = [properties valueForKey:@"WindowsHelloPublicKeyHash"];
     
 
     return self;

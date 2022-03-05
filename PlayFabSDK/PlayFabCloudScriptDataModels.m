@@ -261,6 +261,58 @@
     return self;
 }
 @end
+@implementation CloudScriptGetFunctionRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.FunctionName = [properties valueForKey:@"FunctionName"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
+
+    return self;
+}
+@end
+@implementation CloudScriptGetFunctionResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    self.FunctionUrl = [properties valueForKey:@"FunctionUrl"];
+    
+    self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TriggerType = [properties valueForKey:@"TriggerType"];
+    
+
+    return self;
+}
+@end
 @implementation CloudScriptHttpFunctionModel
 
 
@@ -323,6 +375,8 @@
     self.CustomTags = [mutable_storage copy];
 }
 
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
     
 
     return self;
@@ -850,6 +904,8 @@
     
     self.FunctionUrl = [properties valueForKey:@"FunctionUrl"];
     
+    self.TitleId = [properties valueForKey:@"TitleId"];
+    
 
     return self;
 }
@@ -880,6 +936,8 @@
     self.FunctionName = [properties valueForKey:@"FunctionName"];
     
     self.QueueName = [properties valueForKey:@"QueueName"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
     
 
     return self;
@@ -995,6 +1053,8 @@
 
     
     self.FunctionName = [properties valueForKey:@"FunctionName"];
+    
+    self.TitleId = [properties valueForKey:@"TitleId"];
     
 
     return self;

@@ -35,27 +35,6 @@ return deviceModel;
 +(bool)IsClientLoggedIn {
     return !([[PlayFabClientAPI GetInstance].mUserSessionTicket length]==0);}
 
-#ifdef USE_IDFA
--(void) MultiStepClientLogin:(bool) needsAttribution {
-    if (needsAttribution && [PlayFabSettings.AdvertisingIdValue length] != 0) {
-        [PlayFabSettings setAdvertisingIdValue:[PlayFabSettings identifierForAdvertising]];
-    }
-    // Send the ID when appropriate
-    if (needsAttribution && [PlayFabSettings.AdvertisingIdValue length] != 0) {
-        ClientAttributeInstallRequest* install_request = [ClientAttributeInstallRequest new];        install_request.Idfa = PlayFabSettings.AdvertisingIdValue;
-
-        [[PlayFabClientAPI GetInstance] AttributeInstall:install_request
-        success:^(ClientAttributeInstallResult* result, NSObject* userData) {            // Modify AdvertisingIdType:  Prevents us from sending the id multiple times, and allows automated tests to determine id was sent successfully
-            [PlayFabSettings setAdvertisingIdType:[NSString stringWithFormat:@"%@%@",PlayFabSettings.AdvertisingIdType,@"_Successful"]];
-            NSLog(@"playfab adid %@", PlayFabSettings.AdvertisingIdType);
-        }
-        failure:^(PlayFabError *error, NSObject *userData) {
-            NSLog(@"attribute install fail");
-            //Request errored or failed to connect.
-        } withUserData:nil];
-    }
-}
-#endif
 -(void) AcceptTrade:(ClientAcceptTradeRequest*)request success:(AcceptTradeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -571,6 +550,92 @@ return deviceModel;
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/ConsumeItem"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
+-(void) ConsumeMicrosoftStoreEntitlements:(ClientConsumeMicrosoftStoreEntitlementsRequest*)request success:(ConsumeMicrosoftStoreEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientConsumeMicrosoftStoreEntitlementsRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientConsumeMicrosoftStoreEntitlementsResponse *model = [[ClientConsumeMicrosoftStoreEntitlementsResponse new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/ConsumeMicrosoftStoreEntitlements"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
+}
+-(void) ConsumePS5Entitlements:(ClientConsumePS5EntitlementsRequest*)request success:(ConsumePS5EntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
+{
+    
+    
+    NSString *jsonString = [request JSONStringWithClass:[ClientConsumePS5EntitlementsRequest class]];
+    
+    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
+    [connection setCompletionBlock:^(id obj, NSError *err) {
+        NSData * data = obj;
+        if (!err) {
+            //NSLog(@"connection success response: %@",(NSString*)data);
+            NSError *e = nil;
+            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
+
+            NSString* playfab_error = [JSON valueForKey:@"error"];
+            if (playfab_error != nil) {
+                //if there was an "error" object in the JSON:
+                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
+                errorCallback (playfab_error_object, userData);
+            } else {
+                NSDictionary *class_data = [JSON valueForKey:@"data"];
+                ClientConsumePS5EntitlementsResult *model = [[ClientConsumePS5EntitlementsResult new] initWithDictionary:class_data];
+                
+                callback (model, userData);
+            }
+        } else { //Connection Error:
+            NSError *e = nil;
+            NSLog(@"connection error response: %@",data);
+            PlayFabError *model;
+            if (data != nil) {
+                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
+                JAGPropertyConverter *converter = [JAGPropertyConverter new];
+                model = [converter composeModelFromObject:JSON];
+            } else {
+                model = [PlayFabError new];
+                model.error = @"unknown, data empty.";
+            }
+        errorCallback (model, userData);
+        }
+    }];
+
+    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/ConsumePS5Entitlements"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) ConsumePSNEntitlements:(ClientConsumePSNEntitlementsRequest*)request success:(ConsumePSNEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -3023,49 +3088,6 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetUserReadOnlyData"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) GetWindowsHelloChallenge:(ClientGetWindowsHelloChallengeRequest*)request success:(GetWindowsHelloChallengeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientGetWindowsHelloChallengeRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientGetWindowsHelloChallengeResponse *model = [[ClientGetWindowsHelloChallengeResponse new] initWithDictionary:class_data];
-                
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/GetWindowsHelloChallenge"] body:jsonString authType:nil authKey:nil];
-}
 -(void) GrantCharacterToUser:(ClientGrantCharacterToUserRequest*)request success:(GrantCharacterToUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -3754,49 +3776,6 @@ return deviceModel;
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkTwitch"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
--(void) LinkWindowsHello:(ClientLinkWindowsHelloAccountRequest*)request success:(LinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientLinkWindowsHelloAccountRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientLinkWindowsHelloAccountResponse *model = [[ClientLinkWindowsHelloAccountResponse new] initWithDictionary:class_data];
-                
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LinkWindowsHello"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
-}
 -(void) LinkXboxAccount:(ClientLinkXboxAccountRequest*)request success:(LinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
     
@@ -3866,10 +3845,6 @@ return deviceModel;
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -3917,10 +3892,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -3968,10 +3939,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4019,10 +3986,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4070,10 +4033,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4121,10 +4080,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4172,10 +4127,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4223,10 +4174,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4279,10 +4226,6 @@ request.DeviceModel = [PlayFabClientAPI getModel];
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4330,10 +4273,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4381,10 +4320,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4432,10 +4367,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4483,10 +4414,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4534,10 +4461,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4585,10 +4508,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4636,10 +4555,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4687,10 +4602,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -4711,57 +4622,6 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithTwitch"] body:jsonString authType:nil authKey:nil];
-}
--(void) LoginWithWindowsHello:(ClientLoginWithWindowsHelloRequest*)request success:(LoginWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    if ([PlayFabSettings.TitleId length] > 0)
-        request.TitleId = PlayFabSettings.TitleId;
-
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientLoginWithWindowsHelloRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
-                if ([class_data valueForKey:@"SessionTicket"])
-            self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
-
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/LoginWithWindowsHello"] body:jsonString authType:nil authKey:nil];
 }
 -(void) LoginWithXbox:(ClientLoginWithXboxRequest*)request success:(LoginWithXboxCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -4789,10 +4649,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -5141,10 +4997,6 @@ if(model.SettingsForUser.NeedsAttribution)
                 ClientRegisterPlayFabUserResult *model = [[ClientRegisterPlayFabUserResult new] initWithDictionary:class_data];
                 if ([class_data valueForKey:@"SessionTicket"])
             self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
 
                 callback (model, userData);
             }
@@ -5165,57 +5017,6 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RegisterPlayFabUser"] body:jsonString authType:nil authKey:nil];
-}
--(void) RegisterWithWindowsHello:(ClientRegisterWithWindowsHelloRequest*)request success:(RegisterWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    if ([PlayFabSettings.TitleId length] > 0)
-        request.TitleId = PlayFabSettings.TitleId;
-
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientRegisterWithWindowsHelloRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientLoginResult *model = [[ClientLoginResult new] initWithDictionary:class_data];
-                if ([class_data valueForKey:@"SessionTicket"])
-            self.mUserSessionTicket = [class_data valueForKey:@"SessionTicket"];
-#ifdef USE_IDFA
-if(model.SettingsForUser.NeedsAttribution)
-    [[PlayFabClientAPI GetInstance] MultiStepClientLogin:model.SettingsForUser.NeedsAttribution];
-#endif
-
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/RegisterWithWindowsHello"] body:jsonString authType:nil authKey:nil];
 }
 -(void) RemoveContactEmail:(ClientRemoveContactEmailRequest*)request success:(RemoveContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -5732,49 +5533,6 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/SetPlayerSecret"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
-}
--(void) StartGame:(ClientStartGameRequest*)request success:(StartGameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientStartGameRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientStartGameResult *model = [[ClientStartGameResult new] initWithDictionary:class_data];
-                
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/StartGame"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) StartPurchase:(ClientStartPurchaseRequest*)request success:(StartPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {
@@ -6506,49 +6264,6 @@ if(model.SettingsForUser.NeedsAttribution)
     }];
 
     [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkTwitch"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
-}
--(void) UnlinkWindowsHello:(ClientUnlinkWindowsHelloAccountRequest*)request success:(UnlinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
-{
-    
-    
-    NSString *jsonString = [request JSONStringWithClass:[ClientUnlinkWindowsHelloAccountRequest class]];
-    
-    PlayFabConnection * connection = [PlayFabConnection new];//[[MyConnection alloc]initWithRequest:req];
-    [connection setCompletionBlock:^(id obj, NSError *err) {
-        NSData * data = obj;
-        if (!err) {
-            //NSLog(@"connection success response: %@",(NSString*)data);
-            NSError *e = nil;
-            NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:0 error: &e];
-
-            NSString* playfab_error = [JSON valueForKey:@"error"];
-            if (playfab_error != nil) {
-                //if there was an "error" object in the JSON:
-                PlayFabError *playfab_error_object = [[PlayFabError new] initWithDictionary:JSON];
-                errorCallback (playfab_error_object, userData);
-            } else {
-                NSDictionary *class_data = [JSON valueForKey:@"data"];
-                ClientUnlinkWindowsHelloAccountResponse *model = [[ClientUnlinkWindowsHelloAccountResponse new] initWithDictionary:class_data];
-                
-                callback (model, userData);
-            }
-        } else { //Connection Error:
-            NSError *e = nil;
-            NSLog(@"connection error response: %@",data);
-            PlayFabError *model;
-            if (data != nil) {
-                NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options: NSJSONReadingMutableContainers error: &e];
-                JAGPropertyConverter *converter = [JAGPropertyConverter new];
-                model = [converter composeModelFromObject:JSON];
-            } else {
-                model = [PlayFabError new];
-                model.error = @"unknown, data empty.";
-            }
-        errorCallback (model, userData);
-        }
-    }];
-
-    [connection postURL:[NSString stringWithFormat:@"%@%@",[PlayFabClientAPI GetURL],@"/Client/UnlinkWindowsHello"] body:jsonString authType:@"X-Authorization" authKey:self.mUserSessionTicket];
 }
 -(void) UnlinkXboxAccount:(ClientUnlinkXboxAccountRequest*)request success:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData
 {

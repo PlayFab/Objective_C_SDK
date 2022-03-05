@@ -19,11 +19,14 @@ typedef enum
     MultiplayerAzureRegionSoutheastAsia,
     MultiplayerAzureRegionWestEurope,
     MultiplayerAzureRegionWestUs,
-    MultiplayerAzureRegionChinaEast2,
-    MultiplayerAzureRegionChinaNorth2,
     MultiplayerAzureRegionSouthAfricaNorth,
-    MultiplayerAzureRegionCentralUsEuap,
-    MultiplayerAzureRegionWestCentralUs
+    MultiplayerAzureRegionWestCentralUs,
+    MultiplayerAzureRegionKoreaCentral,
+    MultiplayerAzureRegionFranceCentral,
+    MultiplayerAzureRegionWestUs2,
+    MultiplayerAzureRegionCentralIndia,
+    MultiplayerAzureRegionUaeNorth,
+    MultiplayerAzureRegionUkSouth
 } MultiplayerAzureRegion;
 
 typedef enum
@@ -34,7 +37,18 @@ typedef enum
     MultiplayerAzureVmFamilyDv3,
     MultiplayerAzureVmFamilyF,
     MultiplayerAzureVmFamilyFsv2,
-    MultiplayerAzureVmFamilyDasv4
+    MultiplayerAzureVmFamilyDasv4,
+    MultiplayerAzureVmFamilyDav4,
+    MultiplayerAzureVmFamilyEav4,
+    MultiplayerAzureVmFamilyEasv4,
+    MultiplayerAzureVmFamilyEv4,
+    MultiplayerAzureVmFamilyEsv4,
+    MultiplayerAzureVmFamilyDsv3,
+    MultiplayerAzureVmFamilyDsv2,
+    MultiplayerAzureVmFamilyNCasT4_v3,
+    MultiplayerAzureVmFamilyDdv4,
+    MultiplayerAzureVmFamilyDdsv4,
+    MultiplayerAzureVmFamilyHBv3
 } MultiplayerAzureVmFamily;
 
 typedef enum
@@ -68,7 +82,42 @@ typedef enum
     MultiplayerAzureVmSizeStandard_D2as_v4,
     MultiplayerAzureVmSizeStandard_D4as_v4,
     MultiplayerAzureVmSizeStandard_D8as_v4,
-    MultiplayerAzureVmSizeStandard_D16as_v4
+    MultiplayerAzureVmSizeStandard_D16as_v4,
+    MultiplayerAzureVmSizeStandard_D2a_v4,
+    MultiplayerAzureVmSizeStandard_D4a_v4,
+    MultiplayerAzureVmSizeStandard_D8a_v4,
+    MultiplayerAzureVmSizeStandard_D16a_v4,
+    MultiplayerAzureVmSizeStandard_E2a_v4,
+    MultiplayerAzureVmSizeStandard_E4a_v4,
+    MultiplayerAzureVmSizeStandard_E8a_v4,
+    MultiplayerAzureVmSizeStandard_E16a_v4,
+    MultiplayerAzureVmSizeStandard_E2as_v4,
+    MultiplayerAzureVmSizeStandard_E4as_v4,
+    MultiplayerAzureVmSizeStandard_E8as_v4,
+    MultiplayerAzureVmSizeStandard_E16as_v4,
+    MultiplayerAzureVmSizeStandard_D2s_v3,
+    MultiplayerAzureVmSizeStandard_D4s_v3,
+    MultiplayerAzureVmSizeStandard_D8s_v3,
+    MultiplayerAzureVmSizeStandard_D16s_v3,
+    MultiplayerAzureVmSizeStandard_DS1_v2,
+    MultiplayerAzureVmSizeStandard_DS2_v2,
+    MultiplayerAzureVmSizeStandard_DS3_v2,
+    MultiplayerAzureVmSizeStandard_DS4_v2,
+    MultiplayerAzureVmSizeStandard_DS5_v2,
+    MultiplayerAzureVmSizeStandard_NC4as_T4_v3,
+    MultiplayerAzureVmSizeStandard_D2d_v4,
+    MultiplayerAzureVmSizeStandard_D4d_v4,
+    MultiplayerAzureVmSizeStandard_D8d_v4,
+    MultiplayerAzureVmSizeStandard_D16d_v4,
+    MultiplayerAzureVmSizeStandard_D2ds_v4,
+    MultiplayerAzureVmSizeStandard_D4ds_v4,
+    MultiplayerAzureVmSizeStandard_D8ds_v4,
+    MultiplayerAzureVmSizeStandard_D16ds_v4,
+    MultiplayerAzureVmSizeStandard_HB120_16rs_v3,
+    MultiplayerAzureVmSizeStandard_HB120_32rs_v3,
+    MultiplayerAzureVmSizeStandard_HB120_64rs_v3,
+    MultiplayerAzureVmSizeStandard_HB120_96rs_v3,
+    MultiplayerAzureVmSizeStandard_HB120rs_v3
 } MultiplayerAzureVmSize;
 
 typedef enum
@@ -157,6 +206,8 @@ typedef enum
 
 @class MultiplayerCoreCapacity;
 
+@class MultiplayerCoreCapacityChange;
+
 @class MultiplayerCreateBuildAliasRequest;
 
 @class MultiplayerCreateBuildWithCustomContainerRequest;
@@ -184,6 +235,10 @@ typedef enum
 @class MultiplayerCreateServerBackfillTicketResult;
 
 @class MultiplayerCreateServerMatchmakingTicketRequest;
+
+@class MultiplayerCreateTitleMultiplayerServersQuotaChangeRequest;
+
+@class MultiplayerCreateTitleMultiplayerServersQuotaChangeResponse;
 
 @class MultiplayerCurrentServerStats;
 
@@ -216,6 +271,10 @@ typedef enum
 @class MultiplayerGameCertificateReference;
 
 @class MultiplayerGameCertificateReferenceParams;
+
+@class MultiplayerGetAssetDownloadUrlRequest;
+
+@class MultiplayerGetAssetDownloadUrlResponse;
 
 @class MultiplayerGetAssetUploadUrlRequest;
 
@@ -265,6 +324,10 @@ typedef enum
 
 @class MultiplayerGetTitleEnabledForMultiplayerServersStatusResponse;
 
+@class MultiplayerGetTitleMultiplayerServersQuotaChangeRequest;
+
+@class MultiplayerGetTitleMultiplayerServersQuotaChangeResponse;
+
 @class MultiplayerGetTitleMultiplayerServersQuotasRequest;
 
 @class MultiplayerGetTitleMultiplayerServersQuotasResponse;
@@ -281,7 +344,9 @@ typedef enum
 
 @class MultiplayerListAssetSummariesResponse;
 
-@class MultiplayerListBuildAliasesForTitleResponse;
+@class MultiplayerListBuildAliasesRequest;
+
+@class MultiplayerListBuildAliasesResponse;
 
 @class MultiplayerListBuildSummariesRequest;
 
@@ -319,6 +384,10 @@ typedef enum
 
 @class MultiplayerListServerBackfillTicketsForPlayerResult;
 
+@class MultiplayerListTitleMultiplayerServersQuotaChangesRequest;
+
+@class MultiplayerListTitleMultiplayerServersQuotaChangesResponse;
+
 @class MultiplayerListVirtualMachineSummariesRequest;
 
 @class MultiplayerListVirtualMachineSummariesResponse;
@@ -329,13 +398,17 @@ typedef enum
 
 @class MultiplayerMatchmakingPlayerWithTeamAssignment;
 
-@class MultiplayerMultiplayerEmptyRequest;
+@class MultiplayerMonitoringApplicationConfiguration;
+
+@class MultiplayerMonitoringApplicationConfigurationParams;
 
 @class MultiplayerMultiplayerServerSummary;
 
 @class MultiplayerPort;
 
 @class MultiplayerQosServer;
+
+@class MultiplayerQuotaChange;
 
 @class MultiplayerRequestMultiplayerServerRequest;
 
@@ -361,6 +434,8 @@ typedef enum
 
 @class MultiplayerUpdateBuildAliasRequest;
 
+@class MultiplayerUpdateBuildNameRequest;
+
 @class MultiplayerUpdateBuildRegionRequest;
 
 @class MultiplayerUpdateBuildRegionsRequest;
@@ -368,6 +443,8 @@ typedef enum
 @class MultiplayerUploadCertificateRequest;
 
 @class MultiplayerVirtualMachineSummary;
+
+@class MultiplayerWindowsCrashDumpConfiguration;
 
 
 
@@ -457,20 +534,6 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildSelectionCriteria; 
-
-/// <summary>
-/*
-/// The page size on the response.
-*/
-/// </summary>
-@property NSNumber* PageSize; 
-
-/// <summary>
-/*
-/// The skip token for the paged response.
-*/
-/// </summary>
-@property NSString* SkipToken; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -512,10 +575,24 @@ typedef enum
 
 /// <summary>
 /*
+/// Whether the game assets provided for the build have been replicated to this region.
+*/
+/// </summary>
+@property bool IsAssetReplicationComplete; 
+
+/// <summary>
+/*
 /// The maximum number of multiplayer servers for the region.
 */
 /// </summary>
 @property NSNumber* MaxServers; 
+
+/// <summary>
+/*
+/// Regional override for the number of multiplayer servers to host on a single VM of the build.
+*/
+/// </summary>
+@property NSNumber* MultiplayerServerCountPerVm; 
 
 /// <summary>
 /*
@@ -544,6 +621,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* Status; 
+
+/// <summary>
+/*
+/// Regional override for the VM size the build was created on.
+*/
+/// </summary>
+@property MultiplayerAzureVmSize VmSize; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -568,6 +652,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Regional override for the number of multiplayer servers to host on a single VM of the build.
+*/
+/// </summary>
+@property NSNumber* MultiplayerServerCountPerVm; 
+
+/// <summary>
+/*
 /// The build region.
 */
 /// </summary>
@@ -586,6 +677,13 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* StandbyServers; 
+
+/// <summary>
+/*
+/// Regional override for the VM size the build was created on.
+*/
+/// </summary>
+@property MultiplayerAzureVmSize VmSize; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -938,6 +1036,34 @@ typedef enum
 @end
 
 
+@interface MultiplayerCoreCapacityChange : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// New quota core limit for the given vm family/region.
+*/
+/// </summary>
+@property NSNumber* NewCoreLimit; 
+
+/// <summary>
+/*
+/// Region to change.
+*/
+/// </summary>
+@property NSString* Region; 
+
+/// <summary>
+/*
+/// Virtual machine family to change.
+*/
+/// </summary>
+@property MultiplayerAzureVmFamily VmFamily; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// Creates a multiplayer server build alias and returns the created alias.
@@ -1048,6 +1174,13 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The configuration for the monitoring application on the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfigurationParams* MonitoringApplicationConfiguration; 
 
 /// <summary>
 /*
@@ -1167,6 +1300,13 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The configuration for the monitoring application for the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfiguration* pfMonitoringApplicationConfiguration; 
 
 /// <summary>
 /*
@@ -1297,6 +1437,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The configuration for the monitoring application on the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfigurationParams* MonitoringApplicationConfiguration; 
+
+/// <summary>
+/*
 /// The number of multiplayer servers to host on a single VM.
 */
 /// </summary>
@@ -1336,6 +1483,13 @@ typedef enum
 */
 /// </summary>
 @property MultiplayerAzureVmSize VmSize; 
+
+/// <summary>
+/*
+/// The crash dump configuration for the build.
+*/
+/// </summary>
+@property MultiplayerWindowsCrashDumpConfiguration* pfWindowsCrashDumpConfiguration; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1413,6 +1567,13 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The configuration for the monitoring application for the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfiguration* pfMonitoringApplicationConfiguration; 
 
 /// <summary>
 /*
@@ -1550,6 +1711,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The configuration for the monitoring application on the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfigurationParams* MonitoringApplicationConfiguration; 
+
+/// <summary>
+/*
 /// The number of multiplayer servers to host on a single VM.
 */
 /// </summary>
@@ -1680,6 +1848,13 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* Metadata; 
+
+/// <summary>
+/*
+/// The configuration for the monitoring application for the build
+*/
+/// </summary>
+@property MultiplayerMonitoringApplicationConfiguration* pfMonitoringApplicationConfiguration; 
 
 /// <summary>
 /*
@@ -1993,6 +2168,84 @@ typedef enum
 /// </summary>
 @property NSString* QueueName; 
 /**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Creates a request to change a title's multiplayer server quotas.
+*/
+/// </summary>
+@interface MultiplayerCreateTitleMultiplayerServersQuotaChangeRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A brief description of the requested changes.
+*/
+/// </summary>
+@property NSString* ChangeDescription; 
+
+/// <summary>
+/*
+/// Changes to make to the titles cores quota.
+*/
+/// </summary>
+@property NSArray* Changes; 
+
+/// <summary>
+/*
+/// Email to be contacted by our team about this request. Only required when a request is not approved.
+*/
+/// </summary>
+@property NSString* ContactEmail; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Additional information about this request that our team can use to better understand the requirements.
+*/
+/// </summary>
+@property NSString* Notes; 
+
+/// <summary>
+/*
+/// When these changes would need to be in effect. Only required when a request is not approved.
+*/
+/// </summary>
+@property NSDate* StartDate; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCreateTitleMultiplayerServersQuotaChangeResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Id of the change request that was created.
+*/
+/// </summary>
+@property NSString* RequestId; 
+
+/// <summary>
+/*
+/// Determines if the request was approved or not. When false, our team is reviewing and may respond within 2 business days.
+*/
+/// </summary>
+@property bool WasApproved; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -2401,6 +2654,56 @@ typedef enum
 /// </summary>
 @property NSString* Name; 
 /**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Gets a URL that can be used to download the specified asset.
+*/
+/// </summary>
+@interface MultiplayerGetAssetDownloadUrlRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The asset's file name to get the download URL for.
+*/
+/// </summary>
+@property NSString* FileName; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetAssetDownloadUrlResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The asset's download URL.
+*/
+/// </summary>
+@property NSString* AssetDownloadUrl; 
+
+/// <summary>
+/*
+/// The asset's file name to get the download URL for.
+*/
+/// </summary>
+@property NSString* FileName; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -2957,6 +3260,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The identity of the build in which the server was allocated.
+*/
+/// </summary>
+@property NSString* BuildId; 
+
+/// <summary>
+/*
 /// The connected players in the multiplayer server.
 */
 /// </summary>
@@ -3366,6 +3676,49 @@ typedef enum
 
 /// <summary>
 /*
+/// Gets a title's server quota change request.
+*/
+/// </summary>
+@interface MultiplayerGetTitleMultiplayerServersQuotaChangeRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Id of the change request to get.
+*/
+/// </summary>
+@property NSString* RequestId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetTitleMultiplayerServersQuotaChangeResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The change request for this title.
+*/
+/// </summary>
+@property MultiplayerQuotaChange* Change; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Gets the quotas for a title in relation to multiplayer servers.
 */
 /// </summary>
@@ -3405,7 +3758,14 @@ typedef enum
 
 /// <summary>
 /*
-/// The list of processes to be monitored on a VM for this build. Providing processes will turn on performance metrics collection for this build. Process names should not include extensions. If the game server process is: GameServer.exe; then, ProcessesToMonitor = [ GameServer ] 
+/// Designates whether windows instrumentation configuration will be enabled for this Build
+*/
+/// </summary>
+@property bool IsEnabled; 
+
+/// <summary>
+/*
+/// This property is deprecated, use IsEnabled. The list of processes to be monitored on a VM for this build. Providing processes will turn on performance metrics collection for this build. Process names should not include extensions. If the game server process is: GameServer.exe; then, ProcessesToMonitor = [ GameServer ] 
 */
 /// </summary>
 @property NSArray* ProcessesToMonitor; 
@@ -3542,7 +3902,40 @@ typedef enum
 @end
 
 
-@interface MultiplayerListBuildAliasesForTitleResponse : PlayFabBaseModel
+/// <summary>
+/*
+/// Returns a list of summarized details of all multiplayer server builds for a title.
+*/
+/// </summary>
+@interface MultiplayerListBuildAliasesRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The page size for the request.
+*/
+/// </summary>
+@property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The skip token for the paged request.
+*/
+/// </summary>
+@property NSString* SkipToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerListBuildAliasesResponse : PlayFabBaseModel
 
 
 /// <summary>
@@ -3551,6 +3944,20 @@ typedef enum
 */
 /// </summary>
 @property NSArray* BuildAliases; 
+
+/// <summary>
+/*
+/// The page size on the response.
+*/
+/// </summary>
+@property NSNumber* PageSize; 
+
+/// <summary>
+/*
+/// The skip token for the paged response.
+*/
+/// </summary>
+@property NSString* SkipToken; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -4081,6 +4488,42 @@ typedef enum
 
 /// <summary>
 /*
+/// List all server quota change requests for a title.
+*/
+/// </summary>
+@interface MultiplayerListTitleMultiplayerServersQuotaChangesRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerListTitleMultiplayerServersQuotaChangesResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// All change requests for this title.
+*/
+/// </summary>
+@property NSArray* Changes; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Returns a list of virtual machines for a title.
 */
 /// </summary>
@@ -4242,20 +4685,71 @@ typedef enum
 @end
 
 
-/// <summary>
-/*
-/// Returns a list of summarized details of all multiplayer server builds for a title.
-*/
-/// </summary>
-@interface MultiplayerMultiplayerEmptyRequest : PlayFabBaseModel
+@interface MultiplayerMonitoringApplicationConfiguration : PlayFabBaseModel
 
 
 /// <summary>
 /*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+/// Asset which contains the monitoring application files and scripts.
 */
 /// </summary>
-@property NSDictionary* CustomTags; 
+@property MultiplayerAssetReference* pfAssetReference; 
+
+/// <summary>
+/*
+/// Execution script name, this will be the main executable for the monitoring application.
+*/
+/// </summary>
+@property NSString* ExecutionScriptName; 
+
+/// <summary>
+/*
+/// Installation script name, this will be run before the ExecutionScript.
+*/
+/// </summary>
+@property NSString* InstallationScriptName; 
+
+/// <summary>
+/*
+/// Timespan the monitoring application will be kept alive when running from the start of the VM
+*/
+/// </summary>
+@property NSNumber* OnStartRuntimeInMinutes; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerMonitoringApplicationConfigurationParams : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Asset which contains the monitoring application files and scripts.
+*/
+/// </summary>
+@property MultiplayerAssetReferenceParams* AssetReference; 
+
+/// <summary>
+/*
+/// Execution script name, this will be the main executable for the monitoring application.
+*/
+/// </summary>
+@property NSString* ExecutionScriptName; 
+
+/// <summary>
+/*
+/// Installation script name, this will be run before the ExecutionScript.
+*/
+/// </summary>
+@property NSString* InstallationScriptName; 
+
+/// <summary>
+/*
+/// Timespan the monitoring application will be kept alive when running from the start of the VM
+*/
+/// </summary>
+@property NSNumber* OnStartRuntimeInMinutes; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4366,6 +4860,62 @@ typedef enum
 @end
 
 
+@interface MultiplayerQuotaChange : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A brief description of the requested changes.
+*/
+/// </summary>
+@property NSString* ChangeDescription; 
+
+/// <summary>
+/*
+/// Requested changes to make to the titles cores quota.
+*/
+/// </summary>
+@property NSArray* Changes; 
+
+/// <summary>
+/*
+/// Whether or not this request is pending a review.
+*/
+/// </summary>
+@property bool IsPendingReview; 
+
+/// <summary>
+/*
+/// Additional information about this request that our team can use to better understand the requirements.
+*/
+/// </summary>
+@property NSString* Notes; 
+
+/// <summary>
+/*
+/// Id of the change request.
+*/
+/// </summary>
+@property NSString* RequestId; 
+
+/// <summary>
+/*
+/// Comments by our team when a request is reviewed.
+*/
+/// </summary>
+@property NSString* ReviewComments; 
+
+/// <summary>
+/*
+/// Whether or not this request was approved.
+*/
+/// </summary>
+@property bool WasApproved; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// Requests a multiplayer server session from a particular build in any of the given preferred regions.
@@ -4429,6 +4979,13 @@ typedef enum
 
 @interface MultiplayerRequestMultiplayerServerResponse : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// The identity of the build in which the server was allocated.
+*/
+/// </summary>
+@property NSString* BuildId; 
 
 /// <summary>
 /*
@@ -4632,6 +5189,13 @@ typedef enum
 
 /// <summary>
 /*
+/// The fully qualified domain name of the virtual machine that is hosting this multiplayer server.
+*/
+/// </summary>
+@property NSString* Fqdn; 
+
+/// <summary>
+/*
 /// The IPv4 address of the virtual machine that is hosting this multiplayer server.
 */
 /// </summary>
@@ -4665,24 +5229,10 @@ typedef enum
 
 /// <summary>
 /*
-/// The guid string build ID of the multiplayer server to delete.
-*/
-/// </summary>
-@property NSString* BuildId; 
-
-/// <summary>
-/*
 /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
 */
 /// </summary>
 @property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// The region of the multiplayer server to shut down.
-*/
-/// </summary>
-@property NSString* Region; 
 
 /// <summary>
 /*
@@ -4819,6 +5369,39 @@ typedef enum
 
 /// <summary>
 /*
+/// Updates a multiplayer server build's name.
+*/
+/// </summary>
+@interface MultiplayerUpdateBuildNameRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The guid string ID of the build we want to update the name of.
+*/
+/// </summary>
+@property NSString* BuildId; 
+
+/// <summary>
+/*
+/// The build name.
+*/
+/// </summary>
+@property NSString* BuildName; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Updates a multiplayer server build's region.
 */
 /// </summary>
@@ -4932,6 +5515,34 @@ typedef enum
 */
 /// </summary>
 @property NSString* VmId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerWindowsCrashDumpConfiguration : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps for valid values.
+*/
+/// </summary>
+@property NSNumber* CustomDumpFlags; 
+
+/// <summary>
+/*
+/// See https://docs.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps for valid values.
+*/
+/// </summary>
+@property NSNumber* DumpType; 
+
+/// <summary>
+/*
+/// Designates whether automatic crash dump capturing will be enabled for this Build.
+*/
+/// </summary>
+@property bool IsEnabled; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

@@ -70,8 +70,6 @@
     
     self.Description = [properties valueForKey:@"Description"];
     
-    self.Duration = [properties valueForKey:@"Duration"];
-    
     self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
     
     self.ExclusionGroupId = [properties valueForKey:@"ExclusionGroupId"];
@@ -246,8 +244,6 @@
 
     
     self.Description = [properties valueForKey:@"Description"];
-    
-    self.Duration = [properties valueForKey:@"Duration"];
     
     self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
     
@@ -805,8 +801,6 @@
 
     
     self.Description = [properties valueForKey:@"Description"];
-    
-    self.Duration = [properties valueForKey:@"Duration"];
     
     self.EndDate = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"EndDate"]];
     

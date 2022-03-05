@@ -351,6 +351,10 @@ typedef enum
 
 @class CloudScriptFunctionModel;
 
+@class CloudScriptGetFunctionRequest;
+
+@class CloudScriptGetFunctionResult;
+
 @class CloudScriptHttpFunctionModel;
 
 @class CloudScriptLinkedPlatformAccountModel;
@@ -790,6 +794,72 @@ typedef enum
 @end
 
 
+@interface CloudScriptGetFunctionRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The name of the function to register
+*/
+/// </summary>
+@property NSString* FunctionName; 
+
+/// <summary>
+/*
+/// The Id of the parent Title
+*/
+/// </summary>
+@property NSString* TitleId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface CloudScriptGetFunctionResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The connection string for the storage account containing the queue for a queue trigger Azure Function.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// The URL to be invoked to execute an HTTP triggered function.
+*/
+/// </summary>
+@property NSString* FunctionUrl; 
+
+/// <summary>
+/*
+/// The name of the queue for a queue trigger Azure Function.
+*/
+/// </summary>
+@property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The trigger type for the function.
+*/
+/// </summary>
+@property NSString* TriggerType; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface CloudScriptHttpFunctionModel : PlayFabBaseModel
 
 
@@ -860,6 +930,13 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The Id of the parent Title
+*/
+/// </summary>
+@property NSString* TitleId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1096,7 +1173,7 @@ typedef enum
 
 /// <summary>
 /*
-/// List of experiment variants for the player.
+/// List of experiment variants for the player. Note that these variants are not guaranteed to be up-to-date when returned during login because the player profile is updated only after login. Instead, use the LoginResult.TreatmentAssignment property during login to get the correct variants and variables.
 */
 /// </summary>
 @property NSArray* ExperimentVariants; 
@@ -1462,6 +1539,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* FunctionUrl; 
+
+/// <summary>
+/*
+/// The Id of the parent Title
+*/
+/// </summary>
+@property NSString* TitleId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1502,6 +1586,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* QueueName; 
+
+/// <summary>
+/*
+/// The Id of the parent Title
+*/
+/// </summary>
+@property NSString* TitleId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1645,10 +1736,17 @@ typedef enum
 
 /// <summary>
 /*
-/// The name of the function to unregister
+/// The name of the function to register
 */
 /// </summary>
 @property NSString* FunctionName; 
+
+/// <summary>
+/*
+/// The Id of the parent Title
+*/
+/// </summary>
+@property NSString* TitleId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

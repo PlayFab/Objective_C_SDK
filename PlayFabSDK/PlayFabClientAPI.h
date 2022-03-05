@@ -37,6 +37,10 @@ typedef void(^ConfirmPurchaseCallback)(ClientConfirmPurchaseResult* result, NSOb
 		
 typedef void(^ConsumeItemCallback)(ClientConsumeItemResult* result, NSObject* userData);
 		
+typedef void(^ConsumeMicrosoftStoreEntitlementsCallback)(ClientConsumeMicrosoftStoreEntitlementsResponse* result, NSObject* userData);
+		
+typedef void(^ConsumePS5EntitlementsCallback)(ClientConsumePS5EntitlementsResult* result, NSObject* userData);
+		
 typedef void(^ConsumePSNEntitlementsCallback)(ClientConsumePSNEntitlementsResult* result, NSObject* userData);
 		
 typedef void(^ConsumeXboxEntitlementsCallback)(ClientConsumeXboxEntitlementsResult* result, NSObject* userData);
@@ -151,8 +155,6 @@ typedef void(^GetUserPublisherReadOnlyDataCallback)(ClientGetUserDataResult* res
 		
 typedef void(^GetUserReadOnlyDataCallback)(ClientGetUserDataResult* result, NSObject* userData);
 		
-typedef void(^GetWindowsHelloChallengeCallback)(ClientGetWindowsHelloChallengeResponse* result, NSObject* userData);
-		
 typedef void(^GrantCharacterToUserCallback)(ClientGrantCharacterToUserResult* result, NSObject* userData);
 		
 typedef void(^LinkAndroidDeviceIDCallback)(ClientLinkAndroidDeviceIDResult* result, NSObject* userData);
@@ -184,8 +186,6 @@ typedef void(^LinkPSNAccountCallback)(ClientLinkPSNAccountResult* result, NSObje
 typedef void(^LinkSteamAccountCallback)(ClientLinkSteamAccountResult* result, NSObject* userData);
 		
 typedef void(^LinkTwitchCallback)(ClientLinkTwitchAccountResult* result, NSObject* userData);
-		
-typedef void(^LinkWindowsHelloCallback)(ClientLinkWindowsHelloAccountResponse* result, NSObject* userData);
 		
 typedef void(^LinkXboxAccountCallback)(ClientLinkXboxAccountResult* result, NSObject* userData);
 		
@@ -223,8 +223,6 @@ typedef void(^LoginWithSteamCallback)(ClientLoginResult* result, NSObject* userD
 		
 typedef void(^LoginWithTwitchCallback)(ClientLoginResult* result, NSObject* userData);
 		
-typedef void(^LoginWithWindowsHelloCallback)(ClientLoginResult* result, NSObject* userData);
-		
 typedef void(^LoginWithXboxCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^MatchmakeCallback)(ClientMatchmakeResult* result, NSObject* userData);
@@ -242,8 +240,6 @@ typedef void(^RefreshPSNAuthTokenCallback)(ClientEmptyResponse* result, NSObject
 typedef void(^RegisterForIOSPushNotificationCallback)(ClientRegisterForIOSPushNotificationResult* result, NSObject* userData);
 		
 typedef void(^RegisterPlayFabUserCallback)(ClientRegisterPlayFabUserResult* result, NSObject* userData);
-		
-typedef void(^RegisterWithWindowsHelloCallback)(ClientLoginResult* result, NSObject* userData);
 		
 typedef void(^RemoveContactEmailCallback)(ClientRemoveContactEmailResult* result, NSObject* userData);
 		
@@ -268,8 +264,6 @@ typedef void(^SendAccountRecoveryEmailCallback)(ClientSendAccountRecoveryEmailRe
 typedef void(^SetFriendTagsCallback)(ClientSetFriendTagsResult* result, NSObject* userData);
 		
 typedef void(^SetPlayerSecretCallback)(ClientSetPlayerSecretResult* result, NSObject* userData);
-		
-typedef void(^StartGameCallback)(ClientStartGameResult* result, NSObject* userData);
 		
 typedef void(^StartPurchaseCallback)(ClientStartPurchaseResult* result, NSObject* userData);
 		
@@ -304,8 +298,6 @@ typedef void(^UnlinkPSNAccountCallback)(ClientUnlinkPSNAccountResult* result, NS
 typedef void(^UnlinkSteamAccountCallback)(ClientUnlinkSteamAccountResult* result, NSObject* userData);
 		
 typedef void(^UnlinkTwitchCallback)(ClientUnlinkTwitchAccountResult* result, NSObject* userData);
-		
-typedef void(^UnlinkWindowsHelloCallback)(ClientUnlinkWindowsHelloAccountResponse* result, NSObject* userData);
 		
 typedef void(^UnlinkXboxAccountCallback)(ClientUnlinkXboxAccountResult* result, NSObject* userData);
 		
@@ -373,6 +365,10 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) ConfirmPurchase:(ClientConfirmPurchaseRequest*)request success:(ConfirmPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ConsumeItem:(ClientConsumeItemRequest*)request success:(ConsumeItemCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ConsumeMicrosoftStoreEntitlements:(ClientConsumeMicrosoftStoreEntitlementsRequest*)request success:(ConsumeMicrosoftStoreEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) ConsumePS5Entitlements:(ClientConsumePS5EntitlementsRequest*)request success:(ConsumePS5EntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ConsumePSNEntitlements:(ClientConsumePSNEntitlementsRequest*)request success:(ConsumePSNEntitlementsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -488,8 +484,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) GetUserReadOnlyData:(ClientGetUserDataRequest*)request success:(GetUserReadOnlyDataCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) GetWindowsHelloChallenge:(ClientGetWindowsHelloChallengeRequest*)request success:(GetWindowsHelloChallengeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
 -(void) GrantCharacterToUser:(ClientGrantCharacterToUserRequest*)request success:(GrantCharacterToUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkAndroidDeviceID:(ClientLinkAndroidDeviceIDRequest*)request success:(LinkAndroidDeviceIDCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -521,8 +515,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) LinkSteamAccount:(ClientLinkSteamAccountRequest*)request success:(LinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkTwitch:(ClientLinkTwitchAccountRequest*)request success:(LinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
--(void) LinkWindowsHello:(ClientLinkWindowsHelloAccountRequest*)request success:(LinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) LinkXboxAccount:(ClientLinkXboxAccountRequest*)request success:(LinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -560,8 +552,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 		
 -(void) LoginWithTwitch:(ClientLoginWithTwitchRequest*)request success:(LoginWithTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) LoginWithWindowsHello:(ClientLoginWithWindowsHelloRequest*)request success:(LoginWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
 -(void) LoginWithXbox:(ClientLoginWithXboxRequest*)request success:(LoginWithXboxCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) Matchmake:(ClientMatchmakeRequest*)request success:(MatchmakeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -579,8 +569,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) RegisterForIOSPushNotification:(ClientRegisterForIOSPushNotificationRequest*)request success:(RegisterForIOSPushNotificationCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RegisterPlayFabUser:(ClientRegisterPlayFabUserRequest*)request success:(RegisterPlayFabUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
--(void) RegisterWithWindowsHello:(ClientRegisterWithWindowsHelloRequest*)request success:(RegisterWithWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RemoveContactEmail:(ClientRemoveContactEmailRequest*)request success:(RemoveContactEmailCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -605,8 +593,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) SetFriendTags:(ClientSetFriendTagsRequest*)request success:(SetFriendTagsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) SetPlayerSecret:(ClientSetPlayerSecretRequest*)request success:(SetPlayerSecretCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
--(void) StartGame:(ClientStartGameRequest*)request success:(StartGameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) StartPurchase:(ClientStartPurchaseRequest*)request success:(StartPurchaseCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -641,8 +627,6 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) UnlinkSteamAccount:(ClientUnlinkSteamAccountRequest*)request success:(UnlinkSteamAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkTwitch:(ClientUnlinkTwitchAccountRequest*)request success:(UnlinkTwitchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
-		
--(void) UnlinkWindowsHello:(ClientUnlinkWindowsHelloAccountRequest*)request success:(UnlinkWindowsHelloCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UnlinkXboxAccount:(ClientUnlinkXboxAccountRequest*)request success:(UnlinkXboxAccountCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

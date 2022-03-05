@@ -35,6 +35,8 @@ typedef void(^CreateServerBackfillTicketCallback)(MultiplayerCreateServerBackfil
 		
 typedef void(^CreateServerMatchmakingTicketCallback)(MultiplayerCreateMatchmakingTicketResult* result, NSObject* userData);
 		
+typedef void(^CreateTitleMultiplayerServersQuotaChangeCallback)(MultiplayerCreateTitleMultiplayerServersQuotaChangeResponse* result, NSObject* userData);
+		
 typedef void(^DeleteAssetCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^DeleteBuildCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
@@ -50,6 +52,8 @@ typedef void(^DeleteContainerImageRepositoryCallback)(MultiplayerEmptyResponse* 
 typedef void(^DeleteRemoteUserCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^EnableMultiplayerServersForTitleCallback)(MultiplayerEnableMultiplayerServersForTitleResponse* result, NSObject* userData);
+		
+typedef void(^GetAssetDownloadUrlCallback)(MultiplayerGetAssetDownloadUrlResponse* result, NSObject* userData);
 		
 typedef void(^GetAssetUploadUrlCallback)(MultiplayerGetAssetUploadUrlResponse* result, NSObject* userData);
 		
@@ -77,6 +81,8 @@ typedef void(^GetServerBackfillTicketCallback)(MultiplayerGetServerBackfillTicke
 		
 typedef void(^GetTitleEnabledForMultiplayerServersStatusCallback)(MultiplayerGetTitleEnabledForMultiplayerServersStatusResponse* result, NSObject* userData);
 		
+typedef void(^GetTitleMultiplayerServersQuotaChangeCallback)(MultiplayerGetTitleMultiplayerServersQuotaChangeResponse* result, NSObject* userData);
+		
 typedef void(^GetTitleMultiplayerServersQuotasCallback)(MultiplayerGetTitleMultiplayerServersQuotasResponse* result, NSObject* userData);
 		
 typedef void(^JoinMatchmakingTicketCallback)(MultiplayerJoinMatchmakingTicketResult* result, NSObject* userData);
@@ -85,9 +91,9 @@ typedef void(^ListArchivedMultiplayerServersCallback)(MultiplayerListMultiplayer
 		
 typedef void(^ListAssetSummariesCallback)(MultiplayerListAssetSummariesResponse* result, NSObject* userData);
 		
-typedef void(^ListBuildAliasesCallback)(MultiplayerListBuildAliasesForTitleResponse* result, NSObject* userData);
+typedef void(^ListBuildAliasesCallback)(MultiplayerListBuildAliasesResponse* result, NSObject* userData);
 		
-typedef void(^ListBuildSummariesCallback)(MultiplayerListBuildSummariesResponse* result, NSObject* userData);
+typedef void(^ListBuildSummariesV2Callback)(MultiplayerListBuildSummariesResponse* result, NSObject* userData);
 		
 typedef void(^ListCertificateSummariesCallback)(MultiplayerListCertificateSummariesResponse* result, NSObject* userData);
 		
@@ -105,6 +111,8 @@ typedef void(^ListQosServersForTitleCallback)(MultiplayerListQosServersForTitleR
 		
 typedef void(^ListServerBackfillTicketsForPlayerCallback)(MultiplayerListServerBackfillTicketsForPlayerResult* result, NSObject* userData);
 		
+typedef void(^ListTitleMultiplayerServersQuotaChangesCallback)(MultiplayerListTitleMultiplayerServersQuotaChangesResponse* result, NSObject* userData);
+		
 typedef void(^ListVirtualMachineSummariesCallback)(MultiplayerListVirtualMachineSummariesResponse* result, NSObject* userData);
 		
 typedef void(^RequestMultiplayerServerCallback)(MultiplayerRequestMultiplayerServerResponse* result, NSObject* userData);
@@ -116,6 +124,8 @@ typedef void(^ShutdownMultiplayerServerCallback)(MultiplayerEmptyResponse* resul
 typedef void(^UntagContainerImageCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UpdateBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
+		
+typedef void(^UpdateBuildNameCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UpdateBuildRegionCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
@@ -154,6 +164,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) CreateServerMatchmakingTicket:(MultiplayerCreateServerMatchmakingTicketRequest*)request success:(CreateServerMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) CreateTitleMultiplayerServersQuotaChange:(MultiplayerCreateTitleMultiplayerServersQuotaChangeRequest*)request success:(CreateTitleMultiplayerServersQuotaChangeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) DeleteAsset:(MultiplayerDeleteAssetRequest*)request success:(DeleteAssetCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) DeleteBuild:(MultiplayerDeleteBuildRequest*)request success:(DeleteBuildCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -169,6 +181,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) DeleteRemoteUser:(MultiplayerDeleteRemoteUserRequest*)request success:(DeleteRemoteUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) EnableMultiplayerServersForTitle:(MultiplayerEnableMultiplayerServersForTitleRequest*)request success:(EnableMultiplayerServersForTitleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetAssetDownloadUrl:(MultiplayerGetAssetDownloadUrlRequest*)request success:(GetAssetDownloadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetAssetUploadUrl:(MultiplayerGetAssetUploadUrlRequest*)request success:(GetAssetUploadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -196,6 +210,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) GetTitleEnabledForMultiplayerServersStatus:(MultiplayerGetTitleEnabledForMultiplayerServersStatusRequest*)request success:(GetTitleEnabledForMultiplayerServersStatusCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) GetTitleMultiplayerServersQuotaChange:(MultiplayerGetTitleMultiplayerServersQuotaChangeRequest*)request success:(GetTitleMultiplayerServersQuotaChangeCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) GetTitleMultiplayerServersQuotas:(MultiplayerGetTitleMultiplayerServersQuotasRequest*)request success:(GetTitleMultiplayerServersQuotasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) JoinMatchmakingTicket:(MultiplayerJoinMatchmakingTicketRequest*)request success:(JoinMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -204,9 +220,9 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) ListAssetSummaries:(MultiplayerListAssetSummariesRequest*)request success:(ListAssetSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListBuildAliases:(MultiplayerMultiplayerEmptyRequest*)request success:(ListBuildAliasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ListBuildAliases:(MultiplayerListBuildAliasesRequest*)request success:(ListBuildAliasesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
--(void) ListBuildSummaries:(MultiplayerListBuildSummariesRequest*)request success:(ListBuildSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+-(void) ListBuildSummariesV2:(MultiplayerListBuildSummariesRequest*)request success:(ListBuildSummariesV2Callback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListCertificateSummaries:(MultiplayerListCertificateSummariesRequest*)request success:(ListCertificateSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -224,6 +240,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) ListServerBackfillTicketsForPlayer:(MultiplayerListServerBackfillTicketsForPlayerRequest*)request success:(ListServerBackfillTicketsForPlayerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) ListTitleMultiplayerServersQuotaChanges:(MultiplayerListTitleMultiplayerServersQuotaChangesRequest*)request success:(ListTitleMultiplayerServersQuotaChangesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) ListVirtualMachineSummaries:(MultiplayerListVirtualMachineSummariesRequest*)request success:(ListVirtualMachineSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RequestMultiplayerServer:(MultiplayerRequestMultiplayerServerRequest*)request success:(RequestMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -235,6 +253,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) UntagContainerImage:(MultiplayerUntagContainerImageRequest*)request success:(UntagContainerImageCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UpdateBuildAlias:(MultiplayerUpdateBuildAliasRequest*)request success:(UpdateBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UpdateBuildName:(MultiplayerUpdateBuildNameRequest*)request success:(UpdateBuildNameCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UpdateBuildRegion:(MultiplayerUpdateBuildRegionRequest*)request success:(UpdateBuildRegionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

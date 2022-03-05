@@ -553,7 +553,6 @@ typedef enum
     ClientUserOriginationXboxLive,
     ClientUserOriginationParse,
     ClientUserOriginationTwitch,
-    ClientUserOriginationWindowsHello,
     ClientUserOriginationServerCustomId,
     ClientUserOriginationNintendoSwitchDeviceId,
     ClientUserOriginationFacebookInstantGamesId,
@@ -685,6 +684,14 @@ typedef enum
 @class ClientConsumeItemRequest;
 
 @class ClientConsumeItemResult;
+
+@class ClientConsumeMicrosoftStoreEntitlementsRequest;
+
+@class ClientConsumeMicrosoftStoreEntitlementsResponse;
+
+@class ClientConsumePS5EntitlementsRequest;
+
+@class ClientConsumePS5EntitlementsResult;
 
 @class ClientConsumePSNEntitlementsRequest;
 
@@ -926,10 +933,6 @@ typedef enum
 
 @class ClientGetUserInventoryResult;
 
-@class ClientGetWindowsHelloChallengeRequest;
-
-@class ClientGetWindowsHelloChallengeResponse;
-
 @class ClientGooglePlayFabIdPair;
 
 @class ClientGrantCharacterToUserRequest;
@@ -998,10 +1001,6 @@ typedef enum
 
 @class ClientLinkTwitchAccountResult;
 
-@class ClientLinkWindowsHelloAccountRequest;
-
-@class ClientLinkWindowsHelloAccountResponse;
-
 @class ClientLinkXboxAccountRequest;
 
 @class ClientLinkXboxAccountResult;
@@ -1048,8 +1047,6 @@ typedef enum
 
 @class ClientLoginWithTwitchRequest;
 
-@class ClientLoginWithWindowsHelloRequest;
-
 @class ClientLoginWithXboxRequest;
 
 @class ClientLogStatement;
@@ -1059,6 +1056,8 @@ typedef enum
 @class ClientMatchmakeResult;
 
 @class ClientMembershipModel;
+
+@class ClientMicrosoftStorePayload;
 
 @class ClientModifyUserVirtualCurrencyResult;
 
@@ -1083,6 +1082,8 @@ typedef enum
 @class ClientPlayerProfileViewConstraints;
 
 @class ClientPlayerStatisticVersion;
+
+@class ClientPlayStation5Payload;
 
 @class ClientPSNAccountPlayFabIdPair;
 
@@ -1109,8 +1110,6 @@ typedef enum
 @class ClientRegisterPlayFabUserRequest;
 
 @class ClientRegisterPlayFabUserResult;
-
-@class ClientRegisterWithWindowsHelloRequest;
 
 @class ClientRemoveContactEmailRequest;
 
@@ -1159,10 +1158,6 @@ typedef enum
 @class ClientSetPlayerSecretResult;
 
 @class ClientSharedGroupDataRecord;
-
-@class ClientStartGameRequest;
-
-@class ClientStartGameResult;
 
 @class ClientStartPurchaseRequest;
 
@@ -1250,10 +1245,6 @@ typedef enum
 
 @class ClientUnlinkTwitchAccountResult;
 
-@class ClientUnlinkWindowsHelloAccountRequest;
-
-@class ClientUnlinkWindowsHelloAccountResponse;
-
 @class ClientUnlinkXboxAccountRequest;
 
 @class ClientUnlinkXboxAccountResult;
@@ -1329,8 +1320,6 @@ typedef enum
 @class ClientUserTitleInfo;
 
 @class ClientUserTwitchInfo;
-
-@class ClientUserWindowsHelloInfo;
 
 @class ClientUserXboxInfo;
 
@@ -2472,6 +2461,96 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* RemainingUses; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumeMicrosoftStoreEntitlementsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Catalog version to use
+*/
+/// </summary>
+@property NSString* CatalogVersion; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Marketplace specific payload containing details to fetch in app purchase transactions
+*/
+/// </summary>
+@property ClientMicrosoftStorePayload* MarketplaceSpecificData; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumeMicrosoftStoreEntitlementsResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Details for the items purchased.
+*/
+/// </summary>
+@property NSArray* Items; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumePS5EntitlementsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Catalog version to use
+*/
+/// </summary>
+@property NSString* CatalogVersion; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Marketplace specific payload containing details to fetch in app purchase transactions
+*/
+/// </summary>
+@property ClientPlayStation5Payload* MarketplaceSpecificData; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientConsumePS5EntitlementsResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Details for the items purchased.
+*/
+/// </summary>
+@property NSArray* Items; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -4102,13 +4181,6 @@ typedef enum
 
 /// <summary>
 /*
-/// Maximum number of entries to retrieve.
-*/
-/// </summary>
-@property NSNumber* MaxResultsCount; 
-
-/// <summary>
-/*
 /// Unique identifier for the title-specific statistic for the leaderboard.
 */
 /// </summary>
@@ -5078,7 +5150,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// Id of the PSN issuer environment. If null, defaults to production environment.
 */
 /// </summary>
 @property NSNumber* IssuerId; 
@@ -5776,49 +5848,6 @@ typedef enum
 @end
 
 
-/// <summary>
-/*
-/// Requires the SHA256 hash of the user's public key.
-*/
-/// </summary>
-@interface ClientGetWindowsHelloChallengeRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// SHA256 hash of the PublicKey generated by Windows Hello.
-*/
-/// </summary>
-@property NSString* PublicKeyHint; 
-
-/// <summary>
-/*
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
-*/
-/// </summary>
-@property NSString* TitleId; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface ClientGetWindowsHelloChallengeResponse : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// Server generated challenge to be signed by the user.
-*/
-/// </summary>
-@property NSString* Challenge; 
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
 @interface ClientGooglePlayFabIdPair : PlayFabBaseModel
 
 
@@ -6330,7 +6359,7 @@ typedef enum
 
 /// <summary>
 /*
-/// If another user is already linked to the account, unlink the other user and re-link.
+/// If another user is already linked to the account, unlink the other user and re-link. If the current user is already linked, link both accounts
 */
 /// </summary>
 @property bool ForceLink; 
@@ -6401,7 +6430,7 @@ typedef enum
 
 /// <summary>
 /*
-/// If another user is already linked to the account, unlink the other user and re-link.
+/// If another user is already linked to the account, unlink the other user and re-link. If the current user is already linked, link both accounts
 */
 /// </summary>
 @property bool ForceLink; 
@@ -6651,7 +6680,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// Id of the PSN issuer environment. If null, defaults to production environment.
 */
 /// </summary>
 @property NSNumber* IssuerId; 
@@ -6749,63 +6778,6 @@ typedef enum
 
 
 @interface ClientLinkTwitchAccountResult : PlayFabBaseModel
-
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// PublicKey must be generated using the Windows Hello Passport service.
-*/
-/// </summary>
-@interface ClientLinkWindowsHelloAccountRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// Device name.
-*/
-/// </summary>
-@property NSString* DeviceName; 
-
-/// <summary>
-/*
-/// If another user is already linked to the account, unlink the other user and re-link.
-*/
-/// </summary>
-@property bool ForceLink; 
-
-/// <summary>
-/*
-/// PublicKey generated by Windows Hello.
-*/
-/// </summary>
-@property NSString* PublicKey; 
-
-/// <summary>
-/*
-/// Player's user named used by Windows Hello.
-*/
-/// </summary>
-@property NSString* UserName; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface ClientLinkWindowsHelloAccountResponse : PlayFabBaseModel
 
 /*
 @property NSObject* Request;
@@ -7913,7 +7885,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// Id of the PSN issuer environment. If null, defaults to production environment.
 */
 /// </summary>
 @property NSNumber* IssuerId; 
@@ -8053,53 +8025,6 @@ typedef enum
 */
 /// </summary>
 @property NSString* PlayerSecret; 
-
-/// <summary>
-/*
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
-*/
-/// </summary>
-@property NSString* TitleId; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// Requires both the SHA256 hash of the user's public key as well as the signed response from GetWindowsHelloChallenge
-*/
-/// </summary>
-@interface ClientLoginWithWindowsHelloRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The signed response from the user for the Challenge.
-*/
-/// </summary>
-@property NSString* ChallengeSignature; 
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// Flags for which pieces of info to return for the user.
-*/
-/// </summary>
-@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/*
-/// SHA256 hash of the PublicKey generated by Windows Hello.
-*/
-/// </summary>
-@property NSString* PublicKeyHint; 
 
 /// <summary>
 /*
@@ -8376,6 +8301,34 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Subscriptions; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientMicrosoftStorePayload : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Microsoft store ID key. This is optional. Alternatively you can use XboxToken
+*/
+/// </summary>
+@property NSString* CollectionsMsIdKey; 
+
+/// <summary>
+/*
+/// If collectionsMsIdKey is provided, this will verify the user id in the collectionsMsIdKey is the same.
+*/
+/// </summary>
+@property NSString* UserId; 
+
+/// <summary>
+/*
+/// Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", ""). This is optional. Alternatively can use CollectionsMsIdKey
+*/
+/// </summary>
+@property NSString* XboxToken; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -8767,7 +8720,7 @@ typedef enum
 
 /// <summary>
 /*
-/// List of experiment variants for the player.
+/// List of experiment variants for the player. Note that these variants are not guaranteed to be up-to-date when returned during login because the player profile is updated only after login. Instead, use the LoginResult.TreatmentAssignment property during login to get the correct variants and variables.
 */
 /// </summary>
 @property NSArray* ExperimentVariants; 
@@ -9042,6 +8995,27 @@ typedef enum
 @end
 
 
+@interface ClientPlayStation5Payload : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// An optional list of entitlement ids to query against PSN
+*/
+/// </summary>
+@property NSArray* Ids; 
+
+/// <summary>
+/*
+/// Id of the PSN service label to consume entitlements from
+*/
+/// </summary>
+@property NSString* ServiceLabel; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientPSNAccountPlayFabIdPair : PlayFabBaseModel
 
 
@@ -9266,7 +9240,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Id of the PSN issuer environment. If null, defaults to 256 (production)
+/// Id of the PSN issuer environment. If null, defaults to production environment.
 */
 /// </summary>
 @property NSNumber* IssuerId; 
@@ -9483,74 +9457,6 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// PublicKey must be generated using the Windows Hello Passport service.
-*/
-/// </summary>
-@interface ClientRegisterWithWindowsHelloRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// Device name.
-*/
-/// </summary>
-@property NSString* DeviceName; 
-
-/// <summary>
-/*
-/// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
-*/
-/// </summary>
-@property NSString* EncryptedRequest; 
-
-/// <summary>
-/*
-/// Flags for which pieces of info to return for the user.
-*/
-/// </summary>
-@property ClientGetPlayerCombinedInfoRequestParams* InfoRequestParameters; 
-
-/// <summary>
-/*
-/// Player secret that is used to verify API request signatures (Enterprise Only).
-*/
-/// </summary>
-@property NSString* PlayerSecret; 
-
-/// <summary>
-/*
-/// PublicKey generated by Windows Hello.
-*/
-/// </summary>
-@property NSString* PublicKey; 
-
-/// <summary>
-/*
-/// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
-*/
-/// </summary>
-@property NSString* TitleId; 
-
-/// <summary>
-/*
-/// Player's user name used by Windows Hello.
-*/
-/// </summary>
-@property NSString* UserName; 
-/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -9803,7 +9709,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Once verified, the valid items will be restored into the user's inventory.
+/// Once verified, the valid items will be restored into the user's inventory. This result should be used for immediate updates to the local client game state as opposed to the GetUserInventory API which can have an up to half second delay.
 */
 /// </summary>
 @interface ClientRestoreIOSPurchasesResult : PlayFabBaseModel
@@ -10101,133 +10007,6 @@ typedef enum
 /// </summary>
 @property NSString* Value; 
 /**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-/// <summary>
-/*
-/// This API must be enabled for use as an option in the game manager website. It is disabled by default.
-*/
-/// </summary>
-@interface ClientStartGameRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// version information for the build of the game server which is to be started
-*/
-/// </summary>
-@property NSString* BuildVersion; 
-
-/// <summary>
-/*
-/// character to use for stats based matching. Leave null to use account stats
-*/
-/// </summary>
-@property NSString* CharacterId; 
-
-/// <summary>
-/*
-/// custom command line argument when starting game server process
-*/
-/// </summary>
-@property NSString* CustomCommandLineData; 
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// the title-defined game mode this server is to be running (defaults to 0 if there is only one mode)
-*/
-/// </summary>
-@property NSString* GameMode; 
-
-/// <summary>
-/*
-/// the region to associate this server with for match filtering
-*/
-/// </summary>
-@property ClientRegion pfRegion; 
-
-/// <summary>
-/*
-/// player statistic for others to use in finding this game. May be null for no stat-based matching
-*/
-/// </summary>
-@property NSString* StatisticName; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface ClientStartGameResult : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// timestamp for when the server should expire, if applicable
-*/
-/// </summary>
-@property NSString* Expires; 
-
-/// <summary>
-/*
-/// unique identifier for the lobby of the server started
-*/
-/// </summary>
-@property NSString* LobbyID; 
-
-/// <summary>
-/*
-/// password required to log into the server
-*/
-/// </summary>
-@property NSString* Password; 
-
-/// <summary>
-/*
-/// server IPV4 address
-*/
-/// </summary>
-@property NSString* ServerIPV4Address; 
-
-/// <summary>
-/*
-/// server IPV6 address
-*/
-/// </summary>
-@property NSString* ServerIPV6Address; 
-
-/// <summary>
-/*
-/// port on the server to be used for communication
-*/
-/// </summary>
-@property NSNumber* ServerPort; 
-
-/// <summary>
-/*
-/// server public DNS name
-*/
-/// </summary>
-@property NSString* ServerPublicDNSName; 
-
-/// <summary>
-/*
-/// unique identifier for the server
-*/
-/// </summary>
-@property NSString* Ticket; 
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -11173,42 +10952,6 @@ typedef enum
 @end
 
 
-/// <summary>
-/*
-/// Must include the Public Key Hint
-*/
-/// </summary>
-@interface ClientUnlinkWindowsHelloAccountRequest : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-*/
-/// </summary>
-@property NSDictionary* CustomTags; 
-
-/// <summary>
-/*
-/// SHA256 hash of the PublicKey generated by Windows Hello.
-*/
-/// </summary>
-@property NSString* PublicKeyHint; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
-@interface ClientUnlinkWindowsHelloAccountResponse : PlayFabBaseModel
-
-/*
-@property NSObject* Request;
-@property NSObject* CustomData;
-*/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
 @interface ClientUnlinkXboxAccountRequest : PlayFabBaseModel
 
 
@@ -11822,13 +11565,6 @@ typedef enum
 
 /// <summary>
 /*
-/// Windows Hello account information, if a Windows Hello account has been linked
-*/
-/// </summary>
-@property ClientUserWindowsHelloInfo* WindowsHelloInfo; 
-
-/// <summary>
-/*
 /// User XBox account information, if a XBox account has been linked
 */
 /// </summary>
@@ -12279,27 +12015,6 @@ typedef enum
 @end
 
 
-@interface ClientUserWindowsHelloInfo : PlayFabBaseModel
-
-
-/// <summary>
-/*
-/// Windows Hello Device Name
-*/
-/// </summary>
-@property NSString* WindowsHelloDeviceName; 
-
-/// <summary>
-/*
-/// Windows Hello Public Key Hash
-*/
-/// </summary>
-@property NSString* WindowsHelloPublicKeyHash; 
-/**/
--(id)initWithDictionary:(NSDictionary*)properties;
-@end
-
-
 @interface ClientUserXboxInfo : PlayFabBaseModel
 
 
@@ -12365,7 +12080,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Once verified, the catalog item matching the Amazon item name will be added to the user's inventory.
+/// Once verified, the catalog item matching the Amazon item name will be added to the user's inventory. This result should be used for immediate updates to the local client game state as opposed to the GetUserInventory API which can have an up to half second delay.
 */
 /// </summary>
 @interface ClientValidateAmazonReceiptResult : PlayFabBaseModel
@@ -12441,7 +12156,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Once verified, the catalog item (ItemId) matching the GooglePlay store item (productId) will be added to the user's inventory.
+/// Once verified, the catalog item (ItemId) matching the GooglePlay store item (productId) will be added to the user's inventory. This result should be used for immediate updates to the local client game state as opposed to the GetUserInventory API which can have an up to half second delay.
 */
 /// </summary>
 @interface ClientValidateGooglePlayPurchaseResult : PlayFabBaseModel
@@ -12510,7 +12225,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Once verified, the catalog item matching the iTunes item name will be added to the user's inventory.
+/// Once verified, the catalog item matching the iTunes item name will be added to the user's inventory. This result should be used for immediate updates to the local client game state as opposed to the GetUserInventory API which can have an up to half second delay.
 */
 /// </summary>
 @interface ClientValidateIOSReceiptResult : PlayFabBaseModel
@@ -12574,7 +12289,7 @@ typedef enum
 
 /// <summary>
 /*
-/// Once verified, the catalog item matching the Product name will be added to the user's inventory.
+/// Once verified, the catalog item matching the Product name will be added to the user's inventory. This result should be used for immediate updates to the local client game state as opposed to the GetUserInventory API which can have an up to half second delay.
 */
 /// </summary>
 @interface ClientValidateWindowsReceiptResult : PlayFabBaseModel

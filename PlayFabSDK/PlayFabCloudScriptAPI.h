@@ -15,6 +15,8 @@ typedef void(^ExecuteEntityCloudScriptCallback)(CloudScriptExecuteCloudScriptRes
 		
 typedef void(^ExecuteFunctionCallback)(CloudScriptExecuteFunctionResult* result, NSObject* userData);
 		
+typedef void(^GetFunctionCallback)(CloudScriptGetFunctionResult* result, NSObject* userData);
+		
 typedef void(^ListFunctionsCallback)(CloudScriptListFunctionsResult* result, NSObject* userData);
 		
 typedef void(^ListHttpFunctionsCallback)(CloudScriptListHttpFunctionsResult* result, NSObject* userData);
@@ -45,6 +47,8 @@ typedef void(^UnregisterFunctionCallback)(CloudScriptEmptyResult* result, NSObje
 -(void) ExecuteEntityCloudScript:(CloudScriptExecuteEntityCloudScriptRequest*)request success:(ExecuteEntityCloudScriptCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ExecuteFunction:(CloudScriptExecuteFunctionRequest*)request success:(ExecuteFunctionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetFunction:(CloudScriptGetFunctionRequest*)request success:(GetFunctionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListFunctions:(CloudScriptListFunctionsRequest*)request success:(ListFunctionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

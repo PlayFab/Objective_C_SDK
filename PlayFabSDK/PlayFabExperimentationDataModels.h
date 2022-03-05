@@ -167,13 +167,6 @@ typedef enum
 
 /// <summary>
 /*
-/// The duration of the experiment, in days.
-*/
-/// </summary>
-@property NSNumber* Duration; 
-
-/// <summary>
-/*
 /// When experiment should end.
 */
 /// </summary>
@@ -374,13 +367,6 @@ typedef enum
 */
 /// </summary>
 @property NSString* Description; 
-
-/// <summary>
-/*
-/// The duration of the experiment, in days.
-*/
-/// </summary>
-@property NSNumber* Duration; 
 
 /// <summary>
 /*
@@ -1022,13 +1008,6 @@ typedef enum
 */
 /// </summary>
 @property NSString* Description; 
-
-/// <summary>
-/*
-/// The duration of the experiment, in days.
-*/
-/// </summary>
-@property NSNumber* Duration; 
 
 /// <summary>
 /*
