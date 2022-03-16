@@ -57,6 +57,16 @@ typedef enum
 
 @class EconomyCatalogItem;
 
+@class EconomyCatalogItemReference;
+
+@class EconomyCatalogPrice;
+
+@class EconomyCatalogPriceAmount;
+
+@class EconomyCatalogPriceInstance;
+
+@class EconomyCatalogSpecificConfig;
+
 @class EconomyContent;
 
 @class EconomyCreateDraftItemRequest;
@@ -66,6 +76,8 @@ typedef enum
 @class EconomyCreateUploadUrlsRequest;
 
 @class EconomyCreateUploadUrlsResponse;
+
+@class EconomyDeepLinkFormat;
 
 @class EconomyDeleteEntityItemReviewsRequest;
 
@@ -133,6 +145,8 @@ typedef enum
 
 @class EconomyModerationState;
 
+@class EconomyPayoutDetails;
+
 @class EconomyPublishDraftItemRequest;
 
 @class EconomyPublishDraftItemResponse;
@@ -165,9 +179,13 @@ typedef enum
 
 @class EconomySetItemModerationStateResponse;
 
+@class EconomyStoreInfo;
+
 @class EconomySubmitItemReviewVoteRequest;
 
 @class EconomySubmitItemReviewVoteResponse;
+
+@class EconomySubscriptionDetails;
 
 @class EconomyTakedownItemReviewsRequest;
 
@@ -247,6 +265,13 @@ typedef enum
 */
 /// </summary>
 @property bool IsCatalogEnabled; 
+
+/// <summary>
+/*
+/// A list of Platforms that can be applied to catalog items.
+*/
+/// </summary>
+@property NSArray* Platforms; 
 
 /// <summary>
 /*
@@ -420,6 +445,118 @@ typedef enum
 @end
 
 
+@interface EconomyCatalogItemReference : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The amount of the catalog item.
+*/
+/// </summary>
+@property NSNumber* Amount; 
+
+/// <summary>
+/*
+/// The unique ID of the catalog item.
+*/
+/// </summary>
+@property NSString* Id; 
+
+/// <summary>
+/*
+/// The price of the catalog item.
+*/
+/// </summary>
+@property EconomyCatalogPrice* Price; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyCatalogPrice : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Prices of the catalog item.
+*/
+/// </summary>
+@property NSArray* Prices; 
+
+/// <summary>
+/*
+/// Real prices of the catalog item.
+*/
+/// </summary>
+@property NSArray* RealPrices; 
+
+/// <summary>
+/*
+/// A standardized sorting key to allow proper sorting between items with prices in different currencies.
+*/
+/// </summary>
+@property NSNumber* Sort; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyCatalogPriceAmount : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The amount of the catalog price.
+*/
+/// </summary>
+@property NSNumber* Amount; 
+
+/// <summary>
+/*
+/// The Item ID of the price.
+*/
+/// </summary>
+@property NSString* Id; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyCatalogPriceInstance : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The amounts of the catalog item price.
+*/
+/// </summary>
+@property NSArray* Amounts; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyCatalogSpecificConfig : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The set of content types that will be used for validation.
+*/
+/// </summary>
+@property NSArray* ContentTypes; 
+
+/// <summary>
+/*
+/// The set of tags that will be used for validation.
+*/
+/// </summary>
+@property NSArray* Tags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface EconomyContent : PlayFabBaseModel
 
 
@@ -558,6 +695,27 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyDeepLinkFormat : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The format of the deep link to return. The format should contain '{id}' to represent where the item ID should be placed.
+*/
+/// </summary>
+@property NSString* Format; 
+
+/// <summary>
+/*
+/// The target platform for the deep link.
+*/
+/// </summary>
+@property NSString* Platform; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -760,13 +918,6 @@ typedef enum
 */
 /// </summary>
 @property EconomyEntityKey* Entity; 
-
-/// <summary>
-/*
-/// Whether to fetch metadata of the scan status.
-*/
-/// </summary>
-@property bool ExpandScanningStatus; 
 
 /// <summary>
 /*
@@ -1048,13 +1199,6 @@ typedef enum
 
 @interface EconomyGetItemPublishStatusResponse : PlayFabBaseModel
 
-
-/// <summary>
-/*
-/// Scan results for any items that failed content scans.
-*/
-/// </summary>
-@property NSArray* FailedScanResults; 
 
 /// <summary>
 /*
@@ -1416,6 +1560,34 @@ typedef enum
 @end
 
 
+@interface EconomyPayoutDetails : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The Dev Center account ID of the payee.
+*/
+/// </summary>
+@property NSString* AccountSellerId; 
+
+/// <summary>
+/*
+/// The tax code for payout calculations.
+*/
+/// </summary>
+@property NSString* TaxCode; 
+
+/// <summary>
+/*
+/// The Universal account ID of the payee.
+*/
+/// </summary>
+@property NSString* Uaid; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// The call kicks off a workflow to publish the item to the public catalog. The Publish Status API should be used to monitor the publish job.
@@ -1668,13 +1840,6 @@ typedef enum
 */
 /// </summary>
 @property NSNumber* HelpfulNegative; 
-
-/// <summary>
-/*
-/// Total number of helpfulness votes for this review.
-*/
-/// </summary>
-@property NSNumber* HelpfulnessVotes; 
 
 /// <summary>
 /*
@@ -1993,6 +2158,27 @@ typedef enum
 @end
 
 
+@interface EconomyStoreInfo : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// An alternate ID of the store.
+*/
+/// </summary>
+@property EconomyCatalogAlternateId* AlternateId; 
+
+/// <summary>
+/*
+/// The unique ID of the store.
+*/
+/// </summary>
+@property NSString* Id; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface EconomySubmitItemReviewVoteRequest : PlayFabBaseModel
 
 
@@ -2048,6 +2234,20 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomySubscriptionDetails : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The length of time that the subscription will last in seconds.
+*/
+/// </summary>
+@property NSNumber* DurationInSeconds; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 

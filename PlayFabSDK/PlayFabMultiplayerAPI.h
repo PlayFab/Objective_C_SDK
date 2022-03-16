@@ -27,6 +27,8 @@ typedef void(^CreateBuildWithManagedContainerCallback)(MultiplayerCreateBuildWit
 		
 typedef void(^CreateBuildWithProcessBasedServerCallback)(MultiplayerCreateBuildWithProcessBasedServerResponse* result, NSObject* userData);
 		
+typedef void(^CreateLobbyCallback)(MultiplayerCreateLobbyResult* result, NSObject* userData);
+		
 typedef void(^CreateMatchmakingTicketCallback)(MultiplayerCreateMatchmakingTicketResult* result, NSObject* userData);
 		
 typedef void(^CreateRemoteUserCallback)(MultiplayerCreateRemoteUserResponse* result, NSObject* userData);
@@ -49,9 +51,15 @@ typedef void(^DeleteCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 typedef void(^DeleteContainerImageRepositoryCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
+typedef void(^DeleteLobbyCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
+		
 typedef void(^DeleteRemoteUserCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^EnableMultiplayerServersForTitleCallback)(MultiplayerEnableMultiplayerServersForTitleResponse* result, NSObject* userData);
+		
+typedef void(^FindFriendLobbiesCallback)(MultiplayerFindFriendLobbiesResult* result, NSObject* userData);
+		
+typedef void(^FindLobbiesCallback)(MultiplayerFindLobbiesResult* result, NSObject* userData);
 		
 typedef void(^GetAssetDownloadUrlCallback)(MultiplayerGetAssetDownloadUrlResponse* result, NSObject* userData);
 		
@@ -62,6 +70,8 @@ typedef void(^GetBuildCallback)(MultiplayerGetBuildResponse* result, NSObject* u
 typedef void(^GetBuildAliasCallback)(MultiplayerBuildAliasDetailsResponse* result, NSObject* userData);
 		
 typedef void(^GetContainerRegistryCredentialsCallback)(MultiplayerGetContainerRegistryCredentialsResponse* result, NSObject* userData);
+		
+typedef void(^GetLobbyCallback)(MultiplayerGetLobbyResult* result, NSObject* userData);
 		
 typedef void(^GetMatchCallback)(MultiplayerGetMatchResult* result, NSObject* userData);
 		
@@ -85,7 +95,15 @@ typedef void(^GetTitleMultiplayerServersQuotaChangeCallback)(MultiplayerGetTitle
 		
 typedef void(^GetTitleMultiplayerServersQuotasCallback)(MultiplayerGetTitleMultiplayerServersQuotasResponse* result, NSObject* userData);
 		
+typedef void(^InviteToLobbyCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
+		
+typedef void(^JoinArrangedLobbyCallback)(MultiplayerJoinLobbyResult* result, NSObject* userData);
+		
+typedef void(^JoinLobbyCallback)(MultiplayerJoinLobbyResult* result, NSObject* userData);
+		
 typedef void(^JoinMatchmakingTicketCallback)(MultiplayerJoinMatchmakingTicketResult* result, NSObject* userData);
+		
+typedef void(^LeaveLobbyCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
 		
 typedef void(^ListArchivedMultiplayerServersCallback)(MultiplayerListMultiplayerServersResponse* result, NSObject* userData);
 		
@@ -115,11 +133,17 @@ typedef void(^ListTitleMultiplayerServersQuotaChangesCallback)(MultiplayerListTi
 		
 typedef void(^ListVirtualMachineSummariesCallback)(MultiplayerListVirtualMachineSummariesResponse* result, NSObject* userData);
 		
+typedef void(^RemoveMemberCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
+		
 typedef void(^RequestMultiplayerServerCallback)(MultiplayerRequestMultiplayerServerResponse* result, NSObject* userData);
 		
 typedef void(^RolloverContainerRegistryCredentialsCallback)(MultiplayerRolloverContainerRegistryCredentialsResponse* result, NSObject* userData);
 		
 typedef void(^ShutdownMultiplayerServerCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
+		
+typedef void(^SubscribeToLobbyResourceCallback)(MultiplayerSubscribeToLobbyResourceResult* result, NSObject* userData);
+		
+typedef void(^UnsubscribeFromLobbyResourceCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
 		
 typedef void(^UntagContainerImageCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
@@ -130,6 +154,8 @@ typedef void(^UpdateBuildNameCallback)(MultiplayerEmptyResponse* result, NSObjec
 typedef void(^UpdateBuildRegionCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
 typedef void(^UpdateBuildRegionsCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
+		
+typedef void(^UpdateLobbyCallback)(MultiplayerLobbyEmptyResult* result, NSObject* userData);
 		
 typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObject* userData);
 		
@@ -156,6 +182,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) CreateBuildWithProcessBasedServer:(MultiplayerCreateBuildWithProcessBasedServerRequest*)request success:(CreateBuildWithProcessBasedServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) CreateLobby:(MultiplayerCreateLobbyRequest*)request success:(CreateLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) CreateMatchmakingTicket:(MultiplayerCreateMatchmakingTicketRequest*)request success:(CreateMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) CreateRemoteUser:(MultiplayerCreateRemoteUserRequest*)request success:(CreateRemoteUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
@@ -178,9 +206,15 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) DeleteContainerImageRepository:(MultiplayerDeleteContainerImageRequest*)request success:(DeleteContainerImageRepositoryCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) DeleteLobby:(MultiplayerDeleteLobbyRequest*)request success:(DeleteLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) DeleteRemoteUser:(MultiplayerDeleteRemoteUserRequest*)request success:(DeleteRemoteUserCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) EnableMultiplayerServersForTitle:(MultiplayerEnableMultiplayerServersForTitleRequest*)request success:(EnableMultiplayerServersForTitleCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) FindFriendLobbies:(MultiplayerFindFriendLobbiesRequest*)request success:(FindFriendLobbiesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) FindLobbies:(MultiplayerFindLobbiesRequest*)request success:(FindLobbiesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetAssetDownloadUrl:(MultiplayerGetAssetDownloadUrlRequest*)request success:(GetAssetDownloadUrlCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -191,6 +225,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) GetBuildAlias:(MultiplayerGetBuildAliasRequest*)request success:(GetBuildAliasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetContainerRegistryCredentials:(MultiplayerGetContainerRegistryCredentialsRequest*)request success:(GetContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetLobby:(MultiplayerGetLobbyRequest*)request success:(GetLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetMatch:(MultiplayerGetMatchRequest*)request success:(GetMatchCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -214,7 +250,15 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) GetTitleMultiplayerServersQuotas:(MultiplayerGetTitleMultiplayerServersQuotasRequest*)request success:(GetTitleMultiplayerServersQuotasCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) InviteToLobby:(MultiplayerInviteToLobbyRequest*)request success:(InviteToLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) JoinArrangedLobby:(MultiplayerJoinArrangedLobbyRequest*)request success:(JoinArrangedLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) JoinLobby:(MultiplayerJoinLobbyRequest*)request success:(JoinLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) JoinMatchmakingTicket:(MultiplayerJoinMatchmakingTicketRequest*)request success:(JoinMatchmakingTicketCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) LeaveLobby:(MultiplayerLeaveLobbyRequest*)request success:(LeaveLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ListArchivedMultiplayerServers:(MultiplayerListMultiplayerServersRequest*)request success:(ListArchivedMultiplayerServersCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -244,11 +288,17 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 		
 -(void) ListVirtualMachineSummaries:(MultiplayerListVirtualMachineSummariesRequest*)request success:(ListVirtualMachineSummariesCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
+-(void) RemoveMember:(MultiplayerRemoveMemberFromLobbyRequest*)request success:(RemoveMemberCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
 -(void) RequestMultiplayerServer:(MultiplayerRequestMultiplayerServerRequest*)request success:(RequestMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) RolloverContainerRegistryCredentials:(MultiplayerRolloverContainerRegistryCredentialsRequest*)request success:(RolloverContainerRegistryCredentialsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) ShutdownMultiplayerServer:(MultiplayerShutdownMultiplayerServerRequest*)request success:(ShutdownMultiplayerServerCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) SubscribeToLobbyResource:(MultiplayerSubscribeToLobbyResourceRequest*)request success:(SubscribeToLobbyResourceCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UnsubscribeFromLobbyResource:(MultiplayerUnsubscribeFromLobbyResourceRequest*)request success:(UnsubscribeFromLobbyResourceCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UntagContainerImage:(MultiplayerUntagContainerImageRequest*)request success:(UntagContainerImageCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
@@ -259,6 +309,8 @@ typedef void(^UploadCertificateCallback)(MultiplayerEmptyResponse* result, NSObj
 -(void) UpdateBuildRegion:(MultiplayerUpdateBuildRegionRequest*)request success:(UpdateBuildRegionCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UpdateBuildRegions:(MultiplayerUpdateBuildRegionsRequest*)request success:(UpdateBuildRegionsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) UpdateLobby:(MultiplayerUpdateLobbyRequest*)request success:(UpdateLobbyCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) UploadCertificate:(MultiplayerUploadCertificateRequest*)request success:(UploadCertificateCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

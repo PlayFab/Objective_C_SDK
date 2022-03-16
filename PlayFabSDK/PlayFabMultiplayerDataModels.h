@@ -4,6 +4,13 @@
 
 typedef enum
 {
+    MultiplayerAccessPolicyPublic,
+    MultiplayerAccessPolicyFriends,
+    MultiplayerAccessPolicyPrivate
+} MultiplayerAccessPolicy;
+
+typedef enum
+{
     MultiplayerAzureRegionAustraliaEast,
     MultiplayerAzureRegionAustraliaSoutheast,
     MultiplayerAzureRegionBrazilSouth,
@@ -143,10 +150,24 @@ typedef enum
 
 typedef enum
 {
+    MultiplayerOwnerMigrationPolicyNone,
+    MultiplayerOwnerMigrationPolicyAutomatic,
+    MultiplayerOwnerMigrationPolicyManual,
+    MultiplayerOwnerMigrationPolicyServer
+} MultiplayerOwnerMigrationPolicy;
+
+typedef enum
+{
     MultiplayerTitleMultiplayerServerEnabledStatusInitializing,
     MultiplayerTitleMultiplayerServerEnabledStatusEnabled,
     MultiplayerTitleMultiplayerServerEnabledStatusDisabled
 } MultiplayerTitleMultiplayerServerEnabledStatus;
+
+typedef enum
+{
+    MultiplayerMembershipLockUnlocked,
+    MultiplayerMembershipLockLocked
+} MultiplayerMembershipLock;
 
 typedef enum
 {
@@ -159,6 +180,12 @@ typedef enum
     MultiplayerServerTypeContainer,
     MultiplayerServerTypeProcess
 } MultiplayerServerType;
+
+typedef enum
+{
+    MultiplayerSubscriptionTypeLobbyChange,
+    MultiplayerSubscriptionTypeLobbyInvite
+} MultiplayerSubscriptionType;
 
 //predeclare all non-enum classes
 
@@ -222,6 +249,10 @@ typedef enum
 
 @class MultiplayerCreateBuildWithProcessBasedServerResponse;
 
+@class MultiplayerCreateLobbyRequest;
+
+@class MultiplayerCreateLobbyResult;
+
 @class MultiplayerCreateMatchmakingTicketRequest;
 
 @class MultiplayerCreateMatchmakingTicketResult;
@@ -254,6 +285,8 @@ typedef enum
 
 @class MultiplayerDeleteContainerImageRequest;
 
+@class MultiplayerDeleteLobbyRequest;
+
 @class MultiplayerDeleteRemoteUserRequest;
 
 @class MultiplayerDynamicStandbySettings;
@@ -267,6 +300,16 @@ typedef enum
 @class MultiplayerEnableMultiplayerServersForTitleResponse;
 
 @class MultiplayerEntityKey;
+
+@class MultiplayerFindFriendLobbiesRequest;
+
+@class MultiplayerFindFriendLobbiesResult;
+
+@class MultiplayerFindLobbiesRequest;
+
+@class MultiplayerFindLobbiesResult;
+
+@class MultiplayerFriendLobbySummary;
 
 @class MultiplayerGameCertificateReference;
 
@@ -289,6 +332,10 @@ typedef enum
 @class MultiplayerGetContainerRegistryCredentialsRequest;
 
 @class MultiplayerGetContainerRegistryCredentialsResponse;
+
+@class MultiplayerGetLobbyRequest;
+
+@class MultiplayerGetLobbyResult;
 
 @class MultiplayerGetMatchmakingTicketRequest;
 
@@ -334,9 +381,19 @@ typedef enum
 
 @class MultiplayerInstrumentationConfiguration;
 
+@class MultiplayerInviteToLobbyRequest;
+
+@class MultiplayerJoinArrangedLobbyRequest;
+
+@class MultiplayerJoinLobbyRequest;
+
+@class MultiplayerJoinLobbyResult;
+
 @class MultiplayerJoinMatchmakingTicketRequest;
 
 @class MultiplayerJoinMatchmakingTicketResult;
+
+@class MultiplayerLeaveLobbyRequest;
 
 @class MultiplayerLinuxInstrumentationConfiguration;
 
@@ -392,11 +449,19 @@ typedef enum
 
 @class MultiplayerListVirtualMachineSummariesResponse;
 
+@class MultiplayerLobby;
+
+@class MultiplayerLobbyEmptyResult;
+
+@class MultiplayerLobbySummary;
+
 @class MultiplayerMatchmakingPlayer;
 
 @class MultiplayerMatchmakingPlayerAttributes;
 
 @class MultiplayerMatchmakingPlayerWithTeamAssignment;
+
+@class MultiplayerMember;
 
 @class MultiplayerMonitoringApplicationConfiguration;
 
@@ -404,11 +469,17 @@ typedef enum
 
 @class MultiplayerMultiplayerServerSummary;
 
+@class MultiplayerPaginationRequest;
+
+@class MultiplayerPaginationResponse;
+
 @class MultiplayerPort;
 
 @class MultiplayerQosServer;
 
 @class MultiplayerQuotaChange;
+
+@class MultiplayerRemoveMemberFromLobbyRequest;
 
 @class MultiplayerRequestMultiplayerServerRequest;
 
@@ -428,7 +499,13 @@ typedef enum
 
 @class MultiplayerStatistics;
 
+@class MultiplayerSubscribeToLobbyResourceRequest;
+
+@class MultiplayerSubscribeToLobbyResourceResult;
+
 @class MultiplayerTitleMultiplayerServersQuotas;
+
+@class MultiplayerUnsubscribeFromLobbyResourceRequest;
 
 @class MultiplayerUntagContainerImageRequest;
 
@@ -439,6 +516,8 @@ typedef enum
 @class MultiplayerUpdateBuildRegionRequest;
 
 @class MultiplayerUpdateBuildRegionsRequest;
+
+@class MultiplayerUpdateLobbyRequest;
 
 @class MultiplayerUploadCertificateRequest;
 
@@ -1921,6 +2000,105 @@ typedef enum
 
 /// <summary>
 /*
+/// Request to create a lobby. A Server or client can create a lobby.
+*/
+/// </summary>
+@interface MultiplayerCreateLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The policy indicating who is allowed to join the lobby, and the visibility to queries. May be 'Public', 'Friends' or 'Private'. Public means the lobby is both visible in queries and any player may join, including invited players. Friends means that users who are bidirectional friends of members in the lobby may search to find friend lobbies, to retrieve its connection string. Private means the lobby is not visible in queries, and a player must receive an invitation to join. Defaults to 'Public' on creation. Can only be changed by the lobby owner.
+*/
+/// </summary>
+@property MultiplayerAccessPolicy pfAccessPolicy; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The private key-value pairs which are only visible to members of the lobby. At most 30 key-value pairs may be stored here, keys are limited to 30 characters and values to 1000. The total size of all lobbyData values may not exceed 4096 bytes. Keys are case sensitive.
+*/
+/// </summary>
+@property NSDictionary* LobbyData; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby. The value must be between 2 and 128.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// The member initially added to the lobby. Client must specify exactly one member, which is the creator's entity and member data. Member PubSubConnectionHandle must be null or empty. Game servers must not specify any members.
+*/
+/// </summary>
+@property NSArray* Members; 
+
+/// <summary>
+/*
+/// The lobby owner. Must be the calling entity.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Owner; 
+
+/// <summary>
+/*
+/// The policy for how a new owner is chosen. May be 'Automatic', 'Manual' or 'None'. Can only be specified by clients. If client-owned and 'Automatic' - The Lobby service will automatically assign another connected owner when the current owner leaves or disconnects. The useConnections property must be true. If client - owned and 'Manual' - Ownership is protected as long as the current owner is connected. If the current owner leaves or disconnects any member may set themselves as the current owner. The useConnections property must be true. If client-owned and 'None' - Any member can set ownership. The useConnections property can be either true or false.
+*/
+/// </summary>
+@property MultiplayerOwnerMigrationPolicy pfOwnerMigrationPolicy; 
+
+/// <summary>
+/*
+/// The public key-value pairs which allow queries to differentiate between lobbies. Queries will refer to these key-value pairs in their filter and order by clauses to retrieve lobbies fitting the specified criteria. At most 30 key-value pairs may be stored here. Keys are of the format string_key1, string_key2 ... string_key30 for string values, or number_key1, number_key2, ... number_key30 for numeric values.Numeric values are floats. Values can be at most 256 characters long. The total size of all searchData values may not exceed 1024 bytes.
+*/
+/// </summary>
+@property NSDictionary* SearchData; 
+
+/// <summary>
+/*
+/// A setting to control whether connections are used. Defaults to true. When true, notifications are sent to subscribed players, disconnect detection removes connectionHandles, only owner migration policies using connections are allowed, and lobbies must have at least one connected member to be searchable or be a server hosted lobby with a connected server. If false, then notifications are not sent, connections are not allowed, and lobbies do not need connections to be searchable.
+*/
+/// </summary>
+@property bool UseConnections; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerCreateLobbyResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A field which indicates which lobby the user will be joining.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// Id to uniquely identify a lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// The client specifies the creator's attributes and optionally a list of other users to match with.
 */
 /// </summary>
@@ -2450,6 +2628,32 @@ typedef enum
 
 /// <summary>
 /*
+/// Request to delete a lobby. Only servers can delete lobbies.
+*/
+/// </summary>
+@interface MultiplayerDeleteLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Deletes a remote user to log on to a VM for a multiplayer server build in a specific region. Returns user credential information necessary to log on.
 */
 /// </summary>
@@ -2611,6 +2815,211 @@ typedef enum
 */
 /// </summary>
 @property NSString* Type; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to find friends lobbies. Only a client can find friend lobbies.
+*/
+/// </summary>
+@interface MultiplayerFindFriendLobbiesRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// Controls whether this query should link to friends made on the Facebook network. Defaults to false
+*/
+/// </summary>
+@property bool ExcludeFacebookFriends; 
+
+/// <summary>
+/*
+/// Controls whether this query should link to friends made on the Steam network. Defaults to false
+*/
+/// </summary>
+@property bool ExcludeSteamFriends; 
+
+/// <summary>
+/*
+/// OData style string that contains one or more filters. The OR and grouping operators are not allowed.
+*/
+/// </summary>
+@property NSString* Filter; 
+
+/// <summary>
+/*
+/// OData style string that contains sorting for this query. To sort by closest, a moniker `distance{number_key1 = 5}` can be used to sort by distance from the given number. This field only supports either one sort clause or one distance clause.
+*/
+/// </summary>
+@property NSString* OrderBy; 
+
+/// <summary>
+/*
+/// Request pagination information.
+*/
+/// </summary>
+@property MultiplayerPaginationRequest* Pagination; 
+
+/// <summary>
+/*
+/// Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+*/
+/// </summary>
+@property NSString* XboxToken; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerFindFriendLobbiesResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Array of lobbies found that matched FindFriendLobbies request.
+*/
+/// </summary>
+@property NSArray* Lobbies; 
+
+/// <summary>
+/*
+/// Pagination response for FindFriendLobbies request.
+*/
+/// </summary>
+@property MultiplayerPaginationResponse* Pagination; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to find lobbies.
+*/
+/// </summary>
+@interface MultiplayerFindLobbiesRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// OData style string that contains one or more filters. The OR and grouping operators are not allowed.
+*/
+/// </summary>
+@property NSString* Filter; 
+
+/// <summary>
+/*
+/// OData style string that contains sorting for this query. To sort by closest, a moniker `distance{number_key1 = 5}` can be used to sort by distance from the given number. This field only supports either one sort clause or one distance clause.
+*/
+/// </summary>
+@property NSString* OrderBy; 
+
+/// <summary>
+/*
+/// Request pagination information.
+*/
+/// </summary>
+@property MultiplayerPaginationRequest* Pagination; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerFindLobbiesResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Array of lobbies found that matched FindLobbies request.
+*/
+/// </summary>
+@property NSArray* Lobbies; 
+
+/// <summary>
+/*
+/// Pagination response for FindLobbies request.
+*/
+/// </summary>
+@property MultiplayerPaginationResponse* Pagination; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerFriendLobbySummary : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A string used to join the lobby.This field is populated by the Lobby service.Invites are performed by communicating this connectionString to other players.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// The current number of players in the lobby.
+*/
+/// </summary>
+@property NSNumber* CurrentPlayers; 
+
+/// <summary>
+/*
+/// Friends in Lobby.
+*/
+/// </summary>
+@property NSArray* Friends; 
+
+/// <summary>
+/*
+/// Id to uniquely identify a lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// The client or server entity which owns this lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Owner; 
+
+/// <summary>
+/*
+/// Search data.
+*/
+/// </summary>
+@property NSDictionary* SearchData; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -3002,6 +3411,49 @@ typedef enum
 */
 /// </summary>
 @property NSString* Username; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to get a lobby.
+*/
+/// </summary>
+@interface MultiplayerGetLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerGetLobbyResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The information pertaining to the requested lobby.
+*/
+/// </summary>
+@property MultiplayerLobby* pfLobby; 
 /*
 @property NSObject* Request;
 @property NSObject* CustomData;
@@ -3776,6 +4228,171 @@ typedef enum
 
 /// <summary>
 /*
+/// Request to invite a player to a lobby the caller is already a member of. Only a client can invite another player to a lobby.
+*/
+/// </summary>
+@interface MultiplayerInviteToLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The entity invited to the lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* InviteeEntity; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The member entity sending the invite. Must be a member of the lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to join an arranged lobby. Only a client can join an arranged lobby.
+*/
+/// </summary>
+@interface MultiplayerJoinArrangedLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The policy indicating who is allowed to join the lobby, and the visibility to queries. May be 'Public', 'Friends' or 'Private'. Public means the lobby is both visible in queries and any player may join, including invited players. Friends means that users who are bidirectional friends of members in the lobby may search to find friend lobbies, to retrieve its connection string. Private means the lobby is not visible in queries, and a player must receive an invitation to join. Defaults to 'Public' on creation. Can only be changed by the lobby owner.
+*/
+/// </summary>
+@property MultiplayerAccessPolicy pfAccessPolicy; 
+
+/// <summary>
+/*
+/// A field which indicates which lobby the user will be joining. This field is opaque to everyone except the Lobby service and the creator of the arrangementString (Matchmaking). This string defines a unique identifier for the arranged lobby as well as the title and member the string is valid for. Arrangement strings have an expiration.
+*/
+/// </summary>
+@property NSString* ArrangementString; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby. The value must be between 2 and 128.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// The private key-value pairs used by the member to communicate information to other members and the owner. Visible to all members of the lobby. At most 30 key-value pairs may be stored here, keys are limited to 30 characters and values to 1000. The total size of all memberData values may not exceed 4096 bytes. Keys are case sensitive.
+*/
+/// </summary>
+@property NSDictionary* MemberData; 
+
+/// <summary>
+/*
+/// The member entity who is joining the lobby. The first member to join will be the lobby owner.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+
+/// <summary>
+/*
+/// The policy for how a new owner is chosen. May be 'Automatic', 'Manual' or 'None'. Can only be specified by clients. If client-owned and 'Automatic' - The Lobby service will automatically assign another connected owner when the current owner leaves or disconnects. The useConnections property must be true. If client - owned and 'Manual' - Ownership is protected as long as the current owner is connected. If the current owner leaves or disconnects any member may set themselves as the current owner. The useConnections property must be true. If client-owned and 'None' - Any member can set ownership. The useConnections property can be either true or false.
+*/
+/// </summary>
+@property MultiplayerOwnerMigrationPolicy pfOwnerMigrationPolicy; 
+
+/// <summary>
+/*
+/// A setting to control whether connections are used. Defaults to true. When true, notifications are sent to subscribed players, disconnect detection removes connectionHandles, only owner migration policies using connections are allowed, and lobbies must have at least one connected member to be searchable or be a server hosted lobby with a connected server. If false, then notifications are not sent, connections are not allowed, and lobbies do not need connections to be searchable.
+*/
+/// </summary>
+@property bool UseConnections; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to join a lobby. Only a client can join a lobby.
+*/
+/// </summary>
+@interface MultiplayerJoinLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A field which indicates which lobby the user will be joining. This field is opaque to everyone except the Lobby service.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The private key-value pairs used by the member to communicate information to other members and the owner. Visible to all members of the lobby. At most 30 key-value pairs may be stored here, keys are limited to 30 characters and values to 1000. The total size of all memberData values may not exceed 4096 bytes.Keys are case sensitive.
+*/
+/// </summary>
+@property NSDictionary* MemberData; 
+
+/// <summary>
+/*
+/// The member entity who is joining the lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerJoinLobbyResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Successfully joined lobby's id.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
 /// Add the player to a matchmaking ticket and specify all of its matchmaking attributes. Players can join a ticket if and only if their EntityKeys are already listed in the ticket's Members list. The matchmaking service automatically starts matching the ticket against other matchmaking tickets once all players have joined the ticket. It is not possible to join a ticket once it has started matching.
 */
 /// </summary>
@@ -3820,6 +4437,39 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to leave a lobby. Only a client can leave a lobby.
+*/
+/// </summary>
+@interface MultiplayerLeaveLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The member entity leaving the lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -4600,6 +5250,163 @@ typedef enum
 @end
 
 
+@interface MultiplayerLobby : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A setting indicating who is allowed to join this lobby, as well as see it in queries.
+*/
+/// </summary>
+@property MultiplayerAccessPolicy pfAccessPolicy; 
+
+/// <summary>
+/*
+/// A number that increments once for each request that modifies the lobby.
+*/
+/// </summary>
+@property NSNumber* ChangeNumber; 
+
+/// <summary>
+/*
+/// A string used to join the lobby. This field is populated by the Lobby service. Invites are performed by communicating this connectionString to other players.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// Lobby data.
+*/
+/// </summary>
+@property NSDictionary* LobbyData; 
+
+/// <summary>
+/*
+/// Id to uniquely identify a lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// Array of all lobby members.
+*/
+/// </summary>
+@property NSArray* Members; 
+
+/// <summary>
+/*
+/// A setting indicating whether members are allowed to join this lobby. When Locked new members are prevented from joining.
+*/
+/// </summary>
+@property MultiplayerMembershipLock pfMembershipLock; 
+
+/// <summary>
+/*
+/// The client or server entity which owns this lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Owner; 
+
+/// <summary>
+/*
+/// A setting indicating the owner migration policy. If server owned, this field is not present.
+*/
+/// </summary>
+@property MultiplayerOwnerMigrationPolicy pfOwnerMigrationPolicy; 
+
+/// <summary>
+/*
+/// An opaque string stored on a SubscribeToLobbyResource call, which indicates the connection an owner or member has with PubSub.
+*/
+/// </summary>
+@property NSString* PubSubConnectionHandle; 
+
+/// <summary>
+/*
+/// Search data.
+*/
+/// </summary>
+@property NSDictionary* SearchData; 
+
+/// <summary>
+/*
+/// A flag which determines if connections are used. Defaults to true. Only set on create.
+*/
+/// </summary>
+@property bool UseConnections; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerLobbyEmptyResult : PlayFabBaseModel
+
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerLobbySummary : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// A string used to join the lobby.This field is populated by the Lobby service.Invites are performed by communicating this connectionString to other players.
+*/
+/// </summary>
+@property NSString* ConnectionString; 
+
+/// <summary>
+/*
+/// The current number of players in the lobby.
+*/
+/// </summary>
+@property NSNumber* CurrentPlayers; 
+
+/// <summary>
+/*
+/// Id to uniquely identify a lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// The client or server entity which owns this lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Owner; 
+
+/// <summary>
+/*
+/// Search data.
+*/
+/// </summary>
+@property NSDictionary* SearchData; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// A user in a matchmaking ticket.
@@ -4680,6 +5487,34 @@ typedef enum
 */
 /// </summary>
 @property NSString* TeamId; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerMember : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Key-value pairs specific to member.
+*/
+/// </summary>
+@property NSDictionary* MemberData; 
+
+/// <summary>
+/*
+/// The member entity key.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+
+/// <summary>
+/*
+/// Opaque string, stored on a Subscribe call, which indicates the connection an owner or member has with PubSub.
+*/
+/// </summary>
+@property NSString* PubSubConnectionHandle; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -4811,6 +5646,51 @@ typedef enum
 @end
 
 
+@interface MultiplayerPaginationRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Continuation token returned as a result in a previous FindLobbies call. Cannot be specified by clients.
+*/
+/// </summary>
+@property NSString* ContinuationToken; 
+
+/// <summary>
+/*
+/// The number of lobbies that should be retrieved. Cannot be specified by servers, clients may specify any value up to 50
+*/
+/// </summary>
+@property NSNumber* PageSizeRequested; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerPaginationResponse : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Continuation token returned by server call. Not returned for clients
+*/
+/// </summary>
+@property NSString* ContinuationToken; 
+
+/// <summary>
+/*
+/// The number of lobbies that matched the search request.
+*/
+/// </summary>
+@property NSNumber* TotalMatchedLobbyCount; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface MultiplayerPort : PlayFabBaseModel
 
 
@@ -4911,6 +5791,46 @@ typedef enum
 */
 /// </summary>
 @property bool WasApproved; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to remove a member from a lobby. Owners may remove other members from a lobby. Members cannot remove themselves (use LeaveLobby instead).
+*/
+/// </summary>
+@interface MultiplayerRemoveMemberFromLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The member entity to be removed from the lobby.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+
+/// <summary>
+/*
+/// If true, removed member can never rejoin this lobby.
+*/
+/// </summary>
+@property bool PreventRejoin; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -5280,6 +6200,77 @@ typedef enum
 @end
 
 
+/// <summary>
+/*
+/// Request to subscribe to lobby resource notifications.
+*/
+/// </summary>
+@interface MultiplayerSubscribeToLobbyResourceRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The entity performing the subscription.
+*/
+/// </summary>
+@property MultiplayerEntityKey* pfEntityKey; 
+
+/// <summary>
+/*
+/// Opaque string, given to a client upon creating a connection with PubSub.
+*/
+/// </summary>
+@property NSString* PubSubConnectionHandle; 
+
+/// <summary>
+/*
+/// The name of the resource to subscribe to.
+*/
+/// </summary>
+@property NSString* ResourceId; 
+
+/// <summary>
+/*
+/// Version number for the subscription of this resource.
+*/
+/// </summary>
+@property NSNumber* SubscriptionVersion; 
+
+/// <summary>
+/*
+/// Subscription type.
+*/
+/// </summary>
+@property MultiplayerSubscriptionType Type; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface MultiplayerSubscribeToLobbyResourceResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Topic will be returned in all notifications that are the result of this subscription.
+*/
+/// </summary>
+@property NSString* Topic; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface MultiplayerTitleMultiplayerServersQuotas : PlayFabBaseModel
 
 
@@ -5289,6 +6280,60 @@ typedef enum
 */
 /// </summary>
 @property NSArray* CoreCapacities; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to unsubscribe from lobby notifications. Only a client can unsubscribe from notifications.
+*/
+/// </summary>
+@interface MultiplayerUnsubscribeFromLobbyResourceRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The entity which performed the subscription.
+*/
+/// </summary>
+@property MultiplayerEntityKey* pfEntityKey; 
+
+/// <summary>
+/*
+/// Opaque string, given to a client upon creating a connection with PubSub.
+*/
+/// </summary>
+@property NSString* PubSubConnectionHandle; 
+
+/// <summary>
+/*
+/// The name of the resource to unsubscribe from.
+*/
+/// </summary>
+@property NSString* ResourceId; 
+
+/// <summary>
+/*
+/// Version number passed for the subscription of this resource.
+*/
+/// </summary>
+@property NSNumber* SubscriptionVersion; 
+
+/// <summary>
+/*
+/// Subscription type.
+*/
+/// </summary>
+@property MultiplayerSubscriptionType Type; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -5461,6 +6506,109 @@ typedef enum
 */
 /// </summary>
 @property NSDictionary* CustomTags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// Request to update a lobby.
+*/
+/// </summary>
+@interface MultiplayerUpdateLobbyRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// The policy indicating who is allowed to join the lobby, and the visibility to queries. May be 'Public', 'Friends' or 'Private'. Public means the lobby is both visible in queries and any player may join, including invited players. Friends means that users who are bidirectional friends of members in the lobby may search to find friend lobbies, to retrieve its connection string. Private means the lobby is not visible in queries, and a player must receive an invitation to join. Defaults to 'Public' on creation. Can only be changed by the lobby owner.
+*/
+/// </summary>
+@property MultiplayerAccessPolicy pfAccessPolicy; 
+
+/// <summary>
+/*
+/// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+*/
+/// </summary>
+@property NSDictionary* CustomTags; 
+
+/// <summary>
+/*
+/// The private key-value pairs which are only visible to members of the lobby. Optional. Sets or updates key-value pairs on the lobby. Only the current lobby owner can set lobby data. Keys may be an arbitrary string of at most 30 characters. The total size of all lobbyData values may not exceed 4096 bytes. Values are not individually limited. There can be up to 30 key-value pairs stored here. Keys are case sensitive.
+*/
+/// </summary>
+@property NSDictionary* LobbyData; 
+
+/// <summary>
+/*
+/// The keys to delete from the lobby LobbyData. Optional. Behaves similar to searchDataToDelete, but applies to lobbyData.
+*/
+/// </summary>
+@property NSArray* LobbyDataToDelete; 
+
+/// <summary>
+/*
+/// The id of the lobby.
+*/
+/// </summary>
+@property NSString* LobbyId; 
+
+/// <summary>
+/*
+/// The maximum number of players allowed in the lobby. Updates the maximum allowed number of players in the lobby. Only the current lobby owner can set this. If set, the value must be greater than or equal to the number of members currently in the lobby.
+*/
+/// </summary>
+@property NSNumber* MaxPlayers; 
+
+/// <summary>
+/*
+/// The private key-value pairs used by the member to communicate information to other members and the owner. Optional. Sets or updates new key-value pairs on the caller's member data. New keys will be added with their values and existing keys will be updated with the new values. Visible to all members of the lobby. At most 30 key-value pairs may be stored here, keys are limited to 30 characters and values to 1000. The total size of all memberData values may not exceed 4096 bytes. Keys are case sensitive. Servers cannot specifiy this.
+*/
+/// </summary>
+@property NSDictionary* MemberData; 
+
+/// <summary>
+/*
+/// The keys to delete from the lobby MemberData. Optional. Deletes key-value pairs on the caller's member data. All the specified keys will be removed from the caller's member data. Keys that do not exist are a no-op. If the key to delete exists in the memberData (same request) it will result in a bad request. Servers cannot specifiy this.
+*/
+/// </summary>
+@property NSArray* MemberDataToDelete; 
+
+/// <summary>
+/*
+/// The member entity whose data is being modified. Servers cannot specify this.
+*/
+/// </summary>
+@property MultiplayerEntityKey* MemberEntity; 
+
+/// <summary>
+/*
+/// A setting indicating whether the lobby is locked. May be 'Unlocked' or 'Locked'. When Locked new members are not allowed to join. Defaults to 'Unlocked' on creation. Can only be changed by the lobby owner.
+*/
+/// </summary>
+@property MultiplayerMembershipLock pfMembershipLock; 
+
+/// <summary>
+/*
+/// The lobby owner. Optional. Set to transfer ownership of the lobby. If client - owned and 'Automatic' - The Lobby service will automatically assign another connected owner when the current owner leaves or disconnects. useConnections must be true. If client - owned and 'Manual' - Ownership is protected as long as the current owner is connected. If the current owner leaves or disconnects any member may set themselves as the current owner. The useConnections property must be true. If client-owned and 'None' - Any member can set ownership. The useConnections property can be either true or false. For all client-owned lobbies when the owner leaves and a new owner can not be automatically selected - The owner field is set to null. For all client-owned lobbies when the owner disconnects and a new owner can not be automatically selected - The owner field remains unchanged and the current owner retains all owner abilities for the lobby. If server-owned (must be 'Server') - Any server can set ownership. The useConnections property must be true.
+*/
+/// </summary>
+@property MultiplayerEntityKey* Owner; 
+
+/// <summary>
+/*
+/// The public key-value pairs which allow queries to differentiate between lobbies. Optional. Sets or updates key-value pairs on the lobby for use with queries. Only the current lobby owner can set search data. New keys will be added with their values and existing keys will be updated with the new values. There can be up to 30 key-value pairs stored here. Keys are of the format string_key1, string_key2... string_key30 for string values, or number_key1, number_key2, ... number_key30 for numeric values. Numeric values are floats. Values can be at most 256 characters long. The total size of all searchData values may not exceed 1024 bytes.Keys are case sensitive.
+*/
+/// </summary>
+@property NSDictionary* SearchData; 
+
+/// <summary>
+/*
+/// The keys to delete from the lobby SearchData. Optional. Deletes key-value pairs on the lobby. Only the current lobby owner can delete search data. All the specified keys will be removed from the search data. Keys that do not exist in the lobby are a no-op.If the key to delete exists in the searchData (same request) it will result in a bad request.
+*/
+/// </summary>
+@property NSArray* SearchDataToDelete; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

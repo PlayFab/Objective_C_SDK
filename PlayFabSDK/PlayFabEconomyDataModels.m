@@ -57,6 +57,16 @@
     
     self.IsCatalogEnabled = [[properties valueForKey:@"IsCatalogEnabled"] boolValue];
     
+    if ([properties objectForKey:@"Platforms"]){
+    NSArray* member_list = [properties objectForKey:@"Platforms"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.Platforms = [mutable_storage copy];
+}
+
+    
     if ([properties objectForKey:@"ReviewerEntities"]){
     NSArray* member_list = [properties objectForKey:@"ReviewerEntities"];
     NSMutableArray* mutable_storage = [NSMutableArray new];
@@ -181,6 +191,143 @@
 
     
     self.Type = [properties valueForKey:@"Type"];
+    
+
+    return self;
+}
+@end
+@implementation EconomyCatalogItemReference
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Amount = [properties valueForKey:@"Amount"];
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+    self.Price = [[EconomyCatalogPrice new] initWithDictionary:[properties objectForKey:@"Price"]];
+    
+
+    return self;
+}
+@end
+@implementation EconomyCatalogPrice
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Prices"]){
+    NSArray* member_list = [properties objectForKey:@"Prices"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[EconomyCatalogPriceInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Prices = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"RealPrices"]){
+    NSArray* member_list = [properties objectForKey:@"RealPrices"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[EconomyCatalogPriceInstance new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.RealPrices = [mutable_storage copy];
+}
+
+    
+    self.Sort = [properties valueForKey:@"Sort"];
+    
+
+    return self;
+}
+@end
+@implementation EconomyCatalogPriceAmount
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Amount = [properties valueForKey:@"Amount"];
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+
+    return self;
+}
+@end
+@implementation EconomyCatalogPriceInstance
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Amounts"]){
+    NSArray* member_list = [properties objectForKey:@"Amounts"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[EconomyCatalogPriceAmount new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Amounts = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation EconomyCatalogSpecificConfig
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"ContentTypes"]){
+    NSArray* member_list = [properties objectForKey:@"ContentTypes"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.ContentTypes = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"Tags"]){
+    NSArray* member_list = [properties objectForKey:@"Tags"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.Tags = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -322,6 +469,25 @@
     self.UploadUrls = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation EconomyDeepLinkFormat
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Format = [properties valueForKey:@"Format"];
+    
+    self.Platform = [properties valueForKey:@"Platform"];
     
 
     return self;
@@ -554,8 +720,6 @@
 
     
     self.Entity = [[EconomyEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
-    
-    self.ExpandScanningStatus = [[properties valueForKey:@"ExpandScanningStatus"] boolValue];
     
     self.Id = [properties valueForKey:@"Id"];
     
@@ -846,16 +1010,6 @@
     if (!self) {
         return nil;
     }
-
-    
-    if ([properties objectForKey:@"FailedScanResults"]){
-    NSArray* member_list = [properties objectForKey:@"FailedScanResults"];
-    NSMutableArray* mutable_storage = [NSMutableArray new];
-    for(int i=0;i<[member_list count];i++){
-        [mutable_storage addObject:[[EconomyScanResult new] initWithDictionary:[member_list objectAtIndex:i]]];
-    }
-    self.FailedScanResults = [mutable_storage copy];
-}
 
     
     self.Result = (EconomyPublishResult)[properties valueForKey:@"EconomyResult"];
@@ -1194,6 +1348,27 @@
     return self;
 }
 @end
+@implementation EconomyPayoutDetails
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AccountSellerId = [properties valueForKey:@"AccountSellerId"];
+    
+    self.TaxCode = [properties valueForKey:@"TaxCode"];
+    
+    self.Uaid = [properties valueForKey:@"Uaid"];
+    
+
+    return self;
+}
+@end
 @implementation EconomyPublishDraftItemRequest
 
 
@@ -1385,8 +1560,6 @@
 
     
     self.HelpfulNegative = [properties valueForKey:@"HelpfulNegative"];
-    
-    self.HelpfulnessVotes = [properties valueForKey:@"HelpfulnessVotes"];
     
     self.HelpfulPositive = [properties valueForKey:@"HelpfulPositive"];
     
@@ -1614,6 +1787,25 @@
     return self;
 }
 @end
+@implementation EconomyStoreInfo
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.AlternateId = [[EconomyCatalogAlternateId new] initWithDictionary:[properties objectForKey:@"AlternateId"]];
+    
+    self.Id = [properties valueForKey:@"Id"];
+    
+
+    return self;
+}
+@end
 @implementation EconomySubmitItemReviewVoteRequest
 
 
@@ -1659,6 +1851,23 @@
         return nil;
     }
 
+    
+
+    return self;
+}
+@end
+@implementation EconomySubscriptionDetails
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.DurationInSeconds = [properties valueForKey:@"DurationInSeconds"];
     
 
     return self;

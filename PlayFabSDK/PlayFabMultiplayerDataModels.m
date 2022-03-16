@@ -1145,6 +1145,90 @@
     return self;
 }
 @end
+@implementation MultiplayerCreateLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfAccessPolicy = (MultiplayerAccessPolicy)[properties valueForKey:@"MultiplayerAccessPolicy"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"LobbyData"]){
+    NSDictionary* member_list = [properties objectForKey:@"LobbyData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.LobbyData = [mutable_storage copy];
+}
+
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMember new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    self.Owner = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Owner"]];
+    
+    self.pfOwnerMigrationPolicy = (MultiplayerOwnerMigrationPolicy)[properties valueForKey:@"MultiplayerOwnerMigrationPolicy"];
+    
+    if ([properties objectForKey:@"SearchData"]){
+    NSDictionary* member_list = [properties objectForKey:@"SearchData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.SearchData = [mutable_storage copy];
+}
+
+    
+    self.UseConnections = [[properties valueForKey:@"UseConnections"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerCreateLobbyResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerCreateMatchmakingTicketRequest
 
 
@@ -1605,6 +1689,33 @@
     return self;
 }
 @end
+@implementation MultiplayerDeleteLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerDeleteRemoteUserRequest
 
 
@@ -1757,6 +1868,173 @@
     self.Id = [properties valueForKey:@"Id"];
     
     self.Type = [properties valueForKey:@"Type"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerFindFriendLobbiesRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.ExcludeFacebookFriends = [[properties valueForKey:@"ExcludeFacebookFriends"] boolValue];
+    
+    self.ExcludeSteamFriends = [[properties valueForKey:@"ExcludeSteamFriends"] boolValue];
+    
+    self.Filter = [properties valueForKey:@"Filter"];
+    
+    self.OrderBy = [properties valueForKey:@"OrderBy"];
+    
+    self.Pagination = [[MultiplayerPaginationRequest new] initWithDictionary:[properties objectForKey:@"Pagination"]];
+    
+    self.XboxToken = [properties valueForKey:@"XboxToken"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerFindFriendLobbiesResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Lobbies"]){
+    NSArray* member_list = [properties objectForKey:@"Lobbies"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerFriendLobbySummary new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Lobbies = [mutable_storage copy];
+}
+
+    
+    self.Pagination = [[MultiplayerPaginationResponse new] initWithDictionary:[properties objectForKey:@"Pagination"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerFindLobbiesRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.Filter = [properties valueForKey:@"Filter"];
+    
+    self.OrderBy = [properties valueForKey:@"OrderBy"];
+    
+    self.Pagination = [[MultiplayerPaginationRequest new] initWithDictionary:[properties objectForKey:@"Pagination"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerFindLobbiesResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Lobbies"]){
+    NSArray* member_list = [properties objectForKey:@"Lobbies"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerLobbySummary new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Lobbies = [mutable_storage copy];
+}
+
+    
+    self.Pagination = [[MultiplayerPaginationResponse new] initWithDictionary:[properties objectForKey:@"Pagination"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerFriendLobbySummary
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    self.CurrentPlayers = [properties valueForKey:@"CurrentPlayers"];
+    
+    if ([properties objectForKey:@"Friends"]){
+    NSArray* member_list = [properties objectForKey:@"Friends"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerEntityKey new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Friends = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    self.Owner = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Owner"]];
+    
+    if ([properties objectForKey:@"SearchData"]){
+    NSDictionary* member_list = [properties objectForKey:@"SearchData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.SearchData = [mutable_storage copy];
+}
+
     
 
     return self;
@@ -2082,6 +2360,50 @@
     self.Password = [properties valueForKey:@"Password"];
     
     self.Username = [properties valueForKey:@"Username"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerGetLobbyResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfLobby = [[MultiplayerLobby new] initWithDictionary:[properties objectForKey:@"Lobby"]];
     
 
     return self;
@@ -2719,6 +3041,140 @@
     return self;
 }
 @end
+@implementation MultiplayerInviteToLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.InviteeEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"InviteeEntity"]];
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerJoinArrangedLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfAccessPolicy = (MultiplayerAccessPolicy)[properties valueForKey:@"MultiplayerAccessPolicy"];
+    
+    self.ArrangementString = [properties valueForKey:@"ArrangementString"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    if ([properties objectForKey:@"MemberData"]){
+    NSDictionary* member_list = [properties objectForKey:@"MemberData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.MemberData = [mutable_storage copy];
+}
+
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+    self.pfOwnerMigrationPolicy = (MultiplayerOwnerMigrationPolicy)[properties valueForKey:@"MultiplayerOwnerMigrationPolicy"];
+    
+    self.UseConnections = [[properties valueForKey:@"UseConnections"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerJoinLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"MemberData"]){
+    NSDictionary* member_list = [properties objectForKey:@"MemberData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.MemberData = [mutable_storage copy];
+}
+
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerJoinLobbyResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerJoinMatchmakingTicketRequest
 
 
@@ -2760,6 +3216,35 @@
         return nil;
     }
 
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerLeaveLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
     
 
     return self;
@@ -3516,6 +4001,121 @@
     return self;
 }
 @end
+@implementation MultiplayerLobby
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfAccessPolicy = (MultiplayerAccessPolicy)[properties valueForKey:@"MultiplayerAccessPolicy"];
+    
+    self.ChangeNumber = [properties valueForKey:@"ChangeNumber"];
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    if ([properties objectForKey:@"LobbyData"]){
+    NSDictionary* member_list = [properties objectForKey:@"LobbyData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.LobbyData = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    if ([properties objectForKey:@"Members"]){
+    NSArray* member_list = [properties objectForKey:@"Members"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[MultiplayerMember new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Members = [mutable_storage copy];
+}
+
+    
+    self.pfMembershipLock = (MultiplayerMembershipLock)[properties valueForKey:@"MultiplayerMembershipLock"];
+    
+    self.Owner = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Owner"]];
+    
+    self.pfOwnerMigrationPolicy = (MultiplayerOwnerMigrationPolicy)[properties valueForKey:@"MultiplayerOwnerMigrationPolicy"];
+    
+    self.PubSubConnectionHandle = [properties valueForKey:@"PubSubConnectionHandle"];
+    
+    if ([properties objectForKey:@"SearchData"]){
+    NSDictionary* member_list = [properties objectForKey:@"SearchData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.SearchData = [mutable_storage copy];
+}
+
+    
+    self.UseConnections = [[properties valueForKey:@"UseConnections"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerLobbyEmptyResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerLobbySummary
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ConnectionString = [properties valueForKey:@"ConnectionString"];
+    
+    self.CurrentPlayers = [properties valueForKey:@"CurrentPlayers"];
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    self.Owner = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Owner"]];
+    
+    if ([properties objectForKey:@"SearchData"]){
+    NSDictionary* member_list = [properties objectForKey:@"SearchData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.SearchData = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerMatchmakingPlayer
 
 
@@ -3570,6 +4170,35 @@
     self.Entity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
     
     self.TeamId = [properties valueForKey:@"TeamId"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerMember
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"MemberData"]){
+    NSDictionary* member_list = [properties objectForKey:@"MemberData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.MemberData = [mutable_storage copy];
+}
+
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+    self.PubSubConnectionHandle = [properties valueForKey:@"PubSubConnectionHandle"];
     
 
     return self;
@@ -3658,6 +4287,44 @@
     return self;
 }
 @end
+@implementation MultiplayerPaginationRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ContinuationToken = [properties valueForKey:@"ContinuationToken"];
+    
+    self.PageSizeRequested = [properties valueForKey:@"PageSizeRequested"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerPaginationResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.ContinuationToken = [properties valueForKey:@"ContinuationToken"];
+    
+    self.TotalMatchedLobbyCount = [properties valueForKey:@"TotalMatchedLobbyCount"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerPort
 
 
@@ -3730,6 +4397,37 @@
     self.ReviewComments = [properties valueForKey:@"ReviewComments"];
     
     self.WasApproved = [[properties valueForKey:@"WasApproved"] boolValue];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerRemoveMemberFromLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+    self.PreventRejoin = [[properties valueForKey:@"PreventRejoin"] boolValue];
     
 
     return self;
@@ -4022,6 +4720,58 @@
     return self;
 }
 @end
+@implementation MultiplayerSubscribeToLobbyResourceRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.pfEntityKey = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"EntityKey"]];
+    
+    self.PubSubConnectionHandle = [properties valueForKey:@"PubSubConnectionHandle"];
+    
+    self.ResourceId = [properties valueForKey:@"ResourceId"];
+    
+    self.SubscriptionVersion = [properties valueForKey:@"SubscriptionVersion"];
+    
+    self.Type = (MultiplayerSubscriptionType)[properties valueForKey:@"MultiplayerType"];
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerSubscribeToLobbyResourceResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.Topic = [properties valueForKey:@"Topic"];
+    
+
+    return self;
+}
+@end
 @implementation MultiplayerTitleMultiplayerServersQuotas
 
 
@@ -4042,6 +4792,41 @@
     self.CoreCapacities = [mutable_storage copy];
 }
 
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUnsubscribeFromLobbyResourceRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    self.pfEntityKey = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"EntityKey"]];
+    
+    self.PubSubConnectionHandle = [properties valueForKey:@"PubSubConnectionHandle"];
+    
+    self.ResourceId = [properties valueForKey:@"ResourceId"];
+    
+    self.SubscriptionVersion = [properties valueForKey:@"SubscriptionVersion"];
+    
+    self.Type = (MultiplayerSubscriptionType)[properties valueForKey:@"MultiplayerType"];
     
 
     return self;
@@ -4203,6 +4988,103 @@
         [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
     }
     self.CustomTags = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation MultiplayerUpdateLobbyRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.pfAccessPolicy = (MultiplayerAccessPolicy)[properties valueForKey:@"MultiplayerAccessPolicy"];
+    
+    if ([properties objectForKey:@"CustomTags"]){
+    NSDictionary* member_list = [properties objectForKey:@"CustomTags"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.CustomTags = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"LobbyData"]){
+    NSDictionary* member_list = [properties objectForKey:@"LobbyData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.LobbyData = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"LobbyDataToDelete"]){
+    NSArray* member_list = [properties objectForKey:@"LobbyDataToDelete"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.LobbyDataToDelete = [mutable_storage copy];
+}
+
+    
+    self.LobbyId = [properties valueForKey:@"LobbyId"];
+    
+    self.MaxPlayers = [properties valueForKey:@"MaxPlayers"];
+    
+    if ([properties objectForKey:@"MemberData"]){
+    NSDictionary* member_list = [properties objectForKey:@"MemberData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.MemberData = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"MemberDataToDelete"]){
+    NSArray* member_list = [properties objectForKey:@"MemberDataToDelete"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.MemberDataToDelete = [mutable_storage copy];
+}
+
+    
+    self.MemberEntity = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"MemberEntity"]];
+    
+    self.pfMembershipLock = (MultiplayerMembershipLock)[properties valueForKey:@"MultiplayerMembershipLock"];
+    
+    self.Owner = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Owner"]];
+    
+    if ([properties objectForKey:@"SearchData"]){
+    NSDictionary* member_list = [properties objectForKey:@"SearchData"];
+    NSMutableDictionary* mutable_storage = [NSMutableDictionary new];
+    for(NSString* key in member_list){
+        [mutable_storage setValue:[member_list objectForKey:key] forKey:key];
+    }
+    self.SearchData = [mutable_storage copy];
+}
+
+    
+    if ([properties objectForKey:@"SearchDataToDelete"]){
+    NSArray* member_list = [properties objectForKey:@"SearchDataToDelete"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.SearchDataToDelete = [mutable_storage copy];
 }
 
     
