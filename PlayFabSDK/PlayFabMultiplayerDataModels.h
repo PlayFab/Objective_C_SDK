@@ -3350,13 +3350,6 @@ typedef enum
 
 /// <summary>
 /*
-/// When true, assets will be downloaded and uncompressed in memory, without the compressedversion being written first to disc.
-*/
-/// </summary>
-@property bool UseStreamingForAssetDownloads; 
-
-/// <summary>
-/*
 /// The VM size the build was created on.
 */
 /// </summary>
@@ -3514,6 +3507,13 @@ typedef enum
 
 /// <summary>
 /*
+/// Change number used for differentiating older matchmaking status updates from newer ones.
+*/
+/// </summary>
+@property NSNumber* ChangeNumber; 
+
+/// <summary>
+/*
 /// The server date and time at which ticket was created.
 */
 /// </summary>
@@ -3631,6 +3631,13 @@ typedef enum
 
 @interface MultiplayerGetMatchResult : PlayFabBaseModel
 
+
+/// <summary>
+/*
+/// A string that is used by players that are matched together to join an arranged lobby.
+*/
+/// </summary>
+@property NSString* ArrangementString; 
 
 /// <summary>
 /*

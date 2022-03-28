@@ -2311,8 +2311,6 @@
     
     self.StartMultiplayerServerCommand = [properties valueForKey:@"StartMultiplayerServerCommand"];
     
-    self.UseStreamingForAssetDownloads = [[properties valueForKey:@"UseStreamingForAssetDownloads"] boolValue];
-    
     self.VmSize = (MultiplayerAzureVmSize)[properties valueForKey:@"MultiplayerVmSize"];
     
 
@@ -2453,6 +2451,8 @@
     
     self.CancellationReasonString = [properties valueForKey:@"CancellationReasonString"];
     
+    self.ChangeNumber = [properties valueForKey:@"ChangeNumber"];
+    
     self.Created = [[PlayFabBaseModel timestampFormatter] dateFromString:[properties valueForKey:@"Created"]];
     
     self.Creator = [[MultiplayerEntityKey new] initWithDictionary:[properties objectForKey:@"Creator"]];
@@ -2534,6 +2534,8 @@
         return nil;
     }
 
+    
+    self.ArrangementString = [properties valueForKey:@"ArrangementString"];
     
     self.MatchId = [properties valueForKey:@"MatchId"];
     

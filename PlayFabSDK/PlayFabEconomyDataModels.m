@@ -654,6 +654,21 @@
     return self;
 }
 @end
+@implementation EconomyFilterOptions
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation EconomyGetCatalogConfigRequest
 
 
@@ -1369,6 +1384,36 @@
     return self;
 }
 @end
+@implementation EconomyPriceOverride
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation EconomyPricesOverride
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
 @implementation EconomyPublishDraftItemRequest
 
 
@@ -1403,6 +1448,21 @@
 }
 @end
 @implementation EconomyPublishDraftItemResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation EconomyPurchaseOverride
 
 
 -(id)initWithDictionary:(NSDictionary*)properties
@@ -1773,6 +1833,21 @@
 }
 @end
 @implementation EconomySetItemModerationStateResponse
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+
+    return self;
+}
+@end
+@implementation EconomyStoreDetails
 
 
 -(id)initWithDictionary:(NSDictionary*)properties

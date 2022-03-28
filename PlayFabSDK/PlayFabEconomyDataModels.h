@@ -93,6 +93,8 @@ typedef enum
 
 @class EconomyFileConfig;
 
+@class EconomyFilterOptions;
+
 @class EconomyGetCatalogConfigRequest;
 
 @class EconomyGetCatalogConfigResponse;
@@ -147,9 +149,15 @@ typedef enum
 
 @class EconomyPayoutDetails;
 
+@class EconomyPriceOverride;
+
+@class EconomyPricesOverride;
+
 @class EconomyPublishDraftItemRequest;
 
 @class EconomyPublishDraftItemResponse;
+
+@class EconomyPurchaseOverride;
 
 @class EconomyRating;
 
@@ -178,6 +186,8 @@ typedef enum
 @class EconomySetItemModerationStateRequest;
 
 @class EconomySetItemModerationStateResponse;
+
+@class EconomyStoreDetails;
 
 @class EconomyStoreInfo;
 
@@ -859,6 +869,13 @@ typedef enum
 */
 /// </summary>
 @property NSArray* Tags; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyFilterOptions : PlayFabBaseModel
+
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -1588,6 +1605,20 @@ typedef enum
 @end
 
 
+@interface EconomyPriceOverride : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyPricesOverride : PlayFabBaseModel
+
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 /// <summary>
 /*
 /// The call kicks off a workflow to publish the item to the public catalog. The Publish Status API should be used to monitor the publish job.
@@ -1641,6 +1672,13 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyPurchaseOverride : PlayFabBaseModel
+
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
@@ -2154,6 +2192,13 @@ typedef enum
 @property NSObject* Request;
 @property NSObject* CustomData;
 */
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface EconomyStoreDetails : PlayFabBaseModel
+
+/**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
 
