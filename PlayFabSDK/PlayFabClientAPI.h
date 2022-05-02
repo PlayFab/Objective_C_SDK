@@ -117,6 +117,8 @@ typedef void(^GetPlayFabIDsFromGoogleIDsCallback)(ClientGetPlayFabIDsFromGoogleI
 		
 typedef void(^GetPlayFabIDsFromKongregateIDsCallback)(ClientGetPlayFabIDsFromKongregateIDsResult* result, NSObject* userData);
 		
+typedef void(^GetPlayFabIDsFromNintendoServiceAccountIdsCallback)(ClientGetPlayFabIDsFromNintendoServiceAccountIdsResult* result, NSObject* userData);
+		
 typedef void(^GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult* result, NSObject* userData);
 		
 typedef void(^GetPlayFabIDsFromPSNAccountIDsCallback)(ClientGetPlayFabIDsFromPSNAccountIDsResult* result, NSObject* userData);
@@ -445,6 +447,8 @@ typedef void(^WriteTitleEventCallback)(ClientWriteEventResponse* result, NSObjec
 -(void) GetPlayFabIDsFromGoogleIDs:(ClientGetPlayFabIDsFromGoogleIDsRequest*)request success:(GetPlayFabIDsFromGoogleIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromKongregateIDs:(ClientGetPlayFabIDsFromKongregateIDsRequest*)request success:(GetPlayFabIDsFromKongregateIDsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
+		
+-(void) GetPlayFabIDsFromNintendoServiceAccountIds:(ClientGetPlayFabIDsFromNintendoServiceAccountIdsRequest*)request success:(GetPlayFabIDsFromNintendoServiceAccountIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		
 -(void) GetPlayFabIDsFromNintendoSwitchDeviceIds:(ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest*)request success:(GetPlayFabIDsFromNintendoSwitchDeviceIdsCallback)callback failure:(ErrorCallback)errorCallback withUserData:(NSObject*)userData;
 		

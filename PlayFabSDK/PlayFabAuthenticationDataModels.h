@@ -142,7 +142,7 @@ typedef enum
 
 /// <summary>
 /*
-/// The entity to perform this action on.
+/// The optional entity to perform this action on. Defaults to the currently logged in entity.
 */
 /// </summary>
 @property AuthenticationEntityKey* Entity; 

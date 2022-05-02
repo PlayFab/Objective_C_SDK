@@ -3438,6 +3438,56 @@
     return self;
 }
 @end
+@implementation ClientGetPlayFabIDsFromNintendoServiceAccountIdsRequest
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"NintendoAccountIds"]){
+    NSArray* member_list = [properties objectForKey:@"NintendoAccountIds"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[member_list objectAtIndex:i]];
+    }
+    self.NintendoAccountIds = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
+@implementation ClientGetPlayFabIDsFromNintendoServiceAccountIdsResult
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    if ([properties objectForKey:@"Data"]){
+    NSArray* member_list = [properties objectForKey:@"Data"];
+    NSMutableArray* mutable_storage = [NSMutableArray new];
+    for(int i=0;i<[member_list count];i++){
+        [mutable_storage addObject:[[ClientNintendoServiceAccountPlayFabIdPair new] initWithDictionary:[member_list objectAtIndex:i]]];
+    }
+    self.Data = [mutable_storage copy];
+}
+
+    
+
+    return self;
+}
+@end
 @implementation ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
 
 
@@ -6099,6 +6149,25 @@
     self.Id = [properties valueForKey:@"Id"];
     
     self.Name = [properties valueForKey:@"Name"];
+    
+
+    return self;
+}
+@end
+@implementation ClientNintendoServiceAccountPlayFabIdPair
+
+
+-(id)initWithDictionary:(NSDictionary*)properties
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    
+    self.NintendoServiceAccountId = [properties valueForKey:@"NintendoServiceAccountId"];
+    
+    self.PlayFabId = [properties valueForKey:@"PlayFabId"];
     
 
     return self;
@@ -9415,6 +9484,8 @@
 
     
     self.XboxUserId = [properties valueForKey:@"XboxUserId"];
+    
+    self.XboxUserSandbox = [properties valueForKey:@"XboxUserSandbox"];
     
 
     return self;

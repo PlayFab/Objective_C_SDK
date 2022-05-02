@@ -384,6 +384,8 @@
 }
 
     
+    self.Entity = [[ProfilesEntityKey new] initWithDictionary:[properties objectForKey:@"Entity"]];
+    
 
     return self;
 }

@@ -867,6 +867,10 @@ typedef enum
 
 @class ClientGetPlayFabIDsFromKongregateIDsResult;
 
+@class ClientGetPlayFabIDsFromNintendoServiceAccountIdsRequest;
+
+@class ClientGetPlayFabIDsFromNintendoServiceAccountIdsResult;
+
 @class ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest;
 
 @class ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsResult;
@@ -1062,6 +1066,8 @@ typedef enum
 @class ClientModifyUserVirtualCurrencyResult;
 
 @class ClientNameIdentifier;
+
+@class ClientNintendoServiceAccountPlayFabIdPair;
 
 @class ClientNintendoSwitchPlayFabIdPair;
 
@@ -5109,6 +5115,42 @@ typedef enum
 @end
 
 
+@interface ClientGetPlayFabIDsFromNintendoServiceAccountIdsRequest : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab identifiers.
+*/
+/// </summary>
+@property NSArray* NintendoAccountIds; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+/// <summary>
+/*
+/// For Nintendo Service Account identifiers which have not been linked to PlayFab accounts, null will be returned.
+*/
+/// </summary>
+@interface ClientGetPlayFabIDsFromNintendoServiceAccountIdsResult : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Mapping of Nintendo Switch Service Account identifiers to PlayFab identifiers.
+*/
+/// </summary>
+@property NSArray* Data; 
+/*
+@property NSObject* Request;
+@property NSObject* CustomData;
+*/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
 @interface ClientGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest : PlayFabBaseModel
 
 
@@ -8393,6 +8435,27 @@ typedef enum
 */
 /// </summary>
 @property NSString* Name; 
+/**/
+-(id)initWithDictionary:(NSDictionary*)properties;
+@end
+
+
+@interface ClientNintendoServiceAccountPlayFabIdPair : PlayFabBaseModel
+
+
+/// <summary>
+/*
+/// Unique Nintendo Switch Service Account identifier for a user.
+*/
+/// </summary>
+@property NSString* NintendoServiceAccountId; 
+
+/// <summary>
+/*
+/// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Nintendo Switch Service Account identifier.
+*/
+/// </summary>
+@property NSString* PlayFabId; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end
@@ -12024,6 +12087,13 @@ typedef enum
 */
 /// </summary>
 @property NSString* XboxUserId; 
+
+/// <summary>
+/*
+/// XBox user sandbox
+*/
+/// </summary>
+@property NSString* XboxUserSandbox; 
 /**/
 -(id)initWithDictionary:(NSDictionary*)properties;
 @end

@@ -533,6 +533,7 @@
         PlayFabErrorPlayerIdentityLinkNotFound = 1537,
         PlayFabErrorPhotonApplicationIdAlreadyInUse = 1538,
         PlayFabErrorCloudScriptUnableToDeleteProductionRevision = 1539,
+        PlayFabErrorCustomIdNotFound = 1540,
         PlayFabErrorMatchmakingEntityInvalid = 2001,
         PlayFabErrorMatchmakingPlayerAttributesInvalid = 2002,
         PlayFabErrorMatchmakingQueueNotFound = 2016,
@@ -684,6 +685,8 @@
         PlayFabErrorEventSinkSasTokenInvalid = 15004,
         PlayFabErrorEventSinkNotFound = 15005,
         PlayFabErrorEventSinkNameInvalid = 15006,
+        PlayFabErrorEventSinkSasTokenPermissionInvalid = 15007,
+        PlayFabErrorEventSinkSecretInvalid = 15008,
         PlayFabErrorOperationCanceled = 16000,
         PlayFabErrorInvalidDisplayNameRandomSuffixLength = 17000,
         PlayFabErrorAllowNonUniquePlayerDisplayNamesDisableNotAllowed = 17001
